@@ -21,7 +21,8 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.spring.pjt" />
+	<!-- DispatcherServlet은 com.spring.pjt.controller 패키지와 그 하위 패키지의 컴포넌트들을 생성, 관리 -->
+	<context:component-scan base-package="com.spring.pjt.controller" />
 	
 	
 	
