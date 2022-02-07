@@ -133,6 +133,21 @@
 		  	<artifactId>ojdbc8</artifactId>
 		  	<version>21.4.0.0.1</version>
 		</dependency>
+		<dependency>
+			<groupId>com.oracle.database.security</groupId>
+			<artifactId>oraclepki</artifactId>
+		  	<version>21.4.0.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.oracle.database.security</groupId>
+			<artifactId>osdt_core</artifactId>
+		  	<version>21.4.0.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.oracle.database.security</groupId>
+			<artifactId>osdt_cert</artifactId>
+		  	<version>21.4.0.0.1</version>
+		</dependency>
 		     
 		<!-- Database Connection Pool 사용하기 위한 라이브러리 -->     
 		<!-- MyBatis: 영속 계층(Persistence Layer) 프레임워크 -->
