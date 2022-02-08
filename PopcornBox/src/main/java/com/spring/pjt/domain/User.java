@@ -5,15 +5,18 @@ import java.util.Date;
 public class User {
 	private int user_no;
 	private String user_id;
+	private String user_nickname;
 	private String user_pwd;
 	private String user_email;
 	private Date user_update_time;
 	
-	public User() {}
-
-	public User(int user_no, String user_id, String user_pwd, String user_email, Date user_update_time) {
+	public User() {}	
+	
+	public User(int user_no, String user_id, String user_nickname, String user_pwd, String user_email,
+			Date user_update_time) {
 		this.user_no = user_no;
 		this.user_id = user_id;
+		this.user_nickname = user_nickname;
 		this.user_pwd = user_pwd;
 		this.user_email = user_email;
 		this.user_update_time = user_update_time;
@@ -33,6 +36,14 @@ public class User {
 
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
+	}
+
+	public String getUser_nickname() {
+		return user_nickname;
+	}
+
+	public void setUser_nickname(String user_nickname) {
+		this.user_nickname = user_nickname;
 	}
 
 	public String getUser_pwd() {
@@ -58,12 +69,12 @@ public class User {
 	public void setUser_update_time(Date user_update_time) {
 		this.user_update_time = user_update_time;
 	}
-	
+
 	@Override
 	public String toString() {
 		return String.format(
-				"User{user_no:%d, user_id:%s, user_pwd:%s, user_email:%s, user_update_time:%s}", 
-				this.user_no, this.user_id, this.user_pwd, this.user_email, this.user_update_time);
+				"User{user_no:%d, user_id:%s, user_nickname:%s, user_pwd:%s, user_email:%s, user_update_time:%s}", 
+				this.user_no, this.user_id, this.user_nickname, this.user_pwd, this.user_email, this.user_update_time);
 	}
 		
 }

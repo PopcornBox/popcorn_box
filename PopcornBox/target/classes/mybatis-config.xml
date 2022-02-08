@@ -9,6 +9,7 @@
 		<property name="TABLE_USERS" value="users" />
 		<property name="COL_USER_NO" value="user_no" />
 		<property name="COL_USER_ID" value="user_id" />
+		<property name="COL_USER_NICKNAME" value="user_nickname" />
 		<property name="COL_USER_PWD" value="user_pwd" />
 		<property name="COL_USER_EMAIL" value="user_email" />
 		<property name="COL_USER_UPDATE_TIME" value="user_update_time" />

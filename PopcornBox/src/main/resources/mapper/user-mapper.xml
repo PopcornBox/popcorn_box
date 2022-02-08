@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.pjt.mapper.UserMapper">
 
-	<!-- 게시글 전체 검색 -->
-	<select id="selectAll" resultType="User">
-	SELECT * FROM ${TABLE_USERS}
+	<!-- 회원가입 -->
+	<insert id="create">
+	INSERT INTO ${TABLE_USERS} ($())
 	ORDER BY ${COL_USER_NO} DESC
-	</select>
+	</insert>
 	
 </mapper>
