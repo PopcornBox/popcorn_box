@@ -3,7 +3,7 @@
 <mapper namespace="com.spring.pjt.mapper.UserMapper">
 
 	<!-- 회원가입 -->
-	<insert id="create">
+	<insert id="insert">
 	INSERT INTO ${TABLE_USERS} (${COL_USER_ID}, ${COL_USER_NICKNAME}, ${COL_USER_PWD}, ${COL_USER_EMAIL})
 	VALUES (#{user_id}, #{user_nickname}, #{user_pwd}, #{user_email})
 	</insert>
@@ -27,7 +27,7 @@
 	</select>
 	
 	<!-- 로그인 아이디/비밀번호 비교 -->
-	<select id="selectByIdAndPwd">
+	<select id="selectByIdAndPwd" resultType="User">
 	SELECT * FROM ${TABLE_USERS}
 	WHERE ${COL_USER_ID} = #{user_id} 
 		AND ${COL_USER_PWD} = #{user_pwd}

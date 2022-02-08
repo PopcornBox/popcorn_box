@@ -22,5 +22,17 @@ public class UserServiceImpl implements UserService {
 		return userDao.create(user);
 	}
 
+	@Override
+	public boolean isValidId(String user_id) {
+		log.info("isValidId(user_id={}) 호출", user_id);
+		
+		User user = userDao.checkUserId(user_id);
+		if (user == null) { // DB 테이블에 해당 user_id가 없는 경우 -> 가입 가능한 아이디
+			return true;
+		} else { // DB 테이블에 해당 user_id가 있는 경우 -> 가입 불가능한 아이디
+			return false;
+		} 	
+	}
+
 	
 }

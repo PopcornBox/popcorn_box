@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.pjt.domain.User;
 import com.spring.pjt.service.UserService;
@@ -31,5 +32,18 @@ public class UserController {
 		
 		return "redirect:/"; // http://localhost:8182/pjt/ 으로 redirect
 	}
+	
+	@RequestMapping(value = "/checkid", method = RequestMethod.POST)
+	@ResponseBody
+	public String checkUserId(String user_id) {
+		log.info("checkUserId(user_id={})", user_id);
+		
+		if (userService.isValidId(user_id)) {
+			return "valid";
+		} else {
+			return "invalid"; 
+		}			
+	}
+	
 	
 }

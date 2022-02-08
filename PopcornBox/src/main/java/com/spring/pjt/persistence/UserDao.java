@@ -5,4 +5,5 @@ import com.spring.pjt.domain.User;
 public interface UserDao {
 
 	int create(User user);
+	User checkUserId(String user_id);
 }

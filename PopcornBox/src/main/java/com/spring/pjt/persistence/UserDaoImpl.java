@@ -20,7 +20,14 @@ public class UserDaoImpl implements UserDao {
 	public int create(User user) {
 		log.info("create({}) 호출", user);
 
-		return sqlSession.insert(USER_NAMESPACE + ".create", user);
+		return sqlSession.insert(USER_NAMESPACE + ".insert", user);
+	}
+
+	@Override
+	public User checkUserId(String user_id) {
+		log.info("checkUserId(userid={}) 호출", user_id);
+		
+		return sqlSession.selectOne(USER_NAMESPACE + ".selectByUserId", user_id);
 	}
 
 }
