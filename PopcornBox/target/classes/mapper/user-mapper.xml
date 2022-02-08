@@ -8,4 +8,30 @@
 	VALUES (#{user_id}, #{user_nickname}, #{user_pwd}, #{user_email})
 	</insert>
 	
+	<!-- 중복 아이디 체크 -->
+	<select id="selectByUserId" resultType="User">
+	SELECT * FROM ${TABLE_USERS} 
+	WHERE ${COL_USER_ID} = #{user_id}
+	</select>
+	
+	<!-- 중복 닉네임 체크 -->
+	<select id="selectByNickname" resultType="User">
+	SELECT * FROM ${TABLE_USERS} 
+	WHERE ${COL_USER_NICKNAME} = #{user_nickname}
+	</select>
+	
+	<!-- 중복 이메일 체크 -->
+	<select id="selectByEmail" resultType="User">
+	SELECT * FROM ${TABLE_USERS} 
+	WHERE ${COL_USER_EMAIL} = #{user_email}
+	</select>
+	
+	<!-- 로그인 아이디/비밀번호 비교 -->
+	<select id="selectByIdAndPwd">
+	SELECT * FROM ${TABLE_USERS}
+	WHERE ${COL_USER_ID} = #{user_id} 
+		AND ${COL_USER_PWD} = #{user_pwd}
+	</select>
+	
+	
 </mapper>
