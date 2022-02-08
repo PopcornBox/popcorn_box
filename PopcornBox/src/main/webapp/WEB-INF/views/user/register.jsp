@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
+		<title>Popcorn Box</title>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" 
@@ -33,15 +33,22 @@
 			<div>
 				<form action="./register" method="post">
 					<div>
-						<input type="text" id="userid" name="userid" placeholder="아이디 입력" required />
-						<div class="valid">멋진 아이디입니다!</div>
+						<input type="text" id="user_id" name="user_id" placeholder="아이디 입력" required />
+						<div class="valid">사용 가능한 아이디입니다!</div>
 						<div class="invalid">이미 사용 중인 아이디입니다.</div>
 					</div>
 					<div>
-						<input type="password" name="pwd" placeholder="비밀번호 입력" required />
+						<input type="text" id="user_nickname" name="user_nickname" placeholder="닉네임 입력" required />
+						<div class="valid">사용 가능한 닉네임입니다!</div>
+						<div class="invalid">이미 사용 중인 닉네임입니다.</div>
 					</div>
 					<div>
-						<input type="email" name="email" placeholder="abc@abc.com" required />
+						<input type="password" name="user_pwd" placeholder="비밀번호 입력" required />
+					</div>
+					<div>
+						<input type="email" id="user_email" name="user_email" placeholder="abc@abc.com" required />
+						<div class="valid">사용 가능한 이메일입니다!</div>
+						<div class="invalid">이미 사용 중인 이메일입니다.</div>
 					</div>
 					<div>
 						<input type="submit" id="btn-complete" value="작성 완료" />
@@ -56,15 +63,45 @@
 		<script>
 		$(document).ready(function () {
 			
-			// userid 아이디를 갖는 HTML 요소(input)에 변화가 생겼을 때 호출될 이벤트 리스너 콜백 함수를 등록
-			$('#userid').change(function (event) {
+			// user_id 아이디를 갖는 HTML 요소(input)에 변화가 생겼을 때 호출될 이벤트 리스너 콜백 함수를 등록
+			$('#user_id').change(function (event) {
 				// Ajax를 이용해서 아이디 중복 체크
-				var params = { userid: $(this).val() };
+				var params = { user_id: $(this).val() };
 				// $.post(Ajax 요청 주소, 요청 파라미터, 응답 성공일 때 실행될 콜백 함수);
 				$.post('./checkid', params, function (response) {
 					if (response == 'valid') { // 사용 가능한 아이디(DB에 없는 아이디)인 경우
 						$('.valid').show(); // valid div 보여줌
-						$('.invalid').hide(); // valid div 없앰(display=none)
+						$('.invalid').hide(); // invalid div 없앰(display=none)
+						$('#btn-complete').removeAttr('disabled'); // 버튼 활성화
+					} else {
+						$('.valid').hide(); // valid div 없앰(display=none)
+						$('.invalid').show(); // invalid div 보여줌
+						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
+					}
+				});
+			});
+			
+			$('#user_nickname').change(function (event) {
+				var params = { user_nickname: $(this).val() };
+				$.post('./checknickname', params, function (response) {
+					if (response == 'valid') { // 사용 가능한 닉네임(DB에 없는 닉네임)인 경우
+						$('.valid').show(); // valid div 보여줌
+						$('.invalid').hide(); // invalid div 없앰(display=none)
+						$('#btn-complete').removeAttr('disabled'); // 버튼 활성화
+					} else {
+						$('.valid').hide(); // valid div 없앰(display=none)
+						$('.invalid').show(); // invalid div 보여줌
+						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
+					}
+				});
+			});
+			
+			$('#user_email').change(function (event) {
+				var params = { user_email: $(this).val() };
+				$.post('./checkemail', params, function (response) {
+					if (response == 'valid') { // 사용 가능한 이메일(DB에 없는 이메일)인 경우
+						$('.valid').show(); // valid div 보여줌
+						$('.invalid').hide(); // invalid div 없앰(display=none)
 						$('#btn-complete').removeAttr('disabled'); // 버튼 활성화
 					} else {
 						$('.valid').hide(); // valid div 없앰(display=none)

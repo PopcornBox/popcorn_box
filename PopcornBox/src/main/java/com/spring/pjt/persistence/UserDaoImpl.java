@@ -30,4 +30,25 @@ public class UserDaoImpl implements UserDao {
 		return sqlSession.selectOne(USER_NAMESPACE + ".selectByUserId", user_id);
 	}
 
+	@Override
+	public User checkNickname(String user_nickname) {
+		log.info("checkNickname(user_nickname={}) 호출", user_nickname);
+		
+		return sqlSession.selectOne(USER_NAMESPACE + ".selectByNickname", user_nickname);
+	}
+
+	@Override
+	public User checkEmail(String user_email) {
+		log.info("checkEmail(user_email={}) 호출", user_email);
+		
+		return sqlSession.selectOne(USER_NAMESPACE + ".selectByEmail", user_email);
+	}
+
+	@Override
+	public User read(User user) {
+		log.info("read({}) 호출", user);
+		
+		return sqlSession.selectOne(USER_NAMESPACE + ".selectByIdAndPwd", user);
+	}
+
 }

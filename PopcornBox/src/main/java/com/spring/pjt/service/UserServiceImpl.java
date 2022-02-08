@@ -34,5 +34,36 @@ public class UserServiceImpl implements UserService {
 		} 	
 	}
 
+	@Override
+	public boolean isValidNickname(String user_nickname) {
+		log.info("isValidNickname(user_nickname={}) 호출", user_nickname);
+		
+		User user = userDao.checkNickname(user_nickname);
+		if (user == null) { // DB 테이블에 해당 user_nickname이 없는 경우 -> 가입 가능한 닉네임
+			return true;
+		} else { // DB 테이블에 해당 user_nickname이 있는 경우 -> 가입 불가능한 닉네임
+			return false;
+		} 	
+	}
+
+	@Override
+	public boolean isValidEmail(String user_email) {
+		log.info("isValidEmail(user_email={}) 호출", user_email);
+		
+		User user = userDao.checkEmail(user_email);
+		if (user == null) { // DB 테이블에 해당 user_email이 없는 경우 -> 가입 가능한 이메일
+			return true;
+		} else { // DB 테이블에 해당 user_email이 있는 경우 -> 가입 불가능한 이메일
+			return false;
+		} 	
+	}
+
+	@Override
+	public User checkSignIn(User user) {
+		log.info("checkSignIn({}) 호출", user);
+		
+		return userDao.read(user);
+	}
+
 	
 }
