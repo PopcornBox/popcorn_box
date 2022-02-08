@@ -4,8 +4,8 @@
 
 	<!-- 회원가입 -->
 	<insert id="create">
-	INSERT INTO ${TABLE_USERS} ($())
-	ORDER BY ${COL_USER_NO} DESC
+	INSERT INTO ${TABLE_USERS} (${COL_USER_ID}, ${COL_USER_NICKNAME}, ${COL_USER_PWD}, ${COL_USER_EMAIL})
+	VALUES (#{user_id}, #{user_nickname}, #{user_pwd}, #{user_email})
 	</insert>
 	
 </mapper>
