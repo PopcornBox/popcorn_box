@@ -10,9 +10,10 @@
 		</layout>
 	</appender>
 	
+	<!-- log level 순서: all < debug < info < warn < error < fatal -->
 	<!-- Application Loggers -->
 	<logger name="com.spring.pjt">
-		<level value="info" />
+		<level value="debug" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
