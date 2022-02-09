@@ -33,7 +33,9 @@
 						<a href="./user/signout">로그아웃</a>
 					</li>
 				</c:if>	
-				
+					<li>
+						<a href="./board/main">게시판 메인</a>
+					</li>
 				</ul>
 			</nav>
 			

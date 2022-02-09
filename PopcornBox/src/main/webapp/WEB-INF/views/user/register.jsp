@@ -11,11 +11,11 @@
 		<link rel="stylesheet" 
 			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
 		<style>
-		.valid {
+		.valid_id {
 			color: green;
 			display: none;
 		}	
-		.invalid {
+		.invalid_Id {
 			color: red;
 			display: none;
 		}	
@@ -33,17 +33,20 @@
 			<div>
 				<form action="./register" method="post">
 					<div>
-						<input type="text" id="user_id" name="user_id" placeholder="아이디 입력" required />
-						<div class="valid">사용 가능한 아이디입니다!</div>
-						<div class="invalid">이미 사용 중인 아이디입니다.</div>
+						<input type="text" id="user_id" name="user_id" placeholder="아이디" required />
+						<div class="valid_id">사용 가능한 아이디입니다!</div>
+						<div class="invalid_id">이미 사용 중인 아이디입니다.</div>
 					</div>
 					<div>
-						<input type="text" id="user_nickname" name="user_nickname" placeholder="닉네임 입력" required />
+						<input type="text" id="user_nickname" name="user_nickname" placeholder="닉네임" required />
 						<div class="valid">사용 가능한 닉네임입니다!</div>
 						<div class="invalid">이미 사용 중인 닉네임입니다.</div>
 					</div>
 					<div>
-						<input type="password" name="user_pwd" placeholder="비밀번호 입력" required />
+						<input type="password" name="user_pwd" placeholder="비밀번호" required />
+					</div>
+					<div>
+						<input type="password" name="user_pwd" placeholder="비밀번호 확인" required />
 					</div>
 					<div>
 						<input type="email" id="user_email" name="user_email" placeholder="abc@abc.com" required />
