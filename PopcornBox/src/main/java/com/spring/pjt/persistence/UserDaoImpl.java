@@ -48,7 +48,7 @@ public class UserDaoImpl implements UserDao {
 	public User read(User user) {
 		log.info("read({}) 호출", user);
 		
-		return sqlSession.selectOne(USER_NAMESPACE + ".selectByIdAndPwd", user);
+		return sqlSession.selectOne(USER_NAMESPACE + ".selectById", user);
 	}
 
 }

@@ -26,11 +26,10 @@
 	WHERE ${COL_USER_EMAIL} = #{user_email}
 	</select>
 	
-	<!-- 로그인 아이디/비밀번호 비교 -->
-	<select id="selectByIdAndPwd" resultType="User">
+	<!-- 로그인시 아이디 비교 -->
+	<select id="selectById" resultType="User">
 	SELECT * FROM ${TABLE_USERS}
-	WHERE ${COL_USER_ID} = #{user_id} 
-		AND ${COL_USER_PWD} = #{user_pwd}
+	WHERE ${COL_USER_ID} = #{user_id}
 	</select>
 	
 	
