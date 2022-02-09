@@ -22,19 +22,25 @@
 				<ul>
 				<c:if test="${empty signInUserId}"> <%-- 로그인 되어 있지 않은 경우 --%>
 					<li>
-						<a href="./user/register">회원 가입</a>
+						<a href="./user/register">회원가입</a>
 					</li>
 					<li> <!-- TODO -->
 						<a href="./user/signin">로그인</a>
 					</li>
+					<li>
+						<a href="./user/mypage">마이페이지</a>
+					</li>
 				</c:if>
 				<c:if test="${not empty signInUserId}"> <%-- 로그인 되어 있는 경우 --%>
+					<li>
+						<a href="./user/register">회원가입</a>
+					</li>
 					<li> <span>${signInUserId}</span>
 						<a href="./user/signout">로그아웃</a>
 					</li>
 				</c:if>	
 					<li>
-						<a href="./board/main">게시판 메인</a>
+						<a href="./user/mypage">마이페이지</a>
 					</li>
 				</ul>
 			</nav>
