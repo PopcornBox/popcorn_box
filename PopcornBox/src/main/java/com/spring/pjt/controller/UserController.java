@@ -1,5 +1,6 @@
 package com.spring.pjt.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -87,13 +88,25 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/signin", method = RequestMethod.GET)
-	public void signIn(String url, Model model) {
+	public void signIn(String url, Model model, HttpServletRequest request) {
 		log.info("signIn() GET 호출");
+		
+		// 로그인 실패시 띄울 메시지  
+		HttpSession session = request.getSession();
+		
+		if (session.getAttribute("msg") != null) {
+			String msg = (String) session.getAttribute("msg");
+			model.addAttribute("msg", msg);
+			session.removeAttribute(msg);
+		}
+		
+	    session.invalidate();
 		
 		// 로그인 페이지가 요청됐을 때, 로그인 성공 후 이동할 페이지가 질의 문자열에 포함되어 있는 경우
 		if (url != null && !url.equals("")) { 
 			model.addAttribute("url", url); // 로그인 이후 이동할 페이지를 저장
 		}
+		
 	}
 	
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
@@ -105,6 +118,7 @@ public class UserController {
 	    log.info("rawPassword: {}", rawPassword);
 	    
 	    User signInUser = null;
+	    String msg = "";
 	    
 	    if (userService.checkSignIn(user) != null) { // 로그인창에 입력된 아이디가 db에 존재하면
 	        String encodedPassword = userService.checkSignIn(user).getUser_pwd(); // db에서 해당 아이디의 암호화된 비밀번호를 읽음.
@@ -112,13 +126,21 @@ public class UserController {
 	        
 	        if (passwordEncoder.matches(rawPassword, encodedPassword)) { // 로그인창에 입력된 비밀번호와 db의 암호화된 비밀번호를 비교해서 일치하면
 	           signInUser = userService.checkSignIn(user); // signInUser 객체는 null이 아님.
+	        } else { // 로그인창에 입력된 비밀번호와 db의 암호화된 비밀번호를 비교해서 일치하지 않으면
+	        	msg = "비밀번호가 일치하지 않습니다.";
 	        }
+	        
+	    } else { // 로그인창에 입력된 아이디가 db에 존재하지 않으면
+	    	msg = "존재하지 않는 아이디입니다.";
 	    }
 		
 		log.info("signInUser: {}", signInUser); //-> 로그인 O: not null, 로그인 X: null
+		log.info("로그인 msg: {}", msg); // -> 로그인 O: 빈 메시지.
+		
 		
 		// 로그인 여부를 판단할 수 있는 정보를 Model 객체에 속성으로 저장
 		model.addAttribute("signInUser", signInUser);
+		model.addAttribute("msg", msg);
 	}
 	
 	@RequestMapping(value = "/signout", method = RequestMethod.GET)

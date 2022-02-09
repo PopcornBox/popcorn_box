@@ -23,6 +23,7 @@ public class SignedInInterceptor implements HandlerInterceptor {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		log.info("<<<<< postHandle() 호출");
+		HttpSession session = request.getSession(); // 세션 생성
 		
 		if (request.getMethod().equals("GET")) {
 			return; // GET 방식에서는 interceptor가 할 일이 없음.(로그인 페이지 form을 보여줌)
@@ -34,8 +35,7 @@ public class SignedInInterceptor implements HandlerInterceptor {
 		Object user = modelAndView.getModel().get("signInUser");
 		if (user != null) { // 테이블에 아이디/비밀번호가 일치하는 사용자가 있는 경우 -> 로그인 성공
 			// 세션에 로그인 사용자 아이디를 저장
-			HttpSession session = request.getSession();
-			session.setAttribute("signInUserId", ((User) user).getUser_id());
+			session.setAttribute("signInUserNickname", ((User) user).getUser_nickname());
 			
 			// 원래 이동하려고 했던 페이지(targetUrl)로 redirect
 			if (targetUrl != null && !targetUrl.equals("")) {
@@ -45,6 +45,11 @@ public class SignedInInterceptor implements HandlerInterceptor {
 			}
 			
 		} else { // 테이블에 아이디/비밀번호가 일치하는 사용자가 없는 경우 -> 로그인 실패 
+			// 로그인과 관련된 메시지를 세션에 저장.
+			String msg = (String) modelAndView.getModel().get("msg");
+			if (msg != "") {
+				session.setAttribute("msg", msg);
+			}
 			// 로그인 페이지(signin GET)로 redirect
 			response.sendRedirect("/pjt/user/signin?url=" + UriUtils.encode(targetUrl, "UTF-8"));
 		}
