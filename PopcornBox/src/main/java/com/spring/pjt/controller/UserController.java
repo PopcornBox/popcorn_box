@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,7 @@ public class UserController {
 
 	private static final Logger log = LoggerFactory.getLogger(UserController.class);
 	
+	@Autowired private BCryptPasswordEncoder passwordEncoder; // 비밀번호를 암호화해주는 객체
 	@Autowired private UserService userService; 
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -30,6 +32,18 @@ public class UserController {
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String register(User user) {
 		log.info("register({}) POST 호출", user);
+		
+		// 회원가입창에 입력된 비밀번호를 읽음.
+	    String rawPassword = user.getUser_pwd();
+	    log.info("rawPassword: {}", rawPassword);
+	    
+	    // 그 비밀번호를 암호화.
+	    String encryptPassword = passwordEncoder.encode(rawPassword);
+	    log.info("encryptPassword: {}", encryptPassword);
+	    
+	    // 암호화한 비밀번호를 User 객체에 주입.
+	    user.setUser_pwd(encryptPassword);
+	     
 		
 		userService.registerNewUser(user);
 		
@@ -86,7 +100,21 @@ public class UserController {
 	public void signIn(User user, Model model) {
 		log.info("signIn({}) POST 호출", user);
 		
-		User signInUser = userService.checkSignIn(user);
+		// 로그인창에 입력된 비밀번호를 읽음.
+	    String rawPassword = user.getUser_pwd();
+	    log.info("rawPassword: {}", rawPassword);
+	    
+	    User signInUser = null;
+	    
+	    if (userService.checkSignIn(user) != null) { // 로그인창에 입력된 아이디가 db에 존재하면
+	        String encodedPassword = userService.checkSignIn(user).getUser_pwd(); // db에서 해당 아이디의 암호화된 비밀번호를 읽음.
+	        log.info("encodedPassword: {}", encodedPassword);
+	        
+	        if (passwordEncoder.matches(rawPassword, encodedPassword)) { // 로그인창에 입력된 비밀번호와 db의 암호화된 비밀번호를 비교해서 일치하면
+	           signInUser = userService.checkSignIn(user); // signInUser 객체는 null이 아님.
+	        }
+	    }
+		
 		log.info("signInUser: {}", signInUser); //-> 로그인 O: not null, 로그인 X: null
 		
 		// 로그인 여부를 판단할 수 있는 정보를 Model 객체에 속성으로 저장
