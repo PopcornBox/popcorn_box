@@ -39,8 +39,8 @@
 					</div>
 					<div>
 						<input type="text" id="user_nickname" name="user_nickname" placeholder="닉네임" required />
-						<div class="valid">사용 가능한 닉네임입니다!</div>
-						<div class="invalid">이미 사용 중인 닉네임입니다.</div>
+						<div class="valid_nick">사용 가능한 닉네임입니다!</div>
+						<div class="invalid_nick">이미 사용 중인 닉네임입니다.</div>
 					</div>
 					<div>
 						<input type="password" name="user_pwd" placeholder="비밀번호" required />
@@ -50,8 +50,8 @@
 					</div>
 					<div>
 						<input type="email" id="user_email" name="user_email" placeholder="abc@abc.com" required />
-						<div class="valid">사용 가능한 이메일입니다!</div>
-						<div class="invalid">이미 사용 중인 이메일입니다.</div>
+						<div class="valid_email">사용 가능한 이메일입니다!</div>
+						<div class="invalid_email">이미 사용 중인 이메일입니다.</div>
 					</div>
 					<div>
 						<input type="submit" id="btn-complete" value="작성 완료" />
@@ -73,12 +73,12 @@
 				// $.post(Ajax 요청 주소, 요청 파라미터, 응답 성공일 때 실행될 콜백 함수);
 				$.post('./checkid', params, function (response) {
 					if (response == 'valid') { // 사용 가능한 아이디(DB에 없는 아이디)인 경우
-						$('.valid').show(); // valid div 보여줌
-						$('.invalid').hide(); // invalid div 없앰(display=none)
+						$('.valid_id').show(); // valid div 보여줌
+						$('.invalid_id').hide(); // invalid div 없앰(display=none)
 						$('#btn-complete').removeAttr('disabled'); // 버튼 활성화
 					} else {
-						$('.valid').hide(); // valid div 없앰(display=none)
-						$('.invalid').show(); // invalid div 보여줌
+						$('.valid_id').hide(); // valid div 없앰(display=none)
+						$('.invalid_id').show(); // invalid div 보여줌
 						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
 					}
 				});
@@ -88,12 +88,12 @@
 				var params = { user_nickname: $(this).val() };
 				$.post('./checknickname', params, function (response) {
 					if (response == 'valid') { // 사용 가능한 닉네임(DB에 없는 닉네임)인 경우
-						$('.valid').show(); // valid div 보여줌
-						$('.invalid').hide(); // invalid div 없앰(display=none)
+						$('.valid_nick').show(); // valid div 보여줌
+						$('.invalid_nick').hide(); // invalid div 없앰(display=none)
 						$('#btn-complete').removeAttr('disabled'); // 버튼 활성화
 					} else {
-						$('.valid').hide(); // valid div 없앰(display=none)
-						$('.invalid').show(); // invalid div 보여줌
+						$('.valid_nick').hide(); // valid div 없앰(display=none)
+						$('.invalid_nick').show(); // invalid div 보여줌
 						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
 					}
 				});
@@ -103,12 +103,12 @@
 				var params = { user_email: $(this).val() };
 				$.post('./checkemail', params, function (response) {
 					if (response == 'valid') { // 사용 가능한 이메일(DB에 없는 이메일)인 경우
-						$('.valid').show(); // valid div 보여줌
-						$('.invalid').hide(); // invalid div 없앰(display=none)
+						$('.valid_email').show(); // valid div 보여줌
+						$('.invalid_email').hide(); // invalid div 없앰(display=none)
 						$('#btn-complete').removeAttr('disabled'); // 버튼 활성화
 					} else {
-						$('.valid').hide(); // valid div 없앰(display=none)
-						$('.invalid').show(); // invalid div 보여줌
+						$('.valid_email').hide(); // valid div 없앰(display=none)
+						$('.invalid_email').show(); // invalid div 보여줌
 						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
 					}
 				});
