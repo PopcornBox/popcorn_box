@@ -44,7 +44,7 @@ public class SignedInInterceptor implements HandlerInterceptor {
 				response.sendRedirect("/pjt");
 			}
 			
-		} else { // 테이블에 아이디/비밀번호가 일치하는 사용자가 없는 경우 -> 로그인 실패
+		} else { // 테이블에 아이디/비밀번호가 일치하는 사용자가 없는 경우 -> 로그인 실패 
 			// 로그인 페이지(signin GET)로 redirect
 			response.sendRedirect("/pjt/user/signin?url=" + UriUtils.encode(targetUrl, "UTF-8"));
 		}
