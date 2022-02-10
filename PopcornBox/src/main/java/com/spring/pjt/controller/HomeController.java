@@ -1,8 +1,7 @@
 package com.spring.pjt.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,8 +22,16 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home() {
+	public String home(HttpServletRequest request, Model model) {
 		logger.info("home() 호출");
+		
+		HttpSession session = request.getSession();
+		
+		if (session.getAttribute("msg") != null) {
+			String msg = (String) session.getAttribute("msg");
+			model.addAttribute("msg", msg);	
+			session.removeAttribute("msg");
+		}
 
 		return "home";
 	}

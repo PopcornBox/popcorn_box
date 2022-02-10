@@ -11,9 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.pjt.domain.User;
+import com.spring.pjt.service.UserMailSendService;
 import com.spring.pjt.service.UserService;
 
 @Controller
@@ -24,6 +26,7 @@ public class UserController {
 	
 	@Autowired private BCryptPasswordEncoder passwordEncoder; // 비밀번호를 암호화해주는 객체
 	@Autowired private UserService userService; 
+	@Autowired private UserMailSendService mailsender;
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void register() {
@@ -31,7 +34,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String register(User user) {
+	public String register(User user, HttpServletRequest request) {
 		log.info("register({}) POST 호출", user);
 		
 		// 회원가입창에 입력된 비밀번호를 읽음.
@@ -45,10 +48,16 @@ public class UserController {
 	    // 암호화한 비밀번호를 User 객체에 주입.
 	    user.setUser_pwd(encryptPassword);
 	     
-		
+		// 회원가입 메서드
 		userService.registerNewUser(user);
 		
-		return "redirect:/"; // http://localhost:8182/pjt/ 로 redirect
+		// 인증 메일 보내기 메서드
+		mailsender.mailSendWithUserKey(user.getUser_email(), user.getUser_id(), request);
+		
+		String msg = "인증 이메일이 발송되었습니다. 확인 후 로그인을 해주세요!";
+	    request.getSession().setAttribute("msg", msg);
+		
+	    return "redirect:/"; // http://localhost:8182/pjt/ 로 redirect
 	}
 	
 	@RequestMapping(value = "/checkid", method = RequestMethod.POST)
@@ -119,17 +128,22 @@ public class UserController {
 	    
 	    User signInUser = null;
 	    String msg = "";
+	    User userFromDb = userService.checkSignIn(user);
 	    
-	    if (userService.checkSignIn(user) != null) { // 로그인창에 입력된 아이디가 db에 존재하면
-	        String encodedPassword = userService.checkSignIn(user).getUser_pwd(); // db에서 해당 아이디의 암호화된 비밀번호를 읽음.
-	        log.info("encodedPassword: {}", encodedPassword);
-	        
-	        if (passwordEncoder.matches(rawPassword, encodedPassword)) { // 로그인창에 입력된 비밀번호와 db의 암호화된 비밀번호를 비교해서 일치하면
-	           signInUser = userService.checkSignIn(user); // signInUser 객체는 null이 아님.
-	        } else { // 로그인창에 입력된 비밀번호와 db의 암호화된 비밀번호를 비교해서 일치하지 않으면
-	        	msg = "비밀번호가 일치하지 않습니다.";
-	        }
-	        
+	    if (userFromDb != null) { // 로그인창에 입력된 아이디가 db에 존재하면
+	    	if (userFromDb.getUser_key().equals("Y")) { // 사용자 키값이 'Y'이면
+	    		String encodedPassword = userFromDb.getUser_pwd(); // db에서 해당 아이디의 암호화된 비밀번호를 읽음.
+		        log.info("encodedPassword: {}", encodedPassword);
+		        
+		        if (passwordEncoder.matches(rawPassword, encodedPassword)) { // 로그인창에 입력된 비밀번호와 db의 암호화된 비밀번호를 비교해서 일치하면
+		           signInUser = userFromDb; // signInUser 객체는 null이 아님.
+		        } else { // 로그인창에 입력된 비밀번호와 db의 암호화된 비밀번호를 비교해서 일치하지 않으면
+		        	msg = "비밀번호가 일치하지 않습니다.";
+		        }
+	    	} else { // 사용자 키값이 'Y'가 아니면
+	    		msg = "인증메일 확인후, 로그인을 시도해주세요!";
+	    	}
+	   
 	    } else { // 로그인창에 입력된 아이디가 db에 존재하지 않으면
 	    	msg = "존재하지 않는 아이디입니다.";
 	    }
@@ -150,6 +164,13 @@ public class UserController {
 		session.invalidate();
 		
 		return "redirect:/";
+	}
+	
+	// email 인증 컨트롤러
+	@RequestMapping(value = "/key_alter", method = RequestMethod.GET)
+	public String key_alterConfirm(@RequestParam("user_id") String user_id, @RequestParam("user_key") String key) {
+		mailsender.alter_userKey_service(user_id, key);
+		return "user/regisSuccess";
 	}
 	
 }

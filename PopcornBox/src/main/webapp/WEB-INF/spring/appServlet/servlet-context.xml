@@ -6,7 +6,6 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
-
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
@@ -30,7 +29,7 @@
 		class="com.spring.pjt.interceptor.AuthInterceptor" />
 	<beans:bean id="signInInterceptor" 
 		class="com.spring.pjt.interceptor.SignedInInterceptor" />
-	
+		
 	<interceptors>
 		<interceptor> <!-- 게시판 기능들 중 로그인이 필수인 서비스들 -->
 			<mapping path="/board/insert"/> <!-- 새 글 작성 -->

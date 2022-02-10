@@ -20,7 +20,7 @@
 	<bean id="ds"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
-		<property name="url" value="jdbc:oracle:thin:@oracle_medium?TNS_ADMIN=C:\\study\\Wallet_oracle" />	
+		<property name="url" value="jdbc:oracle:thin:@oracle_medium?TNS_ADMIN=/Users/heawonseo/oracle/Wallet_oracle" />	
 		<property name="username" value="admin" />
 		<property name="password" value="Shw75180!!!!" />
 	</bean>
@@ -41,6 +41,24 @@
 		class="org.mybatis.spring.SqlSessionTemplate"
 		destroy-method="clearCache">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean id="mailSender"	class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="25" />
+		<property name="username" value="hyewon910906@gmail.com" />
+		<property name="password" value="hws75180" />
+		<property name="defaultEncoding" value="utf-8" />
+		<property name="javaMailProperties" >
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>
+				<prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+                <prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
+			</props>
+		</property>
 	</bean>
 	
 	<!-- 스프링 컨테이너가 com.spring.pjt.persistence 패키지와 그 하위 패키지의 컴포넌트들을 생성, 관리 -->

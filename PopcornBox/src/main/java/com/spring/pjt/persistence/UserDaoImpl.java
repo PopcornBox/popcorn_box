@@ -1,5 +1,8 @@
 package com.spring.pjt.persistence;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,6 +52,24 @@ public class UserDaoImpl implements UserDao {
 		log.info("read({}) 호출", user);
 		
 		return sqlSession.selectOne(USER_NAMESPACE + ".selectById", user);
+	}
+	
+	@Override
+	public int getKey(String user_id, String user_key) {
+		log.info("getKey(user_id:{}, user_key:{})", user_id, user_key);
+		Map<String, Object> map = new HashMap<>();
+		map.put("user_id", user_id);
+		map.put("user_key", user_key);
+		return sqlSession.update(USER_NAMESPACE + ".getKey", map);
+	}
+	
+	@Override
+	public int alter_userKey(String user_id, String key) {
+		log.info("alter_userKey(user_id:{}, key:{})", user_id, key);
+		Map<String, Object> map = new HashMap<>();
+		map.put("user_id", user_id);
+		map.put("key", key);
+		return sqlSession.update(USER_NAMESPACE + ".alter_userKey", map);
 	}
 
 }
