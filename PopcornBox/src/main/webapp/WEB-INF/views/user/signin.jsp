@@ -14,7 +14,7 @@
 	<body>
 		<div class="container-fluid">
 			<header class="text-center">
-				<h1>로그인 페이지</h1>
+				<h1>로그인</h1>
 			</header>
 			
 			<nav> <!-- TODO: 페이지 이동 메뉴 -->
@@ -31,6 +31,12 @@
 					<div>
 						<input type="submit" value="로그인" />
 					</div>
+					<li>
+						<a href="./register">회원가입</a>
+					</li>
+					<li>
+						<a href="./find">아이디/비밀번호 찾기</a>
+					</li>
 					<div>
 						<input type="hidden" name="url" value="${url}" />
 					</div>
