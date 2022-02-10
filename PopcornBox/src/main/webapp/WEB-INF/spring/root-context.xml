@@ -43,6 +43,24 @@
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 	
+	<bean id="mailSender"	class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="25" />
+		<property name="username" value="hyewon910906@gmail.com" />
+		<property name="password" value="hws75180" />
+		<property name="defaultEncoding" value="utf-8" />
+		<property name="javaMailProperties" >
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>
+				<prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+                <prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
+			</props>
+		</property>
+	</bean>
+	
 	<!-- 스프링 컨테이너가 com.spring.pjt.persistence 패키지와 그 하위 패키지의 컴포넌트들을 생성, 관리 -->
 	<context:component-scan base-package="com.spring.pjt.persistence"></context:component-scan>
 	<context:component-scan base-package="com.spring.pjt.service"></context:component-scan>

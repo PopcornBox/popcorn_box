@@ -20,7 +20,7 @@
 			
 			<nav>
 				<ul>
-				<c:if test="${empty signInUserId}"> <%-- 로그인 되어 있지 않은 경우 --%>
+				<c:if test="${empty signInUserNickname}"> <%-- 로그인 되어 있지 않은 경우 --%>
 					<li>
 						<a href="./user/register">회원가입</a>
 					</li>
@@ -31,11 +31,11 @@
 						<a href="./user/mypage">마이페이지</a>
 					</li>
 				</c:if>
-				<c:if test="${not empty signInUserId}"> <%-- 로그인 되어 있는 경우 --%>
+				<c:if test="${not empty signInUserNickname}"> <%-- 로그인 되어 있는 경우 --%>
 					<li>
 						<a href="./user/register">회원가입</a>
 					</li>
-					<li> <span>${signInUserId}</span>
+					<li> <span>${signInUserNickname}</span>
 						<a href="./user/signout">로그아웃</a>
 					</li>
 					<li>
@@ -44,10 +44,21 @@
 				</c:if>						
 				</ul>
 			</nav>
+			<div>
+				<input type="hidden" name="msg" value="${msg}" />
+			</div>
 			
 		</div>
 		
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+		<script>
+			$(document).ready(function () {
+				var message = '${msg}';
+				if (message != null && message != '') {
+					alert(message);
+				}
+			});
+		</script>	
 	</body>
 </html>
