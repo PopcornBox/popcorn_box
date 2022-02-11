@@ -17,7 +17,7 @@
 <!--  <a><img src="${pageContext.request.contextPath}/images/popcornbox-logo.png" 
 		      			style="height: 80px; margin-left: 10px;" /></a> -->
 		<br>
-		<h3>안녕하세요, ${param.user_id} 님</h3>
+		<h3>안녕하세요, ${param.user_nickname} 님</h3>
 		<br>
 		<p>환영합니다!</p>
 		<br>

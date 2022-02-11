@@ -52,7 +52,7 @@ public class UserController {
 		userService.registerNewUser(user);
 		
 		// 인증 메일 보내기 메서드
-		mailsender.mailSendWithUserKey(user.getUser_email(), user.getUser_id(), request);
+		mailsender.mailSendWithUserKey(user.getUser_email(), user.getUser_nickname(), request);
 		
 		String msg = "인증 이메일이 발송되었습니다. 확인 후 로그인을 해주세요!";
 	    request.getSession().setAttribute("msg", msg);
@@ -168,9 +168,38 @@ public class UserController {
 	
 	// email 인증 컨트롤러
 	@RequestMapping(value = "/key_alter", method = RequestMethod.GET)
-	public String key_alterConfirm(@RequestParam("user_id") String user_id, @RequestParam("user_key") String key) {
-		mailsender.alter_userKey_service(user_id, key);
+	public String key_alterConfirm(@RequestParam("user_nickname") String user_nickname, @RequestParam("user_key") String key) {
+		mailsender.alter_userKey_service(user_nickname, key);
 		return "user/regisSuccess";
+	}
+	
+	@RequestMapping(value = "/find_userid", method = RequestMethod.GET)
+	public String findUserId() {
+		log.info("findUserId() GET 호출");
+		
+		return "user/findUserId";
+	}
+	
+	@RequestMapping(value = "/find_userid", method = RequestMethod.POST)
+	public String findUserId(String user_email, Model model, HttpServletRequest request) {
+		log.info("findUserId(email: {}) POST 호출", user_email);
+		
+		User user = userService.readUserByEmail(user_email);
+		String msg = "";
+		
+		if (user == null) {
+			msg = "입력하신 정보가 회원 정보와 일치하지 않습니다.";
+			model.addAttribute("msg", msg);
+			return "user/findUserId";
+		} else {
+			String user_id = user.getUser_id();
+			// TODO: 실제 메일로 아이디 발송.
+			
+			msg = "메일을 발송했습니다.";
+			request.getSession().setAttribute("msg", msg);
+			return "redirect:/";
+		}
+		
 	}
 	
 }
