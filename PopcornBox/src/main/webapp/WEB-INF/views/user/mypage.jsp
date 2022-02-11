@@ -14,7 +14,7 @@
 	<body>
 					 	<!-- 변경예정 -->
 		<h1 onclick = "mainlogo">
-			<a href="https://localhost:8181/pjt">메인로고</a>
+			<a href="/pjt">메인로고</a>
 			<ul>
 				<li><span>${signInUserNickname}</span><span>님 환영합니다!</span>
 			</ul>
