@@ -12,7 +12,7 @@ public class Movie {
 	private Date movie_release;
 	private String movie_content;
 	private String movie_trailer;
-	private String movie_imgae;
+	private String movie_image;
 	private String movie_update_time;
 	
 	public Movie() {}
@@ -29,7 +29,7 @@ public class Movie {
 		this.movie_release = movie_release;
 		this.movie_content = movie_content;
 		this.movie_trailer = movie_trailer;
-		this.movie_imgae = movie_imgae;
+		this.movie_image = movie_imgae;
 		this.movie_update_time = movie_update_time;
 	}
 
@@ -113,12 +113,12 @@ public class Movie {
 		this.movie_trailer = movie_trailer;
 	}
 
-	public String getMovie_imgae() {
-		return movie_imgae;
+	public String getMovie_image() {
+		return movie_image;
 	}
 
-	public void setMovie_imgae(String movie_imgae) {
-		this.movie_imgae = movie_imgae;
+	public void setMovie_image(String movie_imgae) {
+		this.movie_image = movie_imgae;
 	}
 	
 	@Override
@@ -127,7 +127,7 @@ public class Movie {
 	"Movie{movie_no:%d, movie_title:%s, movie_director:%s, movie_actor:%s, movie_genre:%s, movie_info:%s, movie_release:%s, "
 	+  "movie_content:%s, movie_trailer:%s, movie_imgae:%s, movie_update_time:%s"
 				, this.movie_no, this.movie_title, this.movie_director, this.movie_actor, this.movie_genre, this.movie_info, this.movie_release,
-				this.movie_content, this.movie_trailer, this.movie_imgae, this.movie_update_time);
+				this.movie_content, this.movie_trailer, this.movie_image, this.movie_update_time);
 	}
 
 }
