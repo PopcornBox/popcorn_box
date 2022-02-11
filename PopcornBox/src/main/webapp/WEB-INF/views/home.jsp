@@ -24,14 +24,12 @@
 					<%-- 로그인 되어 있지 않은 경우 --%>
 					<li><a href="./user/register">회원가입</a></li>
 					<li><a href="./user/signin">로그인</a></li>
-					<li><a href="./user/mypage">마이페이지</a></li>
 				</c:if>
 				<c:if test="${not empty signInUserNickname}">
 					<%-- 로그인 되어 있는 경우 --%>
 					<li><a href="./user/register">회원가입</a></li>
 					<li><span>${signInUserNickname}</span> <a
 						href="./user/signout">로그아웃</a></li>
-					<li><a href="./user/mypage">마이페이지</a></li>
 				</c:if>
 				<li><a href="./user/mypage">마이페이지</a></li>
 				<li><a href="./movie/mainlist">무비목록테스트</a></li>

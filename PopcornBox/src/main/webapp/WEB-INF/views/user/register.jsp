@@ -15,7 +15,8 @@
 			color: green;
 			display: none;
 		}	
-		.invalid_id, .invalid_id2, .invalid_nickname, .invalid_nickname2, .invalid_email, .invalid_email2, .invalid_pwd, .invalid_repwd {
+		.invalid_id, .invalid_id2, .invalid_nickname, .invalid_nickname2, 
+		.invalid_email, .invalid_email2, .invalid_pwd, .invalid_repwd {
 			color: red;
 			display: none;
 		}	
@@ -42,7 +43,7 @@
 						<input type="text" id="user_nickname" name="user_nickname" placeholder="닉네임" required />
 						<div class="valid_nickname">사용 가능한 닉네임입니다!</div>
 						<div class="invalid_nickname">이미 사용 중인 닉네임입니다.</div>
-						<div class="invalid_nickname2">5~15자의 한글, 영문, 숫자만 사용 가능합니다.</div>
+						<div class="invalid_nickname2">15자 이내의 한글, 영문, 숫자만 사용 가능합니다.</div>
 					</div>
 					<div>
 						<input type="password" id="user_pwd" name="user_pwd" placeholder="비밀번호" required />
@@ -87,16 +88,24 @@
 						$('.invalid_id').show(); 
 						$('.invalid_id2').hide();
 						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
-					} else if (spe > 0 || kor > 0) { // 특수문자나 한글을 포함하는 경우
+					/*
+					} else if (id.length < 5 || id.length > 20) {
 						$('.valid_id').hide(); 
 						$('.invalid_id').hide(); 
 						$('.invalid_id2').show(); 
 						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
+					}
+					else if (spe > 0 || kor > 0) { // 특수문자나 한글을 포함하는 경우
+						$('.valid_id').hide(); 
+						$('.invalid_id').hide(); 
+						$('.invalid_id2').show(); 
+						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
+					*/	
 					} else {
 						$('.valid_id').show(); 
 						$('.invalid_id').hide(); 
 						$('.invalid_id2').hide(); 
-						$('#btn-complete').removeAttr('disabled'); // 버튼 활성화
+						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
 					}
 				});
 			});
@@ -110,30 +119,40 @@
 						$('.invalid_nickname').show(); 
 						$('.invalid_nickname2').hide();
 						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
+					/*
 					} else if (spe > 0) {
 						$('.valid_nickname').hide(); 
 						$('.invalid_nickname').hide();  
 						$('.invalid_nickname2').show(); 
+					*/	
 					} else {
 						$('.valid_nickname').show(); 
 						$('.invalid_nickname').hide(); 
 						$('.invalid_nickname2').hide();
-						$('#btn-complete').removeAttr('disabled'); // 버튼 활성화
 					}
 				});
 			});
 			
 			$('#user_email').change(function (event) {
 				var params = { user_email: $(this).val() };
+				var regEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 				$.post('./checkemail', params, function (response) {
-					if (response == 'valid') { // 사용 가능한 이메일(DB에 없는 이메일)인 경우
-						$('.valid_email').show(); // valid div 보여줌
-						$('.invalid_email').hide(); // invalid div 없앰(display=none)
-						$('#btn-complete').removeAttr('disabled'); // 버튼 활성화
-					} else {
-						$('.valid_email').hide(); // valid div 없앰(display=none)
-						$('.invalid_email').show(); // invalid div 보여줌
+					if (response == 'invalid') { // 중복된 이메일(DB에 있는 이메일)인 경우
+						$('.valid_email').hide(); 
+						$('.invalid_email').show(); 
+						$('.invalid_email2').hide();
 						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
+					/*
+					} else if (!regEmail.test($(this).val())) { // 유효하지 않은 이메일인 경우
+						$('.valid_email').hide(); 
+						$('.invalid_email').hide(); 
+						$('.invalid_email2').show(); 
+						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
+					*/	
+					} else {
+						$('.valid_email').show(); 
+						$('.invalid_email').hide(); 
+						$('#btn-complete').removeAttr('disabled'); // 버튼 활성화
 					}
 				});
 			});
@@ -143,7 +162,7 @@
 				var num = pwd.search(/[0-9]/g);
 				var eng = pwd.search(/[a-z]/ig);
 				var spe = pwd.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
-				
+				/*
 				if (pwd.length < 8 || pwd.length > 16) { // 8자 미만이거나 16자를 초과하면
 					$('.valid_pwd').hide();
 					$('.invalid_pwd').show();
@@ -153,7 +172,8 @@
 				} else {
 					$('.valid_pwd').show(); 
 					$('.invalid_pwd').hide(); 
-				}				
+				}
+				*/
 			});
 			
 			$('#user_repwd').change(function (event) {
