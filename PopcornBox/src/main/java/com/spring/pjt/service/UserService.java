@@ -9,4 +9,5 @@ public interface UserService {
 	boolean isValidNickname(String user_nickname);
 	boolean isValidEmail(String user_email);
 	User checkSignIn(User user);
+	User readUserByEmail(String user_email);
 }

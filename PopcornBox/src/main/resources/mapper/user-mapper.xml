@@ -35,13 +35,13 @@
 	<!-- 회원 인증키 (난수 생성후 주입) -->
 	<update id="getKey">
     UPDATE ${TABLE_USERS} 
-    SET ${COL_USER_KEY} = #{user_key} where ${COL_USER_ID} = #{user_id}
+    SET ${COL_USER_KEY} = #{user_key} where ${COL_USER_NICKNAME} = #{user_nickname}
     </update> 
     
     <!-- 회원 인증키 (난수) Y로 변경 -->
 	<update id="alter_userKey">
     UPDATE ${TABLE_USERS} 
-    SET ${COL_USER_KEY} = 'Y' where ${COL_USER_ID} = #{user_id} and ${COL_USER_KEY} = #{key}
+    SET ${COL_USER_KEY} = 'Y' where ${COL_USER_NICKNAME} = #{user_nickname} and ${COL_USER_KEY} = #{key}
     </update> 
 	
 	

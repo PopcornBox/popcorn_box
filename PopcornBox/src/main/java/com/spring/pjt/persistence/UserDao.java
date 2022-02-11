@@ -9,6 +9,6 @@ public interface UserDao {
 	User checkNickname(String user_nickname);
 	User checkEmail(String user_email);
 	User read(User user);
-	int getKey(String user_id, String user_key);
-	int alter_userKey(String user_id, String key);
+	int getKey(String user_nickname, String user_key);
+	int alter_userKey(String user_nickname, String key);
 }
