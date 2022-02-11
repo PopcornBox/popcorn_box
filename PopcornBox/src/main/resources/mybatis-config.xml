@@ -5,6 +5,21 @@
 	
 	<!-- 데이터베이스의 테이블 이름, 컬럼 이름들을 정의 -->
 	<properties>
+		<!-- MOVIE 테이블 관련 상수들 -->
+		<property name="TBL_MOVIES" value="movies"/>
+		<property name="COL_MOVIE_NO" value="movie_no"/>
+		<property name="COL_MOVIE_TITLE" value="movie_title"/>
+		<property name="COL_MOVIE_DIRECTOR" value="movie_director"/>
+		<property name="COL_MOVIE_ACTOR" value="movie_actor"/>
+		<property name="COL_MOVIE_GENRE" value="movie_genre"/>
+		<property name="COL_MOVIE_INFO" value="movie_info"/>
+		<property name="COL_MOVIE_RELEASE" value="movie_release"/>
+		<property name="COL_MOVIE_CONTENT" value="movie_content"/>
+		<property name="COL_MOVIE_TRAILER" value="movie_trailer"/>
+		<property name="COL_MOVIE_IMAGE" value="movie_image"/>
+		<property name="COL_MOVIE_UPDATE_TIME" value="movie_update_time"/>
+	
+	
 		<!-- USERS 테이블 관련 상수들 -->
 		<property name="TABLE_USERS" value="users" />
 		<property name="COL_USER_NO" value="user_no" />
@@ -13,7 +28,6 @@
 		<property name="COL_USER_PWD" value="user_pwd" />
 		<property name="COL_USER_EMAIL" value="user_email" />
 		<property name="COL_USER_UPDATE_TIME" value="user_update_time" />
-		<property name="COL_USER_KEY" value="user_key" />
 	</properties>
 	
 	<typeAliases>
