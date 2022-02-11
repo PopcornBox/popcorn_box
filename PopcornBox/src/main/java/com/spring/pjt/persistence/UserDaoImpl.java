@@ -71,5 +71,11 @@ public class UserDaoImpl implements UserDao {
 		map.put("key", key);
 		return sqlSession.update(USER_NAMESPACE + ".alter_userKey", map);
 	}
+	
+	@Override
+	public User changeNickname(String user_nickname, String user_id) {
+		log.info("changeNickname(user_nickname={}) 호출");
+		return null;
+	}
 
 }

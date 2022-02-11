@@ -12,25 +12,26 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		  <link rel="stylesheet" 
         	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+
 	</head>
 	<body>
 		            <div class="container">
                 <table class="table table-blue table-striped" >
                     <thead>
                         <tr>
-                            <th>MOVIENO</th>
+                            <th></th>
                             <th>제목</th>
-                            <th>조회수</th>
+                            <th>평점</th>
                         </tr>
                     </thead>
                     <tbody>
                         <c:forEach var="movie" items="${movieList}">
                             <tr>
-                                <td>${movie.movie_no}</td>
+                                <td><span id="movie_image" name="movie_image"><img src="${movie.movie_image}"  width="185" height="260"/></span></td>
                                 <td>
                                     <a href="./detail?movie_no=${movie.movie_no}">${movie.movie_title}</a>
                                 </td>
-                                <td>-</td>
+                                <td></td>
                             </tr>
                         </c:forEach>
                     </tbody>

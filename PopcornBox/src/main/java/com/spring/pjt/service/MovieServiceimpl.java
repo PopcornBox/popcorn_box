@@ -26,7 +26,7 @@ public class MovieServiceimpl implements MovieService{
 
 	@Override
 	public Movie select(int movie_no) {
-		log.info("select(bno={}) 호출", movie_no);
+		log.info("select(movie_no={}) 호출", movie_no);
 		
 		Movie movie = movieDao.read(movie_no);
 		return movie;

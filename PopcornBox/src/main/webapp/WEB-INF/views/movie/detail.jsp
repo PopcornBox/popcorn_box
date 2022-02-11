@@ -14,44 +14,40 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
 </head>
 <body>
-	<div>
+	<div id="Wrap">
 		<header>
 			<h1>영화 상세보기</h1>
 		</header>
-		<div>
-			<%-- 글 상세보기 --%>
-			<form>
-				<div>
-					<label for="movie_title">영화제목</label> <input type="text"
-						id="movie_title" name="movie_title" value="${movie.movie_title}"
-						required autofocus readonly />
-				</div>
-				<div>
-					<label for="movie_content">영화 내용</label>
-					<textarea rows="5" id="content" name="content" required readonly>${movie.movie_content}</textarea>
-				</div>
-				<div>
-					<label for="movie_director">영화 감독</label> <input type="text"
-						id="movie_director" name="movie_director" value="${movie.movie_director}"
-						required autofocus readonly />
-				</div>
-								<div>
-					<label for="movie_director">장르</label> <input type="text"
-						id="movie_director" name="movie_director" value="${movie.movie_director}"
-						required autofocus readonly />
-				</div>
-								<div>
-					<label for="movie_director">영화 감독</label> <input type="text"
-						id="movie_director" name="movie_director" value="${movie.movie_director}"
-						required autofocus readonly />
-				</div>
+		<div id="container">
+			<div id="movie-content">
+				<div id="top-movie">
+					<span>
+					<a><img src="${movie.movie_image}"  id="movie_image" name="movie_image" /> </a>
+					</span>
+					<ul>
+						<li id="movie_title" name="movie_title">${movie.movie_title}</li>
+						<li id="movie_director" name="movie_director">감독: ${movie.movie_director}</li>
+						<li id="movie_actor" name="movie_actor">배우: ${movie.movie_actor}</li>
+						<li id="movie_genre" name="movie_genre">장르: ${movie.movie_genre}</li>
+						<li id="movie_info" name="movie_info">정보: ${movie.movie_info}</li>
+						<li id="movie_release" name="movie_release">개봉일: ${movie.movie_release}</li>
+					</ul>
 
-			</form>
+				</div>
+				
+				
+				<div id="movie-detail">
+					<ul>
+						<li id="movie_content" name="movie_content">${movie.movie_content}</li>
+					</ul>
+					<span id="movie_trailer" name="movie_trailer">${movie.movie_trailer}
+					</span>
+				</div>
+				
+						
+			</div>
 
 		</div>
-
-
-
 	</div>
 
 

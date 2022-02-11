@@ -202,4 +202,14 @@ public class UserController {
 		
 	}
 	
+	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
+	public void mypage() {
+		log.info("mypage() GET 호출");
+	}
+	
+	@RequestMapping(value = "/userInfo", method = RequestMethod.GET)
+	public void userInfo() {
+		log.info("userInfo() GET 호출");
+	}
+	
 }

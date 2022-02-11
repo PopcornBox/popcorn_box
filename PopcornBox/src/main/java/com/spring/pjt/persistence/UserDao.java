@@ -11,4 +11,5 @@ public interface UserDao {
 	User read(User user);
 	int getKey(String user_nickname, String user_key);
 	int alter_userKey(String user_nickname, String key);
+	User changeNickname(String user_nickname, String user_id);
 }
