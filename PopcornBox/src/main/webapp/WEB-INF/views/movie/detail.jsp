@@ -34,44 +34,17 @@
 					</ul>
 
 				</div>
-				<%-- 상단 정보 끝  --%>
 				
 				
-				<%-- --%>
-
-
-
-				<%-- 영화 상세 --%>
-				<%-- 
-			<form>
-				<div>
-					<label for="movie_title">영화제목</label> <input type="text"
-						id="movie_title" name="movie_title" value="${movie.movie_title}"
-						required autofocus readonly />
+				<div id="movie-detail">
+					<ul>
+						<li id="movie_content" name="movie_content">${movie.movie_content}</li>
+					</ul>
+					<span id="movie_trailer" name="movie_trailer">${movie.movie_trailer}
+					</span>
 				</div>
-				<div>
-					<label for="movie_content">영화 내용</label>
-					<textarea rows="5" id="content" name="content" required readonly>${movie.movie_content}</textarea>
-				</div>
-				<div>
-					<label for="movie_director">영화 감독</label> <input type="text"
-						id="movie_director" name="movie_director" value="${movie.movie_director}"
-						required autofocus readonly />
-				</div>
-								<div>
-					<label for="movie_director">장르</label> <input type="text"
-						id="movie_director" name="movie_director" value="${movie.movie_director}"
-						required autofocus readonly />
-				</div>
-								<div>
-					<label for="movie_director">영화 감독</label> <input type="text"
-						id="movie_director" name="movie_director" value="${movie.movie_director}"
-						required autofocus readonly />
-				</div>
-
-			</form>
-			
-			--%>
+				
+						
 			</div>
 
 		</div>
