@@ -65,5 +65,10 @@ public class UserServiceImpl implements UserService {
 		return userDao.read(user);
 	}
 
+	@Override
+	public User readUserByEmail(String user_email) {
+		log.info("readUserByEmail(user_email: {}) 호출", user_email);
+		return userDao.checkEmail(user_email);
+	}
 	
 }
