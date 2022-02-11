@@ -20,7 +20,7 @@
 	<bean id="ds"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
-		<property name="url" value="jdbc:oracle:thin:@oracle_medium?TNS_ADMIN=/Users/heawonseo/oracle/Wallet_oracle" />	
+		<property name="url" value="jdbc:oracle:thin:@oracle_medium?TNS_ADMIN=C:\\study\\Wallet_oracle" />	
 		<property name="username" value="admin" />
 		<property name="password" value="Shw75180!!!!" />
 	</bean>
