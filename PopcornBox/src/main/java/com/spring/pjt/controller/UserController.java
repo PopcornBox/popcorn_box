@@ -131,6 +131,7 @@ public class UserController {
 	    User userFromDb = userService.checkSignIn(user);
 	    
 	    if (userFromDb != null) { // 로그인창에 입력된 아이디가 db에 존재하면
+	    	
 	    	if (userFromDb.getUser_key().equals("Y")) { // 사용자 키값이 'Y'이면
 	    		String encodedPassword = userFromDb.getUser_pwd(); // db에서 해당 아이디의 암호화된 비밀번호를 읽음.
 		        log.info("encodedPassword: {}", encodedPassword);
@@ -140,7 +141,9 @@ public class UserController {
 		        } else { // 로그인창에 입력된 비밀번호와 db의 암호화된 비밀번호를 비교해서 일치하지 않으면
 		        	msg = "비밀번호가 일치하지 않습니다.";
 		        }
-	    	} else { // 사용자 키값이 'Y'가 아니면
+	    	} else if (userFromDb.getUser_key().equals("L")){ // 사용자 키값이 'L'이면
+	    		msg = "비밀번호 재설정 메일이 발송되어 있습니다. 재설정까지 계정은 잠금처리 됩니다.";
+	    	} else { // 사용자 키값이 'Y'도 'L'도 아니면
 	    		msg = "인증메일 확인후, 로그인을 시도해주세요!";
 	    	}
 	   
@@ -191,15 +194,71 @@ public class UserController {
 			msg = "입력하신 정보가 회원 정보와 일치하지 않습니다.";
 			model.addAttribute("msg", msg);
 			return "user/findUserId";
-		} else {
+		} else if (user.getUser_key().equals("Y") || user.getUser_key().equals("L")){
 			String user_id = user.getUser_id();
-			// TODO: 실제 메일로 아이디 발송.
-			
-			msg = "메일을 발송했습니다.";
+			mailsender.mailSendWithUseId(user, request);
+			msg = "아이디 찾기를 위한 메일이 발송되었습니다.";
+			request.getSession().setAttribute("msg", msg);
+			return "redirect:/";
+		} else {
+			msg = "가입시 전송된 인증메일을 확인 후, 다시 시도해주세요!";
 			request.getSession().setAttribute("msg", msg);
 			return "redirect:/";
 		}
 		
+	}
+	
+	@RequestMapping(value = "/find_userpwd", method = RequestMethod.GET)
+	public String findUserPwd() {
+		log.info("findUserPwd() GET 호출");
+		
+		return "user/findUserPwd";
+	}
+	
+	@RequestMapping(value = "/find_userpwd", method = RequestMethod.POST)
+	public String findUserPwd(User user, Model model, HttpServletRequest request) {
+		log.info("findUserPwd(user: {}) POST 호출", user);
+		
+		User userFromDbByEmail = userService.readUserByEmail(user.getUser_email());
+		String msg = "";
+		
+		if (userFromDbByEmail == null || !userFromDbByEmail.getUser_id().equals(user.getUser_id())) {
+			msg = "입력하신 정보와 일치하는 회원 정보가 존재하지 않습니다.";
+			model.addAttribute("msg", msg);
+			return "user/findUserPwd";
+		} else {
+			if (userFromDbByEmail.getUser_key().equals("Y") || userFromDbByEmail.getUser_key().equals("L")) {
+				mailsender.mailSendWithUserPwd(userFromDbByEmail, request);
+				msg = "비밀번호 재설정을 위한 메일이 발송되었습니다.";
+				request.getSession().setAttribute("msg", msg);
+				return "redirect:/";	
+			} else {		
+				msg = "가입시 발송된 인증메일을 확인후, 다시 시도해주세요!.";
+				request.getSession().setAttribute("msg", msg);
+				return "redirect:/";
+			}
+		}
+		
+	}
+	
+	@RequestMapping(value = "/key_validate", method = RequestMethod.GET)
+	public String key_validateConfirm(@RequestParam("user_nickname") String user_nickname, @RequestParam("user_key") String user_key) {
+		return "user/resetPwd";
+	}
+	
+	@RequestMapping(value = "/key_validate", method = RequestMethod.POST)
+	public String key_validateConfirm(User user, HttpServletRequest request) {
+		
+		String rawPassword = user.getUser_pwd();
+		String encryptPassword = passwordEncoder.encode(rawPassword);
+		user.setUser_pwd(encryptPassword);
+		
+		userService.resetPwd(user);
+		userService.validateKey(user);
+		
+		String msg = "비밀번호가 재설정 되었습니다. 재설정된 비밀번호로 로그인해주세요!";
+		request.getSession().setAttribute("msg", msg);
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)

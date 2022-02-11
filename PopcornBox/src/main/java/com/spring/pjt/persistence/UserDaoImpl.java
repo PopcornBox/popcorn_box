@@ -56,7 +56,7 @@ public class UserDaoImpl implements UserDao {
 	
 	@Override
 	public int getKey(String user_nickname, String user_key) {
-		log.info("getKey(user_nickname:{}, user_key:{})", user_nickname, user_key);
+		log.info("getKey(user_nickname:{}, user_key:{}) 호출", user_nickname, user_key);
 		Map<String, Object> map = new HashMap<>();
 		map.put("user_nickname", user_nickname);
 		map.put("user_key", user_key);
@@ -65,7 +65,7 @@ public class UserDaoImpl implements UserDao {
 	
 	@Override
 	public int alter_userKey(String user_nickname, String key) {
-		log.info("alter_userKey(user_nickname:{}, key:{})", user_nickname, key);
+		log.info("alter_userKey(user_nickname:{}, key:{}) 호출", user_nickname, key);
 		Map<String, Object> map = new HashMap<>();
 		map.put("user_nickname", user_nickname);
 		map.put("key", key);
@@ -73,9 +73,27 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 	@Override
+	public int alter_userKey2(User user) {
+		log.info("alter_userKey2(user:{}) 호출", user);
+		return sqlSession.update(USER_NAMESPACE + ".alter_userKey2", user);
+	}
+	
+	@Override
 	public User changeNickname(String user_nickname, String user_id) {
 		log.info("changeNickname(user_nickname={}) 호출");
 		return null;
+	}
+	
+	@Override
+	public int lock_userKey(User user) {
+		log.info("lock_userKey(user: {}) 호출", user);
+		return sqlSession.update(USER_NAMESPACE + ".lock_userKey", user);
+	}
+	
+	@Override
+	public int resetPwd(User user) {
+		log.info("resetPwd(user: {}) 호출", user);
+		return sqlSession.update(USER_NAMESPACE + ".resetPwd", user);
 	}
 
 }
