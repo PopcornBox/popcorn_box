@@ -28,6 +28,7 @@
 		<property name="COL_USER_PWD" value="user_pwd" />
 		<property name="COL_USER_EMAIL" value="user_email" />
 		<property name="COL_USER_UPDATE_TIME" value="user_update_time" />
+		<property name="COL_USER_KEY" value="user_key" />
 	</properties>
 	
 	<typeAliases>
