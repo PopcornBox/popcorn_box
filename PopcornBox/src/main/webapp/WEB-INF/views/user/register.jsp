@@ -58,6 +58,7 @@
 						<input type="email" id="user_email" name="user_email" placeholder="abc@abc.com" required />
 						<div class="valid_email">사용 가능한 이메일입니다!</div>
 						<div class="invalid_email">이미 사용 중인 이메일입니다.</div>
+						<div class="invalid_email2">이메일이 유효하지 않습니다.</div>
 					</div>
 					<div>
 						<input type="submit" id="btn-complete" value="작성 완료" />
