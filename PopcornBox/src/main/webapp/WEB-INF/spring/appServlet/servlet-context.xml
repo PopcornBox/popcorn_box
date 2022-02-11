@@ -35,6 +35,7 @@
 			<mapping path="/board/insert"/> <!-- 새 글 작성 -->
 			<mapping path="/board/detail"/> <!-- 상세보기 -->
 			<mapping path="/board/delete"/> <!-- 글 삭제 -->
+			<mapping path="/user/mypage"/> <!-- 마이페이지 -->
 			<beans:ref bean="authInterceptor"/>
 		</interceptor>
 		<interceptor> <!-- 아이디/패스워드 확인 후 로그인 성공/실패 처리 -->
