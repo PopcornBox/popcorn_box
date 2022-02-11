@@ -1,7 +1,5 @@
 package com.spring.pjt.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-
 import java.util.List;
 
 import org.slf4j.Logger;
