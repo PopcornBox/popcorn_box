@@ -11,11 +11,11 @@
 		<link rel="stylesheet" 
 			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
 		<style>
-		.valid_id, .valid_nickname, .valid_email, .valid_repwd, .valid_pwd {
+		.valid_id, .valid_nickname, .valid_email, .valid_pwd, .valid_repwd {
 			color: green;
 			display: none;
 		}	
-		.invalid_id, .invalid_id2, .invalid_nickname, .invalid_nickname2, .invalid_email, .invalid_repwd, .invalid_pwd {
+		.invalid_id, .invalid_id2, .invalid_nickname, .invalid_nickname2, .invalid_email, .invalid_email2, .invalid_pwd, .invalid_repwd {
 			color: red;
 			display: none;
 		}	
