@@ -53,7 +53,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 			}
 			log.debug("URI 디코딩 후: {}", target);
 			
-			response.sendRedirect("/ex02/user/signin?url=" + target);
+			response.sendRedirect("/pjt/user/signin?url=" + target);
 			
 			return false; // 기존 요청을 진행하지 않음
 		}

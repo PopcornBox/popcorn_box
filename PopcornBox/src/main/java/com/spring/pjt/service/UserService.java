@@ -10,4 +10,6 @@ public interface UserService {
 	boolean isValidEmail(String user_email);
 	User checkSignIn(User user);
 	User readUserByEmail(String user_email);
+    int resetPwd(User user);
+    int validateKey(User user);
 }
