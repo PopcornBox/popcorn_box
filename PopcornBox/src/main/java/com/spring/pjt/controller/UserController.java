@@ -1,5 +1,7 @@
 package com.spring.pjt.controller;
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -156,6 +158,16 @@ public class UserController {
 		model.addAttribute("signInUser", signInUser);
 		model.addAttribute("msg", msg);
 	}
+	
+//	// TODO
+//	@RequestMapping(value="/signin-kakao", method=RequestMethod.GET)
+//	public String kakaoLogin(@RequestParam(value = "code", required = false) String code) throws Exception {
+//		log.info("#########" + code);
+//		
+//		String access_Token = kakaoService.getAccessToken(code);
+//		log.info("###access_Token#### : " + access_Token);
+//		return "/signin-kakao";
+//	}	
 	
 	@RequestMapping(value = "/signout", method = RequestMethod.GET)
 	public String signOut(HttpSession session) {
