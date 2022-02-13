@@ -22,7 +22,7 @@
 			<div id="movie-content">
 				<div id="top-movie">
 					<span>
-					<a><img src="${movie.movie_image}"  id="movie_image" name="movie_image" /> </a>
+					<a><img src="${movie.movie_image}"  width="185" height="260" id="movie_image" name="movie_image" /> </a>
 					</span>
 					<ul>
 						<li id="movie_title" name="movie_title">${movie.movie_title}</li>

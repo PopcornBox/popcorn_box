@@ -5,6 +5,19 @@
 	
 	<!-- 데이터베이스의 테이블 이름, 컬럼 이름들을 정의 -->
 	<properties>
+		 <!-- BOARDS 테이블 관련 상수들 -->
+		<property name="TBL_BOARDS" value="boards"/>
+		<property name="COL_BOARD_NO" value="board_no"/>
+		<property name="COL_BOARD_MODE" value="board_mode"/>
+		<property name="COL_BOARD_TITLE" value="board_title"/>
+		<property name="COL_BOARD_CONTENT" value="board_content"/>
+		<property name="COL_USER_ID" value="user_id"/>
+		<property name="COL_BOARD_UPDATE_TIME" value="board_update_time"/>
+		<property name="COL_BOARD_VIEW_CNT" value="board_view_cnt"/>
+		<property name="COL_BOARD_REPLY_CNT" value="board_reply_cnt"/>
+
+	
+	
 		<!-- MOVIE 테이블 관련 상수들 -->
 		<property name="TBL_MOVIES" value="movies"/>
 		<property name="COL_MOVIE_NO" value="movie_no"/>

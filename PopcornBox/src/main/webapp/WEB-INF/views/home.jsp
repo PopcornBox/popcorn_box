@@ -62,6 +62,7 @@ onsubmit : submit 클릭시 호출 조건 (true 일 때 action으로 넘어감 )
 				</c:if>
 				<li><a href="./user/mypage">마이페이지</a></li>
 				<li><a href="./movie/mainlist">무비목록테스트</a></li>
+				<li><a href="./board/main">자유게시판</a></li>
 			</ul>
 		</nav>
 		<div>
