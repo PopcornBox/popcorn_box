@@ -33,6 +33,7 @@
 				</c:if>
 				<li><a href="./user/mypage">마이페이지</a></li>
 				<li><a href="./movie/mainlist">무비목록테스트</a></li>
+				<li><a href="./board/main">자유게시판</a></li>
 			</ul>
 		</nav>
 		<div>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.pjt.mapper.BoardMapper">
+
+	<!-- 게시글 전체 검색 -->
+	<select id="selectAllBoard" resultType="Board">
+		SELECT * FROM ${TBL_BOARDS}
+		ORDER BY ${COL_BOARD_NO} DESC
+	</select>
+
+    <!-- 글 번호로 검색 -->
+    <select id="selectByBno" resultType="Board">
+    SELECT * FROM ${TBL_BOARDS} 
+    WHERE ${COL_BNO} = #{board_no}
+    </select>
+
+    <!-- 게시글의 view_cnt를 1 증가 -->
+    <update id="updateViewCnt">
+    UPDATE ${TBL_BOARDS} 
+    SET ${COL_BOARD_VIEW_CNT} = ${COL_BOARD_VIEW_CNT} + 1 
+    WHERE ${COL_BOARD_NO} = #{board_no}
+    </update>
+</mapper>
