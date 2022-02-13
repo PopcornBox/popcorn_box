@@ -26,7 +26,9 @@ public class SignedInInterceptor implements HandlerInterceptor {
 		HttpSession session = request.getSession(); // 세션 생성
 		
 		if (request.getMethod().equals("GET")) {
-			return; // GET 방식에서는 interceptor가 할 일이 없음.(로그인 페이지 form을 보여줌)
+			if (!request.getRequestURI().equals("/kakaologin")) {
+				return; // GET 방식에서는 interceptor가 할 일이 없음.(로그인 페이지 form을 보여줌)
+			}
 		}
 		
 		// 로그인 성공 후 이동할 페이지(input type="hidden"에서 찾음)

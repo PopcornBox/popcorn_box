@@ -32,8 +32,8 @@
 						<input type="submit" value="로그인" />
 					</div>
 					<div>
-						<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=cc1754dab9a17adb7dd44164ff108ba7&redirect_uri=http://localhost:8181/pjt/user/signin-kakao&response_type=code">
-						<img alt="카카오" src="../resources/images/kakao_login_medium_wide.png"></a>
+						<a href="https://kauth.kakao.com/oauth/authorize?client_id=cc1754dab9a17adb7dd44164ff108ba7&redirect_uri=http://localhost:8181/pjt/user/kakaologin&response_type=code">
+						<img alt="카카오 로그인" src="../resources/images/kakao_login_medium_wide.png"></a>
 					</div>
 					<li>
 						<a href="./register">회원가입</a>
