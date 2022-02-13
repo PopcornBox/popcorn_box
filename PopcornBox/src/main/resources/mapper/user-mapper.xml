@@ -38,11 +38,36 @@
     SET ${COL_USER_KEY} = #{user_key} where ${COL_USER_NICKNAME} = #{user_nickname}
     </update> 
     
-    <!-- 회원 인증키 (난수) Y로 변경 -->
+    <!-- 회원 인증키 (난수) Y로 변경 (계정 유효화) -->
 	<update id="alter_userKey">
     UPDATE ${TABLE_USERS} 
     SET ${COL_USER_KEY} = 'Y' where ${COL_USER_NICKNAME} = #{user_nickname} and ${COL_USER_KEY} = #{key}
     </update> 
+    
+    <!-- 회원 인증키 (Y) L로 변경 (계정 lock) -->
+	<update id="lock_userKey">
+    UPDATE ${TABLE_USERS} 
+    SET ${COL_USER_KEY} = 'L' where ${COL_USER_NICKNAME} = #{user_nickname}
+    </update> 
+    
+    <!-- 닉네임으로 비번 재설정 -->
+    <update id="resetPwd">
+    UPDATE ${TABLE_USERS} 
+    SET ${COL_USER_PWD} = #{user_pwd} where ${COL_USER_NICKNAME} = #{user_nickname}
+    </update> 
+    
+     <!-- 잠긴 계정 유효화 -->
+    <update id="alter_userKey2">
+    UPDATE ${TABLE_USERS} 
+    SET ${COL_USER_KEY} = 'Y' where ${COL_USER_NICKNAME} = #{user_nickname} and ${COL_USER_KEY} = 'L'
+    </update> 
+    
+    <!-- 회원 닉네임 변경 -->
+    <update id="alter_user_nickname">
+	UPDATE ${TABLE_USERS}
+	SET ${COL_USER_NICKNAME} = #{user_nickname} where ${COL_USER_ID} = #{user_id}
+								and ${COL_USER_NICKNAME} = #{user_nickname}
+    </update>
 	
 	
 </mapper>

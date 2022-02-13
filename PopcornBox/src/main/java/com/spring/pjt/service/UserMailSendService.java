@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.spring.pjt.domain.User;
 import com.spring.pjt.persistence.UserDao;
 
 @Service
@@ -79,5 +80,49 @@ public class UserMailSendService {
 			
 			return resultCnt;
 		}
+		
+		// 아이디 찾기 이메일 발송
+		public void mailSendWithUseId(User user, HttpServletRequest request) {
+	
+			MimeMessage mail = mailSender.createMimeMessage();
+			String htmlStr = "<h2>안녕하세요, PopcornBox 입니다!</h2><br><br>" 
+							+ "<h3>" + user.getUser_nickname() + "님</h3><br>" 
+							+ "<p>회원님의 아이디는 <strong>" + user.getUser_id() + "</strong>입니다.</p>" 
+							+ "<a href='http://127.0.0.1:8181" + request.getContextPath() + "/user/signin" + "'>로그인하기</a></p>"
+							+ "(혹시 잘못 전달된 메일이라면 이 이메일을 무시하셔도 됩니다)";
+					try {
+						mail.setSubject("[아이디 찾기] MSG: PopcornBox 의 알림메일입니다", "utf-8");
+						mail.setText(htmlStr, "utf-8", "html");
+						mail.addRecipient(RecipientType.TO, new InternetAddress(user.getUser_email()));
+						mailSender.send(mail);
+					} catch (MessagingException e) {
+						e.printStackTrace();
+					}
+					
+				}
+		
+		//비밀번호 찾기 이메일 발송
+		public void mailSendWithUserPwd(User user, HttpServletRequest request) {
+			
+			userDao.lock_userKey(user);
+			user.setUser_key("L");
+			
+			MimeMessage mail = mailSender.createMimeMessage();
+			String htmlStr = "<h2>안녕하세요, PopcornBox 입니다!</h2><br><br>" 
+					+ "<h3>" + user.getUser_nickname() + "님</h3>" + "<p>비밀번호 재설정하기 버튼을 누르시면 재설정을 위한 페이지로 이동합니다. : " 
+					+ "<a href='http://127.0.0.1:8181" + request.getContextPath() + "/user/key_validate?user_nickname=" + user.getUser_nickname() + "&user_key=" + user.getUser_key() + "'>비밀번호 재설정하기</a></p>"
+					+ "(혹시 잘못 전달된 메일이라면 이 이메일을 무시하셔도 됩니다)";
+							try {
+								mail.setSubject("[비밀번호 찾기] MSG: PopcornBox 의 알림메일입니다", "utf-8");
+								mail.setText(htmlStr, "utf-8", "html");
+								mail.addRecipient(RecipientType.TO, new InternetAddress(user.getUser_email()));
+								mailSender.send(mail);
+							} catch (MessagingException e) {
+								e.printStackTrace();
+							}
+							
+						}
+				
+				
 }
 

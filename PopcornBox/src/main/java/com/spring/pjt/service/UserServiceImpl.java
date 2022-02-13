@@ -71,4 +71,15 @@ public class UserServiceImpl implements UserService {
 		return userDao.checkEmail(user_email);
 	}
 	
+	@Override
+	public int resetPwd(User user) {
+		log.info("resetPwd(user: {}) 호출", user);
+		return userDao.resetPwd(user);
+	}
+	
+	@Override
+	public int validateKey(User user) {
+		log.info("validateKey(user: {}) 호출", user);
+		return userDao.alter_userKey2(user);
+	}
 }
