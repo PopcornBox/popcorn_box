@@ -14,33 +14,25 @@
 </head>
 <body>
 
-			<div> <!-- 검색 기능 UI -->
-<form name="search" align="right" style="margin-right:40px;" method = "get"  
-action ="Search.jsp" onsubmit="return keyword_check()">
+
+            		<div> <!-- 검색 기능 UI -->
+					<form name="search" align="right" style="margin-right:20px;" method = "get"  
+					action ="./search" >
                     <select name="type">
                         <option value="1">제목</option>
                         <option value="2">배우</option>
                         <option value="3">감독</option>
                         <option value="4">쟝르</option>
-
+                    </select>
+                    <input type="text" name="keyword" placeholder="검색어 입력" required />
+                    <input type="submit" value="검색" />
+                </form>
+            </div>
 
 <!-- align : 정렬 , style : 스타일 정보 포함 (margin : 여백 설정) , 
-method : 전달 방식 ,  action : submit 시 이동 경로 ,
-onsubmit : submit 클릭시 호출 조건 (true 일 때 action으로 넘어감 )-->
+method : 전달 방식 ,  action : submit 시 이동 경로 ,-->
 
-<td>
 
-  <input type="text" name="keyword"> 
-
-  </td>
-
-<td>
-
-<input type="submit" value="search">
-
-</td>  
-
-</form>
             
 	<div class="container-fluid">
 		<header class="jumbotron text-center">
