@@ -1,6 +1,9 @@
 package com.spring.pjt.controller;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -13,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.spring.pjt.domain.User;
+import com.spring.pjt.service.KakaoLoginService;
 import com.spring.pjt.service.UserMailSendService;
 import com.spring.pjt.service.UserService;
 
@@ -27,6 +33,7 @@ public class UserController {
 	@Autowired private BCryptPasswordEncoder passwordEncoder; // 비밀번호를 암호화해주는 객체
 	@Autowired private UserService userService; 
 	@Autowired private UserMailSendService mailsender;
+	@Autowired private KakaoLoginService kakaoLoginService;
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void register() {
@@ -158,6 +165,57 @@ public class UserController {
 		// 로그인 여부를 판단할 수 있는 정보를 Model 객체에 속성으로 저장
 		model.addAttribute("signInUser", signInUser);
 		model.addAttribute("msg", msg);
+	}
+	
+	// TODO
+	@RequestMapping(value = "/kakaologin", produces = "application/json", method = RequestMethod.GET)
+	public String kakaoLogin(@RequestParam("code") String code, RedirectAttributes ra, HttpSession session, 
+			HttpServletResponse response, Model model) throws IOException {
+		log.info("kakaologin() GET 호출 code: {}", code);
+		
+		JsonNode accessToken;
+		JsonNode refreshToken;
+		
+		// JsonNode 트리 형태로 토큰 받아옴
+        JsonNode jsonToken = kakaoLoginService.getKakaoAccessToken(code);
+        // 여러 json 객체 중 access_token, refresh_token을 가져옴
+        accessToken = jsonToken.get("access_token");
+        refreshToken = jsonToken.get("refresh_token");
+ 
+        log.info("access_token : {}", accessToken);
+        log.info("refresh_token : {}", refreshToken);
+        
+        // access_token을 통해 사용자 정보 요청
+        JsonNode userInfo = kakaoLoginService.getKakaoUserInfo(accessToken);
+ 
+        // Get id
+        String id = userInfo.path("id").asText();
+        String nickname = null;
+        String email = null;
+ 
+        // 사용자 정보를 카카오에서 가져옴. Get properties
+        JsonNode properties = userInfo.path("properties");
+        JsonNode kakao_account = userInfo.path("kakao_account");
+ 
+        nickname = properties.path("nickname").asText();
+        email = kakao_account.path("email").asText();
+ 
+        log.info("id : {}", id);
+        log.info("nickname : {}", nickname);
+        log.info("email : {}", email);
+        
+        User signInUser = null;
+        
+        User user = userService.readUserByEmail(email);
+        if (user != null) { // DB에 있는(회원가입한) 이메일
+        	signInUser = user;
+        	log.info("signInUser: {}", signInUser);
+        	model.addAttribute("signInUser", signInUser);
+        } else { // DB에 없는(회원가입하지 않은) 이메일
+        	// 회원가입 진행
+        }
+        
+        return "redirect:/";
 	}
 	
 	@RequestMapping(value = "/signout", method = RequestMethod.GET)
