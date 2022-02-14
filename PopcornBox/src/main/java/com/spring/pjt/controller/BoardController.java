@@ -14,7 +14,7 @@ import com.spring.pjt.domain.Board;
 import com.spring.pjt.service.BoardService;
 
 @Controller
-@RequestMapping(value="/board")
+@RequestMapping(value = "/board")
 public class BoardController {
 	
 	private static final Logger log = LoggerFactory.getLogger(BoardController.class);
@@ -27,7 +27,7 @@ public class BoardController {
 		
 		List<Board> list = boardService.select();
 		
-		model.addAttribute("boardlist", list);
+		model.addAttribute("boardList", list);
 		
 	}
 

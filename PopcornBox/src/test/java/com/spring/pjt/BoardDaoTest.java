@@ -27,11 +27,12 @@ public class BoardDaoTest {
 	
 	@Test
 	public void doTest() {
-	log.info("boardDao: {}", boardDao);
-	List<Board> list = boardDao.read();
+//	log.info("boardDao: {}", boardDao);
+//	List<Board> list = boardDao.read();
 		
-//		Board board = boardDao.read(1);
-//		log.info(board.toString());
+		Board board = boardDao.read(1);
+		log.info(board.toString());
+		
 	}
 
 }

@@ -11,7 +11,6 @@
 		<property name="COL_BOARD_MODE" value="board_mode"/>
 		<property name="COL_BOARD_TITLE" value="board_title"/>
 		<property name="COL_BOARD_CONTENT" value="board_content"/>
-		<property name="COL_USER_ID" value="user_id"/>
 		<property name="COL_BOARD_UPDATE_TIME" value="board_update_time"/>
 		<property name="COL_BOARD_VIEW_CNT" value="board_view_cnt"/>
 		<property name="COL_BOARD_REPLY_CNT" value="board_reply_cnt"/>

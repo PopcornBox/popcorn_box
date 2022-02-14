@@ -27,9 +27,9 @@ public class BoardDaoImpl implements BoardDao{
 
 	@Override
 	public Board read(int board_no) {
-		log.info("boardDaoImple.read(board_no={} 호출");
+		log.info("boardDaoImple.read(board_no={}) 호출", board_no);
 		
-		return sqlSession.selectOne(BOARD_NAMESPACE + ".selectByBno");
+		return sqlSession.selectOne(BOARD_NAMESPACE + ".selectByBno", board_no);
 	}
 
 }

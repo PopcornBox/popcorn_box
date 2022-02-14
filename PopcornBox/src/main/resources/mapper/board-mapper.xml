@@ -11,7 +11,7 @@
     <!-- 글 번호로 검색 -->
     <select id="selectByBno" resultType="Board">
     SELECT * FROM ${TBL_BOARDS} 
-    WHERE ${COL_BNO} = #{board_no}
+    WHERE ${COL_BOARD_NO} = #{board_no}
     </select>
 
     <!-- 게시글의 view_cnt를 1 증가 -->
