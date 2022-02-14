@@ -63,6 +63,7 @@ public class KakaoLoginService {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
+        	// clear resources
         }
  
         return returnNode;

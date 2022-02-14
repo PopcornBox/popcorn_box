@@ -37,7 +37,6 @@ public class SignedInInterceptor implements HandlerInterceptor {
 			if (!request.getRequestURI().equals("/pjt/user/kakaologin")) {
 				return; // GET 방식에서는 interceptor가 할 일이 없음.(로그인 페이지 form을 보여줌)
 			} else { // 카카오 로그인이면
-				// TODO
 				User signInUser = (User) request.getSession().getAttribute("signInUser");
 				String user_nickname = signInUser.getUser_nickname();
 				log.info("signInUser.user_nickname: {}", signInUser.getUser_nickname());
