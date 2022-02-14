@@ -23,7 +23,7 @@ public class BoardController {
 	
 	@RequestMapping(value="/main", method=RequestMethod.GET)
 	public void main(Model model) {
-		log.info("mian() 호출");
+		log.info("main() 호출");
 		
 		List<Board> list = boardService.select();
 		
