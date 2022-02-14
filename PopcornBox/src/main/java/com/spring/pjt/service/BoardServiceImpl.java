@@ -31,4 +31,11 @@ public class BoardServiceImpl  implements BoardService{
 		
 		return board;
 	}
+
+	@Override
+	public int insert(Board board) {
+		log.info("insert() 호출", board);
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

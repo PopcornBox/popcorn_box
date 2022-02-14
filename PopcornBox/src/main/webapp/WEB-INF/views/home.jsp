@@ -53,7 +53,7 @@ method : 전달 방식 ,  action : submit 시 이동 경로 ,-->
 						href="./user/signout">로그아웃</a></li>
 				</c:if>
 				<li><a href="./user/mypage">마이페이지</a></li>
-				<li><a href="./movie/mainlist">무비목록테스트</a></li>
+				<li><a href="./movie/mainlist">차트</a></li>
 				<li><a href="./board/main">자유게시판</a></li>
 			</ul>
 		</nav>

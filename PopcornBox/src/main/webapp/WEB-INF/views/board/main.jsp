@@ -34,7 +34,8 @@
         		<tr>
         			<td>${board.board_no}</td>
         			<td>${board.board_title}</td>
-        			<td>${board.user_nickname}</td>
+        			<td>${board.user_id}</td>
+        			<%-- <td>${board.user_nickname}</td> --%>
         			<td>
         				<fmt:formatDate value="${board.board_update_time}" pattern="yyyy/MM/dd HH:mm" />
         			</td>
