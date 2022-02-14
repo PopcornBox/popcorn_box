@@ -5,11 +5,26 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Popcorn Box</title>
-
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" 
-			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+	    <meta name="description" content="Male_Fashion Template">
+	    <meta name="keywords" content="Male_Fashion, unica, creative, html">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	    <title>회원가입 | Popcorn Box</title>
+	    
+	    <!-- Google Font -->
+	    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
+	    rel="stylesheet">
+	    
+		<!-- Css Styles -->
+	    <link rel="stylesheet" href="../resources/css/bootstrap.min.css" type="text/css">
+	    <link rel="stylesheet" href="../resources/css/font-awesome.min.css" type="text/css">
+	    <link rel="stylesheet" href="../resources/css/elegant-icons.css" type="text/css">
+	    <link rel="stylesheet" href="../resources/css/magnific-popup.css" type="text/css">
+	    <link rel="stylesheet" href="../resources/css/nice-select.css" type="text/css">
+	    <link rel="stylesheet" href="../resources/css/owl.carousel.min.css" type="text/css">
+	    <link rel="stylesheet" href="../resources/css/slicknav.min.css" type="text/css">
+	    <link rel="stylesheet" href="../resources/css/style.css" type="text/css">
+			
 		<style>
 		.valid_id, .valid_nickname, .valid_email, .valid_pwd, .valid_repwd {
 			color: green;
@@ -22,15 +37,200 @@
 		}	
 		</style>	
 	</head>
+	
 	<body>
-		<div class="container-fluid">
-			<header class="text-center">
-				<h1>회원가입</h1>
-			</header>
-			
-			<nav> <!-- TODO: 페이지 이동 메뉴 -->
-			</nav>
-			
+	    <!-- Page Preloder -->
+	    <div id="preloder">
+	        <div class="loader"></div>
+	    </div>
+	
+	
+	        <!-- Offcanvas Menu Begin -->
+	        <div class="offcanvas-menu-overlay"></div>
+	        <div class="offcanvas-menu-wrapper">
+	            <div class="offcanvas__option">
+	                <div class="offcanvas__links">
+	                    <a href="#">로그인</a>
+	                    <a href="#">회원가입</a>
+	                </div>
+	            </div>
+	            <div id="mobile-menu-wrap"></div>
+	            <div class="offcanvas__text">
+	                <p>PopcornBox</p>
+	            </div>
+	        </div>
+	        <!-- Offcanvas Menu End -->
+	
+	        <!-- Header Section Begin -->
+	        <header class="header">
+	            <div class="header__top">
+	                <div class="container">
+	                    <div class="row">
+	                        <div class="col-lg-6 col-md-7">
+	                            <div class="header__top__left">
+	                                  <a href="./pb_main.html"><img src="img/logo_black.png" alt="" width="30%"></a>
+	                            </div>
+	                        </div>
+	                        <div class="col-lg-6 col-md-5">
+	                            <div class="header__top__right">
+	                                <div class="header__top__links">
+	                                    <a href="./signin">로그인</a>
+	                                    <a href="./register">회원가입</a>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="container">
+	                <div class="row">
+	                    <div class="col-lg-6 col-md-6">
+	                        <nav class="header__menu mobile-menu">
+	                            <ul>
+	                                <li><a href="./pb_main.html">홈</a></li>
+	                                <li><a href="./pb_chart_list.html">차트</a></li>
+	                                <li><a href="./pb_community.html">자유게시판</a>
+	                                  <!-- <ul class="dropdown">
+	                                        <li><a href="./about.html">공지사항</a></li>
+	                                        <li><a href="./pb_ßcommunity.html">자유게시판</a></li>
+	                                    </ul> -->
+	                                </li>
+	                                <li><a href="./pb_event.html">이벤트</a></li>
+	                            </ul>
+	                        </nav>
+	                    </div>
+	                    <div class="col-lg-3 col-md- 10">
+	                        <div class="header__nav__option">
+	                            <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
+	
+	                        </div>
+	                    </div>
+	                </div>
+	                <div class="canvas__open"><i class="fa fa-bars"></i></div>
+	            </div>
+	        </header>
+	        <!-- Header Section End -->
+	
+	
+	    <!-- Header Section End -->
+	
+	    <!-- Breadcrumb Section Begin -->
+	    <section class="breadcrumb-option">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-lg-12">
+	                    <div class="breadcrumb__text">
+	                        <h4>회원가입</h4>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </section>
+	    <!-- Breadcrumb Section End -->
+	
+	    <!-- Checkout Section Begin -->
+	    <section class="checkout spad">
+	        <div class="container">
+	            <div class="checkout__form">
+	                <form action="./register" method="post">
+	                    <div class="row">
+	                        <div class="col-lg-8 col-md-6">
+	                            <h6 class="checkout__title">안녕하세요. 회원정보를 입력해주세요.</h6>
+	                            <div class="checkout__input ">
+	                                <p>아이디<span>*</span></p>
+	                                <div style="display:flex">
+	                                <input type="text" id="user_id" name="user_id" placeholder="아이디" required /> 
+	                                </div>
+	                                <div class="valid_id">사용 가능한 아이디입니다!</div>
+									<div class="invalid_id">이미 사용 중인 아이디입니다.</div>
+									<div class="invalid_id2">5~20자의 영문, 숫자만 사용 가능합니다.</div>
+	                            </div>
+	                            
+	                            <div class="checkout__input ">
+	                                <p>닉네임<span>*</span></p>
+	                                <div style="display:flex">
+	                                <input type="text" id="user_nickname" name="user_nickname" placeholder="닉네임" required /> 
+	                                </div>
+									<div class="valid_nickname">사용 가능한 닉네임입니다!</div>
+									<div class="invalid_nickname">이미 사용 중인 닉네임입니다.</div>
+									<div class="invalid_nickname2">15자 이내의 한글, 영문, 숫자만 사용 가능합니다.</div>
+	                            </div>
+	                            
+	                            <div class="checkout__input">
+	                                <p>비밀번호<span>*</span></p>
+	                                <input type="text" placeholder="영문, 숫자, 특수기호 중 2가지 이상 조합" class="checkout__input__add">
+	                                <p>비밀번호확인<span>*</span></p>
+	
+	                                <input type="text" placeholder="비밀번호 확인">
+	                            </div>
+	                            <div class="checkout__input">
+	                                <p>이메일 주소<span>*</span></p>
+	                                <input type="text" placeholder="popcorn@box.com" >
+	                            </div>
+	                            <div>
+	                            <a href="#" class="primary-btn">회원가입</a>
+	                            </div>
+	
+	
+	
+	                      <!--  <div class="col-lg-4 col-md-6">
+	                            <div class="checkout__order">
+	                                <h4 class="order__title">Your order</h4>
+	                                <div class="checkout__order__products">Product <span>Total</span></div>
+	                                <ul class="checkout__total__products">
+	                                    <li>01. Vanilla salted caramel <span>$ 300.0</span></li>
+	                                    <li>02. German chocolate <span>$ 170.0</span></li>
+	                                    <li>03. Sweet autumn <span>$ 170.0</span></li>
+	                                    <li>04. Cluten free mini dozen <span>$ 110.0</span></li>
+	                                </ul>
+	                                <ul class="checkout__total__all">
+	                                    <li>Subtotal <span>$750.99</span></li>
+	                                    <li>Total <span>$750.99</span></li>
+	                                </ul>
+	                                <div class="checkout__input__checkbox">
+	                                    <label for="acc-or">
+	                                        Create an account?
+	                                        <input type="checkbox" id="acc-or">
+	                                        <span class="checkmark"></span>
+	                                    </label>
+	                                </div>
+	                                <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
+	                                ut labore et dolore magna aliqua.</p>
+	                                <div class="checkout__input__checkbox">
+	                                    <label for="payment">
+	                                        Check Payment
+	                                        <input type="checkbox" id="payment">
+	                                        <span class="checkmark"></span>
+	                                    </label>
+	                                </div>
+	                                <div class="checkout__input__checkbox">
+	                                    <label for="paypal">
+	                                        Paypal
+	                                        <input type="checkbox" id="paypal">
+	                                        <span class="checkmark"></span>
+	                                    </label>
+	                                </div>
+	                                <button type="submit" class="site-btn">PLACE ORDER</button>
+	                            </div>
+	                        </div>-->
+	                    </div>
+	                </form>
+	            </div>
+	        </div>
+	    </section>
+	    <!-- Checkout Section End -->
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<div class="container-fluid">			
 			<div>
 				<form action="./register" method="post">
 					<div>
@@ -69,8 +269,17 @@
 			
 		</div>
 		
-		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+	    <!-- Js Plugins -->
+	    <script src="../resources/js/jquery-3.3.1.min.js"></script>
+	    <script src="../resources/js/bootstrap.min.js"></script>
+	    <script src="../resources/js/jquery.nice-select.min.js"></script>
+	    <script src="../resources/js/jquery.nicescroll.min.js"></script>
+	    <script src="../resources/js/jquery.magnific-popup.min.js"></script>
+	    <script src="../resources/js/jquery.countdown.min.js"></script>
+	    <script src="../resources/js/jquery.slicknav.js"></script>
+	    <script src="../resources/js/mixitup.min.js"></script>
+	    <script src="../resources/js/owl.carousel.min.js"></script>
+	    <script src="../resources/js/main.js"></script>			
 		<script>
 		$(document).ready(function () {
 			
