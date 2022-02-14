@@ -169,7 +169,7 @@ public class UserController {
 	
 	// TODO
 	@RequestMapping(value = "/kakaologin", produces = "application/json", method = RequestMethod.GET)
-	public String kakaoLogin(@RequestParam("code") String code, RedirectAttributes ra, HttpSession session, 
+	public void kakaoLogin(@RequestParam("code") String code, RedirectAttributes ra, HttpSession session, 
 			HttpServletResponse response, Model model) throws IOException {
 		log.info("kakaologin() GET 호출 code: {}", code);
 		
@@ -204,18 +204,18 @@ public class UserController {
         log.info("nickname : {}", nickname);
         log.info("email : {}", email);
         
-        User signInUser = null;
-        
+        User signInUser = null;        
         User user = userService.readUserByEmail(email);
         if (user != null) { // DB에 있는(회원가입한) 이메일
         	signInUser = user;
         	log.info("signInUser: {}", signInUser);
         	model.addAttribute("signInUser", signInUser);
+        	session.setAttribute("signInUser", signInUser);
         } else { // DB에 없는(회원가입하지 않은) 이메일
         	// 회원가입 진행
         }
         
-        return "redirect:/";
+       
 	}
 	
 	@RequestMapping(value = "/signout", method = RequestMethod.GET)
