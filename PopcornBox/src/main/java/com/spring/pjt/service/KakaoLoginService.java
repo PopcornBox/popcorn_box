@@ -24,7 +24,7 @@ import com.spring.pjt.controller.UserController;
 @Service
 public class KakaoLoginService {
 	
-	private static final Logger log = LoggerFactory.getLogger(UserController.class);
+	private static final Logger log = LoggerFactory.getLogger(KakaoLoginService.class);
 	
 	public JsonNode getKakaoAccessToken(String code) {
 		 

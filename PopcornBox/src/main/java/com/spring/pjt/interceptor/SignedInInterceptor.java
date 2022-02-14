@@ -23,16 +23,35 @@ public class SignedInInterceptor implements HandlerInterceptor {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		log.info("<<<<< postHandle() 호출");
+		log.info("      handler: {}", handler);
+		log.info("      modelAndView: {}", modelAndView);
+		log.info("      session: {}", request.getSession());
+		log.info("      session.signInUser: {}", request.getSession().getAttribute("signInUser"));
+		
 		HttpSession session = request.getSession(); // 세션 생성
-		
-		if (request.getMethod().equals("GET")) {
-			if (!request.getRequestURI().equals("/kakaologin")) {
-				return; // GET 방식에서는 interceptor가 할 일이 없음.(로그인 페이지 form을 보여줌)
-			}
-		}
-		
 		// 로그인 성공 후 이동할 페이지(input type="hidden"에서 찾음)
 		String targetUrl = request.getParameter("url");
+		
+		if (request.getMethod().equals("GET")) {
+			log.info("req uri: {}", request.getRequestURI());
+			if (!request.getRequestURI().equals("/pjt/user/kakaologin")) {
+				return; // GET 방식에서는 interceptor가 할 일이 없음.(로그인 페이지 form을 보여줌)
+			} else { // 카카오 로그인이면
+				// TODO
+				User signInUser = (User) request.getSession().getAttribute("signInUser");
+				String user_nickname = signInUser.getUser_nickname();
+				log.info("signInUser.user_nickname: {}", signInUser.getUser_nickname());
+				session.setAttribute("signInUserNickname", user_nickname);
+				
+				// 원래 이동하려고 했던 페이지(targetUrl)로 redirect
+				if (targetUrl != null && !targetUrl.equals("")) {
+					response.sendRedirect(targetUrl);
+				} else {
+					response.sendRedirect("/pjt");
+				}
+				return;
+			}
+		}
 		
 		Object user = modelAndView.getModel().get("signInUser");
 		if (user != null) { // 테이블에 아이디/비밀번호가 일치하는 사용자가 있는 경우 -> 로그인 성공
