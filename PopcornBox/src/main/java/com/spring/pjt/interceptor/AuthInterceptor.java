@@ -29,9 +29,9 @@ public class AuthInterceptor implements HandlerInterceptor {
 		
 		// 로그인 상태 여부 체크: (1) 로그인 O -> 진행 (2) 로그인 X -> signin 페이지
 		HttpSession session = request.getSession();
-		String signInUserId = (String) session.getAttribute("signInUserId");
-		if (signInUserId != null) { // 로그인 정보가 있으면
-			log.info("로그인 아이디: {}", signInUserId);
+		String signInUserNickname = (String) session.getAttribute("signInUserNickname");
+		if (signInUserNickname != null) { // 로그인 정보가 있으면
+			log.info("로그인 닉네임: {}", signInUserNickname);
 			return true; // 요청을 계속 진행
 		} else { // 로그인 정보가 없으면
 			log.info("로그인 안 됨.");
