@@ -39,7 +39,6 @@
 	type="text/css">
 <link rel="stylesheet" href="../resources/css/style.css" type="text/css">
 </head>
-</head>
 <body>
     <!-- Page Preloder -->
     <div id="preloder">
