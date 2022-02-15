@@ -119,6 +119,7 @@
             </div>
         </div>
     </section>
+    <hr>
     <!-- Breadcrumb Section End -->
 		
 		<section class="contact spad">

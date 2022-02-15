@@ -62,7 +62,9 @@
 				<div class="row">
 					<div class="col-lg-6 col-md-7">
 						<div class="header__top__left">
-							<a href="../"><img src="../resources/images/popcornbox_logo.png" alt="logo" width="35%"></a>
+							<a href="../"><img
+								src="../resources/images/popcornbox_logo.png" alt="logo"
+								width="35%"></a>
 						</div>
 					</div>
 					<div class="col-lg-6 col-md-5">
@@ -82,8 +84,8 @@
 					<nav class="header__menu mobile-menu">
 						<ul>
 							<li><a href="../">홈</a></li>
-							<li class="active"><a href="./pb_chart_list.html">차트</a></li>
-							<li><a href="../board/main">자유게시판</a></li>
+							<li><a href="./pb_chart_list.html">차트</a></li>
+							<li class="active"><a href="../board/main">자유게시판</a></li>
 							<li><a href="./pb_event.html">이벤트</a></li>
 						</ul>
 					</nav>
@@ -102,41 +104,64 @@
 		</div>
 	</header>
 	<!-- Header Section End -->
-	
-			      <div> <%-- 게시글 상세보기 --%>
-         <form>
-            <div>
-               <input type="hidden" id="bno" value="${board.board_no}" />
-            </div>
-            <div>
-               <label for="title">글 제목</label> <input type="text" id="board_title"
-                  name="board_title" value="${board.board_title}" required autofocus readonly />
-            </div>
-            <div>
-               <label for="content">글 내용</label>
-               <textarea rows="5" id="board_content" name="board_content" required readonly>${board.board_content}</textarea>
-            </div>
-            <div>
-               <label for="board_user_nickname">닉네임</label> <input type="text" id="board_user_nickname"
-                  name="board_user_nickname" value="${board.user_nickname}" required readonly />
-            </div>
-            <div>
-            
-               <label for="reg_date">최종 수정 시간</label>
-               <fmt:formatDate value="${board.board_update_time}"
-                  pattern="yyyy/MM/dd HH/mm/ss" var="last_update_time" />
-               <input type="text" id="reg-date" name="reg_date"
-                  value="${last_update_time}" readonly />
-                 
-            </div>
-         </form>
-      </div>
-	
-	
-      
 
-      
-  	<!-- Footer Section Begin -->
+
+
+	<nav>
+		<%-- 내비게이션 메뉴 --%>
+		<!-- TODO 페이지 이동 메뉴 -->
+		<ul>
+			<li><a href="../">메인</a></li>
+			<li><a href="./main">게시판 메인</a></li>
+			<c:if test="${signInUserId == user.user_id}">
+				<!-- 로그인 사용자 아이디와 글 작성자 아이디가 일치할 때만 수정 메뉴를 보여줌. -->
+				<li><a href="./update?board_no=${board.board_no}">수정</a></li>
+			</c:if>
+		</ul>
+	</nav>
+
+	<div>
+		<%-- 게시글 상세보기 --%>
+		<form>
+			<div>
+				<input type="hidden" id="bno" value="${board.board_no}" />
+			</div>
+			<div>
+				<label for="title">글 제목</label> <input type="text" id="board_title"
+					name="board_title" value="${board.board_title}" required autofocus
+					readonly />
+			</div>
+			<div>
+				<label for="content">글 내용</label>
+				<textarea rows="5" id="board_content" name="board_content" required
+					readonly>${board.board_content}</textarea>
+			</div>
+			<div>
+				<label for="board_user_nickname">닉네임</label> <input type="text"
+					id="board_user_nickname" name="board_user_nickname"
+					value="${board.user_nickname}" required readonly />
+			</div>
+			<label for="board_user_nickname">아이디</label> <input type="text"
+					id="board_user_nickname" name="board_user_nickname"
+					value="${board.user_id}" required readonly />
+			</div>
+			<div>
+
+				<label for="reg_date">최종 수정 시간</label>
+				<fmt:formatDate value="${board.board_update_time}"
+					pattern="yyyy/MM/dd HH/mm/ss" var="last_update_time" />
+				<input type="text" id="reg-date" name="reg_date"
+					value="${last_update_time}" readonly />
+
+			</div>
+		</form>
+	</div>
+
+
+
+
+
+	<!-- Footer Section Begin -->
 	<footer class="footer">
 		<div class="container">
 			<div class="row">
@@ -184,8 +209,10 @@
 
 
 
-	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

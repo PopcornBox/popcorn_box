@@ -91,7 +91,7 @@
 				<div class="col-lg-3 col-md- 10">
 					<div class="header__nav__option">
 						<a href="#" class="search-switch"><img
-							src="img/icon/search.png" alt=""></a>
+							src="../resources/img/icon/search.png" alt=""></a>
 
 					</div>
 				</div>
@@ -108,12 +108,13 @@
 	
 	<div class="container">
 		<table class="table">
-			<thead class="thead-blue">
+			<thead class="thead-blue text-center">
 				<tr>
 					<th>영화순위</th>
-					<th></th>
+					<th>포스터</th>
 					<th>제목</th>
 					<th>평점</th>
+					<th>좋아요</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -140,7 +141,7 @@
 				<div class="col-lg-3 col-md-6 col-sm-6">
 					<div class="footer__about">
 						<div class="footer__logo">
-							<a href="#"><img src="img/logo_white.png" alt=""></a>
+							<a href="#"><img src="../resourcesimg/img/logo_white.png" alt=""></a>
 						</div>
 						<p>
 							Copyright ©

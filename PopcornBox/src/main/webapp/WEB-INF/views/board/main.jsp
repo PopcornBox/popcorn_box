@@ -77,7 +77,7 @@
                         <ul>
                             <li><a href="../">홈</a></li>
                             <li><a href="../movie/mainlist">차트</a></li>
-                            <li class="active" ><a href="../board/main">자유게시판</a> 
+                            <li class="active" ><a href="./main">자유게시판</a> 
                             </li>
                             <li><a href="./pb_event.html">이벤트</a></li>
                         </ul>
