@@ -24,10 +24,7 @@
 <link rel="stylesheet" href="../resources/css/owl.carousel.min.css" 	type="text/css">
 <link rel="stylesheet" href="../resources/css/slicknav.min.css" 	type="text/css">
 <link rel="stylesheet" href="../resources/css/style.css" type="text/css">
-<link rel="stylesheet" href="../resources/css/mdb.dark.min.css" type="text/css">
-<link rel="stylesheet" href="../resources/css/mdb.dark.rtl.min.css" type="text/css">
-<link rel="stylesheet" href="../resources/css/mdb.min.css" type="text/css">
-<link rel="stylesheet" href="../resources/css/mdb.rtl.min.css" type="text/css">
+
 
 </head>
 <body>
@@ -103,11 +100,11 @@
 		<table class="table table-hover">
 			<thead>
 				<tr>
-					<th scope="col"></th>
-					<th scope="col">제목</th>
-					<th scope="col">작성자</th>
-					<th scope="col">작성일</th>
-					<th scope="col">조회</th>
+					<th></th>
+					<th>제목</th>
+					<th>작성자</th>
+					<th>작성일</th>
+					<th>조회</th>
 				</tr>
 			</thead>
 			<tbody>
