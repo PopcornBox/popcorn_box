@@ -87,9 +87,9 @@
 	                    <div class="col-lg-6 col-md-6">
 	                        <nav class="header__menu mobile-menu">
 	                            <ul>
-	                                <li><a href="./pb_main.html">홈</a></li>
-	                                <li><a href="./pb_chart_list.html">차트</a></li>
-	                                <li><a href="./pb_community.html">자유게시판</a>
+	                                <li><a href="../">홈</a></li>
+	                                <li><a href="../movie/mainlist">차트</a></li>
+	                                <li><a href="../board/main">자유게시판</a>
 	                                  <!-- <ul class="dropdown">
 	                                        <li><a href="./about.html">공지사항</a></li>
 	                                        <li><a href="./pb_ßcommunity.html">자유게시판</a></li>
