@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
  <%@ page trimDirectiveWhitespaces="true" %>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -24,79 +25,77 @@
 <link rel="stylesheet" href="../resources/css/owl.carousel.min.css" 	type="text/css">
 <link rel="stylesheet" href="../resources/css/slicknav.min.css" 	type="text/css">
 <link rel="stylesheet" href="../resources/css/style.css" type="text/css">
-<link rel="stylesheet" href="../resources/css/mdb.dark.min.css" type="text/css">
-<link rel="stylesheet" href="../resources/css/mdb.dark.rtl.min.css" type="text/css">
-<link rel="stylesheet" href="../resources/css/mdb.min.css" type="text/css">
-<link rel="stylesheet" href="../resources/css/mdb.rtl.min.css" type="text/css">
+
 
 </head>
 <body>
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
 
-    <!-- Offcanvas Menu Begin -->
-    <div class="offcanvas-menu-overlay"></div>
-    <div class="offcanvas-menu-wrapper">
-        <div class="offcanvas__option">
-            <div class="offcanvas__links">
-                <a href="#">로그인</a>
-                <a href="#">회원가입</a>
-            </div>
-        </div>
-        <div id="mobile-menu-wrap"></div>
-        <div class="offcanvas__text">
-            <p>PopcornBox</p>
-        </div>
-    </div>
-    <!-- Offcanvas Menu End -->
+	<!-- Offcanvas Menu Begin -->
+	<div class="offcanvas-menu-overlay"></div>
+	<div class="offcanvas-menu-wrapper">
+		<div class="offcanvas__option">
+			<div class="offcanvas__links">
+				<a href="#">로그인</a> <a href="#">회원가입</a>
+			</div>
+		</div>
+		<div id="mobile-menu-wrap"></div>
+		<div class="offcanvas__text">
+			<p>PopcornBox</p>
+		</div>
+	</div>
+	<!-- Offcanvas Menu End -->
 
-    <!-- Header Section Begin -->
-    <header class="header">
-        <div class="header__top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-7">
-                        <div class="header__top__left">
-                              <a href="../"><img src="../resources/images/popcornbox_logo.png" alt="logo" width="35%"></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-5">
-                        <div class="header__top__right">
-                            <div class="header__top__links">
-                                <a href="./pb_login.html">로그인</a>
-                                <a href="./pb_join_member.html">회원가입</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    <nav class="header__menu mobile-menu">
-                        <ul>
-                            <li><a href="../">홈</a></li>
-                            <li><a href="../movie/mainlist">차트</a></li>
-                            <li class="active" ><a href="../board/main">자유게시판</a> 
-                            </li>
-                            <li><a href="./pb_event.html">이벤트</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-lg-3 col-md- 10">
-                    <div class="header__nav__option">
-                        <a href="#" class="search-switch"><img src="../resources/img/icon/search.png" alt=""></a>
+	<!-- Header Section Begin -->
+	<header class="header">
+		<div class="header__top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-7">
+						<div class="header__top__left">
+							<a href="../"><img src="../resources/images/popcornbox_logo.png" alt="logo" width="35%"></a>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-5">
+						<div class="header__top__right">
+							<div class="header__top__links">
+								<a href="./pb_login.html">로그인</a> <a
+									href="./pb_join_member.html">회원가입</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6">
+					<nav class="header__menu mobile-menu">
+						<ul>
+							<li><a href="../">홈</a></li>
+							<li class="active"><a href="./pb_chart_list.html">차트</a></li>
+							<li><a href="../board/main">자유게시판</a></li>
+							<li><a href="./pb_event.html">이벤트</a></li>
+						</ul>
+					</nav>
+				</div>
+				<div class="col-lg-3 col-md- 10">
+					<div class="header__nav__option">
+						<a href="#" class="search-switch"><img
+							src="img/icon/search.png" alt=""></a>
 
-                    </div>
-                </div>
-            </div>
-            <div class="canvas__open"><i class="fa fa-bars"></i></div>
-        </div>
-    </header>
-    <!-- Header Section End -->
+					</div>
+				</div>
+			</div>
+			<div class="canvas__open">
+				<i class="fa fa-bars"></i>
+			</div>
+		</div>
+	</header>
+	<!-- Header Section End -->
 		  
 
 	<div class="container-fluid">

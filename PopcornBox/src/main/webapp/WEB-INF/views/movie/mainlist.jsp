@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>PopcornBox</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet"
@@ -33,7 +33,6 @@
 <link rel="stylesheet" href="../resources/css/slicknav.min.css"
 	type="text/css">
 <link rel="stylesheet" href="../resources/css/style.css" type="text/css">
-</head>
 </head>
 <body>
 	<!-- Page Preloder -->
@@ -103,6 +102,10 @@
 		</div>
 	</header>
 	<!-- Header Section End -->
+	
+	
+	
+	
 	<div class="container">
 		<table class="table">
 			<thead class="thead-blue">
