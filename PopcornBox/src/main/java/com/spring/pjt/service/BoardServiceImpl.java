@@ -35,7 +35,21 @@ public class BoardServiceImpl  implements BoardService{
 	@Override
 	public int insert(Board board) {
 		log.info("insert() 호출", board);
-		// TODO Auto-generated method stub
-		return 0;
+		int result = boardDao.create(board);
+		
+		return result;
+	}
+
+	@Override
+	public int update(Board board) {
+		log.info("update() 호출", board);
+		return boardDao.update(board);
+
+	}
+
+	@Override
+	public int delete(int board_no) {
+		log.info("delete() 호출", board_no);
+		return boardDao.delete(board_no);
 	}
 }

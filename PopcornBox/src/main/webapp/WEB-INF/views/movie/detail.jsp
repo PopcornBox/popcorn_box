@@ -69,7 +69,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-7">
                         <div class="header__top__left">
-                              <a href="./pb_main.html"><img src="../resources/images/popcornbox_logo.png" alt="logo" width="35%"></a>
+                              <a href="../"><img src="../resources/images/popcornbox_logo.png" alt="logo" width="35%"></a>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-5">
@@ -98,7 +98,7 @@
                 </div>
                 <div class="col-lg-3 col-md- 10">
                     <div class="header__nav__option">
-                        <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
+                        <a href="#" class="search-switch"><img src="../resources/img/icon/search.png" alt=""></a>
 
                     </div>
                 </div>
@@ -167,7 +167,7 @@
 					<div class="col-lg-3 col-md-6 col-sm-6">
 						<div class="footer__about">
 							<div class="footer__logo">
-								<a href="#"><img src="img/logo_white.png" alt=""></a>
+								<a href="#"><img src="../resources/img/logo_white.png" alt=""></a>
 							</div>
 							<p>
 								Copyright ©

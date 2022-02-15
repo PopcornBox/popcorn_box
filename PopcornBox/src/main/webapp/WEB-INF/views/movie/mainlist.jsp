@@ -63,9 +63,7 @@
 				<div class="row">
 					<div class="col-lg-6 col-md-7">
 						<div class="header__top__left">
-							<a href="./pb_main.html"><img
-								src="../resources/images/popcornbox_logo.png" alt="logo"
-								width="35%"></a>
+							<a href="../"><img src="../resources/images/popcornbox_logo.png" alt="logo" width="35%"></a>
 						</div>
 					</div>
 					<div class="col-lg-6 col-md-5">
@@ -106,8 +104,8 @@
 	</header>
 	<!-- Header Section End -->
 	<div class="container">
-		<table class="table table-blue table-striped">
-			<thead>
+		<table class="table">
+			<thead class="thead-blue">
 				<tr>
 					<th>영화순위</th>
 					<th></th>
@@ -173,10 +171,8 @@
 
 
 
-	<script
-		src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

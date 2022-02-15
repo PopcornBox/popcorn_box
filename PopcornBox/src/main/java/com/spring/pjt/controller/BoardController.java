@@ -30,5 +30,53 @@ public class BoardController {
 		model.addAttribute("boardList", list);
 		
 	}
-
+	
+	@RequestMapping(value = "/insert", method = RequestMethod.GET)
+	public void insert() {
+		log.info("insert() GET 호출");
+	}
+	
+	@RequestMapping(value="/insert", method = RequestMethod.POST)
+	public String insert(Board board) {
+		log.info("insert({}) POST 호출", board);
+		
+		boardService.insert(board);
+		
+		return "redirect:/board/main";
+	}
+	
+	
+	@RequestMapping(value = "/detail", method=RequestMethod.GET)
+	public void detail (int board_no, Model model) {
+		Board board = boardService.select(board_no);
+		model.addAttribute("board", board);
+	}
+	
+	@RequestMapping(value="/update", method = RequestMethod.GET)
+	public void update(int board_no, Model model) {
+		log.info("update(board_no={}) GET 호출", board_no);
+		
+		Board board = boardService.select(board_no);
+		model.addAttribute("board", board);
+	}
+	
+	@RequestMapping
+	public String update(Board board) {
+		log.info("update(board_no={}) POST호출", board);
+		
+		boardService.update(board);
+		
+		return "redirect:/board/main";
+		
+	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String delete(int board_no) { // 
+		log.info("delete(bno={}) 호출", board_no);
+		
+		boardService.delete(board_no);
+		
+		return "redirect:/board/main";
+	}
+	
 }

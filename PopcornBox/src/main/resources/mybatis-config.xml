@@ -9,6 +9,7 @@
 		<property name="TBL_BOARDS" value="boards"/>
 		<property name="COL_BOARD_NO" value="board_no"/>
 		<property name="COL_BOARD_MODE" value="board_mode"/>
+		<!-- USER 테이블의 user_nickname 컬럼 이름은 동일하므로 생략 -->
 		<property name="COL_BOARD_TITLE" value="board_title"/>
 		<property name="COL_BOARD_CONTENT" value="board_content"/>
 		<property name="COL_BOARD_UPDATE_TIME" value="board_update_time"/>
