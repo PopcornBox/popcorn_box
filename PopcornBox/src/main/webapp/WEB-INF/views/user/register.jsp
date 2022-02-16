@@ -227,55 +227,6 @@
 	    </section>
 	    <!-- Checkout Section End -->
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
-		<div class="container-fluid">			
-			<div>
-				<form action="./register" method="post">
-					<div>
-						<input type="text" id="user_id" name="user_id" placeholder="아이디" required />
-						<div class="valid_id">사용 가능한 아이디입니다!</div>
-						<div class="invalid_id">이미 사용 중인 아이디입니다.</div>
-						<div class="invalid_id2">5~20자의 영문, 숫자만 사용 가능합니다.</div>
-					</div>
-					<div>
-						<input type="text" id="user_nickname" name="user_nickname" placeholder="닉네임" required />
-						<div class="valid_nickname">사용 가능한 닉네임입니다!</div>
-						<div class="invalid_nickname">이미 사용 중인 닉네임입니다.</div>
-						<div class="invalid_nickname2">15자 이내의 한글, 영문, 숫자만 사용 가능합니다.</div>
-					</div>
-					<div>
-						<input type="password" id="user_pwd" name="user_pwd" placeholder="비밀번호" required />
-						<div class="valid_pwd">사용 가능한 비밀번호입니다!</div>
-						<div class="invalid_pwd">8~16자의 영문, 숫자, 특수문자를 사용하세요.</div>
-					</div>
-					<div>
-						<input type="password" id="user_repwd" name="user_repwd" placeholder="비밀번호 확인" required />
-						<div class="valid_repwd">비밀번호가 일치합니다!</div>
-						<div class="invalid_repwd">비밀번호가 일치하지 않습니다.</div>
-					</div>
-					<div>
-						<input type="email" id="user_email" name="user_email" placeholder="abc@abc.com" required />
-						<div class="valid_email">사용 가능한 이메일입니다!</div>
-						<div class="invalid_email">이미 사용 중인 이메일입니다.</div>
-						<div class="invalid_email2">이메일이 유효하지 않습니다.</div>
-					</div>
-					<div>
-						<input type="submit" id="btn-complete" value="작성 완료" />
-					</div>
-				</form>
-			</div>
-			
-		</div>
-		
 	    <!-- Js Plugins -->
 	    <script src="../resources/js/jquery-3.3.1.min.js"></script>
 	    <script src="../resources/js/bootstrap.min.js"></script>
