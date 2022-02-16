@@ -25,7 +25,7 @@
 			<ul>
 				<li><a href="../">메인</a></li>
 				<li><a href="./main">게시판 메인</a></li>
-				<li><a id="menu-delete" href="./delete?bno=${board.board_no}">삭제</a></li>
+				<li><a id="menu-delete" href="./delete?board_no=${board.board_no}">삭제</a></li>
 			</ul>
 		</nav>
 
