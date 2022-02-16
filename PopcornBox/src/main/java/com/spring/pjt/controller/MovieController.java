@@ -35,5 +35,16 @@ public class MovieController {
 		
 		Movie movie = movieService.select(movie_no);
 		model.addAttribute("movie", movie);
+		
+	}
+	
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public String search(int type, String keyword, Model model) {
+		log.info("search(type={}, keyword={})", type, keyword);
+		
+		List<Movie> list = movieService.select(type, keyword);
+		model.addAttribute("movieList", list);
+		
+		return "movie/mainlist"; 
 	}
 }

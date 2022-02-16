@@ -8,5 +8,5 @@ public interface MovieDao {
 
 	public List<Movie> read();
 	Movie read(int movie_no);
-
+	List<Movie> read(int type, String keyword);
 }
