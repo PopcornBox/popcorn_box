@@ -36,5 +36,8 @@ public class MovierDaoTest {
 		Movie movie = movieDao.read(1);
 		log.info(movie.toString());
 		
+	List<Movie> list = movieDao.read(4, "TEST");
+		log.info("키워드 검색 결과: {}개 행", list.size());
+		
 	}
 }

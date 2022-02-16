@@ -8,4 +8,5 @@ public interface MovieService {
 	
 	List<Movie> select();
 	Movie select(int movie_no);
+	List<Movie> select(int searchType, String searchKeyword);
 }
