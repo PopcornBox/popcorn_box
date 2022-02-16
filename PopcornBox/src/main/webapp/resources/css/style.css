@@ -84,6 +84,7 @@ p {
 
 img {
 	max-width: 100%;
+	height: auto;
 }
 
 input:focus,
@@ -97,7 +98,6 @@ a:hover,
 a:focus {
 	text-decoration: none;
 	outline: none;
-	color: #ffffff;
 }
 
 ul,
@@ -188,7 +188,10 @@ ol {
 	border: none;
 	text-transform: uppercase;
 	display: inline-block;
-	padding: 14px 30px;
+	padding: 14.5px 129px;
+	padding-top:10px;
+	margin-bottom: 10px;
+	border-radius: 5px;
 }
 
 /* Preloder */
@@ -3016,8 +3019,36 @@ ol {
 	float: right;
 }
 
-.checkout__find__text li+li::before{
-//
+/* 회원가입 아이디 비밀번호 찾기 css */
+.checkout__find__text a:hover{ /* 마우스 올린 효과 */
+	text-decoration: underline;
+	color: #848484;
+}
+
+.checkout__find__text .find__text{ /* 텍스트 가운데 정렬 */
+    padding: 10px 28px 40px 0;
+    text-align: center;
+    font-size: small;
+}
+
+.checkout__find__text li{ /* 리스트 옆으로 밀기 */
+    list-style: none;
+    display: inline;
+    margin: 0;
+    padding-left: 28px;
+    position: relative;
+}
+
+.checkout__find__text li+li::before{ /* 텍스트 사이에 바 추가 */
+	list-style: none;
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 12px;
+    width: 1px;
+    height: 13px;
+    border-radius: 0.5px;
+    background-color: #dadada;
 }
 
 /*---------------------
