@@ -68,7 +68,7 @@
 	                    <div class="row">
 	                        <div class="col-lg-6 col-md-7">
 	                            <div class="header__top__left">
-	                                  <a href="./pb_main.html"><img src="img/logo_black.png" alt="" width="30%"></a>
+	                                  <a href="../"><img src="../resources/images/popcornbox_logo.png" alt="logo" width="35%"></a>
 	                            </div>
 	                        </div>
 	                        <div class="col-lg-6 col-md-5">
@@ -76,6 +76,7 @@
 	                                <div class="header__top__links">
 	                                    <a href="./signin">로그인</a>
 	                                    <a href="./register">회원가입</a>
+	                                    <a href="./mypage">마이페이지</a>
 	                                </div>
 	                            </div>
 	                        </div>
@@ -135,7 +136,7 @@
 	                <form action="./register" method="post">
 	                    <div class="row">
 	                        <div class="col-lg-8 col-md-6">
-	                            <h6 class="checkout__title">안녕하세요. 회원정보를 입력해주세요.</h6>
+	                            <h6 class="checkout__title">안녕하세요, 회원정보를 입력해주세요.</h6>
 	                            <div class="checkout__input ">
 	                                <p>아이디<span>*</span></p>
 	                                <div style="display:flex">
@@ -158,17 +159,23 @@
 	                            
 	                            <div class="checkout__input">
 	                                <p>비밀번호<span>*</span></p>
-	                                <input type="text" placeholder="영문, 숫자, 특수기호 중 2가지 이상 조합" class="checkout__input__add">
-	                                <p>비밀번호확인<span>*</span></p>
-	
-	                                <input type="text" placeholder="비밀번호 확인">
+	                                <input type="password" id="user_pwd" name="user_pwd" placeholder="8~16자의 영문, 숫자, 특수문자 모두 포함" class="checkout__input__add" required />
+	                                <div class="valid_pwd">사용 가능한 비밀번호입니다!</div>
+									<div class="invalid_pwd">8~16자의 영문, 숫자, 특수문자를 사용하세요.</div>
+	                                <p>비밀번호 확인<span>*</span></p>
+	                                <input type="password" id="user_repwd" name="user_repwd" placeholder="비밀번호 확인" required />
+									<div class="valid_repwd">비밀번호가 일치합니다!</div>
+									<div class="invalid_repwd">비밀번호가 일치하지 않습니다.</div>	                                
 	                            </div>
 	                            <div class="checkout__input">
 	                                <p>이메일 주소<span>*</span></p>
-	                                <input type="text" placeholder="popcorn@box.com" >
+	                                <input type="email" id="user_email" name="user_email" placeholder="popcorn@box.com" required />
+	                                <div class="valid_email">사용 가능한 이메일입니다!</div>
+									<div class="invalid_email">이미 사용 중인 이메일입니다.</div>
+									<div class="invalid_email2">이메일이 유효하지 않습니다.</div>
 	                            </div>
-	                            <div>
-	                            <a href="#" class="primary-btn">회원가입</a>
+	                            <div class="col-lg-12 text-center">
+	                            <button type="submit" class="primary-btn">회원가입</button>	                            
 	                            </div>
 	
 	
@@ -229,7 +236,7 @@
 		
 		
 		
-		
+
 		<div class="container-fluid">			
 			<div>
 				<form action="./register" method="post">

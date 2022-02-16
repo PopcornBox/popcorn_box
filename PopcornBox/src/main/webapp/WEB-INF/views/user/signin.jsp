@@ -55,7 +55,7 @@
 	                    <div class="row">
 	                        <div class="col-lg-6 col-md-7">
 	                            <div class="header__top__left">
-	                                  <a href="./pb_main.html"><img src="img/logo_black.png" alt="" width="30%"></a>
+	                                  <a href="../"><img src="../resources/images/popcornbox_logo.png" alt="logo" width="35%"></a>
 	                            </div>
 	                        </div>
 	                        <div class="col-lg-6 col-md-5">
@@ -63,6 +63,7 @@
 	                                <div class="header__top__links">
 	                                    <a href="./signin">로그인</a>
 	                                    <a href="./register">회원가입</a>
+	                                    <a href="./mypage">마이페이지</a>
 	                                </div>
 	                            </div>
 	                        </div>
@@ -134,9 +135,8 @@
 	                                    </div>
 	                                </div>
 	                            </div>
-	                            <div class="col-lg-12 text-center">
-	
-	                                <button type="submit" class="site-btn">로그인하기</button>
+	                            <div class="col-lg-12 text-center">	
+	                                <button type="submit" class="site-btn">로그인</button>
 	                                <!-- <input type="submit" value="로그인" /> -->
 	                                
 	                                <div>
