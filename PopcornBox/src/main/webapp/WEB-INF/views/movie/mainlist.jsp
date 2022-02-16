@@ -26,8 +26,8 @@
 	type="text/css">
 <link rel="stylesheet" href="../resources/css/magnific-popup.css"
 	type="text/css">
-<link rel="stylesheet" href="../resources/css/nice-select.css"
-	type="text/css">
+<!-- <link rel="stylesheet" href="../resources/css/nice-select.css"
+	type="text/css"> -->
 <link rel="stylesheet" href="../resources/css/owl.carousel.min.css"
 	type="text/css">
 <link rel="stylesheet" href="../resources/css/slicknav.min.css"
@@ -35,6 +35,21 @@
 <link rel="stylesheet" href="../resources/css/style.css" type="text/css">
 </head>
 <body>
+
+          		<div> <!-- 검색 기능 UI -->
+					<form name="search" style="margin-right:20px;" method="get" align="right"  
+					action ="./search" >    
+					<select name="type"  >            
+						<option value="1">제목</option>
+                        <option value="2">배우</option>
+                        <option value="3">감독</option>
+                        <option value="4">쟝르</option>
+                    </select>
+                    <input type="text" name="keyword" placeholder="검색어 입력" required />
+                    <input type="submit" value="검색" />
+                </form>
+            </div>
+            
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
@@ -164,7 +179,7 @@
 	<!-- Js Plugins -->
 	<script src="../resources/js/jquery-3.3.1.min.js"></script>
 	<script src="../resources/js/bootstrap.min.js"></script>
-	<script src="../resources/js/jquery.nice-select.min.js"></script>
+	<!-- <script src="../resources/js/jquery.nice-select.min.js"></script> -->
 	<script src="../resources/js/jquery.nicescroll.min.js"></script>
 	<script src="../resources/js/jquery.magnific-popup.min.js"></script>
 	<script src="../resources/js/jquery.countdown.min.js"></script>

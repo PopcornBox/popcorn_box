@@ -29,9 +29,6 @@
                 </form>
             </div>
 
-<!-- align : 정렬 , style : 스타일 정보 포함 (margin : 여백 설정) , 
-method : 전달 방식 ,  action : submit 시 이동 경로 ,-->
-
 
             
 	<div class="container-fluid">
