@@ -30,6 +30,14 @@ public class MovieServiceimpl implements MovieService{
 		
 		Movie movie = movieDao.read(movie_no);
 		return movie;
+		
+	}
+	
+	@Override
+	public List<Movie> select(int searchType, String searchKeyword) {
+		log.info("select(searchType={}, searchType={})", searchType, searchKeyword);
+		
+		return movieDao.read(searchType, searchKeyword);
 	}
 
 }

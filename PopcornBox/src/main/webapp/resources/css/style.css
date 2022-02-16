@@ -3016,6 +3016,10 @@ ol {
 	float: right;
 }
 
+.checkout__find__text li+li::before{
+//
+}
+
 /*---------------------
     Blog
 -----------------------*/
