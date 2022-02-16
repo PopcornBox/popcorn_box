@@ -126,6 +126,7 @@
 						<td><a href="./detail?movie_no=${movie.movie_no}">${movie.movie_title}</a>
 						</td>
 						<td></td>
+						<td></td>
 					</tr>
 				</c:forEach>
 			</tbody>

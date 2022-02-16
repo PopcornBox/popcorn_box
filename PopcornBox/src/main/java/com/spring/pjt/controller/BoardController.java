@@ -1,5 +1,7 @@
 package com.spring.pjt.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
+
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.pjt.domain.Board;
 import com.spring.pjt.service.BoardService;
@@ -60,7 +63,7 @@ public class BoardController {
 		model.addAttribute("board", board);
 	}
 	
-	@RequestMapping
+	@RequestMapping(value="/update", method = RequestMethod.POST)
 	public String update(Board board) {
 		log.info("update(board_no={}) POST호출", board);
 		
@@ -71,8 +74,9 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public String delete(int board_no) { // 
-		log.info("delete(bno={}) 호출", board_no);
+	public String delete(int board_no ) { // 
+		log.info("delete(board_no={}) 호출", board_no);
+
 		
 		boardService.delete(board_no);
 		

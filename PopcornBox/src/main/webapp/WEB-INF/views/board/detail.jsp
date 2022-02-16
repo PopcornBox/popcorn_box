@@ -141,11 +141,6 @@
 					id="board_user_nickname" name="board_user_nickname"
 					value="${board.user_nickname}" required readonly />
 			</div>
-			<label for="board_user_nickname">아이디</label> <input type="text"
-					id="board_user_nickname" name="board_user_nickname"
-					value="${board.user_id}" required readonly />
-			</div>
-			<div>
 
 				<label for="reg_date">최종 수정 시간</label>
 				<fmt:formatDate value="${board.board_update_time}"

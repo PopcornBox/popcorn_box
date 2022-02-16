@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.pjt.domain.Board;
 import com.spring.pjt.persistence.BoardDao;
+import com.spring.pjt.persistence.UserDao;
 
 @Service
 public class BoardServiceImpl  implements BoardService{
@@ -27,7 +28,7 @@ public class BoardServiceImpl  implements BoardService{
 	public Board select(int board_no) {
 		log.info("select(board_no={}) 호출", board_no);
 		Board board = boardDao.read(board_no);
-		//boardDao.updateViewCnt(board_bno);
+		boardDao.UpdateViewCnt(board_no);
 		
 		return board;
 	}
@@ -43,13 +44,14 @@ public class BoardServiceImpl  implements BoardService{
 	@Override
 	public int update(Board board) {
 		log.info("update() 호출", board);
+		
 		return boardDao.update(board);
-
 	}
 
 	@Override
 	public int delete(int board_no) {
 		log.info("delete() 호출", board_no);
+		
 		return boardDao.delete(board_no);
 	}
 }
