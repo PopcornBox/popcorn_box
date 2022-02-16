@@ -79,9 +79,17 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 	@Override
-	public User changeNickname(String user_nickname, String user_id) {
-		log.info("changeNickname(user_nickname={}) 호출");
-		return null;
+	public void userInfoUpdate(User user) {
+		log.info("userInfoUpdate(user_nickname:{}) 호출");
+		sqlSession.update(USER_NAMESPACE + ". userInfoUpdate", user);
+		
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("user_id", user.getUser_id());
+		map.put("user_nickname", user.getUser_nickname());
+		map.put("user_email", user.getUser_email());
+		map.put("user_update_time", user.getUser_update_time());
+		
+		sqlSession.update(USER_NAMESPACE + ". userInfoUpdate", map);
 	}
 	
 	@Override

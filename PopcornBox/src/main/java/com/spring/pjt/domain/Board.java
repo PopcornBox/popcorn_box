@@ -7,7 +7,6 @@ public class Board {
 	private int board_mode;
 	private String board_title;
 	private String board_content;
-	private String user_id;
 	private String user_nickname;
 	private Date board_update_time;
 	private int board_view_cnt;
@@ -15,9 +14,8 @@ public class Board {
 	
 	public Board() {}
 
-	public Board(int board_no, int board_mode, String board_title, String user_nickname, Date board_update_time, String board_content, String user_id,
+	public Board(int board_no, int board_mode, String board_title, String user_nickname, Date board_update_time, String board_content,
 			int board_view_cnt, int board_reply_cnt) {
-		super();
 		this.board_no = board_no;
 		this.board_mode = board_mode;
 		this.board_title = board_title;
@@ -26,7 +24,7 @@ public class Board {
 		this.board_update_time = board_update_time;
 		this.board_view_cnt = board_view_cnt;
 		this.board_reply_cnt = board_reply_cnt;
-		this.user_id = user_id;
+		
 	}
 
 
@@ -96,20 +94,11 @@ public class Board {
 		this.board_content = board_content;
 	}
 	
-	
-
-	public String getUser_id() {
-		return user_id;
-	}
-
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
-	}
 
 	@Override
 	public String toString() {
-		return String.format("Board{board_no:%d, board_mode%d, board_title:%s, user_nickname:%s, user_id:%s, board_content:%s, boarad_update_time:%s, board_view_cnt:%d, board_reply_cnt:%d}", 
-				this.board_no, this.board_mode, this.board_title, this.user_id, this.user_nickname, this.board_content, this.board_update_time, this.board_view_cnt, this.board_reply_cnt);
+		return String.format("Board {board_no:%d, board_mode:%d, board_title:%s, user_nickname:%s, board_content:%s, boarad_update_time:%s, board_view_cnt:%d, board_reply_cnt:%d}", 
+				this.board_no, this.board_mode, this.board_title, this.user_nickname, this.board_content, this.board_update_time, this.board_view_cnt, this.board_reply_cnt);
 	}
 	
 	

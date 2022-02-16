@@ -85,7 +85,7 @@
 				<div class="col-lg-3 col-md- 10">
 					<div class="header__nav__option">
 						<a href="#" class="search-switch"><img
-							src="img/icon/search.png" alt=""></a>
+							src="../resources/img/icon/search.png" alt=""></a>
 
 					</div>
 				</div>
@@ -105,16 +105,18 @@
 	 <div> <!-- 입력 양식 -->
                 <form method="post"> <!-- /board/insert POST submit -->
                     <div>
-                        <input type="text" name="title" placeholder="제목 입력" required autofocus />
+                        <input type="text" name="board_title" placeholder="제목 입력" required autofocus />
                     </div>
                     <div>
-                        <textarea rows="5" name="content" placeholder="내용 입력" required></textarea>
+                        <textarea rows="5" name="board_content" placeholder="내용 입력" required></textarea>
                     </div>
-                    <div>
-                        <input type="text" name="userid" value="${signInUserId}" required readonly />
+                    
+                     <div>
+                        <input type="text" name="user_nickname" value="${signInUserNickname}" required readonly />
                     </div>
+                    
                     <div>
-                        <input type="submit" value="작성 완료">
+                        <input type="submit" class="btn btn-outline-dark" value="작성 완료">
                     </div>
                 </form>
             </div>
