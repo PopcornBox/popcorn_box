@@ -13,6 +13,7 @@
 	</head>
 	<body>
 		<h1>userInfo 페이지입니다.</h1>
+		<!-- https://melonpeach.tistory.com/42 확인한번만해볼것 -->
 		 <fieldset>
 			<div class="form-group">
 				<label class="control-label" for="fullName">ID</label>
