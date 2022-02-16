@@ -325,8 +325,9 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/userInfo", method = RequestMethod.GET)
-	public void userInfo(String user_id) {
-		log.info("userInfo(user_id: {}) GET 호출", user_id);	
+	public void userInfo(User user, String user_nickname) {
+		log.info("userInfo(user_nickname: {}) GET 호출", user_nickname);
+		
 	}
 	
 	@RequestMapping(value = "/userInfoUpdate", method = RequestMethod.POST)
