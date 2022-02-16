@@ -126,7 +126,7 @@
 	            <div class="checkout__form">
 	                <form action="./signin" method="post">
 	                    <div class="row">
-	                        <div class="col-lg-8 col-md-6">
+	                        <div class="col-md-8 col-md-6">
 	                            <div class="row align-">
 	                                <div class="col-lg-6">
 	                                    <div class="checkout__input">
@@ -149,13 +149,18 @@
 											<a href="https://kauth.kakao.com/oauth/authorize?client_id=cc1754dab9a17adb7dd44164ff108ba7&redirect_uri=http://localhost:8181/pjt/user/kakaologin&response_type=code">
 											<img alt="카카오 로그인" src="../resources/img/kakao_login_medium_wide.png"></a>
 										</div>
-										<li>
-											<a href="./register">회원가입</a>
-										</li>
-										<li>
-											<a href="./find_userid">아이디</a>/<a href="./find_userpwd">비밀번호 찾기</a>
-										</li>
-										<div>
+										<div class="find__text">
+											<li>
+												<a href="./register">회원가입</a>
+											</li>
+											<li>
+												<a href="./find_userid">아이디 찾기</a>
+											</li>
+											<li>
+												<a href="./find_userpwd">비밀번호 찾기</a>
+											</li>
+										</div>
+											<div>
 											<input type="hidden" name="url" value="${url}" />
 										</div>
 										<div>
