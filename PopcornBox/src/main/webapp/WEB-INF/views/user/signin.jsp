@@ -24,6 +24,12 @@
 	    <link rel="stylesheet" href="../resources/css/owl.carousel.min.css" type="text/css">
 	    <link rel="stylesheet" href="../resources/css/slicknav.min.css" type="text/css">
 	    <link rel="stylesheet" href="../resources/css/style.css" type="text/css">
+	    
+  		<style>
+	    .header__top__links img{
+      		padding-left: 20px;
+   		 }
+    	</style>	    
 	</head>
 	
 	<body>
@@ -55,15 +61,15 @@
 	                    <div class="row">
 	                        <div class="col-lg-6 col-md-7">
 	                            <div class="header__top__left">
-	                                  <a href="../"><img src="../resources/images/popcornbox_logo.png" alt="logo" width="35%"></a>
+	                                  <a href="../"><img src="../resources/img/popcornbox_logo.png" alt="logo" width="35%"></a>
 	                            </div>
 	                        </div>
 	                        <div class="col-lg-6 col-md-5">
 	                            <div class="header__top__right">
 	                                <div class="header__top__links">
-	                                    <a href="./signin">로그인</a>
-	                                    <a href="./register">회원가입</a>
-	                                    <a href="./mypage">마이페이지</a>
+	                                    <a href="./signin"><img src="../resources/img/login.png" alt="로그인" width="10%">로그인</a>
+	                                    <a href="./register"><img src="../resources/img/register.png" alt="회원가입" width="10%">회원가입</a>
+	                                    <a href="./mypage"><img src="../resources/img/mypage.png" alt="마이페이지" width="10%">마이페이지</a>
 	                                </div>
 	                            </div>
 	                        </div>
@@ -141,7 +147,7 @@
 	                                
 	                                <div>
 										<a href="https://kauth.kakao.com/oauth/authorize?client_id=cc1754dab9a17adb7dd44164ff108ba7&redirect_uri=http://localhost:8181/pjt/user/kakaologin&response_type=code">
-										<img alt="카카오 로그인" src="../resources/images/kakao_login_medium_wide.png"></a>
+										<img alt="카카오 로그인" src="../resources/img/kakao_login_medium_wide.png"></a>
 									</div>
 									<li>
 										<a href="./register">회원가입</a>
