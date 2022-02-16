@@ -82,4 +82,10 @@ public class UserServiceImpl implements UserService {
 		log.info("validateKey(user: {}) 호출", user);
 		return userDao.alter_userKey2(user);
 	}
+	
+	@Override
+	public void userInfoUpdate(User user) {
+		log.info("userInfoUpdate(user: {}) 호출", user);
+		userDao.userInfoUpdate(user);
+	}
 }

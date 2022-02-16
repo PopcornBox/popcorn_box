@@ -63,7 +63,7 @@
     </update> 
     
     <!-- 회원 닉네임 변경 -->
-    <update id="alter_user_nickname">
+    <update id="userinfo_update">
 	UPDATE ${TABLE_USERS}
 	SET ${COL_USER_NICKNAME} = #{user_nickname} where ${COL_USER_ID} = #{user_id}
 								and ${COL_USER_NICKNAME} = #{user_nickname}

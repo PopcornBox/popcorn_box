@@ -12,4 +12,5 @@ public interface UserService {
 	User readUserByEmail(String user_email);
     int resetPwd(User user);
     int validateKey(User user);
+    void userInfoUpdate(User user);
 }
