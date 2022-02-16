@@ -68,7 +68,7 @@
 	                    <div class="row">
 	                        <div class="col-lg-6 col-md-7">
 	                            <div class="header__top__left">
-	                                  <a href="../"><img src="../resources/images/popcornbox_logo.png" alt="logo" width="35%"></a>
+	                                  <a href="../"><img src="../resources/img/popcornbox_logo.png" alt="logo" width="35%"></a>
 	                            </div>
 	                        </div>
 	                        <div class="col-lg-6 col-md-5">
