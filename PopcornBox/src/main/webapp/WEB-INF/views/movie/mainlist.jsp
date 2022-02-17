@@ -43,7 +43,7 @@
 						<option value="1">제목</option>
                         <option value="2">배우</option>
                         <option value="3">감독</option>
-                        <option value="4">쟝르</option>
+                        <option value="4">장르</option>
                     </select>
                     <input type="text" name="keyword" placeholder="검색어 입력" required />
                     <input type="submit" value="검색" />
@@ -60,7 +60,7 @@
 	<div class="offcanvas-menu-wrapper">
 		<div class="offcanvas__option">
 			<div class="offcanvas__links">
-				<a href="#">로그인</a> <a href="#">회원가입</a>
+				<a href="../user/signin">로그인</a> <a href="../user/register">회원가입</a>
 			</div>
 		</div>
 		<div id="mobile-menu-wrap"></div>
@@ -83,8 +83,8 @@
 					<div class="col-lg-6 col-md-5">
 						<div class="header__top__right">
 							<div class="header__top__links">
-								<a href="./pb_login.html">로그인</a> <a
-									href="./pb_join_member.html">회원가입</a>
+								<a href="../user/signin">로그인</a> <a
+									href="../user/register">회원가입</a>
 							</div>
 						</div>
 					</div>

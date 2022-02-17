@@ -526,13 +526,17 @@ ol {
     display: flex;
 }
 
+.header__nav__option input.search{
+	max-width: 150px;
+}
+
 /* search__inputbox */
 .header__nav__option .search-text {
     width : 100%;
-		border: 1px solid #e1e1e1;
-		font-size: 14px;
-		color: #b7b7b7;
-		padding-right: 20px;
+	border: 1px solid #e1e1e1;
+	font-size: 14px;
+	color: #b7b7b7;
+	padding-right: 20px;
 }
 
 
@@ -2859,7 +2863,7 @@ ol {
 	width: 100%;
 	border: 1px solid #e1e1e1;
 	font-size: 14px;
-	color: #b7b7b7;
+	color: #535353;
 	padding-left: 20px;
 	margin-bottom: 20px;
 }
@@ -3805,6 +3809,9 @@ ol {
 		position: absolute;
 		right: 15px;
 		top: 25px;
+	    z-index: 97;
+	    opacity: 1;
+	    background-color: white;
 	}
 	.offcanvas-menu-overlay {
 		position: fixed;
