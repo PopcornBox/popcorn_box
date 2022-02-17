@@ -38,7 +38,7 @@
 
             		<div> <!-- 검색 기능 UI -->
 					<form name="search" align="right" style="margin-right:20px;" method = "get"  
-					action ="./search" >
+					action ="./movie/search" >
                     <select name="type">
                         <option value="1">제목</option>
                         <option value="2">배우</option>
@@ -129,7 +129,7 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-lg-6 col-md-6">
+                <div class="col-md-8 col-md-4">
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li class="active"><a href="#">홈</a></li>
@@ -139,11 +139,21 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="col-lg-3 col-md- 10">
+                <div class="col-md-3 col-md-">
                     <div class="header__nav__option">
-                        <!--/* Search */ -->
-                        <input type="search" id="search" name="search" class="search-text" placeholder="영화 검색 ">
-                        <a href="#" class="search-switch"><img src="./resources/img/icon/search.png" alt=""></a>
+                         <div>
+							<form name="search" align="right" style="margin-right:20px;" method = "get"  
+								action ="./movie/search" >
+			                    <select name="type">
+			                        <option value="1">제목</option>
+			                        <option value="2">배우</option>
+			                        <option value="3">감독</option>
+			                        <option value="4">장르</option>
+			                    </select>
+			                    <input class="search" type="text" name="keyword" placeholder="검색어 입력" required />
+			                    <input type="submit" value="검색" />
+			                </form>
+			            </div>
                     </div>
                 </div>
             </div>

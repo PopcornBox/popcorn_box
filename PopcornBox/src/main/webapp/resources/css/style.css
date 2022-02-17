@@ -526,13 +526,17 @@ ol {
     display: flex;
 }
 
+.header__nav__option input.search{
+	max-width: 150px;
+}
+
 /* search__inputbox */
 .header__nav__option .search-text {
     width : 100%;
-		border: 1px solid #e1e1e1;
-		font-size: 14px;
-		color: #b7b7b7;
-		padding-right: 20px;
+	border: 1px solid #e1e1e1;
+	font-size: 14px;
+	color: #b7b7b7;
+	padding-right: 20px;
 }
 
 
