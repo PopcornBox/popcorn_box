@@ -55,8 +55,8 @@ public class SignedInInterceptor implements HandlerInterceptor {
 		Object user = modelAndView.getModel().get("signInUser");
 		if (user != null) { // 테이블에 아이디/비밀번호가 일치하는 사용자가 있는 경우 -> 로그인 성공
 			// 세션에 로그인 사용자 닉네임, 아이디를 저장
-			session.setAttribute("signInUserNickname", ((User) user).getUser_nickname());
 			session.setAttribute("signInUserId", ((User) user).getUser_id());
+			session.setAttribute("signInUserNickname", ((User) user).getUser_nickname());
 			log.info((String) session.getAttribute("signInUserNickname"));
 			log.info((String) session.getAttribute("signInUserId"));
 			
