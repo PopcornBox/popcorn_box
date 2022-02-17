@@ -435,6 +435,12 @@ ol {
 	margin-top: 15px;
 }
 
+@media only screen and (max-width: 767px){
+	.header div.row{
+		display: none;
+	}
+}
+
 .header__menu {
 	/* text-align: center; */
 	padding: 26px 0 25px;
