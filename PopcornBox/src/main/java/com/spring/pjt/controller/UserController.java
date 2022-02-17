@@ -212,10 +212,9 @@ public class UserController {
         	model.addAttribute("signInUser", signInUser);
         	session.setAttribute("signInUser", signInUser);
         } else { // DB에 없는(회원가입하지 않은) 이메일
-        	// 회원가입 진행
+//        	return "user/register";// 회원가입 진행
         }
-        
-       
+           
 	}
 	
 	@RequestMapping(value = "/signout", method = RequestMethod.GET)
