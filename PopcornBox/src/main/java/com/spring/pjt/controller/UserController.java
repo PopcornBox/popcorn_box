@@ -221,7 +221,7 @@ public class UserController {
 	}
 	
 	//TODO
-	@RequestMapping(value = "/signout", produces = "application/json", method = RequestMethod.GET)
+	@RequestMapping(value = "/signout", method = RequestMethod.GET)
 	public String signOut(HttpSession session) {
 		log.info("session.accessToken : {}", session.getAttribute("accessToken"));
 		
@@ -232,6 +232,24 @@ public class UserController {
 			log.info("로그인 후 반환되는 아이디 : {}", node.get("id"));
 		}
 		
+		// 세션에 저장된 모든 데이터를 삭제 -> 메인 페이지로 이동
+		session.invalidate();	
+		
+		return "redirect:/";
+	}
+	
+	//TODO
+	@RequestMapping(value = "/kakaologout", produces = "application/json", method = RequestMethod.GET)
+	public String kakaoLogout(HttpSession session) {
+		log.info("session.accessToken : {}", session.getAttribute("accessToken"));
+		
+		if (session.getAttribute("accessToken") != null) {
+			//노드에 로그아웃한 결괏값을 담아줌. 매개변수는 세션에 잇는 accessToken을 가져와 문자열로 변환
+			JsonNode node = kakaoLoginService.kakaoLogout(session.getAttribute("accessToken").toString());
+			// 결괏값 출력
+			log.info("로그인 후 반환되는 아이디 : {}", node.get("id"));
+		}	
+			
 		// 세션에 저장된 모든 데이터를 삭제 -> 메인 페이지로 이동
 		session.invalidate();	
 		
