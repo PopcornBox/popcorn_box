@@ -90,17 +90,19 @@
 										</c:if>
 										<c:if test="${not empty signInUserNickname}">
 											<%-- 로그인 되어 있는 경우 --%>
-											<c:if test="${empty accessToken}">      
-											<img src="./resources/img/login.png" alt="로그아웃"><span>${signInUserNickname}</span> <a
-											href="./user/signout">로그아웃</a>
-											<a href="./user/register"><img src="./resources/img/register.png" alt="회원가입">회원가입</a>
-		                                    <a href="./user/mypage"><img src="./resources/img/mypage.png" alt="마이페이지">마이페이지</a>
+											<c:if test="${empty accessToken}"> 
+												<%-- 일반 로그인의 경우 --%>  
+												<img src="./resources/img/login.png" alt="로그아웃"><span>${signInUserNickname}</span> <a
+												href="./user/signout">로그아웃</a>
+												<a href="./user/register"><img src="./resources/img/register.png" alt="회원가입">회원가입</a>
+			                                    <a href="./user/mypage"><img src="./resources/img/mypage.png" alt="마이페이지">마이페이지</a>
 		                                    </c:if>	 
 		                                    <c:if test="${not empty accessToken}">
-		                                    <img src="./resources/img/login.png" alt="로그아웃"><span>${signInUserNickname}</span> <a
-											href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7&logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">로그아웃</a>
-											<a href="./user/register"><img src="./resources/img/register.png" alt="회원가입">회원가입</a>
-		                                    <a href="./user/mypage"><img src="./resources/img/mypage.png" alt="마이페이지">마이페이지</a>
+		                                    	<%-- 카카오 로그인의 경우 --%>  
+			                                    <img src="./resources/img/login.png" alt="로그아웃"><span>${signInUserNickname}</span> <a
+												href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7&logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">로그아웃</a>
+												<a href="./user/register"><img src="./resources/img/register.png" alt="회원가입">회원가입</a>
+			                                    <a href="./user/mypage"><img src="./resources/img/mypage.png" alt="마이페이지">마이페이지</a>
 											</c:if>	 
 										</c:if>	                  
 	                                </div>
