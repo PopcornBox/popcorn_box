@@ -45,8 +45,9 @@
 	<div class="offcanvas-menu-wrapper">
 		<div class="offcanvas__option">
 			<div class="offcanvas__links">
-				<a href="#">로그인</a> <a href="#">회원가입</a>
-			</div>
+               <a href="./signin"><img src="../resources/img/login.png" alt="로그인">로그인</a>
+               <a href="./register"><img src="../resources/img/register.png" alt="회원가입">회원가입</a>
+            </div>
 		</div>
 		<div id="mobile-menu-wrap"></div>
 		<div class="offcanvas__text">
@@ -63,16 +64,17 @@
 					<div class="col-lg-6 col-md-7">
 						<div class="header__top__left">
 							<a href="../"><img
-								src="../resources/images/popcornbox_logo.png" alt="logo"
+								src="../resources/img/popcornbox_logo.png" alt="logo"
 								width="35%"></a>
 						</div>
 					</div>
 					<div class="col-lg-6 col-md-5">
 						<div class="header__top__right">
 							<div class="header__top__links">
-								<a href="./pb_login.html">로그인</a> <a
-									href="./pb_join_member.html">회원가입</a>
-							</div>
+                                 <a href="./signin"><img src="../resources/img/login.png" alt="로그인">로그인</a>
+                                 <a href="./register"><img src="../resources/img/register.png" alt="회원가입">회원가입</a>
+                                 <a href="./mypage"><img src="../resources/img/mypage.png" alt="마이페이지">마이페이지</a>
+                            </div>
 						</div>
 					</div>
 				</div>
@@ -83,11 +85,12 @@
 				<div class="col-lg-6 col-md-6">
 					<nav class="header__menu mobile-menu">
 						<ul>
-							<li><a href="../">홈</a></li>
-							<li><a href="./pb_chart_list.html">차트</a></li>
-							<li class="active"><a href="../board/main">자유게시판</a></li>
-							<li><a href="./pb_event.html">이벤트</a></li>
-						</ul>
+                            <li><a href="../">홈</a></li>
+                            <li><a href="../movie/mainlist">차트</a></li>
+                            <li class="active" ><a href="./main">자유게시판</a> 
+                            </li>
+                            <li><a href="./pb_event.html">이벤트</a></li>
+                        </ul>
 					</nav>
 				</div>
 				<div class="col-lg-3 col-md- 10">
@@ -110,9 +113,8 @@
 	<nav>
 		<%-- 내비게이션 메뉴 --%>
 		<!-- TODO 페이지 이동 메뉴 -->
+
 		<ul>
-			<li><a href="../">메인</a></li>
-			<li><a href="./main">게시판 메인</a></li>
 			<c:if test="${signInUserNickname == board.user_nickname}">
 				<!-- 로그인 사용자 아이디와 글 작성자 아이디가 일치할 때만 수정 메뉴를 보여줌. -->
 				<li><a href="./update?board_no=${board.board_no}">수정</a></li>
@@ -120,8 +122,8 @@
 		</ul>
 	</nav>
 
-	<div>
-		<%-- 게시글 상세보기 --%>
+		<%-- 게시글 상세보기 --%>		
+	<div class="container">
 		<form>
 			<div>
 				<input type="hidden" id="bno" value="${board.board_no}" />
@@ -141,7 +143,7 @@
 					id="board_user_nickname" name="board_user_nickname"
 					value="${board.user_nickname}" required readonly />
 			</div>
-
+			<div>
 				<label for="reg_date">최종 수정 시간</label>
 				<fmt:formatDate value="${board.board_update_time}"
 					pattern="yyyy/MM/dd HH/mm/ss" var="last_update_time" />
