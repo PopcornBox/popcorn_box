@@ -169,15 +169,15 @@ public class UserController {
 	
 	// TODO
 	@RequestMapping(value = "/kakaologin", produces = "application/json", method = RequestMethod.GET)
-	public void kakaoLogin(@RequestParam("code") String code, RedirectAttributes ra, HttpSession session, 
-			HttpServletResponse response, Model model) throws IOException {
+	public void kakaoLogin(@RequestParam("code") String code, @RequestParam("state") String state, 
+			RedirectAttributes ra, HttpSession session, HttpServletResponse response, Model model) throws IOException {
 		log.info("kakaologin() GET 호출 code: {}", code);
 		
 		JsonNode accessToken;
 		JsonNode refreshToken;
 		
 		// JsonNode 트리 형태로 토큰 받아옴
-        JsonNode jsonToken = kakaoLoginService.getKakaoAccessToken(code);
+        JsonNode jsonToken = kakaoLoginService.getKakaoAccessToken(code, state);
         // 여러 json 객체 중 access_token, refresh_token을 가져옴
         accessToken = jsonToken.get("access_token");
         refreshToken = jsonToken.get("refresh_token");
@@ -211,6 +211,8 @@ public class UserController {
         	log.info("signInUser: {}", signInUser);
         	model.addAttribute("signInUser", signInUser);
         	session.setAttribute("signInUser", signInUser);
+        	session.setAttribute("accessToken", accessToken);
+        	
         } else { // DB에 없는(회원가입하지 않은) 이메일
 //        	return "user/register";// 회원가입 진행
         }
@@ -222,6 +224,11 @@ public class UserController {
 		// 세션에 저장된 로그인 정보(로그인 사용자 아이디)를 제거 -> 메인 페이지로 이동
 		session.removeAttribute("signInUserId");
 		session.invalidate();
+		
+		log.info("session.accessToken : {}", session.getAttribute("accessToken"));
+		if (session.getAttribute("accessToken") != null) {
+			
+		}
 		
 		return "redirect:/";
 	}
