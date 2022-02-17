@@ -38,8 +38,8 @@
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__option">
             <div class="offcanvas__links">
-                <a href="#">로그인</a>
-                <a href="#">회원가입</a>
+               <a href="./signin"><img src="../resources/img/login.png" alt="로그인">로그인</a>
+               <a href="./register"><img src="../resources/img/register.png" alt="회원가입">회원가입</a>
             </div>
         </div>
         <div id="mobile-menu-wrap"></div>
@@ -62,8 +62,9 @@
                     <div class="col-lg-6 col-md-5">
                         <div class="header__top__right">
                             <div class="header__top__links">
-                                <a href="./pb_login.html">로그인</a>
-                                <a href="./pb_join_member.html">회원가입</a>
+                                 <a href="./signin"><img src="../resources/img/login.png" alt="로그인">로그인</a>
+                                 <a href="./register"><img src="../resources/img/register.png" alt="회원가입">회원가입</a>
+                                 <a href="./mypage"><img src="../resources/img/mypage.png" alt="마이페이지">마이페이지</a>
                             </div>
                         </div>
                     </div>
