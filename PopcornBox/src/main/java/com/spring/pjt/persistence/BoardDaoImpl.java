@@ -35,6 +35,7 @@ public class BoardDaoImpl implements BoardDao{
 	@Override
 	public int create(Board board) {
 		log.info("boardDaoImple.create({}) 호출", board);
+		//board.setUser_id("todo");
 		return sqlSession.insert(BOARD_NAMESPACE + ".create", board);
 	}
 
@@ -45,13 +46,14 @@ public class BoardDaoImpl implements BoardDao{
 	}
 
 	@Override
-	public int UpdatevieCnt(int board_no) {
+	public int UpdateViewCnt(int board_no) {
+		log.info("boardDaoImpl.UpdateViewCnt({}) 호출",board_no);
 		return sqlSession.update(BOARD_NAMESPACE + ".updateViewCnt", board_no);
 	}
 
 	@Override
 	public int delete(int board_no) {
-		log.info("boardDaoImple.create({}) 호출", board_no);
+		log.info("boardDaoImple.delete({}) 호출", board_no);
 		return sqlSession.delete(BOARD_NAMESPACE + ".delete", board_no);
 
 	}

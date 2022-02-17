@@ -12,12 +12,15 @@
 			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
 	</head>
 	<body>
-					 	<!-- 변경예정 -->
+	<!-- 수정 필요!! -->
 		<h1 onclick = "mainlogo">
-			<a href="/pjt">메인로고</a>
-			<ul>
-				<li><span>${signInUserNickname}</span><span>님 환영합니다!</span>
-			</ul>
+			<a href="../"><img src="../resources/img/popcornbox_logo.png" alt="logo" width="15%"></a>
+
+			<div class="header__top__right">
+				<div class="header_top__links">
+					<a>${signInUserNickname}님 환영합니다!</a>
+				</div>
+			</div>
 		</h1>
 		<ul>
 			<li><a href="./userInfo">회원정보확인</a></li>

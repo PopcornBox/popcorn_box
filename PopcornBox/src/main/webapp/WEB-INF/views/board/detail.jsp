@@ -113,7 +113,7 @@
 		<ul>
 			<li><a href="../">메인</a></li>
 			<li><a href="./main">게시판 메인</a></li>
-			<c:if test="${signInUserId == user.user_id}">
+			<c:if test="${signInUserNickname == board.user_nickname}">
 				<!-- 로그인 사용자 아이디와 글 작성자 아이디가 일치할 때만 수정 메뉴를 보여줌. -->
 				<li><a href="./update?board_no=${board.board_no}">수정</a></li>
 			</c:if>
@@ -141,11 +141,6 @@
 					id="board_user_nickname" name="board_user_nickname"
 					value="${board.user_nickname}" required readonly />
 			</div>
-			<label for="board_user_nickname">아이디</label> <input type="text"
-					id="board_user_nickname" name="board_user_nickname"
-					value="${board.user_id}" required readonly />
-			</div>
-			<div>
 
 				<label for="reg_date">최종 수정 시간</label>
 				<fmt:formatDate value="${board.board_update_time}"

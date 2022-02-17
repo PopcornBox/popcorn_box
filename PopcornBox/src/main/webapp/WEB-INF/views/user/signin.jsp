@@ -95,7 +95,7 @@
 	                    </div>
 	                    <div class="col-lg-3 col-md- 10">
 	                        <div class="header__nav__option">
-	                            <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
+	                            <a href="#" class="search-switch"><img src="../resources/img/icon/search.png" alt=""></a>
 	
 	                        </div>
 	                    </div>
@@ -126,7 +126,7 @@
 	            <div class="checkout__form">
 	                <form action="./signin" method="post">
 	                    <div class="row">
-	                        <div class="col-lg-8 col-md-6">
+	                        <div class="col-md-8 col-md-6">
 	                            <div class="row align-">
 	                                <div class="col-lg-6">
 	                                    <div class="checkout__input">
@@ -149,13 +149,18 @@
 											<a href="https://kauth.kakao.com/oauth/authorize?client_id=cc1754dab9a17adb7dd44164ff108ba7&redirect_uri=http://localhost:8181/pjt/user/kakaologin&response_type=code">
 											<img alt="카카오 로그인" src="../resources/img/kakao_login_medium_wide.png"></a>
 										</div>
-										<li>
-											<a href="./register">회원가입</a>
-										</li>
-										<li>
-											<a href="./find_userid">아이디</a>/<a href="./find_userpwd">비밀번호 찾기</a>
-										</li>
-										<div>
+										<div class="find__text">
+											<li>
+												<a href="./register">회원가입</a>
+											</li>
+											<li>
+												<a href="./find_userid">아이디 찾기</a>
+											</li>
+											<li>
+												<a href="./find_userpwd">비밀번호 찾기</a>
+											</li>
+										</div>
+											<div>
 											<input type="hidden" name="url" value="${url}" />
 										</div>
 										<div>
@@ -180,51 +185,7 @@
 	                        <div class="footer__logo">
 	                            <a href="#"><img src="img/logo_white.png" width="60%" alt=""></a>
 	                        </div>
-	
-	                <!--        <p>The customer is at the heart of our unique business model, which includes design.</p>
-	                        <a href="#"><img src="img/payment.png" alt=""></a>
-	                    </div>
-	                </div>
-	                <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
-	                    <div class="footer__widget">
-	                        <h6>Shopping</h6>
-	                        <ul>
-	                            <li><a href="#">Clothing Store</a></li>
-	                            <li><a href="#">Trending Shoes</a></li>
-	                            <li><a href="#">Accessories</a></li>
-	                            <li><a href="#">Sale</a></li>
-	                        </ul>
-	                    </div>
-	                </div>
-	                <div class="col-lg-2 col-md-3 col-sm-6">
-	                    <div class="footer__widget">
-	                        <h6>Shopping</h6>
-	                        <ul>
-	                            <li><a href="#">Contact Us</a></li>
-	                            <li><a href="#">Payment Methods</a></li>
-	                            <li><a href="#">Delivary</a></li>
-	                            <li><a href="#">Return & Exchanges</a></li>
-	                        </ul>
-	                    </div>
-	                </div>
-	                <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
-	                    <div class="footer__widget">
-	                        <h6>NewLetter</h6>
-	                        <div class="footer__newslatter">
-	                            <p>Be the first to know about new arrivals, look books, sales & promos!</p>
-	                            <form action="#">
-	                                <input type="text" placeholder="Your email">
-	                                <button type="submit"><span class="icon_mail_alt"></span></button>
-	                            </form>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="row">
-	                <div class="col-lg-12 text-center">
-	                    <div class="footer__copyright__text">
-	                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-	                        <p>Copyright ©
+
 	                            <script>
 	                                document.write(new Date().getFullYear());
 	                            </script>2020
