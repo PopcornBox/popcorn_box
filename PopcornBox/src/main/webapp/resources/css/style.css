@@ -344,6 +344,10 @@ ol {
 	margin-bottom: 0;
 }
 
+.header__top__left img{
+	width: 80%;
+}
+
 .header__top__right {
 	text-align: right;
 }
@@ -427,9 +431,15 @@ ol {
 	display: inline-block;
 }
 
+.header div.row{
+	margin-top: 15px;
+}
+
 .header__menu {
 	/* text-align: center; */
 	padding: 26px 0 25px;
+	top: auto;
+	bottom: 0;
 }
 
 .header__menu ul li {
@@ -3985,6 +3995,10 @@ ol {
 	}
 	.header__top {
 		display: none;
+	}
+	.header__top a:hover{ /* 마우스 올린 효과 */
+		text-decoration: underline;
+		color: #848484;
 	}
 	.header .container {
 		position: relative;

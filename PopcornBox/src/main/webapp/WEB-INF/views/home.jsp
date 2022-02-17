@@ -33,44 +33,7 @@
 	type="text/css">
 <link rel="stylesheet" href="./resources/css/style.css" type="text/css">
 </head>
-<body>
-
-
-            		<div> <!-- 검색 기능 UI -->
-					<form name="search" align="right" style="margin-right:20px;" method = "get"  
-					action ="./movie/search" >
-                    <select name="type">
-                        <option value="1">제목</option>
-                        <option value="2">배우</option>
-                        <option value="3">감독</option>
-                        <option value="4">장르</option>
-                    </select>
-                    <input type="text" name="keyword" placeholder="검색어 입력" required />
-                    <input type="submit" value="검색" />
-                </form>
-            </div>
-            <nav>
-			<ul>
-				<c:if test="${empty signInUserNickname}">
-					<%-- 로그인 되어 있지 않은 경우 --%>
-					<li><a href="./user/register">회원가입</a></li>
-					<li><a href="./user/signin">로그인</a></li>
-				</c:if>
-				<c:if test="${not empty signInUserNickname}">
-					<%-- 로그인 되어 있는 경우 --%>
-					<li><a href="./user/register">회원가입</a></li>
-					<li><span>${signInUserNickname}</span> <a
-						href="./user/signout">로그아웃</a></li>
-				</c:if>
-				<li><a href="./user/mypage">마이페이지</a></li>
-				<li><a href="./movie/mainlist">차트</a></li>
-				<li><a href="./board/main">자유게시판</a></li>
-			</ul>
-		</nav>
-		<div>
-			<input type="hidden" name="msg" value="${msg}" />
-		</div>
-
+<body>         
 
     <!-- Page Preloder -->
     <div id="preloder">
@@ -111,15 +74,15 @@
 	                    <div class="row">
 	                        <div class="col-lg-6 col-md-7">
 	                            <div class="header__top__left">
-	                                  <a href="../"><img src="./resources/img/popcornbox_logo.png" alt="logo" width="35%"></a>
+	                                  <a href="../"><img src="./resources/img/popcornbox_logo.png" alt="logo"></a>
 	                            </div>
 	                        </div>
 	                        <div class="col-lg-6 col-md-5">
 	                            <div class="header__top__right">
 	                                <div class="header__top__links">
-	                                    <a href="./user/signin">로그인</a>
-	                                    <a href="./user/register">회원가입</a>
-	                                    <a href="./user/mypage">마이페이지</a>
+	                                    <a href="./user/signin"><img src="./resources/img/login.png" alt="로그인">로그인</a>
+	                                    <a href="./user/register"><img src="./resources/img/register.png" alt="회원가입">회원가입</a>
+	                                    <a href="./user/mypage"><img src="./resources/img/mypage.png" alt="마이페이지">마이페이지</a>
 	                                </div>
 	                            </div>
 	                        </div>
@@ -129,7 +92,7 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-md-8 col-md-4">
+                <div class="col-md-7 col-md-4">
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li class="active"><a href="#">홈</a></li>
@@ -139,7 +102,7 @@
                         </ul>
                     </nav>
                 </div>
-                <div class="col-md-3 col-md-">
+                <div>
                     <div class="header__nav__option">
                          <div>
 							<form name="search" align="right" style="margin-right:20px;" method = "get"  
@@ -431,49 +394,6 @@
                             <a href="#"><img src="./resources/img/logo_white.png" width="60%" alt=""></a>
                         </div>
 
-                <!--        <p>The customer is at the heart of our unique business model, which includes design.</p>
-                        <a href="#"><img src="img/payment.png" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
-                    <div class="footer__widget">
-                        <h6>Shopping</h6>
-                        <ul>
-                            <li><a href="#">Clothing Store</a></li>
-                            <li><a href="#">Trending Shoes</a></li>
-                            <li><a href="#">Accessories</a></li>
-                            <li><a href="#">Sale</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-3 col-sm-6">
-                    <div class="footer__widget">
-                        <h6>Shopping</h6>
-                        <ul>
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#">Payment Methods</a></li>
-                            <li><a href="#">Delivary</a></li>
-                            <li><a href="#">Return & Exchanges</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 offset-lg-1 col-md-6 col-sm-6">
-                    <div class="footer__widget">
-                        <h6>NewLetter</h6>
-                        <div class="footer__newslatter">
-                            <p>Be the first to know about new arrivals, look books, sales & promos!</p>
-                            <form action="#">
-                                <input type="text" placeholder="Your email">
-                                <button type="submit"><span class="icon_mail_alt"></span></button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="footer__copyright__text">
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         <p>Copyright ©
                             <script>
                                 document.write(new Date().getFullYear());
@@ -488,17 +408,6 @@
         </div>
     </footer>
     <!-- Footer Section End -->
-
-    <!-- Search Begin -->
-    <!--<div class="search-model">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-switch">+</div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
-            </form>
-        </div>
-    </div>-->
-    <!-- Search End -->
 
 	<!-- Js Plugins -->
 	<script src="./resources/js/jquery-3.3.1.min.js"></script>
