@@ -26,7 +26,7 @@ public class KakaoLoginService {
 	
 	private static final Logger log = LoggerFactory.getLogger(KakaoLoginService.class);
 	
-	public JsonNode getKakaoAccessToken(String code) {
+	public JsonNode getKakaoAccessToken(String code, String state) {
 		 
         final String RequestUrl = "https://kauth.kakao.com/oauth/token"; // Host
         final List<NameValuePair> postParams = new ArrayList<NameValuePair>();
@@ -35,6 +35,7 @@ public class KakaoLoginService {
         postParams.add(new BasicNameValuePair("client_id", "cc1754dab9a17adb7dd44164ff108ba7")); // REST API 키
         postParams.add(new BasicNameValuePair("redirect_uri", "http://localhost:8181/pjt/user/kakaologin")); // Redirect URI
         postParams.add(new BasicNameValuePair("code", code)); // 로그인 과정 중 얻은 code 값
+        postParams.add(new BasicNameValuePair("state", state)); // 로그인 전에 있었던 페이지
  
         final HttpClient client = HttpClientBuilder.create().build();
         final HttpPost post = new HttpPost(RequestUrl);
@@ -52,8 +53,7 @@ public class KakaoLoginService {
             log.info("Response Code : {}", responseCode);
  
             // JSON 형태 반환값 처리
-            ObjectMapper mapper = new ObjectMapper();
- 
+            ObjectMapper mapper = new ObjectMapper(); 
             returnNode = mapper.readTree(response.getEntity().getContent());
  
         } catch (UnsupportedEncodingException e) {
@@ -102,4 +102,33 @@ public class KakaoLoginService {
         return returnNode;
     }
 	
+	public JsonNode kakaoLogout(String accessToken) {
+        final String RequestUrl = "https://kapi.kakao.com/v1/user/logout";
+        final HttpClient client = HttpClientBuilder.create().build(); 
+        final HttpPost post = new HttpPost(RequestUrl);
+ 
+        post.addHeader("Authorization", "Bearer " + accessToken);
+ 
+        JsonNode returnNode = null;
+ 
+        try { 
+            final HttpResponse response = client.execute(post);
+ 
+            ObjectMapper mapper = new ObjectMapper();            
+            returnNode = mapper.readTree(response.getEntity().getContent());
+ 
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace(); 
+        } catch (ClientProtocolException e) { 
+            e.printStackTrace();
+        } catch (IOException e) { 
+            e.printStackTrace(); 
+        } finally { 
+        }
+ 
+        return returnNode;
+    }
+	
+	
+
 }

@@ -81,14 +81,15 @@
 				<div class="row">
 					<div class="col-lg-6 col-md-7">
 						<div class="header__top__left">
-							<a href="../"><img src="../resources/images/popcornbox_logo.png" alt="logo" width="35%"></a>
+							<a href="../"><img src="../resources/img/popcornbox_logo.png" alt="logo" width="35%"></a>
 						</div>
 					</div>
 					<div class="col-lg-6 col-md-5">
 						<div class="header__top__right">
 							<div class="header__top__links">
-								<a href="../user/signin">로그인</a> <a
-									href="../user/register">회원가입</a>
+                   	            <a href="../user/signin"><img src="../resources/img/login.png" alt="로그인">로그인</a>
+                                <a href="../user/register"><img src="../resources/img/register.png" alt="회원가입">회원가입</a>
+                                <a href="../user/mypage"><img src="../resources/img/mypage.png" alt="마이페이지">마이페이지</a>
 							</div>
 						</div>
 					</div>
@@ -178,8 +179,6 @@
 		</div>
 	</footer>
 	<!-- Footer Section End -->
-
-
 
 	<!-- Js Plugins -->
 	<script src="../resources/js/jquery-3.3.1.min.js"></script>

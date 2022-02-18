@@ -42,6 +42,22 @@
 		<property name="COL_USER_EMAIL" value="user_email" />
 		<property name="COL_USER_UPDATE_TIME" value="user_update_time" />
 		<property name="COL_USER_KEY" value="user_key" />
+		<property name="COL_USER_POSITION" value="user_position" />
+		
+		<!-- EVENTS 테이블 관련 상수들 -->
+		<property name="TABLE_EVENTS" value="events" />
+		<property name="COL_EVENT_NO" value="event_no" />
+		<property name="COL_EVENT_TITLE" value="event_title" />
+		<property name="COL_EVENT_THUMB" value="event_thumb" />
+		<property name="COL_EVENT_CONTENT" value="event_content" />
+		<property name="COL_EVENT_START_TIME" value="event_start_time" />
+		<property name="COL_EVENT_LAST_TIME" value="event_last_time" />
+		
+		<!-- EVENT_REPLIES 테이블 관련 상수들 -->
+		<property name="TABLE_EVENT_REPLIES" value="event_replies" />
+		<property name="COL_EVENT_REPLY_NO" value="event_reply_no" />
+		<property name="COL_EVENT_REPLY_CONTENT" value="event_reply_content" />
+		<property name="COL_EVENT_REPLY_UPDATE_TIME" value="event_reply_update_time" />	
 	</properties>
 	
 	<typeAliases>

@@ -39,8 +39,11 @@ public class SignedInInterceptor implements HandlerInterceptor {
 			} else { // 카카오 로그인이면
 				User signInUser = (User) request.getSession().getAttribute("signInUser");
 				String user_nickname = signInUser.getUser_nickname();
+				String user_position = signInUser.getUser_position();
 				log.info("signInUser.user_nickname: {}", signInUser.getUser_nickname());
+				log.info("signInUser.user_position: {}", signInUser.getUser_position());
 				session.setAttribute("signInUserNickname", user_nickname);
+				session.setAttribute("signInUserPosition", user_position);
 				
 				// 원래 이동하려고 했던 페이지(targetUrl)로 redirect
 				if (targetUrl != null && !targetUrl.equals("")) {
@@ -57,8 +60,10 @@ public class SignedInInterceptor implements HandlerInterceptor {
 			// 세션에 로그인 사용자 닉네임, 아이디를 저장
 			session.setAttribute("signInUserId", ((User) user).getUser_id());
 			session.setAttribute("signInUserNickname", ((User) user).getUser_nickname());
-			log.info((String) session.getAttribute("signInUserNickname"));
+			session.setAttribute("signInUserPosition", ((User) user).getUser_position());
 			log.info((String) session.getAttribute("signInUserId"));
+			log.info((String) session.getAttribute("signInUserNickname"));
+		        log.info((String) session.getAttribute("signInUserPosition"));
 			
 			// 원래 이동하려고 했던 페이지(targetUrl)로 redirect
 			if (targetUrl != null && !targetUrl.equals("")) {

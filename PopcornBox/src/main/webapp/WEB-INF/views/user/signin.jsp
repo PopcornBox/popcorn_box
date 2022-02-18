@@ -43,7 +43,7 @@
 	        <div class="offcanvas-menu-wrapper">
 	            <div class="offcanvas__option">
 	                <div class="offcanvas__links">
-                        <a href="./signin"><img src="../resources/img/login_20.png" alt="로그인">로그인</a>
+                        <a href="./signin"><img src="../resources/img/login.png" alt="로그인">로그인</a>
                         <a href="./register"><img src="../resources/img/register.png" alt="회원가입">회원가입</a>
 	                </div>
 	            </div>
@@ -67,9 +67,9 @@
 	                        <div class="col-lg-6 col-md-5">
 	                            <div class="header__top__right">
 	                                <div class="header__top__links">
-	                                    <a href="./signin"><img src="../resources/img/login_20.png" alt="로그인">로그인</a>
+	                                    <a href="./signin"><img src="../resources/img/login.png" alt="로그인">로그인</a>
 	                                    <a href="./register"><img src="../resources/img/register.png" alt="회원가입">회원가입</a>
-	                                    <a href="./mypage"><img src="../resources/img/mypage_20.png" alt="마이페이지">마이페이지</a>
+	                                    <a href="./mypage"><img src="../resources/img/mypage.png" alt="마이페이지">마이페이지</a>
 	                                </div>
 	                            </div>
 	                        </div>
@@ -93,12 +93,7 @@
 	                            </ul>
 	                        </nav>
 	                    </div>
-	                    <div class="col-lg-3 col-md- 10">
-	                        <div class="header__nav__option">
-	                            <a href="#" class="search-switch"><img src="../resources/img/icon/search.png" alt=""></a>
-	
-	                        </div>
-	                    </div>
+
 	                </div>
 	                <div class="canvas__open"><i class="fa fa-bars"></i></div>
 	            </div>
@@ -146,7 +141,7 @@
 	                                <!-- <input type="submit" value="로그인" /> -->
 		                             <div class="checkout__find__text"> 
 		                                <div>
-											<a href="https://kauth.kakao.com/oauth/authorize?client_id=cc1754dab9a17adb7dd44164ff108ba7&redirect_uri=http://localhost:8181/pjt/user/kakaologin&response_type=code">
+											<a href="https://kauth.kakao.com/oauth/authorize?client_id=cc1754dab9a17adb7dd44164ff108ba7&redirect_uri=http://localhost:8181/pjt/user/kakaologin&response_type=code&state=url">
 											<img alt="카카오 로그인" src="../resources/img/kakao_login_medium_wide.png"></a>
 										</div>
 										<div class="find__text">
@@ -198,18 +193,7 @@
 	            </div>
 	        </div>
 	    </footer>
-	    <!-- Footer Section End -->
-	
-	    <!-- Search Begin -->
-	    <div class="search-model">
-	        <div class="h-100 d-flex align-items-center justify-content-center">
-	            <div class="search-close-switch">+</div>
-	            <form class="search-model-form">
-	                <input type="text" id="search-input" placeholder="Search here.....">
-	            </form>
-	        </div>
-	    </div>
-	    <!-- Search End -->			
+	    <!-- Footer Section End -->		
 						
 	    <!-- Js Plugins -->
 	    <script src="../resources/js/jquery-3.3.1.min.js"></script>
