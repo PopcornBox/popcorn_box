@@ -33,6 +33,10 @@
 <link rel="stylesheet" href="../resources/css/slicknav.min.css"
 	type="text/css">
 <link rel="stylesheet" href="../resources/css/style.css" type="text/css">
+<style>
+
+</style>
+
 </head>
 <body>
 
@@ -132,7 +136,7 @@
 					<th>좋아요</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody class="text-center">
 				<c:forEach var="movie" items="${movieList}">
 					<tr>
 						<td></td>
