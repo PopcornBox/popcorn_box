@@ -28,42 +28,51 @@ public class SignedInInterceptor implements HandlerInterceptor {
 		log.info("      session: {}", request.getSession());
 		log.info("      session.signInUser: {}", request.getSession().getAttribute("signInUser"));
 		
-		HttpSession session = request.getSession(); // 세션 생성
-		// 로그인 성공 후 이동할 페이지(input type="hidden"에서 찾음)
-		String targetUrl = request.getParameter("url");
+		HttpSession session = request.getSession(); // 세션 생성		
+		String state = (String) session.getAttribute("state");
 		
 		if (request.getMethod().equals("GET")) {
 			log.info("req uri: {}", request.getRequestURI());
-			if (!request.getRequestURI().equals("/pjt/user/kakaologin")) {
+			if (!request.getRequestURI().equals("/pjt/user/kakaologin")) { // 카카오 로그인이 아니면
 				return; // GET 방식에서는 interceptor가 할 일이 없음.(로그인 페이지 form을 보여줌)
 			} else { // 카카오 로그인이면
 				User signInUser = (User) request.getSession().getAttribute("signInUser");
-				String user_nickname = signInUser.getUser_nickname();
-				String user_position = signInUser.getUser_position();
-				log.info("signInUser.user_nickname: {}", signInUser.getUser_nickname());
-				log.info("signInUser.user_position: {}", signInUser.getUser_position());
-				session.setAttribute("signInUserNickname", user_nickname);
-				session.setAttribute("signInUserPosition", user_position);
 				
-				// 원래 이동하려고 했던 페이지(targetUrl)로 redirect
-				if (targetUrl != null && !targetUrl.equals("")) {
-					response.sendRedirect(targetUrl);
-				} else {
-					response.sendRedirect("/pjt");
+				if (signInUser != null) { // 기존에 회원가입된 이용자면
+					String user_nickname = signInUser.getUser_nickname();
+					String user_position = signInUser.getUser_position();
+					log.info("signInUser.user_nickname: {}", signInUser.getUser_nickname());
+					log.info("signInUser.user_position: {}", signInUser.getUser_position());
+					session.setAttribute("signInUserNickname", user_nickname);
+					session.setAttribute("signInUserPosition", user_position);
+					
+					// 원래 이동하려고 했던 페이지(state)로 redirect
+					if (state != null && !state.equals("")) {
+						response.sendRedirect(state);
+						session.removeAttribute(state);
+						log.info("session.state", session.getAttribute(state));
+					} else {
+						response.sendRedirect("/pjt");
+					}
+					return;
+				} else { // 회원가입되지 않은 이용자면 간편
+					response.sendRedirect("/pjt/user/simpleRegister");
+					return;
 				}
-				return;
+				
 			}
 		}
+		
+		// 로그인 성공 후 이동할 페이지(input type="hidden"에서 찾음)
+		String targetUrl = request.getParameter("url");
 		
 		Object user = modelAndView.getModel().get("signInUser");
 		if (user != null) { // 테이블에 아이디/비밀번호가 일치하는 사용자가 있는 경우 -> 로그인 성공
 			// 세션에 로그인 사용자 닉네임, 아이디를 저장
-			session.setAttribute("signInUserId", ((User) user).getUser_id());
 			session.setAttribute("signInUserNickname", ((User) user).getUser_nickname());
 			session.setAttribute("signInUserPosition", ((User) user).getUser_position());
-			log.info((String) session.getAttribute("signInUserId"));
 			log.info((String) session.getAttribute("signInUserNickname"));
-		        log.info((String) session.getAttribute("signInUserPosition"));
+		    log.info((String) session.getAttribute("signInUserPosition"));
 			
 			// 원래 이동하려고 했던 페이지(targetUrl)로 redirect
 			if (targetUrl != null && !targetUrl.equals("")) {

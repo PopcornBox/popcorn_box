@@ -34,7 +34,6 @@ public class BoardDaoTest {
 	public void doTest() {
 //	log.info("boardDao: {}", boardDao);
 //	List<Board> list = boardDao.read();
-		
 		Board board = boardDao.read(1);
 		log.info(board.toString());
 	}
@@ -49,9 +48,13 @@ public class BoardDaoTest {
 //	    list.forEach(board -> log.info(board.toString()));
 //	}
 	
-	@Test // 리스트 조회
-	public void testGetList() {
-		service.getList(new PageCriteria(1, 10)).forEach(board -> log.info(toString()));
-	}
+//	@Test // 리스트 조회
+//	public void testGetList() {
+//		service.getList(new PageCriteria(1, 10)).forEach(board -> log.info(toString()));
+//=======
+//		Board board = boardDao.read(1);
+//		log.info(board.toString());
+
+//	}
 
 }

@@ -172,9 +172,11 @@ public class UserController {
 	public void kakaoLogin(@RequestParam("code") String code, @RequestParam("state") String state, 
 			RedirectAttributes ra, HttpSession session, HttpServletResponse response, Model model) throws IOException {
 		log.info("kakaologin() GET 호출 code: {}", code);
+		log.info("state: {}", state);
 		
 		JsonNode accessToken;
 		JsonNode refreshToken;
+		
 		
 		// JsonNode 트리 형태로 토큰 받아옴
         JsonNode jsonToken = kakaoLoginService.getKakaoAccessToken(code, state);
@@ -207,17 +209,19 @@ public class UserController {
         
         User signInUser = null;        
         User user = userService.readUserByEmail(email);
-        if (user != null) { // DB에 있는(회원가입한) 이메일
+//        if (user != null) { // DB에 있는(회원가입한) 이메일
         	signInUser = user;
         	log.info("signInUser: {}", signInUser);
         	model.addAttribute("signInUser", signInUser);
         	session.setAttribute("signInUser", signInUser);
         	session.setAttribute("accessToken", accessToken);
-        	
-        } else { // DB에 없는(회원가입하지 않은) 이메일
-//        	return "user/register";// 회원가입 진행
-        }
-           
+        	session.setAttribute("state", state);
+//        	return "/";
+//        } else { // DB에 없는(회원가입하지 않은) 이메일
+//        	log.info("signInUser: {}", signInUser);
+//        	return "user/register"; // 회원가입 진행
+//        }
+          
 	}
 	
 	//TODO
@@ -233,13 +237,11 @@ public class UserController {
 	@RequestMapping(value = "/kakaologout", produces = "application/json", method = RequestMethod.GET)
 	public String kakaoLogout(HttpSession session) {
 		log.info("session.accessToken : {}", session.getAttribute("accessToken"));
-		
-		if (session.getAttribute("accessToken") != null) {
-			//노드에 로그아웃한 결괏값을 담아줌. 매개변수는 세션에 잇는 accessToken을 가져와 문자열로 변환
-			JsonNode node = kakaoLoginService.kakaoLogout(session.getAttribute("accessToken").toString());
-			// 결괏값 출력
-			log.info("로그인 후 반환되는 아이디 : {}", node.get("id"));
-		}	
+			
+		//노드에 로그아웃한 결괏값을 담아줌. 매개변수는 세션에 잇는 accessToken을 가져와 문자열로 변환
+		JsonNode node = kakaoLoginService.kakaoLogout(session.getAttribute("accessToken").toString());
+		// 결괏값 출력
+		log.info("로그인 후 반환되는 아이디 : {}", node.get("id"));
 			
 		// 세션에 저장된 모든 데이터를 삭제 -> 메인 페이지로 이동
 		session.invalidate();	
