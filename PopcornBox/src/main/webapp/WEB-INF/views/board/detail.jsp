@@ -136,7 +136,8 @@
         </div>
     </header>
     <!-- Header Section End -->
-
+	
+	<hr>
 
 
 	<nav>
@@ -153,34 +154,39 @@
 
 		<%-- 게시글 상세보기 --%>		
 	<div class="container">
+	<div class="contact__form">
 		<form>
 			<div>
 				<input type="hidden" id="bno" value="${board.board_no}" />
 			</div>
-			<div>
-				<label for="title">글 제목</label> <input type="text" id="board_title"
+			<div class="contact__form">
+				<input type="text" id="board_title"
 					name="board_title" value="${board.board_title}" required autofocus
 					readonly />
 			</div>
-			<div>
-				<label for="content">글 내용</label>
-				<textarea rows="5" id="board_content" name="board_content" required
-					readonly>${board.board_content}</textarea>
+			<div class="row">
+				<div>
+					<i class="fa-solid fa-user"></i>
+				</div>
+				<div>
+					<input type="text"
+						id="board_user_nickname" name="board_user_nickname"
+						value="${board.user_nickname}" required readonly />
+				</div>
 			</div>
 			<div>
-				<label for="board_user_nickname">닉네임</label> <input type="text"
-					id="board_user_nickname" name="board_user_nickname"
-					value="${board.user_nickname}" required readonly />
-			</div>
-			<div>
-				<label for="reg_date">최종 수정 시간</label>
 				<fmt:formatDate value="${board.board_update_time}"
 					pattern="yyyy/MM/dd HH/mm/ss" var="last_update_time" />
 				<input type="text" id="reg-date" name="reg_date"
 					value="${last_update_time}" readonly />
-
+			</div>
+			<hr>
+			<div>
+				<div style="white-space:pre-wrap" id="board_content" name="board_content" required
+					readonly>${board.board_content}</div>
 			</div>
 		</form>
+		</div>
 	</div>
 
 
