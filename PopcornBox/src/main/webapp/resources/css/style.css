@@ -371,14 +371,21 @@ table a:hover {
 	margin-right: 25px;
 }
 
+.header__top__links span {
+	font-size: 15px;
+}
 
 .header__top__links a {
 	color: #111111;
-	font-size: 12px;
+	font-size: 13px;
 	text-transform: uppercase;
 	letter-spacing: 4px;
 	margin-left: 32px;
 	display: inline-block;
+}
+
+.header__top__links i {
+	color: #5a5a5a;
 }
 
 .header__top__links a:last-child {
@@ -453,6 +460,10 @@ table a:hover {
 	.header div.row{
 		display: none;
 	}
+}
+
+.header .header__row__ {
+	position: relative;
 }
 
 .header__menu {
@@ -550,14 +561,26 @@ table a:hover {
 }
 
 /* search__icon / 검색 아이콘 */
+header .search_option {
+	margin-left: auto;
+	align-content: flex-end;
+}
 .header__nav__option {
 	text-align: right;
 	padding: 28px 0;
     display: flex;
 }
 
-.header__nav__option input.search{
-	max-width: 150px;
+.header__nav__option .search{
+	max-width: 170px;
+	border: none;
+	border-bottom: 1px solid;
+	padding: 0px;
+}
+
+.header__nav__option input.btn {
+	font-family: FontAwesome;
+	border: none;
 }
 
 /* search__inputbox */
@@ -3923,6 +3946,9 @@ table a:hover {
 	.offcanvas__option {
 		text-align: center;
 		margin-bottom: 30px;
+	}
+	.offcanvas__option li {
+		list-style: none;
 	}
 	.offcanvas__links {
 		display: inline-block;

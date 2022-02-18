@@ -80,6 +80,18 @@ public class BoardController {
 		boardService.delete(board_no);
 		
 		return "redirect:/board/main";
+		
+	}
+	
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public String search(int type, String keyword, Model model) {
+		log.info("search(type={}, keyword={})", type, keyword);
+		
+		List<Board> list = boardService.select(type, keyword);
+		model.addAttribute("boardList", list);
+		
+		return "board/main";
+		
 	}
 	
 }
