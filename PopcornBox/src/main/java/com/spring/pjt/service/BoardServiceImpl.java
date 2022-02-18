@@ -54,4 +54,16 @@ public class BoardServiceImpl  implements BoardService{
 		
 		return boardDao.delete(board_no);
 	}
+
+	@Override
+	public int boardListCnt() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	@Override
+	public List<Board> select(int searchType, String searchKeyword) {
+		log.info("select(searchType={}, searchType={})", searchType, searchKeyword);
+		return boardDao.read(searchType, searchKeyword);
+	}
 }

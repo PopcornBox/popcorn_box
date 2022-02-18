@@ -8,6 +8,8 @@
 <meta charset="UTF-8">
 <title>PopcornBox</title>
 
+    <script src="https://kit.fontawesome.com/a39158855c.js" crossorigin="anonymous"></script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
@@ -55,8 +57,9 @@
 				</c:if>
 				<c:if test="${not empty signInUserNickname}">
 					<%-- 로그인 되어 있는 경우 --%>
-					<li><span>${signInUserNickname}</span> <a
-						href="./user/signout">로그아웃</a></li>
+					<li><span>${signInUserNickname} 님</span></li>
+					<li>　</li>
+					<li><a href="./user/signout">로그아웃</a></li>
 					<li><a href="./user/register">회원가입</a></li>
 					<li><a href="./user/mypage">마이페이지</a></li>
 					<li><a href="./event/main">이벤트</a></li>
@@ -78,7 +81,7 @@
 	                    <div class="row">
 	                        <div class="col-lg-6 col-md-7">
 	                            <div class="header__top__left">
-	                                  <a href="../"><img src="./resources/img/popcornbox_logo.png" alt="logo"></a>
+	                                  <a href=""><img src="./resources/img/popcornbox_logo.png" alt="logo"></a>
 	                            </div>
 	                        </div>
 	                        <div class="col-lg-6 col-md-5">
@@ -86,25 +89,26 @@
 	                                <div class="header__top__links">
 	                                	<c:if test="${empty signInUserNickname}">
 											<%-- 로그인 되어 있지 않은 경우 --%>
-											<a href="./user/signin"><img src="./resources/img/login.png" alt="로그인">로그인</a>
-		                                    <a href="./user/register"><img src="./resources/img/register.png" alt="회원가입">회원가입</a>
-		                                    <a href="./user/mypage"><img src="./resources/img/mypage.png" alt="마이페이지">마이페이지</a>
+											<a href="./user/signin"><i class="fa-solid fa-lock"></i>로그인</a>
+		                                    <a href="./user/register"><i class="fa-solid fa-user-plus"></i>회원가입</a>
+		                                    <a href="./user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
 										</c:if>
 										<c:if test="${not empty signInUserNickname}">
 											<%-- 로그인 되어 있는 경우 --%>
-											<c:if test="${empty accessToken}"> 
+											<c:if test="${empty accessToken}">
 												<%-- 일반 로그인의 경우 --%>  
-												<img src="./resources/img/login.png" alt="로그아웃"><span>${signInUserNickname}</span> <a
-												href="./user/signout">로그아웃</a>
-												<a href="./user/register"><img src="./resources/img/register.png" alt="회원가입">회원가입</a>
-			                                    <a href="./user/mypage"><img src="./resources/img/mypage.png" alt="마이페이지">마이페이지</a>
+												<span>${signInUserNickname} 님</span><br>
+												<a href="./user/signout"><i class="fa-solid fa-lock"></i>로그아웃</a>
+												<a href="./user/register"><i class="fa-solid fa-user-plus"></i>회원가입</a>
+			                                    <a href="./user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
 		                                    </c:if>	 
 		                                    <c:if test="${not empty accessToken}">
 		                                    	<%-- 카카오 로그인의 경우 --%>  
-			                                    <img src="./resources/img/login.png" alt="로그아웃"><span>${signInUserNickname}</span> <a
-												href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7&logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">로그아웃</a>
-												<a href="./user/register"><img src="./resources/img/register.png" alt="회원가입">회원가입</a>
-			                                    <a href="./user/mypage"><img src="./resources/img/mypage.png" alt="마이페이지">마이페이지</a>
+			                                    <span>${signInUserNickname} 님</span><br>
+			                                    <a href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7&logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">
+			                                    	<i class="fa-solid fa-lock"></i>로그아웃</a>
+												<a href="./user/register"><i class="fa-solid fa-user-plus"></i>회원가입</a>
+			                                    <a href="./user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
 											</c:if>	 
 										</c:if>	                  
 	                                </div>
@@ -114,31 +118,33 @@
 	                </div>
 	            </div>
         <div class="container">
-            <div class="row">
+            <div class="row" class="header__row__">
 
                 <div class="col-md-7 col-md-4">
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li class="active"><a href="#">홈</a></li>
                             <li><a href="./movie/mainlist">차트</a></li>
-                            <li><a href="./board/main">자유게시판</a></li>
+                            <li><a href="./board/main">커뮤니티</a></li>
                             <li><a href="./event/main">이벤트</a></li>
                         </ul>
                     </nav>
                 </div>
-                <div>
+                <div class="search_option">
                     <div class="header__nav__option">
                          <div>
 							<form name="search" align="right" style="margin-right:20px;" method = "get"  
 								action ="./movie/search" >
-			                    <select name="type">
+			                    <select name="type" class="search" style="padding-bottom: 1px;">
 			                        <option value="1">제목</option>
 			                        <option value="2">배우</option>
 			                        <option value="3">감독</option>
 			                        <option value="4">장르</option>
 			                    </select>
-			                    <input class="search" type="text" name="keyword" placeholder="검색어 입력" required />
-			                    <input type="submit" value="검색" />
+			                    <input class="search" type="text" name="keyword" placeholder="검색어 입력"
+			                    	required oninvalid="this.setCustomValidity('검색어를 입력하세요.')"
+											 oninput = "setCustomValidity(' ')"/>
+			                    <input class="btn" type="submit" value="" />
 			                </form>
 			            </div>
                     </div>

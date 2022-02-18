@@ -42,4 +42,25 @@
     DELETE FROM ${TBL_BOARDS} 
     WHERE ${COL_BOARD_NO} = #{board_no}
     </delete>
+    
+    <!-- 키워드 검색: (1) 제목, (2) 내용, (3) 제목+내용, (4) 작성자 -->
+    <!-- Dynamic Query -->
+    <select id="selectByKeyword" resultType="Board">
+    SELECT * FROM ${TBL_BOARDS}
+        <if test="type == 1">
+        WHERE lower(${COL_BOARD_TITLE}) LIKE #{keyword}
+        </if>
+        <if test="type == 2">
+        WHERE lower(${COL_BOARD_CONTENT}) LIKE #{keyword}
+        </if>
+        <if test="type == 3">
+        WHERE lower(${COL_BOARD_TITLE}) LIKE #{keyword}
+            OR lower(${COL_BOARD_CONTENT}) LIKE #{keyword}
+        </if>
+        <if test="type == 4">
+        WHERE lower(${COL_USER_NICKNAME}) LIKE #{keyword}
+        </if>
+    ORDER BY ${COL_BOARD_NO} DESC
+    </select>
+    
 </mapper>
