@@ -35,6 +35,10 @@ body {
 	height: 100%;
 	font-family: "Nunito Sans", sans-serif;
 	-webkit-font-smoothing: antialiased;
+	-webkit-user-select:none; 
+    -moz-user-select:none; 
+    -ms-user-select:none; 
+    user-select:none
 }
 
 h1,
@@ -220,7 +224,7 @@ table a:hover {
 	background: #000;
 }
 
-.loader {
+#preloder .loader {
 	width: 40px;
 	height: 40px;
 	position: absolute;
@@ -233,7 +237,7 @@ table a:hover {
 	-webkit-animation: loader 0.8s linear infinite;
 }
 
-@keyframes loader {
+@keyframes #preloader {
 	0% {
 		-webkit-transform: rotate(0deg);
 		transform: rotate(0deg);
@@ -563,7 +567,8 @@ table a:hover {
 /* search__icon / 검색 아이콘 */
 header .search_option {
 	margin-left: auto;
-	align-content: flex-end;
+	align-items: flex-end;
+	width: auto;
 }
 .header__nav__option {
 	text-align: right;

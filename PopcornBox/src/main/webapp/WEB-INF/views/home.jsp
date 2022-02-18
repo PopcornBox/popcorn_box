@@ -143,7 +143,7 @@
 			                    </select>
 			                    <input class="search" type="text" name="keyword" placeholder="검색어 입력"
 			                    	required oninvalid="this.setCustomValidity('검색어를 입력하세요.')"
-											 oninput = "setCustomValidity(' ')"/>
+											 oninput = "setCustomValidity('')"/>
 			                    <input class="btn" type="submit" value="" />
 			                </form>
 			            </div>
