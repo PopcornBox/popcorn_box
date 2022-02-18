@@ -224,7 +224,7 @@ table a:hover {
 	background: #000;
 }
 
-.loader {
+#preloder .loader {
 	width: 40px;
 	height: 40px;
 	position: absolute;
@@ -237,7 +237,7 @@ table a:hover {
 	-webkit-animation: loader 0.8s linear infinite;
 }
 
-@keyframes loader {
+@keyframes #preloader {
 	0% {
 		-webkit-transform: rotate(0deg);
 		transform: rotate(0deg);
