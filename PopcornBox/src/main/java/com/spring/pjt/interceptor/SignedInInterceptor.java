@@ -60,7 +60,7 @@ public class SignedInInterceptor implements HandlerInterceptor {
 			// 세션에 로그인 사용자 닉네임, 아이디를 저장
 			session.setAttribute("signInUserId", ((User) user).getUser_id());
 			session.setAttribute("signInUserNickname", ((User) user).getUser_nickname());
-			session.setAttribute("signInUserPosition", ((User) user).getUser_position();
+			session.setAttribute("signInUserPosition", ((User) user).getUser_position());
 			log.info((String) session.getAttribute("signInUserId"));
 			log.info((String) session.getAttribute("signInUserNickname"));
 		        log.info((String) session.getAttribute("signInUserPosition"));
