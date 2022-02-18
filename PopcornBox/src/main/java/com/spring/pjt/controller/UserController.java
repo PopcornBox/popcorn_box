@@ -172,9 +172,11 @@ public class UserController {
 	public void kakaoLogin(@RequestParam("code") String code, @RequestParam("state") String state, 
 			RedirectAttributes ra, HttpSession session, HttpServletResponse response, Model model) throws IOException {
 		log.info("kakaologin() GET 호출 code: {}", code);
+		log.info("state: {}", state);
 		
 		JsonNode accessToken;
 		JsonNode refreshToken;
+		
 		
 		// JsonNode 트리 형태로 토큰 받아옴
         JsonNode jsonToken = kakaoLoginService.getKakaoAccessToken(code, state);
@@ -213,12 +215,13 @@ public class UserController {
         	model.addAttribute("signInUser", signInUser);
         	session.setAttribute("signInUser", signInUser);
         	session.setAttribute("accessToken", accessToken);
+        	session.setAttribute("state", state);
 //        	return "/";
 //        } else { // DB에 없는(회원가입하지 않은) 이메일
 //        	log.info("signInUser: {}", signInUser);
 //        	return "user/register"; // 회원가입 진행
 //        }
-           
+          
 	}
 	
 	//TODO
