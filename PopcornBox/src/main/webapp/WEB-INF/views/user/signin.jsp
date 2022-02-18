@@ -141,7 +141,7 @@
 	                                <!-- <input type="submit" value="로그인" /> -->
 		                             <div class="checkout__find__text"> 
 		                                <div>
-											<a href="https://kauth.kakao.com/oauth/authorize?client_id=cc1754dab9a17adb7dd44164ff108ba7&redirect_uri=http://localhost:8181/pjt/user/kakaologin&response_type=code&state=url">
+											<a href="https://kauth.kakao.com/oauth/authorize?client_id=cc1754dab9a17adb7dd44164ff108ba7&redirect_uri=http://localhost:8181/pjt/user/kakaologin&response_type=code&state=">
 											<img alt="카카오 로그인" src="../resources/img/kakao_login_medium_wide.png"></a>
 										</div>
 										<div class="find__text">
