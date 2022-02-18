@@ -567,6 +567,8 @@ table a:hover {
 /* search__icon / 검색 아이콘 */
 header .search_option {
 	margin-left: auto;
+	align-items: flex-end;
+	width: auto;
 }
 .header__nav__option {
 	text-align: right;
