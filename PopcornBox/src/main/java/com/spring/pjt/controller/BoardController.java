@@ -1,6 +1,5 @@
 package com.spring.pjt.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 
 import java.util.List;
 
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.pjt.domain.Board;
 import com.spring.pjt.service.BoardService;
@@ -27,7 +25,8 @@ public class BoardController {
 	@RequestMapping(value="/main", method=RequestMethod.GET)
 	public void main(Model model) {
 		log.info("main() 호출");
-		
+	
+
 		List<Board> list = boardService.select();
 		
 		model.addAttribute("boardList", list);
