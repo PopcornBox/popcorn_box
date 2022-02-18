@@ -265,10 +265,10 @@
 	
 	<div>● 안내사항 </div>
 		<div><br></div>
-	<div> - 당첨되신 분들에게는 Popcorn box 고객센터(02-1234-5678) 대표번호로 전화 연락을 드립니다. 
-	<div> - Popcorn box 회원 정보에 저장된 번호로 연락을 드리니, 휴대전화 정보를 꼭 확인해주세요.</div>
-	<div> - 전화 연결이 어렵거나 부재 중이었을 경우, 고객센터 업무시간 (오전 9시 ~ 오후 6시) 내 연락해 주세요.</div>
-<span style="color: rgb(0, 117, 200); background-color: rgb(255, 239, 0); font-size: 12pt;"><strong> - 당첨자 발표 후 영업일 기준 4일간 통화 연결이 되지 않을 경우 당첨이 취소됩니다. </strong></span>
+	<div> - 당첨되신 분들에게는 Popcorn box 고객센터(popcornbox@popcorn.com) 대표 이메일로 확인 메일을 드립니다. 
+	<div> - Popcorn box 회원 정보에 저장된 이메일로 연락을 드리니, 이메일을 꼭 확인해주세요.</div>
+	<div> - 이메일 확인이 어렵거나 부재 중이었을 경우, 고객센터 업무시간 (오전 9시 ~ 오후 6시) 내 연락해 주세요.</div>
+<span style="color: rgb(0, 117, 200); background-color: rgb(255, 239, 0); font-size: 12pt;"><strong> - 당첨자 발표 후 영업일 기준 4일간 당첨 확인이 되지 않을 경우 당첨이 취소됩니다. </strong></span>
 <br>
 <span style="color: rgb(0, 117, 200); background-color: rgb(255, 239, 0); font-size: 12pt;"><strong> - 허위 , 또는 Popcorn box 회원 약관 및 국내법에 위배되는 정보를 회원정보에 기재 시 당첨이 취소됩니다.</strong></span>
 	<div> <br></div>
