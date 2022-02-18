@@ -42,4 +42,6 @@
     DELETE FROM ${TBL_BOARDS} 
     WHERE ${COL_BOARD_NO} = #{board_no}
     </delete>
+    
+    
 </mapper>

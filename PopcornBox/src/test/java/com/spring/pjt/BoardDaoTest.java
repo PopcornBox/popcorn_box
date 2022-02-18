@@ -30,8 +30,10 @@ public class BoardDaoTest {
 //	log.info("boardDao: {}", boardDao);
 //	List<Board> list = boardDao.read();
 		
-		Board board = boardDao.read(1);
-		log.info(board.toString());
+//		Board board = boardDao.read(1);
+//		log.info(board.toString());
+
+		
 		
 	}
 

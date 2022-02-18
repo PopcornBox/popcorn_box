@@ -40,115 +40,9 @@
 
 </head>
 <body>
-<<<<<<< HEAD
 	<!-- Page Preloder -->
 	<div id="preloder">
 		<div class="loader"></div>
-=======
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
-
-    <!-- Offcanvas Menu Begin -->
-    <div class="offcanvas-menu-overlay"></div>
-    <div class="offcanvas-menu-wrapper">
-        <div class="offcanvas__option">
-            <div class="offcanvas__links">
-               <a href="./signin"><img src="../resources/img/login.png" alt="로그인">로그인</a>
-               <a href="./register"><img src="../resources/img/register.png" alt="회원가입">회원가입</a>
-            </div>
-        </div>
-        <div id="mobile-menu-wrap"></div>
-        <div class="offcanvas__text">
-            <p>PopcornBox</p>
-        </div>
-    </div>
-    <!-- Offcanvas Menu End -->
-
-    <!-- Header Section Begin -->
-    <header class="header">
-        <div class="header__top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-6 col-md-7">
-                        <div class="header__top__left">
-                              <a href="../"><img src="../resources/img/popcornbox_logo.png" alt="logo" width="35%"></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-5">
-                        <div class="header__top__right">
-                            <div class="header__top__links">
-                                 <a href="./signin"><img src="../resources/img/login.png" alt="로그인">로그인</a>
-                                 <a href="./register"><img src="../resources/img/register.png" alt="회원가입">회원가입</a>
-                                 <a href="./mypage"><img src="../resources/img/mypage.png" alt="마이페이지">마이페이지</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6">
-                    <nav class="header__menu mobile-menu">
-                        <ul>
-                            <li><a href="../">홈</a></li>
-                            <li><a href="../movie/mainlist">차트</a></li>
-                            <li class="active" ><a href="./main">자유게시판</a> 
-                            </li>
-                            <li><a href="./pb_event.html">이벤트</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class="col-lg-3 col-md- 10">
-                    <div class="header__nav__option">
-                        <a href="#" class="search-switch"><img src="../resources/img/icon/search.png" alt=""></a>
-
-                    </div>
-                </div>
-            </div>
-            <div class="canvas__open"><i class="fa fa-bars"></i></div>
-        </div>
-    </header>
-    <!-- Header Section End -->
-
-	 <div class="container-fluid">
-	<div class="container">
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th></th>
-					<th>제목</th>
-					<th>작성자</th>
-					<th>작성일</th>
-					<th>조회</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="board" items="${boardList}">
-					<tr>
-						<td>${board.board_no}</td>
-						<td><a href="./detail?board_no=${board.board_no}">${board.board_title}</a></td>
-						<td>${board.user_nickname}</td>
-						<td><fmt:formatDate value="${board.board_update_time}"
-								pattern="yyyy/MM/dd HH:mm" /></td>
-						<td>${board.board_view_cnt}</td>
-					</tr>
-				</c:forEach>
-			</tbody>
-
-		</table>
-
-	<nav>
-		<!-- 메뉴 -->
-		<ul>
-			<%-- <li><a href="../">메인</a></li>--%>
-			<div id="main-insertbtn"><a href="./insert" class="btn btn-outline-dark">새 글 작성</a></div>
-		</ul>
-	</nav>
-	
->>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
 	</div>
 
 	<!-- Offcanvas Menu Begin -->
@@ -180,7 +74,7 @@
 					<div class="col-lg-6 col-md-5">
 						<div class="header__top__right">
 							<div class="header__top__links">
-								<a href="./pb_login.html">로그인</a> <a
+								<a href="../user/signin">로그인</a> <a
 									href="./pb_join_member.html">회원가입</a>
 							</div>
 						</div>
@@ -241,36 +135,23 @@
 				</tbody>
 
 			</table>
-
-
-
-			<div>
-				<ul class="pagination">
-					<c:if test="${pageMaker.prev }">
-						<li class="pagination_button"><a href="#">Previous</a></li>
-					</c:if>
-
-					<c:forEach var="num" begin="${pageMaker.startPage }"
-						end="${pageMaker.endPage }">
-						<li class="pagination_button"><a href="#">${num }</a></li>
-					</c:forEach>
-
-					<c:if test="${pageMaker.next }">
-						<li class="pagination_button"><a href="#">Next</a></li>
-					</c:if>
-				</ul>
-			</div>
-
-
-			<nav>
+			
+			
+			<nav id="main-insertbtn">
 				<!-- 메뉴 -->
 				<ul>
-					<%-- <li><a href="../">메인</a></li>--%>
-					<div id="main-insertbtn">
 						<a href="./insert" class="btn btn-outline-dark">새 글 작성</a>
-					</div>
+		
+					<c:if test="${signInUserPosition eq 'B'}">
+						<a href="./insert" class="btn btn-outline-dark">공지 글 작성</a>
+					</c:if>
+					<c:if test="${signInUserPosition eq 'A'}">
+						<a href="./insert" class="btn btn-outline-dark">공지 글 작성</a>
+					</c:if>
+
 				</ul>
 			</nav>
+
 
 		</div>
 
