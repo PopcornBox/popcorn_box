@@ -28,9 +28,8 @@ public class SignedInInterceptor implements HandlerInterceptor {
 		log.info("      session: {}", request.getSession());
 		log.info("      session.signInUser: {}", request.getSession().getAttribute("signInUser"));
 		
-		HttpSession session = request.getSession(); // 세션 생성
-		// 로그인 성공 후 이동할 페이지(input type="hidden"에서 찾음)
-		String targetUrl = request.getParameter("url");
+		HttpSession session = request.getSession(); // 세션 생성		
+		String state = (String) session.getAttribute("state");
 		
 		if (request.getMethod().equals("GET")) {
 			log.info("req uri: {}", request.getRequestURI());
@@ -47,20 +46,25 @@ public class SignedInInterceptor implements HandlerInterceptor {
 					session.setAttribute("signInUserNickname", user_nickname);
 					session.setAttribute("signInUserPosition", user_position);
 					
-					// 원래 이동하려고 했던 페이지(targetUrl)로 redirect
-					if (targetUrl != null && !targetUrl.equals("")) {
-						response.sendRedirect(targetUrl);
+					// 원래 이동하려고 했던 페이지(state)로 redirect
+					if (state != null && !state.equals("")) {
+						response.sendRedirect(state);
+						session.removeAttribute(state);
+						log.info("session.state", session.getAttribute(state));
 					} else {
 						response.sendRedirect("/pjt");
 					}
 					return;
-				} else { // 회원가입되지 않은 이용자면
-					response.sendRedirect("/pjt/user/register");
+				} else { // 회원가입되지 않은 이용자면 간편
+					response.sendRedirect("/pjt/user/simpleRegister");
 					return;
 				}
 				
 			}
 		}
+		
+		// 로그인 성공 후 이동할 페이지(input type="hidden"에서 찾음)
+		String targetUrl = request.getParameter("url");
 		
 		Object user = modelAndView.getModel().get("signInUser");
 		if (user != null) { // 테이블에 아이디/비밀번호가 일치하는 사용자가 있는 경우 -> 로그인 성공
