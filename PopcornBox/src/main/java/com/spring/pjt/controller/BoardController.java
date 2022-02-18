@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.pjt.domain.Board;
+import com.spring.pjt.domain.PageCriteria;
+import com.spring.pjt.domain.PagingView;
 import com.spring.pjt.service.BoardService;
+
+import oracle.net.ano.Service;
 
 @Controller
 @RequestMapping(value = "/board")
@@ -91,6 +95,16 @@ public class BoardController {
 		model.addAttribute("boardList", list);
 		
 		return "board/main";
+		
+	}
+	
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public void list(PageCriteria pcri, Model model) {
+		log.info("pagingList" + pcri);
+		model.addAttribute("list", boardService.getList(pcri));
+		model.addAttribute("pageList", new PagingView(pcri, boardService.getTotal()));
+		// pageList 구성요소 중 전체 데이터
+		// getList 작동을 안함
 		
 	}
 	

@@ -184,6 +184,33 @@
 
 
    </div>
+   
+<!-- Paging -->
+<nav class="page navigation">
+	<ul class="pagination">
+		<c:if test="${pageList.prev}">
+			<li class="paginate_button previous">
+				<a class="page-link" href="${pageList.startPage - 1}">Prev</a>
+			</li>
+		</c:if>
+		<c:forEach var="num" begin="${pageList.startPage}" end="${pageList.endPage}">
+			<li class="paginate_button ${pageList.cri.pageNum == num ? "active" : "" } ">
+				<a class="page-link" href="${num}">${num}</a>
+			</li>
+		</c:forEach>
+		<c:if test="${pageList.next}">
+			<li class="paginate_button next">
+				<a class="page-link" href="${pageList.endPage + 1}">Next</a>
+			</li>
+		</c:if>
+	</ul>
+</nav>
+<!-- /.page -->
+
+<form id='actionForm' action="/board/list" method="get">
+	<input type="hidden" name="pageNum" value="${pageList.pcri.pageNum}">
+	<input type="hidden" name="amount" value="${pageList.pcri.Contents}">
+</form>
 
 
 
