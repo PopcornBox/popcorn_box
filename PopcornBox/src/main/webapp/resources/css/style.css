@@ -2650,6 +2650,7 @@ header .search_option {
 
 .movie__chart__table {
 	margin-bottom: 30px;
+	text-align: left;
 }
 
 .movie__chart__table table {
@@ -2669,6 +2670,17 @@ header .search_option {
 	text-transform: uppercase;
 }
 
+.movie__chart__table table thead tr th:nth-child(3){
+	text-align: left !important;
+}
+
+.movie__chart__table table thead tr th.poster{
+	width: 185px;
+}
+.movie__chart__table table thead tr th.title{
+	width: 45%;
+}
+
 /* 차트 구분선 chrt line */
 .movie__chart__table table tbody tr {
 	border-bottom: 1px solid #f2f2f2;
@@ -2677,6 +2689,10 @@ header .search_option {
 .movie__chart__table table tbody tr td {
 	padding-bottom: 30px;
 	padding-top: 30px;
+}
+
+.movie__chart__table table tbody tr td:nth-child(3){
+	text-align: left !important;
 }
 
 /* 차트 리스트 넓이 */
