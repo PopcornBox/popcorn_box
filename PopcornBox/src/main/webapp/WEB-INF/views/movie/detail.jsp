@@ -150,7 +150,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__text">
-                        <h4>영화 상세정보</h4>
+                        <h4 style="margin-left: 20px;">영화 상세정보</h4>
                     </div>
                 </div>
             </div>
@@ -171,7 +171,7 @@
                           </div>
                       </div>
                   </div>
-                <div class="col-lg-6 col-md-6">
+                  <div class="col-lg-6 col-md-6">
 
                     <div class="contact__text">
                         <div class="section-title">
@@ -184,7 +184,8 @@
                     </div>
                 </div>
                 <div class="col-lg-12 col-md-14">
-                    <div class="contact__form" id="movie_content" name="movie_content">
+                  <hr><br><br>
+                    <div class="contact__form" id="movie_content" name="movie_content" style="margin-left: 0px;">
                       <p>${movie.movie_content}</p>
                       <p>${movie.movie_trailer}</p>
                         <!-- 댓글기능 -->
