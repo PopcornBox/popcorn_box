@@ -383,7 +383,7 @@ table a:hover {
 	color: #111111;
 	font-size: 13px;
 	text-transform: uppercase;
-	letter-spacing: 4px;
+	letter-spacing: 3px;
 	margin-left: 32px;
 	display: inline-block;
 }
@@ -3715,6 +3715,7 @@ header .search_option {
 	padding-left: 15px;
 	font-size: 16px;
 	color: #000;
+	user-select: none;
 }
 
 .contact__form input::-webkit-input-placeholder {
@@ -3776,6 +3777,11 @@ header .search_option {
 
 .contact__form #board_content {
 	padding-bottom: 40px;
+	-webkit-user-select:text; 
+	-moz-user-select:text; 
+	-ms-user-select:text; 
+	user-select:text;
+
 }
 
 .contact__form button {

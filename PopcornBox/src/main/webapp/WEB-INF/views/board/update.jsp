@@ -141,24 +141,19 @@
 			</ul>
 		</nav>
 
-		<div>
+	<div class="container">
+	<div class="contact__form">
 			<form action="./update" method="post">
 				<div>
-					<input type="number" name="board_no" value="${board.board_no}" id="board_no" readonly />
+					<input type="hidden" name="board_no" value="${board.board_no}" id="board_no" readonly />
 				</div>
 				<div>
-					<label for="title">글 제목</label> <input type="text" id="board_title"
+					<input type="text" id="board_title"
 						name="board_title" value="${board.board_title}" required autofocus />
 				</div>
 				<div>
-					<label for="content">글 내용</label>
 					<textarea rows="5" id="board_content" name="board_content" required>${board.board_content}
                         </textarea>
-				</div>
-				<div>
-					<label for="user_nickname">닉네임</label> <input type="text"
-						id="user_nickname" name="user_nickname" value="${board.user_nickname}" required
-						readonly />
 				</div>
 	
 				<div>
@@ -166,7 +161,6 @@
 				</div>
 			</form>
 		</div>
-
 	</div>
 
 		<!-- Footer Section Begin -->

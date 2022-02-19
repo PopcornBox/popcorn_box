@@ -147,7 +147,7 @@
 		<ul>
 			<c:if test="${signInUserNickname == board.user_nickname}">
 				<!-- 로그인 사용자 아이디와 글 작성자 아이디가 일치할 때만 수정 메뉴를 보여줌. -->
-				<li><a href="./update?board_no=${board.board_no}">수정</a></li>
+				<li><a href="./update?board_no=${board.board_no}">글 수정</a></li>
 			</c:if>
 		</ul>
 	</nav>
@@ -176,7 +176,7 @@
 			</div>
 			<div>
 				<fmt:formatDate value="${board.board_update_time}"
-					pattern="yyyy/MM/dd HH/mm/ss" var="last_update_time" />
+					pattern="yy/MM/dd  HH:mm" var="last_update_time" />
 				<input type="text" id="reg-date" name="reg_date"
 					value="${last_update_time}" readonly />
 			</div>
