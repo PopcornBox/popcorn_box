@@ -13,4 +13,5 @@ public interface UserService {
     int resetPwd(User user);
     int validateKey(User user);
     void userInfoUpdate(User user);
+    int deleteAccount(String user_nickname);
 }

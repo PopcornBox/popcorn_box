@@ -35,7 +35,9 @@
 		</fieldset>
                 
 		<input type="button" value="메인으로" class="btn" onclick="location.href='/pjt'">
-		
+		<div>
+	    <input type="button" value="회원 탈퇴" class="btn" onclick="location.href='/pjt/user/leave'">                           
+	    </div>
 		
 		
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
