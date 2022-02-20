@@ -123,7 +123,7 @@
                 <div class="col-md-7 col-md-4">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="#">홈</a></li>
+                            <li class="active"><a href="">홈</a></li>
                             <li><a href="./movie/mainlist">차트</a></li>
                             <li><a href="./board/main">커뮤니티</a></li>
                             <li><a href="./event/main">이벤트</a></li>
@@ -417,25 +417,33 @@
     <!-- Footer Section Begin -->
     <footer class="footer">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer__about">
-                        <div class="footer__logo">
-                            <a href="#"><img src="./resources/img/logo_white.png" width="60%" alt=""></a>
-                        </div>
-
-                        <p>Copyright ©
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script>2020
-                            All rights reserved | This template is made with <i class="fa fa-heart-o"
-                            aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                        </p>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </div>
-                </div>
-            </div>
-        </div>
+                   <div class="footer__about">
+                       <div class="footer__logo">
+                           <a href=""><img src="./resources/img/logo_white.png" alt=""></a>
+                       </div>
+                   </div>
+               <div class="footer_text">
+               	<div>
+                	<p>대표 김유은</p>
+                	<p>서울특별시 강남구 테헤란로 124 4층 | 사업자 등록번호 11110 22220 3333</p>
+                	<p>
+                           <a href="">이용약관 </a>
+                           | 
+                           <a href="">개인정보 처리 방침 </a>
+                           | 
+                           <a href="">고객센터 </a>
+                           | 
+                       	<a href="https://github.com/PopcornBox/popcorn_box">Github </a>
+                       </p>
+                       <p>Copyright ©
+                           <script>
+                               document.write(new Date().getFullYear());
+                           </script>2020 Popcorn Box. All rights reserved  
+                       </p>
+                       
+               	</div>
+               </div>
+           </div>
     </footer>
     <!-- Footer Section End -->
 

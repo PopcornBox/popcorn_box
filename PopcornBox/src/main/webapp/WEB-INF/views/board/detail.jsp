@@ -136,7 +136,8 @@
         </div>
     </header>
     <!-- Header Section End -->
-
+	
+	<hr>
 
 
 	<nav>
@@ -146,41 +147,46 @@
 		<ul>
 			<c:if test="${signInUserNickname == board.user_nickname}">
 				<!-- 로그인 사용자 아이디와 글 작성자 아이디가 일치할 때만 수정 메뉴를 보여줌. -->
-				<li><a href="./update?board_no=${board.board_no}">수정</a></li>
+				<li><a href="./update?board_no=${board.board_no}">글 수정</a></li>
 			</c:if>
 		</ul>
 	</nav>
 
 		<%-- 게시글 상세보기 --%>		
 	<div class="container">
+	<div class="contact__form">
 		<form>
 			<div>
 				<input type="hidden" id="bno" value="${board.board_no}" />
 			</div>
-			<div>
-				<label for="title">글 제목</label> <input type="text" id="board_title"
+			<div class="contact__form">
+				<input type="text" id="board_title"
 					name="board_title" value="${board.board_title}" required autofocus
 					readonly />
 			</div>
-			<div>
-				<label for="content">글 내용</label>
-				<textarea rows="5" id="board_content" name="board_content" required
-					readonly>${board.board_content}</textarea>
+			<div class="row">
+				<div>
+					<i class="fa-solid fa-user"></i>
+				</div>
+				<div>
+					<input type="text"
+						id="board_user_nickname" name="board_user_nickname"
+						value="${board.user_nickname}" required readonly />
+				</div>
 			</div>
 			<div>
-				<label for="board_user_nickname">닉네임</label> <input type="text"
-					id="board_user_nickname" name="board_user_nickname"
-					value="${board.user_nickname}" required readonly />
-			</div>
-			<div>
-				<label for="reg_date">최종 수정 시간</label>
 				<fmt:formatDate value="${board.board_update_time}"
-					pattern="yyyy/MM/dd HH/mm/ss" var="last_update_time" />
+					pattern="yy/MM/dd  HH:mm" var="last_update_time" />
 				<input type="text" id="reg-date" name="reg_date"
 					value="${last_update_time}" readonly />
-
+			</div>
+			<hr>
+			<div>
+				<div style="white-space:pre-wrap" id="board_content" name="board_content" required
+					readonly>${board.board_content}</div>
 			</div>
 		</form>
+		</div>
 	</div>
 
 

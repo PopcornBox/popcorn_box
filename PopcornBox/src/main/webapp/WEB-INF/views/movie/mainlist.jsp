@@ -165,12 +165,13 @@
 	
 	
 	<div class="container">
+		<div class="movie__chart__table">
 		<table class="table">
 			<thead class="thead-blue text-center">
 				<tr>
 					<th>영화순위</th>
-					<th>포스터</th>
-					<th>제목</th>
+					<th class="poster"></th>
+					<th class="title">소개</th>
 					<th>평점</th>
 					<th>좋아요</th>
 				</tr>
@@ -179,9 +180,14 @@
 				<c:forEach var="movie" items="${movieList}">
 					<tr>
 						<td></td>
-						<td><span id="movie_image" name="movie_image"><img
-								src="${movie.movie_image}" width="185" height="260" /></span></td>
-						<td><a href="./detail?movie_no=${movie.movie_no}">${movie.movie_title}</a>
+						<td>
+							<span id="movie_image" name="movie_image"><img
+								src="${movie.movie_image}" width="185" height="260" /></span>
+						</td>
+						<td>
+							<a href="./detail?movie_no=${movie.movie_no}"><span style="font-size: 20px;">${movie.movie_title}</span>
+							<br><br>${movie.movie_content}</a>
+							<!-- TODO nn자만 가져오기 -->
 						</td>
 						<td></td>
 						<td></td>
@@ -189,6 +195,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
+		</div>
 	</div>
 
 

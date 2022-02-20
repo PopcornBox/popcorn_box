@@ -3,6 +3,7 @@ package com.spring.pjt.service;
 import java.util.List;
 
 import com.spring.pjt.domain.Board;
+import com.spring.pjt.domain.PageCriteria;
 
 public interface BoardService {
 
@@ -13,4 +14,6 @@ public interface BoardService {
 	int delete(int board_no);
 	int boardListCnt();
 	List<Board> select(int serachType, String searchKeyword);
+	List<Board> getList(PageCriteria pcri);
+	int getTotal();
 }

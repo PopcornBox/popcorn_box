@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.pjt.domain.Board;
+import com.spring.pjt.domain.PageCriteria;
 
 @Repository
 public class BoardDaoImpl implements BoardDao{
@@ -71,7 +72,8 @@ public class BoardDaoImpl implements BoardDao{
 		return sqlSession.selectList(BOARD_NAMESPACE + ".selectByKeyword", params);
 		
 	}
-
-	}
+	
+	
+}
 
 
