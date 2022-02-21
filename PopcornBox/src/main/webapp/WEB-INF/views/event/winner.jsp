@@ -62,13 +62,6 @@
 	border:1px solid windowtext; border-top:none;border-left:none">cho**@naver.com</td>
  </tr>
 
-
-
- <tr height="22" style="height:16.5pt">
-  <td height="22" class="xl63" style="width:39pt; text-align:center; height:16.5pt"></td>
-  <td class="xl63" style="height:16.5pt; width:165pt; text-align:center;"></td>
-  <td class="xl63" style="height:16.5pt; width:157pt; text-align:center;"></td>
- </tr>
  <tr height="22" style="height:16.5pt">
   <td colspan="3" height="22" class="xl67" style="width:117pt; text-align:center;
 	border:1px solid windowtext;
