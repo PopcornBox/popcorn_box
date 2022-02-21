@@ -171,7 +171,7 @@ public class UserController {
 	// TODO
 	@RequestMapping(value = "/kakaologin", produces = "application/json", method = RequestMethod.GET)
 	public void kakaoLogin(@RequestParam("code") String code, @RequestParam("state") String state, 
-			RedirectAttributes ra, HttpSession session, HttpServletResponse response, Model model) throws IOException {
+			RedirectAttributes ra, HttpSession session, HttpServletResponse response) throws IOException {
 		log.info("kakaologin() GET 호출 code: {}", code);
 		log.info("state: {}", state);
 		
@@ -210,19 +210,15 @@ public class UserController {
         
         User signInUser = null;        
         User user = userService.readUserByEmail(email);
-//        if (user != null) { // DB에 있는(회원가입한) 이메일
+        if (user != null) { // DB에 있는(회원가입한) 이메일
         	signInUser = user;
         	log.info("signInUser: {}", signInUser);
-        	model.addAttribute("signInUser", signInUser);
-        	session.setAttribute("signInUser", signInUser);
+        	session.setAttribute("signInUserNo", signInUser.getUser_no());
+        	session.setAttribute("signInUserNickname", signInUser.getUser_nickname());
+        	session.setAttribute("signInUserPosition", signInUser.getUser_position());
         	session.setAttribute("accessToken", accessToken);
         	session.setAttribute("state", state);
-//        	return "/";
-//        } else { // DB에 없는(회원가입하지 않은) 이메일
-//        	log.info("signInUser: {}", signInUser);
-//        	return "user/register"; // 회원가입 진행
-//        }
-          
+        }          
 	}
 	
 	//TODO
@@ -242,7 +238,7 @@ public class UserController {
 		//노드에 로그아웃한 결괏값을 담아줌. 매개변수는 세션에 잇는 accessToken을 가져와 문자열로 변환
 		JsonNode node = kakaoLoginService.kakaoLogout(session.getAttribute("accessToken").toString());
 		// 결괏값 출력
-		log.info("로그인 후 반환되는 아이디 : {}", node.get("id"));
+		log.info("로그아웃 후 반환되는 아이디 : {}", node.get("id"));
 			
 		// 세션에 저장된 모든 데이터를 삭제 -> 메인 페이지로 이동
 		session.invalidate();	
@@ -364,6 +360,21 @@ public class UserController {
 		HttpSession session = request.getSession();
 		session.setAttribute("signInUserNickname", user.getUser_nickname());
 		return "redirect:/user/mypage";
+	}
+	
+	@RequestMapping(value = "/leave", method = RequestMethod.GET)
+	public void leave() {
+		log.info("leave() GET 호출");
+	}
+	
+	@RequestMapping(value = "/leave", method = RequestMethod.POST)
+	public String leave(HttpSession session) {		
+		String user_nickname = (String) session.getAttribute("signInUserNickname");
+		log.info("leave(user_nickname={}) POST 호출", user_nickname);
+		userService.deleteAccount(user_nickname);
+		session.invalidate();
+		
+		return "redirect:/";
 	}
 	
 }

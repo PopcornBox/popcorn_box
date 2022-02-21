@@ -10,7 +10,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriUtils;
 
-//로그인 상태인지 아닌지(세션에 로그인 아이디가 저장되어 있는지)를 체크해서, 
+//로그인 상태인지 아닌지(세션에 닉네임이 저장되어 있는지)를 체크해서, 
 //로그인 상태이면 원래 가고자 했던 페이지로 진행
 //로그인 안 한 상태이면 로그인 페이지로 redirect
 

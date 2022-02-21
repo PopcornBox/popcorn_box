@@ -74,6 +74,10 @@
 	SET ${COL_USER_NICKNAME} = #{user_nickname} where ${COL_USER_ID} = #{user_id}
     </update>
     
-	
+	<!-- 회원 탈퇴 -->
+	<delete id="delete">
+	DELETE FROM ${TABLE_USERS}
+	WHERE ${COL_USER_NICKNAME} = #{user_nickname}
+	</delete>
 	
 </mapper>

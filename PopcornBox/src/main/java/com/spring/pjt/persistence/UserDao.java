@@ -20,4 +20,5 @@ public interface UserDao {
 	void userInfoUpdate(User user);
 	int lock_userKey(User user);
 	int resetPwd(User user);
+	int delete(String user_nickname);
 }

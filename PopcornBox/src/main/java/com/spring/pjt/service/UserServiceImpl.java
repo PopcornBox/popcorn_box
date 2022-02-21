@@ -17,8 +17,7 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public int registerNewUser(User user) {
-		log.info("registerNewUser({}) 호출", user);
-		
+		log.info("registerNewUser({}) 호출", user);		
 		return userDao.create(user);
 	}
 
@@ -60,8 +59,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User checkSignIn(User user) {
-		log.info("checkSignIn({}) 호출", user);
-		
+		log.info("checkSignIn({}) 호출", user);		
 		return userDao.read(user);
 	}
 
@@ -94,5 +92,11 @@ public class UserServiceImpl implements UserService {
 	public void userInfoUpdate(User user) {
 		log.info("userInfoUpdate(user: {}) 호출", user);
 		userDao.userInfoUpdate(user);
+	}
+
+	@Override
+	public int deleteAccount(String user_nickname) {
+		log.info("deleteAccount(user_nickname={}) 호출", user_nickname);
+		return userDao.delete(user_nickname);
 	}
 }
