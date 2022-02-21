@@ -363,12 +363,18 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/leave", method = RequestMethod.GET)
-	public void leave() {
-		log.info("leave() GET 호출");
+	public void leave(HttpServletRequest request, Model model) {
+		log.info("leave() GET 호출");		
+		HttpSession session = request.getSession();
+		String signInUserNickname = (String) session.getAttribute("signInUserNickname");
+		log.info("leave(user_nickname : {}) GET 호출", signInUserNickname);
+		User user = userService.userInfo(signInUserNickname);
+		
+		model.addAttribute("user",user);
 	}
 	
 	@RequestMapping(value = "/leave", method = RequestMethod.POST)
-	public String leave(HttpSession session) {		
+	public String leave(HttpSession session, Model model) {		
 		String user_nickname = (String) session.getAttribute("signInUserNickname");
 		log.info("leave(user_nickname={}) POST 호출", user_nickname);
 		userService.deleteAccount(user_nickname);

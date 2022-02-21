@@ -177,7 +177,7 @@
                         <div class="section-title">
 
                             <h2>${movie.movie_title}</h2>
-                            <p>감독: ${movie.movie_director} <br/> 배우: ${movie.movie_actor} <br/> 장르: ${movie.movie_genre} <br/> 개봉날일: ${movie.movie_release}
+                            <p>감독: ${movie.movie_director} <br/> 배우: ${movie.movie_actor} <br/> 장르: ${movie.movie_genre} <br/> 개봉: ${movie.movie_release}
                             </p>
                         </div>
 
@@ -365,103 +365,7 @@
 	             }); // end getJSON()
 	    	}	
 	     	
-	    	getAllMovieReplies(); // 함수 호출
-	    	
-	
-	<script>
-    		$(document).ready(function() {
-    			$('#movie_reply_content').click(function() {
-    					if ('${signInUserNickname}' == null || '${signInUserNickname}' == '') {
-    						var message = '로그인이 필요한 서비스입니다. 로그인 페이지로 이동하시겠습니까?';
-    						var result = confirm(message);
-    						if (result == true) {
-    						location.href = '/pjt/movie/detail?movie_no=' + ${movie.movie_no};
-    						}
-    					}
-    			});   					
-            	
-    			var movie_no = '${movie.movie_no}';
-            	// 해당 영화에 대한 모든 댓글 목록을 읽어오는 Ajax 함수 정의(선언)
-            	function getAllMovieReplies() {
-            		// $.getJSON(요청URL, 콜백 함수): URL로 Ajax GET 요청을 보내고 
-            		// JSON 문자열을 응답으로 전달받아서 처리하는 함수.
-                    $.getJSON('/pjt/movie_replies/all/' + movie_no, function (respText) {
-                        // respText: REST Controller가 보내준 JSON 형식의 문자열 - 댓글들의 배열(array)
-                        
-                   		var n = respText.length; 
-                    	if (n > 0) {
-                    		$('#reply_number').html(n + '개의 리뷰');
-                    		
-                    		var lastpage = parseInt((n + 9) / 10);
-                    	    
-                        	var numberlist = '';
-                            for (var i = 1; i <= lastpage; i++) {
-                            	numberlist += '<a href="./detail?movie_no=' + ${movie.movie_no} + '&vpage=' + i + '">' + i + '</a> ';
-                            }
-                             $('#page_number').html(numberlist);
-                    	}
-                    	
-                   
-                    });
-                    
-                     $.getJSON('/pjt/movie_replies/all/' + movie_no + '/' + ${viewpage}, function (respText) {
-                    	 $('#movie_reply_list').empty(); // 모든 하위 요소들을 삭제
-                         
-                         var movie_list = ''; // 하위 요소(HTML 코드)를 작성할 문자열.
-                         
-                         // 배열 respText의 원소들을 하나씩 꺼내서 콜백 함수를 호출.
-                         $(respText).each(function () {
-                         	var date = new Date(this.movie_reply_update_time); // JavaScript Date 객체 생성
-                         	var dateStr = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
-                         	
-                         		movie_list += '<div class="movie_reply_item">'
-                                                 + '<input type="hidden" id="movie_reply_no" name="movie_reply_no" value="'
-                         		   				+ this.movie_reply_no
-                         		  				+ '" readonly />';
-                             if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면	  				
-                            	 movie_list += '<input type="text" style="background-color:rgb(240, 248, 255);" id="movie_reply_content" name="movie_reply_content" value="'
-       		  									+ this.movie_reply_content
-      		   		   			    			+'" readonly />';
-                             } else {
-                            	 movie_list += '<input type="text" id="movie_reply_content" name="movie_reply_content" value="'
- 	  									+ this.movie_reply_content
- 	   		   			    			+'" readonly />';
-                             }
-                             if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
-                            	 movie_list += '<input type="text" style="background-color:rgb(240, 248, 255);" id="user_nickname" name="user_nickname" value="'
-                         		            	+ this.user_nickname
-                         		            	+ '" readonly />';
-                             } else {
-                            	 movie_list += '<input type="text" id="user_nickname" name="user_nickname" value="'
-             		            				+ this.user_nickname.substring(0,1) + '*' + this.user_nickname.substring(2, this.user_nickname.length)
-             		            				+ '" readonly />';
-                             }
-                             if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
-                            	movie_list += '<input type="text" style="background-color:rgb(240, 248, 255);" id="movie_reply_update_time" name="movie_reply_update_time" value="'
-                         		           		+ dateStr
-                         		            	+ '" readonly />';
-                             } else {
-                            	movie_list += '<input type="text" id="movie_reply_update_time" name="movie_reply_update_time" value="'
-         		           						+ dateStr
-         		            					+ '" readonly />';
-                             }
-                         	if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
-                         		movie_list += '<button class="movie_reply_update">수정</button>'
-                         			          + '<button class="movie_reply_delete">x</button>';
-                         	}
-                         	movie_list += '</div>';
-                         	    
-                         });
-                         
-                         // 완성된 HTML 문자열(list)를 하위 요소로 추가
-                         $('#movie_reply_list').html(event_list);
-                         
-                     }); // end getJSON()
-            	}	
-             	
-            	getAllMovieReplies(); // 함수 호출
-            	
-      
+	    	getAllMovieReplies(); // 함수 호출	
             	
     			// 새 영화 리뷰 등록
     			$('#btn_register_movie_reply').click(function (event) {

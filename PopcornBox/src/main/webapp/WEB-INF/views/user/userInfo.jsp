@@ -175,7 +175,7 @@
                 
 		<input type="button" value="메인으로" class="btn" onclick="location.href='/pjt'">
 		<div>
-	    <input type="button" value="회원 탈퇴" class="btn" onclick="location.href='/pjt/user/leave'">                           
+	    <input type="button" value="회원탈퇴" class="btn" onclick="location.href='/pjt/user/leave'">                           
 	    </div>
 		
 		
