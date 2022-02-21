@@ -34,8 +34,8 @@
 	
 	<!-- 회원 정보 확인 -->
 	<select id="userInfo" resultType="User">
-	SELECT USER_ID, USER_NICKNAME, USER_EMAIL, USER_UPDATE_TIME FROM ${TABLE_USERS}
-	WHERE USER_ID = #{user_id}
+	SELECT USER_ID, USER_PWD, USER_NICKNAME, USER_EMAIL, USER_UPDATE_TIME FROM ${TABLE_USERS}
+	WHERE USER_NICKNAME = #{user_nickname}
 	</select>
 	
     <!-- 회원 인증키 (난수 생성후 주입) -->
@@ -69,10 +69,9 @@
     </update> 
     
     <!-- 회원 닉네임 변경 -->
-    <update id="userinfo_update">
+    <update id="userInfoUpdate">
 	UPDATE ${TABLE_USERS}
-	SET ${COL_USER_NICKNAME} = #{user_nickname} where ${COL_USER_ID} = #{user_id}
-								and ${COL_USER_NICKNAME} = #{user_nickname}
+	SET ${COL_USER_NICKNAME} = #{user_nickname} where ${COL_USER_NICKNAME} = #{user_nickname}
     </update>
     
 	

@@ -347,18 +347,20 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/userInfo", method = RequestMethod.GET)
-	public void userInfo(User user, String user_nickname) {
-		log.info("userInfo(user_nickname: {}) GET 호출", user_nickname);
+	public void userInfo(HttpSession session, Model model) {
+		String SignInUserNickname = (String) session.getAttribute("SignInUserNickname");
+		log.info("userInfo(user: {}) GET 호출", SignInUserNickname);
+		User user = userService.userInfo(SignInUserNickname);
 		
+		model.addAttribute("user",user);
 	}
 	
 	@RequestMapping(value = "/userInfoUpdate", method = RequestMethod.POST)
-	public String userInfoUpdate(HttpServletRequest request, HttpSession session, User user, Model model, RedirectAttributes redi) {
+	public String userInfoUpdate(User user, HttpSession session) {
 		log.info("userInfo(user: {}) POST 호출", user);
 		userService.userInfoUpdate(user);
 		session.invalidate();
-		redi.addFlashAttribute("msg", "회원 정보 수정이 완료되었습니다. 다시 로그인해주세요!");
-		return "redirect:/pjt/user/signin" ;
+		return "redirect:/pjt/user/signin";
 	}
 	
 }
