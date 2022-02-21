@@ -190,27 +190,26 @@
                       <p>${movie.movie_trailer}</p>
                         <!-- 댓글기능 -->
                     </div>
-                </div>
-                
-                <br>
+                </div>                                
+            </div>
+            
+				<br>
 				<hr>
                 <!-- 댓글 작성 양식 -->
 				<div>
 					<div id="reply_number"></div>
-					<input type="text" id="movie_reply_content" name="movie_reply_content" placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." />
+					<input type="text" id="movie_reply_content" name="movie_reply_content" placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." style="width:600px;" />
 					<input type="submit" id="btn_register_movie_reply" value="등록" />
 				</div>
 				<hr>
 		
 				<!-- 댓글 목록 -->
-				<div id="movie_reply_list">
-						
+				<div id="movie_reply_list">		
 				</div>
 						
 				<!-- 페이지 넘버 -->
 				<div id="page_number" style="width:600px; text-align:center; margin-top:10px;">
                 </div>                
-            </div>
 
         </div>
         </div>
@@ -261,7 +260,6 @@
 	<script>
     		$(document).ready(function() {
     			$('#movie_reply_content').click(function() {
-    				if('${q}' >= 0) {
     					if ('${signInUserNickname}' == null || '${signInUserNickname}' == '') {
     						var message = '로그인이 필요한 서비스입니다. 로그인 페이지로 이동하시겠습니까?';
     						var result = confirm(message);
@@ -269,14 +267,7 @@
     						location.href = '/pjt/movie/detail?movie_no=' + ${movie.movie_no};
     						}
     					}
-    				}
-    			
-    			});
-    					
-    			if ('${q}' < 0) {
-    				$('#btn_register_movie_reply').attr('disabled', true);
-    			}
-    			
+    			});   					
             	
     			var movie_no = '${movie.movie_no}';
             	// 해당 영화에 대한 모든 댓글 목록을 읽어오는 Ajax 함수 정의(선언)
@@ -288,13 +279,13 @@
                         
                    		var n = respText.length; 
                     	if (n > 0) {
-                    		$('#reply_number').html(n + '개의 리뷰가 있습니다.');
+                    		$('#reply_number').html(n + '개의 리뷰');
                     		
                     		var lastpage = parseInt((n + 9) / 10);
                     	    
                         	var numberlist = '';
                             for (var i = 1; i <= lastpage; i++) {
-                            	numberlist += '<a href="./detail?event_no=' + ${event.event_no} + '&q=' + ${q} + '&vpage=' + i + '">' + i + '</a> ';
+                            	numberlist += '<a href="./detail?movie_no=' + ${movie.movie_no} + '&vpage=' + i + '">' + i + '</a> ';
                             }
                              $('#page_number').html(numberlist);
                     	}
@@ -309,45 +300,45 @@
                          
                          // 배열 respText의 원소들을 하나씩 꺼내서 콜백 함수를 호출.
                          $(respText).each(function () {
-                         	var date = new Date(this.event_reply_update_time); // JavaScript Date 객체 생성
+                         	var date = new Date(this.movie_reply_update_time); // JavaScript Date 객체 생성
                          	var dateStr = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
                          	
                          		movie_list += '<div class="movie_reply_item">'
-                                                 + '<input type="hidden" id="event_reply_no" name="event_reply_no" value="'
+                                                 + '<input type="hidden" id="movie_reply_no" name="movie_reply_no" value="'
                          		   				+ this.movie_reply_no
                          		  				+ '" readonly />';
                              if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면	  				
-                             	 event_list += '<input type="text" style="background-color:rgb(240, 248, 255);" id="movie_reply_content" name="movie_reply_content" value="'
-       		  									+ this.event_reply_content
+                            	 movie_list += '<input type="text" style="background-color:rgb(240, 248, 255);" id="movie_reply_content" name="movie_reply_content" value="'
+       		  									+ this.movie_reply_content
       		   		   			    			+'" readonly />';
                              } else {
-                             	event_list += '<input type="text" id="movie_reply_content" name="movie_reply_content" value="'
- 	  									+ this.event_reply_content
+                            	 movie_list += '<input type="text" id="movie_reply_content" name="movie_reply_content" value="'
+ 	  									+ this.movie_reply_content
  	   		   			    			+'" readonly />';
                              }
                              if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
-                                  event_list += '<input type="text" style="background-color:rgb(240, 248, 255);" id="user_nickname" name="user_nickname" value="'
+                            	 movie_list += '<input type="text" style="background-color:rgb(240, 248, 255);" id="user_nickname" name="user_nickname" value="'
                          		            	+ this.user_nickname
                          		            	+ '" readonly />';
                              } else {
-                             	event_list += '<input type="text" id="user_nickname" name="user_nickname" value="'
+                            	 movie_list += '<input type="text" id="user_nickname" name="user_nickname" value="'
              		            				+ this.user_nickname.substring(0,1) + '*' + this.user_nickname.substring(2, this.user_nickname.length)
              		            				+ '" readonly />';
                              }
                              if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
-                             	event_list += '<input type="text" style="background-color:rgb(240, 248, 255);" id="movie_reply_update_time" name="movie_reply_update_time" value="'
+                            	movie_list += '<input type="text" style="background-color:rgb(240, 248, 255);" id="movie_reply_update_time" name="movie_reply_update_time" value="'
                          		           		+ dateStr
                          		            	+ '" readonly />';
                              } else {
-                             	event_list += '<input type="text" id="movie_reply_update_time" name="movie_reply_update_time" value="'
+                            	movie_list += '<input type="text" id="movie_reply_update_time" name="movie_reply_update_time" value="'
          		           						+ dateStr
          		            					+ '" readonly />';
                              }
                          	if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
-                         		event_list += '<button class="movie_reply_update">수정</button>'
+                         		movie_list += '<button class="movie_reply_update">수정</button>'
                          			          + '<button class="movie_reply_delete">x</button>';
                          	}
-                         	event_list += '</div>';
+                         	movie_list += '</div>';
                          	    
                          });
                          
@@ -361,8 +352,8 @@
             	
       
             	
-    			// 새 이벤트 댓글 등록
-    			$('#btn_register_movie_reply').click(function(event) {
+    			// 새 영화 리뷰 등록
+    			$('#btn_register_movie_reply').click(function (event) {
     				
     				var movie_reply_content = $('#movie_reply_content').val();
     				if (movie_reply_content == '') {
@@ -390,20 +381,13 @@
             			}),
             			// 성공 응답(200 response)이 왔을 때 브라우저가 실행할 콜백 함수
             			success: function (resp) {
-            				if (resp == 0) {
-            					alert('이미 이벤트에 참여하셨습니다.');
-            				}
-            				
             				$('#event_reply_content').val('');
-            				
             				getAllEventReplies();  // 댓글 목록 업데이트
             			}
             		});
     			});
             	
-            	
-            	
-            	
+
     			$('#movie_reply_list').on('click', '.movie_reply_item .movie_reply_update', function () {
     				
     				$(this).prevAll('#movie_reply_content').attr('readonly', false);
