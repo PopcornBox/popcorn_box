@@ -147,7 +147,7 @@
 					<input type="hidden" name="board_no" value="${board.board_no}" id="board_no" readonly />
 				</div>
 				<div>
-					<textarea rows="2" class="update_board_title" maxlength="40"
+					<textarea rows="2" class="update_board_title" maxlength="35"
 						name="board_title" required autofocus placeholder="제목을 입력하세요.">${board.board_title}</textarea>
 				</div>
 				<div>

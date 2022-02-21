@@ -138,7 +138,7 @@
 	 <div> <!-- 입력 양식 -->
                 <form method="post"> <!-- /board/insert POST submit -->
                     <div>
-                        <input type="text" name="board_title" placeholder="제목 입력" required autofocus />
+                        <input type="text" name="board_title" placeholder="제목 입력" maxlength="35" required autofocus />
                     </div>
                     <div>
                         <textarea rows="5" name="board_content" placeholder="내용 입력" required></textarea>
