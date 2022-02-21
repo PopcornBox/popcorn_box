@@ -412,8 +412,8 @@
                 						data: JSON.stringify({'movie_reply_content': movie_reply_content}),
                 						// 성공 응답 콜백 함수
                 						success: function () {
-                						alert(' 댓글 수정 성공!');
-                						getAllMovieReplies(); // 댓글 목록 업데이트
+                						alert(' 리뷰 수정 성공!');
+                						getAllMovieReplies(); // 리뷰 목록 업데이트
                 			}
                 		});
     				  });
