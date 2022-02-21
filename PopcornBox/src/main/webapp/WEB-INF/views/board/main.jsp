@@ -188,22 +188,22 @@
 
          </table>
          
-         <div>
-            <ul class="pagination">
-               <c:if test="${pageMaker.prev }">
-                  <li class="pagination_button"><a href="#">Previous</a></li>
-               </c:if>
-
-               <c:forEach var="num" begin="${pageMaker.startPage }"
-                  end="${pageMaker.endPage }">
-                  <li class="pagination_button"><a href="#">${num }</a></li>
-               </c:forEach>
-
-               <c:if test="${pageMaker.next }">
-                  <li class="pagination_button"><a href="#">Next</a></li>
-               </c:if>
-            </ul>
+         <div class="pageNumber_wrapping">
+         	<div class="pageNumber_area">
+         		<ul id="pageNumber" class="pageNumber">
+         			<!-- https://kimvampa.tistory.com/170?category=843151 -->
+         			<!-- 페이지 번호 버튼 -->
+         			<c:forEach var="num" begin="${pagingView.startPage}" end="${pagingView.endPage}">
+         				<li class="pageNumber_btn"><a href="${num}">${num}</a></li>
+         			</c:forEach>
+         		</ul>
+         	</div>
          </div>
+         
+         <form id="pagingviewForm" method="GET">
+         	<input type="hidden" name="pageNum" value="${PagingView.pcri.pageNum}">
+         	<input type="hidden" name="pageNum" value="${PagingView.pcri.contents}">
+         </form>
 
 
          <nav>
@@ -219,35 +219,8 @@
 
       </div>
 
-
    </div>
-   
-<!-- Paging -->
-<nav class="page navigation">
-	<ul class="pagination">
-		<c:if test="${pageList.prev}">
-			<li class="paginate_button previous">
-				<a class="page-link" href="${pageList.startPage - 1}">Prev</a>
-			</li>
-		</c:if>
-		<c:forEach var="num" begin="${pageList.startPage}" end="${pageList.endPage}">
-			<li class="paginate_button ${pageList.cri.pageNum == num ? "active" : "" } ">
-				<a class="page-link" href="${num}">${num}</a>
-			</li>
-		</c:forEach>
-		<c:if test="${pageList.next}">
-			<li class="paginate_button next">
-				<a class="page-link" href="${pageList.endPage + 1}">Next</a>
-			</li>
-		</c:if>
-	</ul>
-</nav>
-<!-- /.page -->
 
-<form id='actionForm' action="/board/list" method="get">
-	<input type="hidden" name="pageNum" value="${pageList.pcri.pageNum}">
-	<input type="hidden" name="amount" value="${pageList.pcri.Contents}">
-</form>
 
 
 

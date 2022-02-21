@@ -145,26 +145,27 @@
 		<h4>userInfo 페이지입니다.</h4>
 		<!-- https://melonpeach.tistory.com/42 확인한번만해볼것 -->
 		<section id="container">
-			<form action="/user/userInfoUpdate" method="post">
+			<form action="/pjt/user/userInfo" method="post">
 				<div class="form-group has-feedback">
 					<label class="control-label" for="user_id">아이디</label>
-					<input class="form-control" type="text" id="user_id" name="user_id" value="${user_id}" readonly="readonly"/>
+					<input class="form-control" type="text" id="user_id" name="user_id" value="${user.user_id}" readonly="readonly"/>
 				</div>
 				<div class="form-group has-feedback">
 					<label class="control-label" for="user_pwd">비밀번호</label>
-					<input class="form-control" type="password" id="user_pwd" name="user_pwd" />
+					<input class="form-control" type="password" id="user_pwd" name="user_pwd"/>
 				</div>
 				<div class="form-group has-feedback">
 					<label class="control-label" for="user_nickname">닉네임</label>
-					<input class="form-control" type="text" id="user_nickname" name="user_nickname" value="${SignInUserNickname}"/>
+					<input class="form-control" type="text" id="user_nickname" name="user_nickname" value="${signInUserNickname}"/>
+					<button class="checknickname" type="button" id="checknickname" onclick="fn_checknickname();" value="N">중복확인</button>
 				</div>
 				<div class="form-group has-feedback">
 					<label class="control-label" for="user_email">이메일</label>
-					<input class="form-control" type="text" id="user_email" name="user_email" value="${user_email}"/>
+					<input class="form-control" type="text" id="user_email" name="user_email" value="${user.user_email}" readonly="readonly"/>
 				</div>
 				<div class="form-group has-feedback">
 					<label class="control-label" for="user_update_time">가입 일자</label>
-					<input class="form-control" type="text" id="user_update_time" name="user_update_time" value="${user_update_time}"/>
+					<input class="form-control" type="text" id="user_update_time" name="user_update_time" value="${user.user_update_time}" readonly="readonly" disabled />
 				</div>
 			
 				<div class="form-group has-feedback">
@@ -188,7 +189,27 @@
    <script src="../resources/js/mixitup.min.js"></script>
    <script src="../resources/js/owl.carousel.min.js"></script>
    <script src="../resources/js/main.js"></script>
- 
+   <script>
+   $(documenct).ready(function(){
+		
+   });
+		function fn_checknickname(){
+			$.ajax({
+				url : "./checknickname",
+				type : "post",
+				dataType : "json",
+				data : {"user_nickname" : $("#user_nickname").val()},
+				success : function(data){
+					if(response == 'invalid'){
+						alert("중복된 닉네임입니다.");
+					}else if(response == 'valid'){
+						$("#checknickname").attr("value", "Y");
+						alert("사용가능한 아이디입니다.");
+					}
+				}
+			})
+		}
+ 	</script>
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 	</body>

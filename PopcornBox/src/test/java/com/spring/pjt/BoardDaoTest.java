@@ -28,7 +28,7 @@ public class BoardDaoTest {
 	
 	@Autowired private BoardDao boardDao;
 	@Autowired private BoardMapper mapper;
-	private BoardService service;
+	@Autowired private BoardService service;
 	
 	@Test
 	public void doTest() {
@@ -38,23 +38,13 @@ public class BoardDaoTest {
 		log.info(board.toString());
 	}
 	
-//	@Test
-//	public void testPaging() {
-//	    PageCriteria cri = new PageCriteria();
-//	    cri.setPageNum(1);
-//	    cri.setContents(10);
-//
-//	    List<Board> list = mapper.pagingList(cri);
-//	    list.forEach(board -> log.info(board.toString()));
-//	}
-	
-//	@Test // 리스트 조회
-//	public void testGetList() {
-//		service.getList(new PageCriteria(1, 10)).forEach(board -> log.info(toString()));
-//=======
-//		Board board = boardDao.read(1);
-//		log.info(board.toString());
-
-//	}
+	@Test
+	public void testpagingList() {
+		PageCriteria pcri = new PageCriteria();
+		log.info(pcri.toString());
+		List list = service.pagingList(pcri);
+		
+		list.forEach(board -> log.info("" + board));
+	}
 
 }

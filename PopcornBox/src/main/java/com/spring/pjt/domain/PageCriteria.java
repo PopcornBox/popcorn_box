@@ -1,38 +1,39 @@
 package com.spring.pjt.domain;
 
 public class PageCriteria {
-	private int PageNum;  // 현재 페이지 넘버
-	private int Contents;  // 전체 게시글 수
+	private int pageNum;  // 현재 페이지 넘버
+	private int contents;  // 페이지 당 게시글 숫자
 //	----- ↑계산에 필요한 내용 -----
 	
+	// 기본 세팅(현재 페이지 : 1 , 페이지 당 게시글 10개)
 	public PageCriteria() {
 		this(1, 10);
 	}
 	
-	public PageCriteria(int crnPageNum, int totalContents) {
-		this.PageNum = PageNum;
-		this.Contents = Contents;
+	public PageCriteria(int pageNum, int contents) {
+		this.pageNum = pageNum;
+		this.contents = contents;
 	}
 
 	public int getPageNum() {
-		return PageNum;
+		return pageNum;
 	}
 
 	public void setPageNum(int pageNum) {
-		PageNum = pageNum;
+		this.pageNum = pageNum;
 	}
 
 	public int getContents() {
-		return Contents;
+		return contents;
 	}
 
 	public void setContents(int contents) {
-		Contents = contents;
+		this.contents = contents;
 	}
 	
 	@Override
 	public String toString() {
-		return String.format("PageCriteria {PageNum:%d, Contents:%d}", this.PageNum, this.Contents);
+		return "Criteria [pageNum = " + pageNum + ", contents = " + contents + "]";
 	}
 
 }
