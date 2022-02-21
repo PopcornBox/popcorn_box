@@ -151,7 +151,7 @@ table a:hover {
 .set-bg {
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-position: top center;
+	background-position: center;
 }
 
 .spad {
@@ -176,7 +176,7 @@ table a:hover {
 
 .primary-cta-m {
 	display: inline-block;
-	font-size: 14px;
+	font-size: 20px;
 	font-weight: 700;
 	text-transform: uppercase;
 	padding: 14px 30px;
@@ -184,6 +184,10 @@ table a:hover {
 	color: #ffffff;
 	background: #E53637;
 	letter-spacing: 4px;
+}
+
+.primary-cta-m:hover{
+	color: black;
 }
 
 .primary-btn {
@@ -657,6 +661,7 @@ header .search_option {
 .hero__slider.owl-carousel .owl-item.active .hero__text p {
 	top: 0;
 	opacity: 1;
+
 }
 
 .hero__slider.owl-carousel .owl-item.active .hero__text .primary-btn {
@@ -681,7 +686,8 @@ header .search_option {
 
 .hero__items {
 	height: auto;
-	padding-top: 320px;
+	padding-top: 270px;
+	padding-bottom: 50px;
 }
 
 .hero__text h6 {
@@ -701,7 +707,7 @@ header .search_option {
 
 .hero__text h2 {
 	color: #111111;
-	font-size: 48px;
+	font-size: 52px;
 	font-weight: 700;
 	line-height: 58px;
 	margin-bottom: 30px;
@@ -714,8 +720,8 @@ header .search_option {
 }
 
 .hero__text p {
-	font-size: 16px;
-	line-height: 28px;
+	font-size: 24px;
+	line-height: inherit;
 	margin-bottom: 35px;
 	position: relative;
 	top: 100px;
@@ -1056,12 +1062,12 @@ header .search_option {
 }
 
 .product__filter {
-	margin-left: 20px;
+	margin-left: -15px;
 }
 
 .product__item {
 	overflow: hidden;
-	margin-bottom: 40px;
+	margin-right: 35px;
 }
 
 .product__item.sale .product__item__pic .label {
@@ -1097,23 +1103,24 @@ header .search_option {
 }
 
 .product__item__pic {
-	height: 290px;
+	height: 280px;
 	width: 180px;
 	position: relative;
 	background-position: center center;
 }
 
 .product__item__pic .label {
-	color: #111111;
-	font-size: 24px;
+	color: #fff;
+	font-size: 20px;
 	font-weight: 700;
 	letter-spacing: 2px;
 	text-transform: uppercase;
 	display: inline-block;
-	padding: 10px 15px 10px;
+	padding: 8px 15px 8px;
 	position: absolute;
 	left: 0;
-
+	background-color: #b50022;
+	top: 20px;
 }
 
 .product__item__pic .product__hover {
@@ -2060,37 +2067,43 @@ header .search_option {
 -----------------------*/
 
 .footer {
-	background: #111111;
+	background: #eee;
 	padding-top: 40px;
 	padding-bottom: 40px;
 }
 
 .footer a{
-	color: #fff;
+	color: #111;
 }
 .footer a:hover{
 	color: #0056b3;
+	font-weight: bold;
+}
+
+.footer .row{
+	width: auto;
 }
 
 .footer_text {
-	margin-left: auto;
-	margin-right: auto;
+	margin-left: 50px;
+	width: auto;
 }
 
 .footer_text p{
 	font-size: 12px;
-	color: #b7b7b7;
+	color: #444;
 	margin: 0px;
-	text-align: center;
+	text-align: left;
 }
 
-.footer_text p:nth-last-child(1){
+.footer_text p:last-child{
 	font-size: 11px;
-	color: #888;
+	color: #aaa;
 }
 
 .footer__about .footer__logo {
-	max-width: 250px;
+	max-width: 400px;
+	width: auto;
 }
 
 .footer__about .footer__logo a {
@@ -2685,15 +2698,16 @@ header .search_option {
 
 /* 차트 구분선 chrt line */
 .movie__chart__table table thead {
-	border-bottom: 3px solid #ffffff;
+	
 }
 
 /* 차트항목이름 chrt categories name */
 .movie__chart__table table thead tr th {
 	color: #111111;
 	font-size: 16px;
-	font-weight: 700;
+	font-weight: normal;
 	text-transform: uppercase;
+	border-top: none;
 }
 
 .movie__chart__table table thead tr th:nth-child(3){
@@ -2717,8 +2731,15 @@ header .search_option {
 	padding-top: 30px;
 }
 
+.movie__chart__table table tbody img {
+	    max-width: 40%;
+	    height: auto;
+}
+
 .movie__chart__table table tbody tr td:nth-child(3){
 	text-align: left !important;
+	vertical-align: middle;
+    font-weight: 550;
 }
 
 /* 차트 리스트 넓이 */
@@ -3737,6 +3758,7 @@ header .search_option {
 	max-width: 700px;
 	margin-left: auto;
 	margin-right: auto;
+	margin-bottom: 20px;
 }
 .contact__form .row{
 	max-width: 700px;
@@ -3785,6 +3807,10 @@ header .search_option {
 	font-weight: bold;
 }
 
+.contact__form .content_text {
+	min-height: 150px;
+}
+
 .contact__form textarea {
 	height:100%;
 	width: 100%;
@@ -3817,8 +3843,14 @@ header .search_option {
 	color: #b7b7b7;
 }
 
+.contact__form .update_board_title {
+	font-size: 40px;
+	font-weight: bold;
+	border-bottom: #a5a5a5 1px solid;
+	min-width: auto;
+}
+
 .contact__form #board_content {
-	padding-bottom: 40px;
 	-webkit-user-select:text; 
 	-moz-user-select:text; 
 	-ms-user-select:text; 
@@ -3831,6 +3863,20 @@ header .search_option {
 	padding: 14px 35px;
 }
 
+.contact__form .trailer {
+	width: 100%;
+	padding: 15px;
+}
+
+.contact__form .trailer p:first-child {
+	font-size: 25px;
+}
+
+
+.contact__form .trailer p:last-child iframe { 
+	width: 700px; 
+	height: 393px; 
+}
 /*--------------------------------- Responsive Media Quaries -----------------------------*/
 
 @media only screen and (min-width: 1200px) {
@@ -4280,6 +4326,7 @@ header .search_option {
 		padding: 35px 30px 40px;
 	}
 	.hero__items {
+		width: 100%;
 		height: auto;
 		padding-top: 130px;
 		padding-bottom: 40px;
