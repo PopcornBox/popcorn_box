@@ -11,5 +11,5 @@ import com.spring.pjt.domain.PageCriteria;
 public interface BoardMapper {
 	List<Board> getList();
 	List<Board>	pagingList(PageCriteria pcri);
-	int getTotalList();  // 전체 게시글 확인 용도
+	int getTotalContents();  // 전체 게시글 확인 용도
 }

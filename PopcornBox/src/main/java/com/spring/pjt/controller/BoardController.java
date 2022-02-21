@@ -27,13 +27,18 @@ public class BoardController {
 	@Autowired private BoardService boardService;
 	
 	@RequestMapping(value="/main", method=RequestMethod.GET)
-	public void main(Model model) {
-		log.info("main() 호출");
-	
-
-		List<Board> list = boardService.select();
+	public void main(Model model, PageCriteria pcri) {
+		log.info("main() + pcri{} 호출", pcri);
 		
-		model.addAttribute("boardList", list);
+		model.addAttribute("list", boardService.pagingList(pcri));
+		
+		int totalContents = boardService.getTotalContents();
+		
+		PagingView pagingview = new PagingView(pcri, totalContents);
+		model.addAttribute("pagingView", pagingview);
+//		List<Board> list = boardService.select();
+//		
+//		model.addAttribute("boardList", list);
 		
 	}
 	
@@ -95,16 +100,6 @@ public class BoardController {
 		model.addAttribute("boardList", list);
 		
 		return "board/main";
-		
-	}
-	
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public void list(PageCriteria pcri, Model model) {
-		log.info("pagingList" + pcri);
-		model.addAttribute("list", boardService.getList(pcri));
-		model.addAttribute("pageList", new PagingView(pcri, boardService.getTotal()));
-		// pageList 구성요소 중 전체 데이터
-		// getList 작동을 안함
 		
 	}
 	

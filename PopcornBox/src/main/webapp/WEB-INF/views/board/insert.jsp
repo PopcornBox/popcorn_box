@@ -17,7 +17,6 @@
 
 <!-- Css Styles -->
 <link rel="stylesheet" href="../resources/css/bootstrap.min.css" 	type="text/css">
-<link rel="stylesheet" href="../resources/css/bootstrap_watch.min.css" 	type="text/css">
 <link rel="stylesheet" href="../resources/css/font-awesome.min.css"	type="text/css">
 <link rel="stylesheet" href="../resources/css/elegant-icons.css" 	type="text/css">
 <link rel="stylesheet" href="../resources/css/magnific-popup.css" 	type="text/css">
@@ -139,7 +138,7 @@
 	 <div> <!-- 입력 양식 -->
                 <form method="post"> <!-- /board/insert POST submit -->
                     <div>
-                        <input type="text" name="board_title" placeholder="제목 입력" required autofocus />
+                        <input type="text" name="board_title" placeholder="제목 입력" maxlength="35" required autofocus />
                     </div>
                     <div>
                         <textarea rows="5" name="board_content" placeholder="내용 입력" required></textarea>
@@ -164,30 +163,42 @@
 	</div>
 	
 		
-		<!-- Footer Section Begin -->
-		<footer class="footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-3 col-md-6 col-sm-6">
-						<div class="footer__about">
-							<div class="footer__logo">
-								<a href="#"><img src="../resources/img/logo_white.png" alt=""></a>
-							</div>
-							<p>
-								Copyright ©
-								<script>
-									document.write(new Date().getFullYear());
-								</script>
-								2020 All rights reserved | This template is made with <i
-									class="fa fa-heart-o" aria-hidden="true"></i> by <a
-									href="https://colorlib.com" target="_blank">Colorlib</a>
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</footer>
-		<!-- Footer Section End -->
+    <!-- Footer Section Begin -->
+    <footer class="footer">
+        <div class="container">
+        	<div class="row">
+                   <div class="footer__about">
+                       <div class="footer__logo">
+                           <a href="../"><img src="../resources/img/popcornbox_logo.png"></a>
+                       </div>
+                   </div>
+               <div class="footer_text">
+               	<div>
+                	<p>popcompany | 대표 김유은</p>
+                	<p>서울특별시 강남구 테헤란로 124 4층 | 사업자 등록번호 11110 22220 3333</p>
+                	<p>
+                		   <a href="../">서비스 소개 </a>
+                           | 
+                           <a href="../">이용약관 </a>
+                           | 
+                           <a href="../">개인정보 처리 방침 </a>
+                           | 
+                           <a href="../">고객센터 </a>
+                           | 
+                       	<a href="https://github.com/PopcornBox/popcorn_box">Github </a>
+                       </p>
+                       <p>Copyright ©
+                           <script>
+                               document.write(new Date().getFullYear());
+                           </script>2020 Popcorn Box. All rights reserved  
+                       </p>
+                       
+               	</div>
+               </div>
+        	</div>
+           </div>
+    </footer>
+    <!-- Footer Section End -->
 
 
 
