@@ -121,7 +121,7 @@
 	            <div class="row">
 	                <div class="col-lg-12">
 	                    <div class="breadcrumb__text">
-	                        <h4>회원가입</h4>
+	                        <h4>간편가입</h4>
 	                    </div>
 	                </div>
 	            </div>
@@ -283,29 +283,7 @@
 				});
 			});
 			
-			$('#user_email').change(function (event) {
-				var params = { user_email: $(this).val() };
-				var regEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-				$.post('./checkemail', params, function (response) {
-					if (response == 'invalid') { // 중복된 이메일(DB에 있는 이메일)인 경우
-						$('.valid_email').hide(); 
-						$('.invalid_email').show(); 
-						$('.invalid_email2').hide();
-						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
-					/*
-					} else if (!regEmail.test($(this).val())) { // 유효하지 않은 이메일인 경우
-						$('.valid_email').hide(); 
-						$('.invalid_email').hide(); 
-						$('.invalid_email2').show(); 
-						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
-					*/	
-					} else {
-						$('.valid_email').show(); 
-						$('.invalid_email').hide(); 
-						$('#btn-complete').removeAttr('disabled'); // 버튼 활성화
-					}
-				});
-			});
+		
 			
 			$('#user_pwd').change(function (event) {
 				var pwd = $(this).val();

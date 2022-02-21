@@ -374,4 +374,29 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+	@RequestMapping(value = "/simpleRegister", method = RequestMethod.GET)
+	public void simpleRegister() {
+		log.info("simpleRegister() GET 호출");
+	}
+	
+	@RequestMapping(value = "/simpleRegister", method = RequestMethod.POST)
+	public String simpleRegister(User user, HttpServletRequest request) {
+		log.info("simpleRegister({}) POST 호출", user);
+		
+		// 회원가입창에 입력된 비밀번호를 읽음.
+	    String rawPassword = user.getUser_pwd();
+	    log.info("rawPassword: {}", rawPassword);
+	    
+	    // 그 비밀번호를 암호화.
+	    String encryptPassword = passwordEncoder.encode(rawPassword);
+	    log.info("encryptPassword: {}", encryptPassword);
+	    
+	    // 암호화한 비밀번호를 User 객체에 주입.
+	    user.setUser_pwd(encryptPassword);
+	     
+		// 회원가입 메서드
+		userService.registerNewUser(user);
+		return "redirect:/";
+	}
+	
 }
