@@ -12,6 +12,7 @@
 			href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
 	</head>
 	<body>
+		<div style="margin: 100px;">
 		<br>
 		<h3>탈퇴 안내</h3>
 		<br>
