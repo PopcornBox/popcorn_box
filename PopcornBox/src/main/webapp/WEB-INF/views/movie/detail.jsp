@@ -466,7 +466,7 @@
     				event.preventDefault();
     				var answer = confirm('정말 삭제할까요?');
     				if (answer) {
-    					location.href = '/pjt/event/delete?event_no=${event.event_no}';
+    					location.href = '/pjt/movie/delete?movie_no=${movie.movie_no}';
     				}
     			});
     			
