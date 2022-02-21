@@ -144,25 +144,35 @@
 		<hr>
 		<h4>userInfo 페이지입니다.</h4>
 		<!-- https://melonpeach.tistory.com/42 확인한번만해볼것 -->
-		 <fieldset>
-			<div class="form-group">
-				<label class="control-label" for="fullName">ID</label>
-                <input type="text" name="userId" class="form-control input-sm"  value="${user_id}" id="memberId" readonly>
-            </div>
-            <div class="form-group">
-            	<label class="control-label" for="nickname">닉네임</label>
-  				<input type="text" name="userNickname" class="form-control input-sm" placeholder="닉네임"  value="${user_nickname}" id="memberName">
-			</div>
-                    
-			<div class="form-group">
-				<label class="control-label" for="nickname">이메일</label>
-				<input type="email" name="userEmail" class="form-control input-sm" placeholder="이메일" value="${user_email}" id="memberEmail">
-			</div>
-			<div class="form-group">
-				<label class="control-label" for="user_update_time">가입 일자</label>
-                <input type="text" name="userUpdateTime" class="form-control input-sm"  value="${user_update_time}" id="memberId" readonly>
-			</div>
-		</fieldset>
+		<section id="container">
+			<form action="/user/userInfoUpdate" method="post">
+				<div class="form-group has-feedback">
+					<label class="control-label" for="user_id">아이디</label>
+					<input class="form-control" type="text" id="user_id" name="user_id" value="${user_id}" readonly="readonly"/>
+				</div>
+				<div class="form-group has-feedback">
+					<label class="control-label" for="user_pwd">비밀번호</label>
+					<input class="form-control" type="password" id="user_pwd" name="user_pwd" />
+				</div>
+				<div class="form-group has-feedback">
+					<label class="control-label" for="user_nickname">닉네임</label>
+					<input class="form-control" type="text" id="user_nickname" name="user_nickname" value="${SignInUserNickname}"/>
+				</div>
+				<div class="form-group has-feedback">
+					<label class="control-label" for="user_email">이메일</label>
+					<input class="form-control" type="text" id="user_email" name="user_email" value="${user_email}"/>
+				</div>
+				<div class="form-group has-feedback">
+					<label class="control-label" for="user_update_time">가입 일자</label>
+					<input class="form-control" type="text" id="user_update_time" name="user_update_time" value="${user_update_time}"/>
+				</div>
+			
+				<div class="form-group has-feedback">
+					<button class="btn btn-success" type="submit" id="submit">회원정보수정</button>
+					<button class="cancel btn btn-danger" type="button">취소</button>
+				</div>
+			</form>
+		</section>
                 
 		<input type="button" value="메인으로" class="btn" onclick="location.href='/pjt'">
 		<div>

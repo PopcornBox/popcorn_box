@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.test.context.jdbc.Sql;
 
 import com.spring.pjt.domain.User;
 
@@ -74,17 +75,14 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 	@Override
+	public User userInfo(String SignInUserNickname) {
+		return sqlSession.selectOne(USER_NAMESPACE + ".userInfo", SignInUserNickname);
+	}
+	
+	@Override
 	public void userInfoUpdate(User user) {
-		log.info("userInfoUpdate(user_nickname:{}) 호출");
-		sqlSession.update(USER_NAMESPACE + ". userInfoUpdate", user);
-		
-		Map<String,Object> map = new HashMap<String, Object>();
-		map.put("user_id", user.getUser_id());
-		map.put("user_nickname", user.getUser_nickname());
-		map.put("user_email", user.getUser_email());
-		map.put("user_update_time", user.getUser_update_time());
-		
-		sqlSession.update(USER_NAMESPACE + ". userInfoUpdate", map);
+		log.info("userInfoUpdate() 호출");
+		sqlSession.update(USER_NAMESPACE + ".userInfoUpdate", user);
 	}
 	
 	@Override
