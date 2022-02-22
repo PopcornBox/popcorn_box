@@ -3,6 +3,7 @@ package com.spring.pjt.persistence;
 import java.util.List;
 
 import com.spring.pjt.domain.Board;
+import com.spring.pjt.domain.PageCriteria;
 
 public interface BoardDao {
 

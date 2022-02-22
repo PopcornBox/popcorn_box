@@ -63,4 +63,21 @@
     ORDER BY ${COL_BOARD_NO} DESC
     </select>
     
+    <!-- Board 페이징 기능 전체 게시글 로드 후 rownum 지정 -->
+    <select id="pagingList" resultType="Board">
+		<![CDATA[
+		select * from (
+			select /*+ INDEX_DESC(BOARDS BOARDS_pk) */
+			rownum as rn, board_no, board_mode, board_title, board_content, user_nickname, board_update_time, Board_view_cnt, board_reply_cnt
+			from boards
+			where rownum <= #{pageNum} * #{contents}
+			)
+		where rn > (#{pageNum} - 1) * #{contents}
+		]]>
+    </select>
+    
+    <select id="getTotalContents" resultType="int">
+    	select count(*) from BOARDS
+	</select>
+    
 </mapper>

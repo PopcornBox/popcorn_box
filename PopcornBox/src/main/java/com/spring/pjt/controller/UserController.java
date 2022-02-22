@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.http.HttpRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -170,11 +171,13 @@ public class UserController {
 	// TODO
 	@RequestMapping(value = "/kakaologin", produces = "application/json", method = RequestMethod.GET)
 	public void kakaoLogin(@RequestParam("code") String code, @RequestParam("state") String state, 
-			RedirectAttributes ra, HttpSession session, HttpServletResponse response, Model model) throws IOException {
+			RedirectAttributes ra, HttpSession session, HttpServletResponse response) throws IOException {
 		log.info("kakaologin() GET 호출 code: {}", code);
+		log.info("state: {}", state);
 		
 		JsonNode accessToken;
 		JsonNode refreshToken;
+		
 		
 		// JsonNode 트리 형태로 토큰 받아옴
         JsonNode jsonToken = kakaoLoginService.getKakaoAccessToken(code, state);
@@ -207,18 +210,15 @@ public class UserController {
         
         User signInUser = null;        
         User user = userService.readUserByEmail(email);
-//        if (user != null) { // DB에 있는(회원가입한) 이메일
+        if (user != null) { // DB에 있는(회원가입한) 이메일
         	signInUser = user;
         	log.info("signInUser: {}", signInUser);
-        	model.addAttribute("signInUser", signInUser);
-        	session.setAttribute("signInUser", signInUser);
+        	session.setAttribute("signInUserNo", signInUser.getUser_no());
+        	session.setAttribute("signInUserNickname", signInUser.getUser_nickname());
+        	session.setAttribute("signInUserPosition", signInUser.getUser_position());
         	session.setAttribute("accessToken", accessToken);
-//        	return "/";
-//        } else { // DB에 없는(회원가입하지 않은) 이메일
-//        	log.info("signInUser: {}", signInUser);
-//        	return "user/register"; // 회원가입 진행
-//        }
-           
+        	session.setAttribute("state", state);
+        }          
 	}
 	
 	//TODO
@@ -238,7 +238,7 @@ public class UserController {
 		//노드에 로그아웃한 결괏값을 담아줌. 매개변수는 세션에 잇는 accessToken을 가져와 문자열로 변환
 		JsonNode node = kakaoLoginService.kakaoLogout(session.getAttribute("accessToken").toString());
 		// 결괏값 출력
-		log.info("로그인 후 반환되는 아이디 : {}", node.get("id"));
+		log.info("로그아웃 후 반환되는 아이디 : {}", node.get("id"));
 			
 		// 세션에 저장된 모든 데이터를 삭제 -> 메인 페이지로 이동
 		session.invalidate();	
@@ -344,18 +344,68 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/userInfo", method = RequestMethod.GET)
-	public void userInfo(User user, String user_nickname) {
-		log.info("userInfo(user_nickname: {}) GET 호출", user_nickname);
+	public void userInfo(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		String signInUserNickname = (String) session.getAttribute("signInUserNickname");
+		log.info("userInfo(user_nickname : {}) GET 호출", signInUserNickname);
+		User user = userService.userInfo(signInUserNickname);
 		
+		model.addAttribute("user",user);
 	}
 	
-	@RequestMapping(value = "/userInfoUpdate", method = RequestMethod.POST)
-	public String userInfoUpdate(HttpServletRequest request, HttpSession session, User user, Model model, RedirectAttributes redi) {
-		log.info("userInfo(user: {}) POST 호출", user);
+	@RequestMapping(value = "/userInfo", method = RequestMethod.POST)
+	public String userInfoUpdate(User user, HttpServletRequest request, Model model) {
+		log.info("userInfoUpdate 호출");
 		userService.userInfoUpdate(user);
+		HttpSession session = request.getSession();
+		session.setAttribute("signInUserNickname", user.getUser_nickname());
+		return "redirect:/user/mypage";
+	}
+	
+	@RequestMapping(value = "/leave", method = RequestMethod.GET)
+	public void leave(HttpServletRequest request, Model model) {
+		log.info("leave() GET 호출");		
+		HttpSession session = request.getSession();
+		String signInUserNickname = (String) session.getAttribute("signInUserNickname");
+		log.info("leave(user_nickname : {}) GET 호출", signInUserNickname);
+		User user = userService.userInfo(signInUserNickname);
+		
+		model.addAttribute("user",user);
+	}
+	
+	@RequestMapping(value = "/leave", method = RequestMethod.POST)
+	public String leave(HttpSession session, Model model) {		
+		String user_nickname = (String) session.getAttribute("signInUserNickname");
+		log.info("leave(user_nickname={}) POST 호출", user_nickname);
+		userService.deleteAccount(user_nickname);
 		session.invalidate();
-		redi.addFlashAttribute("msg", "회원 정보 수정이 완료되었습니다. 다시 로그인해주세요!");
-		return "redirect:/pjt/user/signin" ;
+		
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/simpleRegister", method = RequestMethod.GET)
+	public void simpleRegister() {
+		log.info("simpleRegister() GET 호출");
+	}
+	
+	@RequestMapping(value = "/simpleRegister", method = RequestMethod.POST)
+	public String simpleRegister(User user, HttpServletRequest request) {
+		log.info("simpleRegister({}) POST 호출", user);
+		
+		// 회원가입창에 입력된 비밀번호를 읽음.
+	    String rawPassword = user.getUser_pwd();
+	    log.info("rawPassword: {}", rawPassword);
+	    
+	    // 그 비밀번호를 암호화.
+	    String encryptPassword = passwordEncoder.encode(rawPassword);
+	    log.info("encryptPassword: {}", encryptPassword);
+	    
+	    // 암호화한 비밀번호를 User 객체에 주입.
+	    user.setUser_pwd(encryptPassword);
+	     
+		// 회원가입 메서드
+		userService.registerNewUser(user);
+		return "redirect:/";
 	}
 	
 }

@@ -12,7 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.pjt.domain.Board;
+import com.spring.pjt.domain.PageCriteria;
+import com.spring.pjt.domain.PagingView;
 import com.spring.pjt.service.BoardService;
+
+import oracle.net.ano.Service;
 
 @Controller
 @RequestMapping(value = "/board")
@@ -23,13 +27,18 @@ public class BoardController {
 	@Autowired private BoardService boardService;
 	
 	@RequestMapping(value="/main", method=RequestMethod.GET)
-	public void main(Model model) {
-		log.info("main() 호출");
-	
-
-		List<Board> list = boardService.select();
+	public void main(Model model, PageCriteria pcri) {
+		log.info("main() + pcri{} 호출", pcri);
 		
-		model.addAttribute("boardList", list);
+		model.addAttribute("list", boardService.pagingList(pcri));
+		
+		int totalContents = boardService.getTotalContents();
+		
+		PagingView pagingview = new PagingView(pcri, totalContents);
+		model.addAttribute("pagingView", pagingview);
+//		List<Board> list = boardService.select();
+//		
+//		model.addAttribute("boardList", list);
 		
 	}
 	

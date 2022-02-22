@@ -12,7 +12,13 @@ public interface UserDao {
 	int getKey(String user_nickname, String user_key);
 	int alter_userKey(String user_nickname, String key);
 	int alter_userKey2(User user);
+	
+	// 회원 정보 조회
+	User userInfo(String SignInUserNickname);
+	
+	// 회원 정보 수정
 	void userInfoUpdate(User user);
 	int lock_userKey(User user);
 	int resetPwd(User user);
+	int delete(String user_nickname);
 }

@@ -35,6 +35,10 @@ body {
 	height: 100%;
 	font-family: "Nunito Sans", sans-serif;
 	-webkit-font-smoothing: antialiased;
+	-webkit-user-select:none; 
+    -moz-user-select:none; 
+    -ms-user-select:none; 
+    user-select:none
 }
 
 h1,
@@ -147,7 +151,7 @@ table a:hover {
 .set-bg {
 	background-repeat: no-repeat;
 	background-size: cover;
-	background-position: top center;
+	background-position: center;
 }
 
 .spad {
@@ -172,7 +176,7 @@ table a:hover {
 
 .primary-cta-m {
 	display: inline-block;
-	font-size: 14px;
+	font-size: 20px;
 	font-weight: 700;
 	text-transform: uppercase;
 	padding: 14px 30px;
@@ -180,6 +184,10 @@ table a:hover {
 	color: #ffffff;
 	background: #E53637;
 	letter-spacing: 4px;
+}
+
+.primary-cta-m:hover{
+	color: black;
 }
 
 .primary-btn {
@@ -220,7 +228,7 @@ table a:hover {
 	background: #000;
 }
 
-.loader {
+#preloder .loader {
 	width: 40px;
 	height: 40px;
 	position: absolute;
@@ -233,7 +241,7 @@ table a:hover {
 	-webkit-animation: loader 0.8s linear infinite;
 }
 
-@keyframes loader {
+@keyframes #preloader {
 	0% {
 		-webkit-transform: rotate(0deg);
 		transform: rotate(0deg);
@@ -379,7 +387,7 @@ table a:hover {
 	color: #111111;
 	font-size: 13px;
 	text-transform: uppercase;
-	letter-spacing: 4px;
+	letter-spacing: 3px;
 	margin-left: 32px;
 	display: inline-block;
 }
@@ -563,7 +571,8 @@ table a:hover {
 /* search__icon / 검색 아이콘 */
 header .search_option {
 	margin-left: auto;
-	align-content: flex-end;
+	align-items: flex-end;
+	width: auto;
 }
 .header__nav__option {
 	text-align: right;
@@ -652,6 +661,7 @@ header .search_option {
 .hero__slider.owl-carousel .owl-item.active .hero__text p {
 	top: 0;
 	opacity: 1;
+
 }
 
 .hero__slider.owl-carousel .owl-item.active .hero__text .primary-btn {
@@ -676,7 +686,8 @@ header .search_option {
 
 .hero__items {
 	height: auto;
-	padding-top: 320px;
+	padding-top: 270px;
+	padding-bottom: 50px;
 }
 
 .hero__text h6 {
@@ -696,7 +707,7 @@ header .search_option {
 
 .hero__text h2 {
 	color: #111111;
-	font-size: 48px;
+	font-size: 52px;
 	font-weight: 700;
 	line-height: 58px;
 	margin-bottom: 30px;
@@ -709,8 +720,8 @@ header .search_option {
 }
 
 .hero__text p {
-	font-size: 16px;
-	line-height: 28px;
+	font-size: 24px;
+	line-height: inherit;
 	margin-bottom: 35px;
 	position: relative;
 	top: 100px;
@@ -1050,9 +1061,13 @@ header .search_option {
 	color: #111111;
 }
 
+.product__filter {
+	margin-left: -15px;
+}
+
 .product__item {
 	overflow: hidden;
-	margin-bottom: 40px;
+	margin-right: 35px;
 }
 
 .product__item.sale .product__item__pic .label {
@@ -1088,22 +1103,24 @@ header .search_option {
 }
 
 .product__item__pic {
-	height: 260px;
+	height: 280px;
+	width: 180px;
 	position: relative;
 	background-position: center center;
 }
 
 .product__item__pic .label {
-	color: #111111;
-	font-size: 24px;
+	color: #fff;
+	font-size: 20px;
 	font-weight: 700;
 	letter-spacing: 2px;
 	text-transform: uppercase;
 	display: inline-block;
-	padding: 10px 15px 10px;
+	padding: 8px 15px 8px;
 	position: absolute;
 	left: 0;
-
+	background-color: #b50022;
+	top: 20px;
 }
 
 .product__item__pic .product__hover {
@@ -2050,16 +2067,43 @@ header .search_option {
 -----------------------*/
 
 .footer {
-	background: #111111;
+	background: #eee;
 	padding-top: 40px;
+	padding-bottom: 40px;
 }
 
-.footer__about {
-	margin-bottom: 30px;
+.footer a{
+	color: #111;
+}
+.footer a:hover{
+	color: #0056b3;
+	font-weight: bold;
+}
+
+.footer .row{
+	width: auto;
+}
+
+.footer_text {
+	margin-left: 50px;
+	width: auto;
+}
+
+.footer_text p{
+	font-size: 12px;
+	color: #444;
+	margin: 0px;
+	text-align: left;
+}
+
+.footer_text p:last-child{
+	font-size: 11px;
+	color: #aaa;
 }
 
 .footer__about .footer__logo {
-	margin-bottom: 30px;
+	max-width: 400px;
+	width: auto;
 }
 
 .footer__about .footer__logo a {
@@ -2645,6 +2689,7 @@ header .search_option {
 
 .movie__chart__table {
 	margin-bottom: 30px;
+	text-align: left;
 }
 
 .movie__chart__table table {
@@ -2653,15 +2698,27 @@ header .search_option {
 
 /* 차트 구분선 chrt line */
 .movie__chart__table table thead {
-	border-bottom: 3px solid #ffffff;
+	
 }
 
 /* 차트항목이름 chrt categories name */
 .movie__chart__table table thead tr th {
 	color: #111111;
 	font-size: 16px;
-	font-weight: 700;
+	font-weight: normal;
 	text-transform: uppercase;
+	border-top: none;
+}
+
+.movie__chart__table table thead tr th:nth-child(3){
+	text-align: left !important;
+}
+
+.movie__chart__table table thead tr th.poster{
+	width: 185px;
+}
+.movie__chart__table table thead tr th.title{
+	width: 45%;
 }
 
 /* 차트 구분선 chrt line */
@@ -2672,6 +2729,17 @@ header .search_option {
 .movie__chart__table table tbody tr td {
 	padding-bottom: 30px;
 	padding-top: 30px;
+}
+
+.movie__chart__table table tbody img {
+	    max-width: 40%;
+	    height: auto;
+}
+
+.movie__chart__table table tbody tr td:nth-child(3){
+	text-align: left !important;
+	vertical-align: middle;
+    font-weight: 550;
 }
 
 /* 차트 리스트 넓이 */
@@ -2749,6 +2817,9 @@ header .search_option {
 
 .table-hover tbody tr:hover{
 	background-color: #f5f5f5;
+}
+.table-hover thead tr th:nth-child(2){
+	width: 45%;
 }
 
 .continue__btn.update__btn {
@@ -3686,14 +3757,32 @@ header .search_option {
 	margin-bottom: 0;
 }
 
+.contact__form {
+	max-width: 700px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 20px;
+}
+.contact__form .row{
+	max-width: 700px;
+	margin-left: auto;
+	margin-bottom: 15px;
+	margin-top: 15px;
+}
+
+#reg-date {
+	font-size: 12px;
+	color: #5a5a5a;
+}
+
 .contact__form input {
-	height: 50px;
-	width: 100%;
-	border: 1px solid #e1e1e1;
-	padding-left: 20px;
-	font-size: 15px;
-	color: #b7b7b7;
-	margin-bottom: 30px;
+	height: auto;
+	width: auto;
+	border: none;
+	padding-left: 15px;
+	font-size: 16px;
+	color: #000;
+	user-select: none;
 }
 
 .contact__form input::-webkit-input-placeholder {
@@ -3716,14 +3805,23 @@ header .search_option {
 	color: #b7b7b7;
 }
 
+.contact__form #board_title{
+	font-size: 40px;
+	font-weight: bold;
+}
+
+.contact__form .content_text {
+	min-height: 150px;
+}
+
 .contact__form textarea {
-	height: 150px;
+	height:100%;
 	width: 100%;
-	border: 1px solid #e1e1e1;
+	border: none;
 	padding-left: 20px;
 	padding-top: 12px;
 	font-size: 15px;
-	color: #b7b7b7;
+	color: #000;
 	margin-bottom: 24px;
 	resize: none;
 }
@@ -3748,11 +3846,40 @@ header .search_option {
 	color: #b7b7b7;
 }
 
+.contact__form .update_board_title {
+	font-size: 40px;
+	font-weight: bold;
+	border-bottom: #a5a5a5 1px solid;
+	min-width: auto;
+}
+
+.contact__form #board_content {
+	-webkit-user-select:text; 
+	-moz-user-select:text; 
+	-ms-user-select:text; 
+	user-select:text;
+
+}
+
 .contact__form button {
 	letter-spacing: 4px;
 	padding: 14px 35px;
 }
 
+.contact__form .trailer {
+	width: 100%;
+	padding: 15px;
+}
+
+.contact__form .trailer p:first-child {
+	font-size: 25px;
+}
+
+
+.contact__form .trailer p:last-child iframe { 
+	width: 700px; 
+	height: 393px; 
+}
 /*--------------------------------- Responsive Media Quaries -----------------------------*/
 
 @media only screen and (min-width: 1200px) {
@@ -4202,6 +4329,7 @@ header .search_option {
 		padding: 35px 30px 40px;
 	}
 	.hero__items {
+		width: 100%;
 		height: auto;
 		padding-top: 130px;
 		padding-bottom: 40px;

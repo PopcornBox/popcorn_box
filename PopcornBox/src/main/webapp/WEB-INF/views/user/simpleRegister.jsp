@@ -9,7 +9,7 @@
 	    <meta name="keywords" content="Male_Fashion, unica, creative, html">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-	    <title>회원가입 | Popcorn Box</title>
+	    <title>간편가입 | Popcorn Box</title>
 	    
 	    <!-- Google Font -->
 	    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
@@ -121,7 +121,7 @@
 	            <div class="row">
 	                <div class="col-lg-12">
 	                    <div class="breadcrumb__text">
-	                        <h4>회원가입</h4>
+	                        <h4>간편가입</h4>
 	                    </div>
 	                </div>
 	            </div>
@@ -136,17 +136,7 @@
 	                <form action="./register" method="post">
 	                    <div class="row">
 	                        <div class="col-lg-8 col-md-6">
-	                            <h6 class="checkout__title">안녕하세요, 회원정보를 입력해주세요.</h6>
-	                            <div class="checkout__input ">
-	                                <p>아이디<span>*</span></p>
-	                                <div style="display:flex">
-	                                <input type="text" id="user_id" name="user_id" placeholder="아이디" required /> 
-	                                </div>
-	                                <div class="valid_id">사용 가능한 아이디입니다!</div>
-									<div class="invalid_id">이미 사용 중인 아이디입니다.</div>
-									<div class="invalid_id2">5~20자의 영문, 숫자만 사용 가능합니다.</div>
-	                            </div>
-	                            
+	                            <h6 class="checkout__title">안녕하세요, 간편가입 페이지입니다.</h6>
 	                            <div class="checkout__input ">
 	                                <p>닉네임<span>*</span></p>
 	                                <div style="display:flex">
@@ -167,15 +157,8 @@
 									<div class="valid_repwd">비밀번호가 일치합니다!</div>
 									<div class="invalid_repwd">비밀번호가 일치하지 않습니다.</div>	                                
 	                            </div>
-	                            <div class="checkout__input">
-	                                <p>이메일 주소<span>*</span></p>
-	                                <input type="email" id="user_email" name="user_email" placeholder="popcorn@box.com" required />
-	                                <div class="valid_email">사용 가능한 이메일입니다!</div>
-									<div class="invalid_email">이미 사용 중인 이메일입니다.</div>
-									<div class="invalid_email2">이메일이 유효하지 않습니다.</div>
-	                            </div>
 	                            <div class="col-lg-12 text-center">
-	                            <button type="submit" class="primary-btn">회원가입</button>	                            
+	                            <button type="submit" class="primary-btn">간편가입</button>	                            
 	                            </div>
 	
 	
@@ -226,46 +209,6 @@
 	        </div>
 	    </section>
 	    <!-- Checkout Section End -->
-	    
-	    
-	    
-    <!-- Footer Section Begin -->
-    <footer class="footer">
-        <div class="container">
-        	<div class="row">
-                   <div class="footer__about">
-                       <div class="footer__logo">
-                           <a href="../"><img src="../resources/img/popcornbox_logo.png"></a>
-                       </div>
-                   </div>
-               <div class="footer_text">
-               	<div>
-                	<p>popcompany | 대표 김유은</p>
-                	<p>서울특별시 강남구 테헤란로 124 4층 | 사업자 등록번호 11110 22220 3333</p>
-                	<p>
-                		   <a href="../">서비스 소개 </a>
-                           | 
-                           <a href="../">이용약관 </a>
-                           | 
-                           <a href="../">개인정보 처리 방침 </a>
-                           | 
-                           <a href="../">고객센터 </a>
-                           | 
-                       	<a href="https://github.com/PopcornBox/popcorn_box">Github </a>
-                       </p>
-                       <p>Copyright ©
-                           <script>
-                               document.write(new Date().getFullYear());
-                           </script>2020 Popcorn Box. All rights reserved  
-                       </p>
-                       
-               	</div>
-               </div>
-        	</div>
-           </div>
-    </footer>
-    <!-- Footer Section End -->
-	    
 		
 	    <!-- Js Plugins -->
 	    <script src="../resources/js/jquery-3.3.1.min.js"></script>
@@ -340,29 +283,7 @@
 				});
 			});
 			
-			$('#user_email').change(function (event) {
-				var params = { user_email: $(this).val() };
-				var regEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-				$.post('./checkemail', params, function (response) {
-					if (response == 'invalid') { // 중복된 이메일(DB에 있는 이메일)인 경우
-						$('.valid_email').hide(); 
-						$('.invalid_email').show(); 
-						$('.invalid_email2').hide();
-						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
-					/*
-					} else if (!regEmail.test($(this).val())) { // 유효하지 않은 이메일인 경우
-						$('.valid_email').hide(); 
-						$('.invalid_email').hide(); 
-						$('.invalid_email2').show(); 
-						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
-					*/	
-					} else {
-						$('.valid_email').show(); 
-						$('.invalid_email').hide(); 
-						$('#btn-complete').removeAttr('disabled'); // 버튼 활성화
-					}
-				});
-			});
+		
 			
 			$('#user_pwd').change(function (event) {
 				var pwd = $(this).val();

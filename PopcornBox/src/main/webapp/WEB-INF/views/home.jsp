@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>PopcornBox</title>
+<title>Popcorn Box</title>
 
     <script src="https://kit.fontawesome.com/a39158855c.js" crossorigin="anonymous"></script>
 
@@ -34,6 +35,7 @@
 <link rel="stylesheet" href="./resources/css/slicknav.min.css"
 	type="text/css">
 <link rel="stylesheet" href="./resources/css/style.css" type="text/css">
+
 </head>
 <body>         
 
@@ -123,7 +125,7 @@
                 <div class="col-md-7 col-md-4">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="#">홈</a></li>
+                            <li class="active"><a href="">홈</a></li>
                             <li><a href="./movie/mainlist">차트</a></li>
                             <li><a href="./board/main">커뮤니티</a></li>
                             <li><a href="./event/main">이벤트</a></li>
@@ -143,7 +145,7 @@
 			                    </select>
 			                    <input class="search" type="text" name="keyword" placeholder="검색어 입력"
 			                    	required oninvalid="this.setCustomValidity('검색어를 입력하세요.')"
-											 oninput = "setCustomValidity(' ')"/>
+											 oninput = "setCustomValidity('')"/>
 			                    <input class="btn" type="submit" value="" />
 			                </form>
 			            </div>
@@ -158,26 +160,39 @@
     <!-- Banner Section Begin -->
     <section class="hero">
         <div class="hero__slider owl-carousel">
-            <div class="hero__items set-bg" data-setbg="./resources/img/banner_main_355_1.png">
+            <div class="hero__items set-bg" data-setbg="./resources/img/banner_main_1.png">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-5 col-lg-7 col-md-8">
                             <div class="hero__text">
-                                <h2>355</h2>
-                                <p>인류를 위협하는 사상 초유의 위기 발생!</p>
-                                <a href="#" class="primary-cta-m"> 상세정보 <span class="arrow_right"></span></a>
+                                <h2 style="color: white;">루이스 웨인</h2>
+                                <p style="color: white;">당신의 봄을 아름답게 할,<br>단 하나의 러브 팔레트</p>
+                                <a href="#" class="primary-cta-m"> 보러가기 <span class="arrow_right"></span></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="hero__items set-bg" data-setbg="./resources/img/hero/hero-2.jpg">
+            <div class="hero__items set-bg" data-setbg="./resources/img/banner_main_2.png">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-5 col-lg-7 col-md-8">
                             <div class="hero__text">
-                                <h2>더위는 사라진다</h2>
-                                <p>공포 TOP 5! </p>
+                                <h2>더 배트맨</h2>
+                                <p>히어로의 세대교체,<br> 어둠을 뚫고 그가 온다</p>
+                                <a href="#" class="primary-cta-m"> 보러가기 <span class="arrow_right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__items set-bg" data-setbg="./resources/img/banner_main_3.png">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-5 col-lg-7 col-md-8">
+                            <div class="hero__text">
+                                <h2>미니언즈 2</h2>
+                                <p>미니언들의 한층 새롭고 흥미로운 모험!</p>
                                 <a href="#" class="primary-cta-m"> 보러가기 <span class="arrow_right"></span></a>
                             </div>
                         </div>
@@ -222,20 +237,15 @@
 
         <div class="container">
             <div class="row product__filter">
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                <div class="">
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="./resources/img/chart_list_355.jpg">
                             <span class="label">1</span>
-                          <!--  <ul class="product__hover">
-                                <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>
-                                <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-                            </ul>-->
+                         
                         </div>
                         <div class="product__item__text">
                           <h5>1_movie title</h5>
 
-                            <!-- <a href="#" class="add-cart">+ Add To Cart</a>-->
                             <div class="rating">
                                 <i class="fa fa-star-o"></i>
                             </div>
@@ -243,20 +253,15 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                <div class="">
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="./resources/img/product/product-1.jpg">
                             <span class="label">2</span>
-                          <!--  <ul class="product__hover">
-                                <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>
-                                <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-                            </ul>-->
+                         
                         </div>
                         <div class="product__item__text">
                           <h5>2_movie title</h5>
 
-                            <!-- <a href="#" class="add-cart">+ Add To Cart</a>-->
                             <div class="rating">
                                 <i class="fa fa-star-o"></i>
                             </div>
@@ -264,15 +269,15 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                <div class="">
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="./resources/img/product/product-1.jpg">
                             <span class="label">3</span>
+                         
                         </div>
                         <div class="product__item__text">
                           <h5>3_movie title</h5>
 
-                            <!-- <a href="#" class="add-cart">+ Add To Cart</a>-->
                             <div class="rating">
                                 <i class="fa fa-star-o"></i>
                             </div>
@@ -280,20 +285,15 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                <div class="">
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="./resources/img/product/product-1.jpg">
                             <span class="label">4</span>
-                          <!--  <ul class="product__hover">
-                                <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>
-                                <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-                            </ul>-->
+                         
                         </div>
                         <div class="product__item__text">
                           <h5>4_movie title</h5>
 
-                            <!-- <a href="#" class="add-cart">+ Add To Cart</a>-->
                             <div class="rating">
                                 <i class="fa fa-star-o"></i>
                             </div>
@@ -301,20 +301,15 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                <div class="">
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="./resources/img/product/product-1.jpg">
                             <span class="label">5</span>
-                          <!--  <ul class="product__hover">
-                                <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                <li><a href="#"><img src="img/icon/compare.png" alt=""> <span>Compare</span></a></li>
-                                <li><a href="#"><img src="img/icon/search.png" alt=""></a></li>
-                            </ul>-->
+                         
                         </div>
                         <div class="product__item__text">
                           <h5>5_movie title</h5>
 
-                            <!-- <a href="#" class="add-cart">+ Add To Cart</a>-->
                             <div class="rating">
                                 <i class="fa fa-star-o"></i>
                             </div>
@@ -374,21 +369,23 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h4>지난 이벤트</h4>
+                        <h4>진행중인 이벤트</h4>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6">
+            	<div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="blog__item">
                         <div class="blog__item__pic set-bg" data-setbg="./resources/img/blog/blog-1.jpg"></div>
                         <div class="blog__item__text">
-                            <span><img src="./resources/img/icon/calendar.png" alt=""> 16 February 2020</span>
-                            <h5>What Curling Irons Are The Best Ones</h5>
+                            <span><img src="./resources/img/icon/calendar.png" alt=""> 21 February 2020</span>
+                            <h5>Eternity Bands Do Last Forever</h5>
                             <a href="#">Read More</a>
                         </div>
                     </div>
                 </div>
+            	
+            	
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="blog__item">
                         <div class="blog__item__pic set-bg" data-setbg="./resources/img/blog/blog-2.jpg"></div>
@@ -417,25 +414,37 @@
     <!-- Footer Section Begin -->
     <footer class="footer">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="footer__about">
-                        <div class="footer__logo">
-                            <a href="#"><img src="./resources/img/logo_white.png" width="60%" alt=""></a>
-                        </div>
-
-                        <p>Copyright ©
-                            <script>
-                                document.write(new Date().getFullYear());
-                            </script>2020
-                            All rights reserved | This template is made with <i class="fa fa-heart-o"
-                            aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                        </p>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    </div>
-                </div>
-            </div>
-        </div>
+        	<div class="row">
+                   <div class="footer__about">
+                       <div class="footer__logo">
+                           <a href=""><img src="./resources/img/popcornbox_logo.png"></a>
+                       </div>
+                   </div>
+               <div class="footer_text">
+               	<div>
+                	<p>popcompany | 대표 김유은</p>
+                	<p>서울특별시 강남구 테헤란로 124 4층 | 사업자 등록번호 11110 22220 3333</p>
+                	<p>
+                		   <a href="">서비스 소개 </a>
+                           | 
+                           <a href="">이용약관 </a>
+                           | 
+                           <a href="">개인정보 처리 방침 </a>
+                           | 
+                           <a href="">고객센터 </a>
+                           | 
+                       	<a href="https://github.com/PopcornBox/popcorn_box">Github </a>
+                       </p>
+                       <p>Copyright ©
+                           <script>
+                               document.write(new Date().getFullYear());
+                           </script>2020 Popcorn Box. All rights reserved  
+                       </p>
+                       
+               	</div>
+               </div>
+        	</div>
+           </div>
     </footer>
     <!-- Footer Section End -->
 
