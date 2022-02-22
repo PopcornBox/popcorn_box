@@ -45,10 +45,11 @@
 
 <body>
 
-	<!-- Page Preloder -->
+	<!-- Page Preloder 
 	<div id="preloder">
 		<div class="loader"></div>
 	</div>
+	-->
 
 <body>         
 
@@ -88,7 +89,7 @@
     <div id="preloder">
         <div class="loader"></div>
     </div>
-
+	
 
 
 	<!-- Header Section Begin -->
@@ -366,12 +367,11 @@
             </tbody>
 
          </table>
-         
+         <!--
          <div class="pageNumber_wrapping">
          	<div class="pageNumber_area">
          		<ul id="pageNumber" class="pageNumber">
-         			<!-- https://kimvampa.tistory.com/170?category=843151 -->
-         			<!-- 페이지 번호 버튼 -->
+
          			<c:forEach var="num" begin="${pagingView.startPage}" end="${pagingView.endPage}">
          				<li class="pageNumber_btn"><a href="${num}">${num}</a></li>
          			</c:forEach>
@@ -383,7 +383,7 @@
          	<input type="hidden" name="pageNum" value="${PagingView.pcri.pageNum}">
          	<input type="hidden" name="pageNum" value="${PagingView.pcri.contents}">
          </form>
-
+		-->
 
          <nav>
             <!-- 메뉴 -->

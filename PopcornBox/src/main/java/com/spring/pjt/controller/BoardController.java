@@ -27,18 +27,18 @@ public class BoardController {
 	@Autowired private BoardService boardService;
 	
 	@RequestMapping(value="/main", method=RequestMethod.GET)
-	public void main(Model model, PageCriteria pcri) {
-		log.info("main() + pcri{} 호출", pcri);
+	public void main(Model model) {
+		log.info("main() + pcri{} 호출");
 		
-		model.addAttribute("list", boardService.pagingList(pcri));
-		
-		int totalContents = boardService.getTotalContents();
-		
-		PagingView pagingview = new PagingView(pcri, totalContents);
-		model.addAttribute("pagingView", pagingview);
-//		List<Board> list = boardService.select();
+//		model.addAttribute("list", boardService.pagingList(pcri));
 //		
-//		model.addAttribute("boardList", list);
+//		int totalContents = boardService.getTotalContents();
+//		
+//		PagingView pagingview = new PagingView(pcri, totalContents);
+//		model.addAttribute("pagingView", pagingview);
+		List<Board> list = boardService.select();
+		
+		model.addAttribute("boardList", list);
 		
 	}
 	
