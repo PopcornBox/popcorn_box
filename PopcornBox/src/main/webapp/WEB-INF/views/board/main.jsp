@@ -42,7 +42,6 @@
     <script src="https://kit.fontawesome.com/a39158855c.js" crossorigin="anonymous"></script>
 
 </head>
-
 <body>
 
 	<!-- Page Preloder 
@@ -84,13 +83,6 @@
 		</div>
 	</div>
 	<!-- Offcanvas Menu End -->
-
-    <!-- Page Preloder -->
-    <div id="preloder">
-        <div class="loader"></div>
-    </div>
-	
-
 
 	<!-- Header Section Begin -->
 	<header class="header">
@@ -367,7 +359,7 @@
             </tbody>
 
          </table>
-         <!--
+         <!-- 페이징 기능 구현 중
          <div class="pageNumber_wrapping">
          	<div class="pageNumber_area">
          		<ul id="pageNumber" class="pageNumber">
