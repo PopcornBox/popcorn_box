@@ -28,8 +28,8 @@ public class BoardController {
 	
 	@RequestMapping(value="/main", method=RequestMethod.GET)
 	public void main(Model model) {
-		log.info("main() + pcri{} 호출");
-		
+//		log.info("main() + pcri{} 호출");
+//		
 //		model.addAttribute("list", boardService.pagingList(pcri));
 //		
 //		int totalContents = boardService.getTotalContents();

@@ -371,12 +371,27 @@
          	</div>
          </div>
          
+	<script>
+    	$(document).ready(function(){
+    		
+    	});
+    	
+    	let pagingViewForm = $("#pagingViewForm");
+    
+    	$(".pageNumber a").on("click", function(e){
+    		
+    		e.preventDefault();
+    		pagingViewForm.find("input[name='pageNum']").val($(this).attr("href"));
+    		pagingViewForm.attr("action", "/board/main");
+    		pagingViewForm.submit();
+    	});
+    </script>
+         
          <form id="pagingviewForm" method="GET">
          	<input type="hidden" name="pageNum" value="${PagingView.pcri.pageNum}">
-         	<input type="hidden" name="pageNum" value="${PagingView.pcri.contents}">
+         	<input type="hidden" name="contents" value="${PagingView.pcri.contents}">
          </form>
-		-->
-
+-->
          <nav>
             <!-- 메뉴 -->
             <ul>
@@ -466,6 +481,8 @@
            </div>
     </footer>
     <!-- Footer Section End -->
+
+    
 
 
 
