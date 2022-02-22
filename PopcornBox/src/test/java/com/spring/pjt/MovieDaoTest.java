@@ -21,9 +21,9 @@ import com.spring.pjt.persistence.MovieDao;
 		locations = { "file:src/main/webapp/WEB-INF/spring/**/*.xml" } 
 )
 @WebAppConfiguration
-public class MovierDaoTest {
+public class MovieDaoTest {
 
-	private static final Logger log = LoggerFactory.getLogger(MovierDaoTest.class);
+	private static final Logger log = LoggerFactory.getLogger(MovieDaoTest.class);
 	
 	@Autowired private  MovieDao movieDao;
 	

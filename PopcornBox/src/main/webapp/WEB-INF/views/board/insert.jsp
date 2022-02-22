@@ -35,6 +35,43 @@
         <div class="loader"></div>
     </div>
 
+	<!-- Header Section Begin -->
+	<header class="header">
+		<div class="header__top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-7">
+						<div class="header__top__left">
+							<a href="../"><img src="../resources/img/popcornbox_logo.png" alt="logo" width="35%"></a>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-5">
+						<div class="header__top__right">
+							<div class="header__top__links">
+								<a href="./pb_login.html">로그인</a> <a
+									href="./pb_join_member.html">회원가입</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-6">
+					<nav class="header__menu mobile-menu">
+						<ul>
+							<li><a href="../">홈</a></li>
+							<li><a href="../movie/mainlist">차트</a></li>
+							<li class="active"><a href="../board/main">자유게시판</a></li>
+							<li><a href="./pb_event.html">이벤트</a></li>
+						</ul>
+					</nav>
+				</div>
+				<div class="col-lg-3 col-md- 10">
+					<div class="header__nav__option">
+						<a href="#" class="search-switch"><img
+							src="../resources/img/icon/search.png" alt=""></a>
     <!-- Offcanvas Menu Begin -->
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
@@ -66,6 +103,7 @@
         </div>
     </div>
     <!-- Offcanvas Menu End -->
+
 
     <!-- Header Section Begin -->
     <header class="header">
