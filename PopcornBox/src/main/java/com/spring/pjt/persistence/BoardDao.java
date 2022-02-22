@@ -14,5 +14,6 @@ public interface BoardDao {
 	int UpdateViewCnt(int board_no);
 	int delete(int board_no);
 	List<Board> read(int type, String keyword);
+	int updateBoardReplyCnt(int board_no, int increase);
 	
 }

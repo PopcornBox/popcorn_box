@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>PopcornBox</title>
+<title>Popcorn Box</title>
 
     <script src="https://kit.fontawesome.com/a39158855c.js" crossorigin="anonymous"></script>
 

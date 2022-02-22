@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.http.HttpRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -343,34 +344,67 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/userInfo", method = RequestMethod.GET)
-	public void userInfo(HttpSession session, Model model) {
-		String SignInUserNickname = (String) session.getAttribute("SignInUserNickname");
-		log.info("userInfo(user: {}) GET 호출", SignInUserNickname);
-		User user = userService.userInfo(SignInUserNickname);
+	public void userInfo(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		String signInUserNickname = (String) session.getAttribute("signInUserNickname");
+		log.info("userInfo(user_nickname : {}) GET 호출", signInUserNickname);
+		User user = userService.userInfo(signInUserNickname);
 		
 		model.addAttribute("user",user);
 	}
 	
-	@RequestMapping(value = "/userInfoUpdate", method = RequestMethod.POST)
-	public String userInfoUpdate(User user, HttpSession session) {
-		log.info("userInfo(user: {}) POST 호출", user);
+	@RequestMapping(value = "/userInfo", method = RequestMethod.POST)
+	public String userInfoUpdate(User user, HttpServletRequest request, Model model) {
+		log.info("userInfoUpdate 호출");
 		userService.userInfoUpdate(user);
-		session.invalidate();
-		return "redirect:/pjt/user/signin";
+		HttpSession session = request.getSession();
+		session.setAttribute("signInUserNickname", user.getUser_nickname());
+		return "redirect:/user/mypage";
 	}
 	
 	@RequestMapping(value = "/leave", method = RequestMethod.GET)
-	public void leave() {
-		log.info("leave() GET 호출");
+	public void leave(HttpServletRequest request, Model model) {
+		log.info("leave() GET 호출");		
+		HttpSession session = request.getSession();
+		String signInUserNickname = (String) session.getAttribute("signInUserNickname");
+		log.info("leave(user_nickname : {}) GET 호출", signInUserNickname);
+		User user = userService.userInfo(signInUserNickname);
+		
+		model.addAttribute("user",user);
 	}
 	
 	@RequestMapping(value = "/leave", method = RequestMethod.POST)
-	public String leave(HttpSession session) {		
+	public String leave(HttpSession session, Model model) {		
 		String user_nickname = (String) session.getAttribute("signInUserNickname");
 		log.info("leave(user_nickname={}) POST 호출", user_nickname);
 		userService.deleteAccount(user_nickname);
 		session.invalidate();
 		
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/simpleRegister", method = RequestMethod.GET)
+	public void simpleRegister() {
+		log.info("simpleRegister() GET 호출");
+	}
+	
+	@RequestMapping(value = "/simpleRegister", method = RequestMethod.POST)
+	public String simpleRegister(User user, HttpServletRequest request) {
+		log.info("simpleRegister({}) POST 호출", user);
+		
+		// 회원가입창에 입력된 비밀번호를 읽음.
+	    String rawPassword = user.getUser_pwd();
+	    log.info("rawPassword: {}", rawPassword);
+	    
+	    // 그 비밀번호를 암호화.
+	    String encryptPassword = passwordEncoder.encode(rawPassword);
+	    log.info("encryptPassword: {}", encryptPassword);
+	    
+	    // 암호화한 비밀번호를 User 객체에 주입.
+	    user.setUser_pwd(encryptPassword);
+	     
+		// 회원가입 메서드
+		userService.registerNewUser(user);
 		return "redirect:/";
 	}
 	

@@ -74,14 +74,14 @@ public class BoardServiceImpl  implements BoardService{
 	}
 	
 	@Override
-	public List<Board> getList(PageCriteria pcri) {
-		log.info("Board getList() 호출" + pcri);
+	public List<Board> pagingList(PageCriteria pcri) {
+		log.info("Board getList() 호출" + pcri.toString());
 		return mapper.pagingList(pcri);
 	}
 	
 	@Override
-	public int getTotal() {
-		return mapper.getTotalList();
+	public int getTotalContents() {
+		return mapper.getTotalContents();
 	}
 	
 }

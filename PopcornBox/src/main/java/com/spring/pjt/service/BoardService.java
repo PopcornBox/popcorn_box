@@ -14,6 +14,6 @@ public interface BoardService {
 	int delete(int board_no);
 	int boardListCnt();
 	List<Board> select(int serachType, String searchKeyword);
-	List<Board> getList(PageCriteria pcri);
-	int getTotal();
+	List<Board> pagingList(PageCriteria pcri);
+	int getTotalContents();
 }
