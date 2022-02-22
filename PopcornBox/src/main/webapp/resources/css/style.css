@@ -3228,6 +3228,11 @@ header .search_option {
 	font-size: 13px;
 	display: block;
 	margin-bottom: 10px;
+	display: inline-block;
+}
+
+.blog__item__text .readmore a:first-child{
+	margin-right: 20px;
 }
 
 .blog__item__text span img {
@@ -3264,6 +3269,36 @@ header .search_option {
 	-o-transition: all, 0.3s;
 	transition: all, 0.3s;
 }
+
+/*---------------------
+  event page
+-----------------------*/
+	.event_thumb {
+		overflow: hidden;
+	}
+	
+	.event_thumb img {
+		width: 360px;
+		height: 270px;
+	}
+	
+	#d-day {
+		color: red;
+	}
+	
+	.event_list #finish {
+		position: absolute;
+		right: 9px;
+		top: 9px;
+		z-index: 2;
+		width: 60px;
+		height: 60px;
+		background: rgba(0,0,0,.5);
+		color: #fff;
+		text-align: center;
+		line-height: 60px;
+		border-radius: 100%;
+	}
 
 /*---------------------
   Blog Sidebar

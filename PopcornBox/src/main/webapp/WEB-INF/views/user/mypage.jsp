@@ -138,10 +138,22 @@
         </div>
     </header>
     <!-- Header Section End -->
+			
+<!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <h3>${signInUserNickname}님 환영합니다!</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
     
-			<div class="header__top__right">
-				<h3>${signInUserNickname}님 환영합니다!</h3>
-			</div>
+    
 		</h1>
 		<ul>
 			<li><a href="./userInfo">회원정보확인</a></li>
