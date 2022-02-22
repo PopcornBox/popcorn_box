@@ -7,10 +7,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<meta name="description" content="Male_Fashion Template">
-	    <meta name="keywords" content="Male_Fashion, unica, creative, html">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	    <title>로그인 | Popcorn Box</title>
 		
 		<!-- Google Font -->
@@ -22,7 +19,7 @@
 	    <link rel="stylesheet" href="../resources/css/font-awesome.min.css" type="text/css">
 	    <link rel="stylesheet" href="../resources/css/elegant-icons.css" type="text/css">
 	    <link rel="stylesheet" href="../resources/css/magnific-popup.css" type="text/css">
-	    <link rel="stylesheet" href="../resources/css/nice-select.css" type="text/css">
+	    <!-- <link rel="stylesheet" href="../resources/css/nice-select.css" type="text/css"> -->
 	    <link rel="stylesheet" href="../resources/css/owl.carousel.min.css" type="text/css">
 	    <link rel="stylesheet" href="../resources/css/slicknav.min.css" type="text/css">
 	    <link rel="stylesheet" href="../resources/css/style.css" type="text/css">
@@ -42,23 +39,31 @@
     <div class="offcanvas-menu-wrapper">
         <div class="offcanvas__option">
             <div class="offcanvas__links">
-            <ul>
-            	<c:if test="${empty signInUserNickname}">
-					<%-- 로그인 되어 있지 않은 경우 --%>					
+            <ul>                        					
+				<c:if test="${empty signInUserNickname}">
+					<%-- 로그인 되어 있지 않은 경우 --%>
 					<li><a href="../user/signin">로그인</a></li>
-					<li><a href="../user/register">회원가입</a></li>
-					<li><a href="../user/mypage">마이페이지</a></li>
-			                <li><a href="./event/main">이벤트</a></li>
+		            <li><a href="../user/register">회원가입</a></li>
+		            <li><a href="../user/mypage">마이페이지</a></li>
 				</c:if>
 				<c:if test="${not empty signInUserNickname}">
 					<%-- 로그인 되어 있는 경우 --%>
-					<li><span>${signInUserNickname} 님</span></li>
-					<li>　</li>
-					<li><a href="../user/signout">로그아웃</a></li>
-					<li><a href="../user/register">회원가입</a></li>
-					<li><a href="../user/mypage">마이페이지</a></li>
-					<li><a href="../event/main">이벤트</a></li>
-				</c:if>
+					<c:if test="${empty accessToken}">
+						<%-- 일반 로그인의 경우 --%>  
+						<li><span>${signInUserNickname} 님</span></li>
+						<li><a href="../user/signout">로그아웃</a></li>
+						<li><a href="../user/register">회원가입</a></li>
+			            <li><a href="../user/mypage">마이페이지</a></li>
+		             </c:if>	 
+		             <c:if test="${not empty accessToken}">
+		                <%-- 카카오 로그인의 경우 --%>  
+			            <li><span>${signInUserNickname} 님</span></li>
+			            <li><a href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7
+			            &logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">로그아웃</a></li>
+						<li><a href="./user/register">회원가입</a></li>
+			            <li><a href="./user/mypage">마이페이지</a></li>
+					 </c:if>	 
+				</c:if>	              								
             </ul>
             </div>
         </div>
@@ -100,7 +105,8 @@
 		                                    <c:if test="${not empty accessToken}">
 		                                    	<%-- 카카오 로그인의 경우 --%>  
 			                                    <span>${signInUserNickname} 님</span><br>
-			                                    <a href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7&logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">
+			                                    <a href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7
+			                                    &logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">
 			                                    	<i class="fa-solid fa-lock"></i>로그아웃</a>
 												<a href="./user/register"><i class="fa-solid fa-user-plus"></i>회원가입</a>
 			                                    <a href="./user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
@@ -243,7 +249,7 @@
 	    <!-- Js Plugins -->
 	    <script src="../resources/js/jquery-3.3.1.min.js"></script>
 	    <script src="../resources/js/bootstrap.min.js"></script>
-	    <script src="../resources/js/jquery.nice-select.min.js"></script>
+	    <!-- <script src="../resources/js/jquery.nice-select.min.js"></script> -->
 	    <script src="../resources/js/jquery.nicescroll.min.js"></script>
 	    <script src="../resources/js/jquery.magnific-popup.min.js"></script>
 	    <script src="../resources/js/jquery.countdown.min.js"></script>
