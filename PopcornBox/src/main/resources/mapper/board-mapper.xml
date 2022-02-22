@@ -5,7 +5,7 @@
 	<!-- 게시글 전체 검색 -->
 	<select id="selectAllBoard" resultType="Board">
 		SELECT * FROM ${TBL_BOARDS}
-		ORDER BY ${COL_BOARD_NO} DESC
+		ORDER BY ${COL_BOARD_MODE} DESC, ${COL_BOARD_NO} DESC
 	</select>
 
     <!-- 글 번호로 검색 -->
@@ -19,8 +19,8 @@
         board_no: 시퀀스 - 자동 입력, board_update_time: 기본값 sysdate, view_cnt: 기본값 0, reply_cnt: 기본값 0
     -->
     <insert id="create">
-    INSERT INTO ${TBL_BOARDS} (${COL_BOARD_TITLE}, ${COL_BOARD_CONTENT}, ${COL_USER_NICKNAME}) 
-    VALUES (#{board_title}, #{board_content}, #{user_nickname})
+    INSERT INTO ${TBL_BOARDS} (${COL_BOARD_TITLE}, ${COL_BOARD_CONTENT}, ${COL_USER_NICKNAME}, ${COL_BOARD_MODE}) 
+    VALUES (#{board_title}, #{board_content}, #{user_nickname}, #{board_mode})
     </insert>
     
     <!-- 게시글 수정: 해당 글 번호의 글 제목, 내용 수정. reg_date는 수정하는 서버 시간. -->
