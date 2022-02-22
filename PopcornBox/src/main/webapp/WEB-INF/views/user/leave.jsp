@@ -30,16 +30,18 @@
 			<br><hr>
 			<p>탈퇴를 원하시면 비밀번호를 입력해주세요.</p>
 			<div>
-			<input type="password" id="user_pwd" name="user_pwd" placeholder="비밀번호" class="checkout__input__add" required />
+				<input type="password" id="user_pwd" name="user_pwd" placeholder="비밀번호" class="checkout__input__add" required />
 			</div>
 			<br>
 			<div>
-			<button type="submit" class="site-btn">탈퇴</button>
+				<button type="submit" class="site-btn">탈퇴</button>
 			</div>
 			<div>
-			<input type="hidden" id="user_pwd_confirm" name="user_pwd_confirm" value="${user.user_pwd}" />
+				<input type="hidden" id="user_pwd_confirm" name="user_pwd_confirm" value="${user.user_pwd}" />
 			</div>
-			
+			<div>
+				<input type="hidden" name="msg" value="${msg}" />
+			</div>			
 			</form>
 		</div>
 	
@@ -47,8 +49,11 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>	
 		<script>
 		$(document).ready(function () {
-			
-		}
+			var message = '${msg}';
+			if (message != null && message != '') {
+				alert(message);
+			}
+		});
 	
 		</script>	
 	</body>

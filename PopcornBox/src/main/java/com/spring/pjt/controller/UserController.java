@@ -213,7 +213,6 @@ public class UserController {
         if (user != null) { // DB에 있는(회원가입한) 이메일
         	signInUser = user;
         	log.info("signInUser: {}", signInUser);
-        	session.setAttribute("signInUserNo", signInUser.getUser_no());
         	session.setAttribute("signInUserNickname", signInUser.getUser_nickname());
         	session.setAttribute("signInUserPosition", signInUser.getUser_position());
         	session.setAttribute("accessToken", accessToken);
@@ -366,7 +365,7 @@ public class UserController {
 	public void leave(HttpServletRequest request, Model model) {
 		log.info("leave() GET 호출");	// 나중에 지워	
 		HttpSession session = request.getSession();
-		String signInUserNickname = (String) session.getAttribute("signInUserNickname");
+		String signInUserNickname = (String) session.getAttribute("signInUserNickname");		
 		log.info("leave(user_nickname : {}) GET 호출", signInUserNickname);
 		User user = userService.userInfo(signInUserNickname);
 		
@@ -374,12 +373,20 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/leave", method = RequestMethod.POST)
-	public String leave(HttpSession session, Model model) {		
+	public String leave(HttpSession session, Model model, User user) {		
 		String signInUserNickname = (String) session.getAttribute("signInUserNickname");
 //		log.info("leave(user_nickname={}) POST 호출", user_nickname);
 //		 User user = (User) model.getAttribute("user");
-		User user = userService.userInfo(signInUserNickname);
 		log.info("leave({}) POST 호출", user);
+		log.info("leave(model.getAttribute: {}) POST 호출", model.getAttribute("user"));
+		log.info("leave(model.getAttribute: {}) POST 호출", model.getAttribute("signInUserNickname"));
+		log.info("");
+//		User user = userService.userInfo(signInUserNickname);
+//		log.info("leave({}) POST 호출", user);
+		
+		String user_pwd = user.getUser_pwd(); // 기존 
+		
+		
 		userService.deleteAccount(user);
 		session.invalidate();
 		
