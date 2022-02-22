@@ -47,6 +47,17 @@ public class BoardController {
 		return "redirect:/board/main";
 	}
 	
+	@RequestMapping(value = "/notice", method = RequestMethod.GET)
+	public void notice() {
+		log.info("notice() GET 호출");
+	}
+	
+	@RequestMapping(value = "/notice", method = RequestMethod.POST)
+	public void notice(Board board) {
+		log.info("notice() POST 호출");
+		board.getBoard_mode();
+		boardService.insert(board);
+	}
 	
 	@RequestMapping(value = "/detail", method=RequestMethod.GET)
 	public void detail (int board_no, Model model) {

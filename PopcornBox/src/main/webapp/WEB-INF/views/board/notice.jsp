@@ -113,7 +113,7 @@
 
 	<div class="container-fluid">
 		<div class="text-center">
-			<h3>팝콘박스 글쓰기</h3>
+			<h3>팝콘박스 운영자 공지 글 쓰기</h3>
 		</div>
 		<hr>
 
@@ -121,6 +121,9 @@
 			<!-- 입력 양식 -->
 			<form method="post">
 				<!-- /board/insert POST submit -->
+				<div>
+					<input type="hidden" id="board_mode" name="board_mode" value="1" required readonly />
+				</div>
 				<div>
 					<input type="text" name="board_title" placeholder="제목 입력" required
 						autofocus />
@@ -136,7 +139,12 @@
 				</div>
 
 				<div>
-					<input type="submit" class="btn btn-outline-dark" value="작성 완료">
+					<c:if test="${signInUserPosition eq 'B'}">
+						<input type="submit" class="btn btn-outline-dark" value="공지 작성 완료">
+					</c:if>
+					<c:if test="${signInUserPosition eq 'A'}">
+						<input type="submit" class="btn btn-outline-dark" value="공지 작성 완료">
+					</c:if>
 				</div>
 
 			</form>
