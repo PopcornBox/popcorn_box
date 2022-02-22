@@ -275,13 +275,13 @@
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>	
 	<script>
-		$(document).ready(function() {
+		$(document).ready(function () {
 			$('#movie_reply_content').click(function() {
 					if ('${signInUserNickname}' == null || '${signInUserNickname}' == '') {
 						var message = '로그인이 필요한 서비스입니다. 로그인 페이지로 이동하시겠습니까?';
 						var result = confirm(message);
 						if (result == true) {
-						location.href = '/pjt/event/signin?event_no=' + ${event.event_no} + '&q=' + ${q};
+						location.href = '/pjt/movie/signin?movie_no=' + ${movie.movie_no};
 						}
 					}
 			});
@@ -396,8 +396,8 @@
             			}),
             			// 성공 응답(200 response)이 왔을 때 브라우저가 실행할 콜백 함수
             			success: function (resp) {
-            				$('#event_reply_content').val('');
-            				getAllEventReplies();  // 댓글 목록 업데이트
+            				$('#movie_reply_content').val('');
+            				getAllMovieReplies();  // 댓글 목록 업데이트
             			}
             		});
     			});
@@ -461,7 +461,7 @@
             	});
     			
     			
-    			$('#delete_movie').click(function(event) {
+    			$('#delete_movie').click(function (event) {
     				event.preventDefault();
     				var answer = confirm('정말 삭제할까요?');
     				if (answer) {

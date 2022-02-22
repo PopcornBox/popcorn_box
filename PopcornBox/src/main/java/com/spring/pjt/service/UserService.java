@@ -18,5 +18,6 @@ public interface UserService {
     
     // 회원 정보 수정
     void userInfoUpdate(User user);
-    int deleteAccount(String user_nickname);
+    
+    int deleteAccount(User user);
 }

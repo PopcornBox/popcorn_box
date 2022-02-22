@@ -37,7 +37,7 @@
 			<button type="submit" class="site-btn">탈퇴</button>
 			</div>
 			<div>
-			<input type="hidden" name="" value="${user.user_pwd}" />
+			<input type="hidden" id="user_pwd_confirm" name="user_pwd_confirm" value="${user.user_pwd}" />
 			</div>
 			
 			</form>

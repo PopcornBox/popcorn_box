@@ -98,9 +98,9 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public int delete(String user_nickname) {
-		log.info("delete(user_nickname={}) 호출", user_nickname);
-		return sqlSession.delete(USER_NAMESPACE + ".delete", user_nickname);
+	public int delete(User user) {
+		log.info("delete({}) 호출", user);
+		return sqlSession.delete(USER_NAMESPACE + ".delete", user);
 	}
 
 }

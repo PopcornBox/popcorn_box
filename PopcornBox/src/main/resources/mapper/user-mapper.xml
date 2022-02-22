@@ -78,6 +78,7 @@
 	<delete id="delete">
 	DELETE FROM ${TABLE_USERS}
 	WHERE ${COL_USER_NICKNAME} = #{user_nickname}
+		AND ${COL_USER_PWD} = #{user_pwd}
 	</delete>
 	
 </mapper>

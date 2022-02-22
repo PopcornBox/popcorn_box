@@ -95,8 +95,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int deleteAccount(String user_nickname) {
-		log.info("deleteAccount(user_nickname={}) 호출", user_nickname);
-		return userDao.delete(user_nickname);
+	public int deleteAccount(User user) {
+		log.info("deleteAccount({}) 호출", user);
+		return userDao.delete(user);
 	}
 }

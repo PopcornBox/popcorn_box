@@ -125,7 +125,7 @@ public class UserController {
 		}
 		
 	}
-	
+	// TODO
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
 	public void signIn(User user, Model model) {
 		log.info("signIn({}) POST 호출", user);
@@ -364,7 +364,7 @@ public class UserController {
 	
 	@RequestMapping(value = "/leave", method = RequestMethod.GET)
 	public void leave(HttpServletRequest request, Model model) {
-		log.info("leave() GET 호출");		
+		log.info("leave() GET 호출");	// 나중에 지워	
 		HttpSession session = request.getSession();
 		String signInUserNickname = (String) session.getAttribute("signInUserNickname");
 		log.info("leave(user_nickname : {}) GET 호출", signInUserNickname);
@@ -375,9 +375,12 @@ public class UserController {
 	
 	@RequestMapping(value = "/leave", method = RequestMethod.POST)
 	public String leave(HttpSession session, Model model) {		
-		String user_nickname = (String) session.getAttribute("signInUserNickname");
-		log.info("leave(user_nickname={}) POST 호출", user_nickname);
-		userService.deleteAccount(user_nickname);
+		String signInUserNickname = (String) session.getAttribute("signInUserNickname");
+//		log.info("leave(user_nickname={}) POST 호출", user_nickname);
+//		 User user = (User) model.getAttribute("user");
+		User user = userService.userInfo(signInUserNickname);
+		log.info("leave({}) POST 호출", user);
+		userService.deleteAccount(user);
 		session.invalidate();
 		
 		return "redirect:/";
