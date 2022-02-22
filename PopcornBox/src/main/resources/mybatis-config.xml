@@ -15,6 +15,15 @@
 		<property name="COL_BOARD_UPDATE_TIME" value="board_update_time"/>
 		<property name="COL_BOARD_VIEW_CNT" value="board_view_cnt"/>
 		<property name="COL_BOARD_REPLY_CNT" value="board_reply_cnt"/>
+		
+		
+		<!-- BOARD_REPLIES 관련 상수들 -->
+		<property name="TBL_BOARD_REPLIES" value="board_replies"/>
+		<property name="COL_BOARD_REPLY_NO" value="board_reply_no"/>
+		<property name="COL_BOARD_REPLY_CONTENT" value="board_reply_content"/>
+		<!-- USER 테이블의 user_nickname 컬럼 이름은 동일하므로 생략 -->
+		<property name="COL_BOARD_REPLY_UPDATE_TIME" value="board_reply_update_time"/>
+		<!-- BOARD 테이블의 board_no 컬럼 이름은 동일하므로 생략 -->
 
 	
 	
@@ -58,6 +67,8 @@
 		<property name="COL_EVENT_REPLY_NO" value="event_reply_no" />
 		<property name="COL_EVENT_REPLY_CONTENT" value="event_reply_content" />
 		<property name="COL_EVENT_REPLY_UPDATE_TIME" value="event_reply_update_time" />	
+		
+		
 	</properties>
 	
 	<typeAliases>
