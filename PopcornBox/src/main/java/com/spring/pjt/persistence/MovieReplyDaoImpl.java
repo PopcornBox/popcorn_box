@@ -32,7 +32,7 @@ public class MovieReplyDaoImpl implements MovieReplyDao {
 
 	@Override
 	public List<MovieReply> readAllMovieReplies(Integer movie_no) {
-		log.info("readAllMovieReplies(movie_no:{}", movie_no);
+		log.info("readAllMovieReplies(movie_no:{})", movie_no);
 		return mapper.readAllMovieReplies(movie_no);
 	}
 

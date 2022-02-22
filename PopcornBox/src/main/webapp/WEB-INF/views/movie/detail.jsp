@@ -296,7 +296,7 @@
 	                
 	           		var n = respText.length; 
 	            	if (n > 0) {
-	            		$('#reply_number').html(n + '개의 댓글이 있습니다.');
+	            		$('#reply_number').html(n + '개의 리뷰');
 	            		
 	            		var lastpage = parseInt((n + 9) / 10);
 	            	    
@@ -363,7 +363,7 @@
 	                 $('#movie_reply_list').html(movie_list);
 	                 
 	             }); // end getJSON()
-	    	}	
+	    	} // end getAllMovieReplies()	
 	     	
 	    	getAllMovieReplies(); // 함수 호출	
             	

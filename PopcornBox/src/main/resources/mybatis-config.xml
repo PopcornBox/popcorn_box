@@ -40,6 +40,12 @@
 		<property name="COL_MOVIE_TRAILER" value="movie_trailer"/>
 		<property name="COL_MOVIE_IMAGE" value="movie_image"/>
 		<property name="COL_MOVIE_UPDATE_TIME" value="movie_update_time"/>
+		
+		<!-- MOVIE_REPLIES 테이블 관련 상수들 -->
+		<property name="TABLE_MOVIE_REPLIES" value="movie_replies" />
+		<property name="COL_MOVIE_REPLY_NO" value="movie_reply_no" />
+		<property name="COL_MOVIE_REPLY_CONTENT" value="movie_reply_content" />
+		<property name="COL_MOVIE_REPLY_UPDATE_TIME" value="movie_reply_update_time" />	
 	
 	
 		<!-- USERS 테이블 관련 상수들 -->
