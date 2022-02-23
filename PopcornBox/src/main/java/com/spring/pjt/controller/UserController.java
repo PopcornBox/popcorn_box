@@ -343,7 +343,7 @@ public class UserController {
 		HttpSession session = request.getSession();
 		String signInUserNickname = (String) session.getAttribute("signInUserNickname");
 		log.info("userInfo(user_nickname : {}) GET 호출", signInUserNickname);
-		User user = userService.userInfo(signInUserNickname);
+		User user = userService.readUserByNickname(signInUserNickname);
 		
 		model.addAttribute("user",user);
 	}
