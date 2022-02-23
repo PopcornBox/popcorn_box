@@ -10,8 +10,12 @@
 <head>
 <meta charset="UTF-8">
 <title>PopcornBox</title>
+<style>
+      #board_reply_content {
+      width: 600px;
+      }
 
-
+</style>
 
 </head>
 <body>
