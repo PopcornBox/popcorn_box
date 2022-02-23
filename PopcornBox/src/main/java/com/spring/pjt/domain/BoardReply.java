@@ -1,6 +1,6 @@
 package com.spring.pjt.domain;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class BoardReply {
 
@@ -10,7 +10,7 @@ public class BoardReply {
 	private Date board_reply_update_time;
 	private int board_no;
 	
-	
+		
 	
 	public BoardReply() {}
 	
@@ -26,6 +26,9 @@ public class BoardReply {
 	}
 
 
+	public int getBoard_reply_no() {
+		return board_reply_no;
+	}
 
 	public void setBoard_reply_no(int board_reply_no) {
 		this.board_reply_no = board_reply_no;
