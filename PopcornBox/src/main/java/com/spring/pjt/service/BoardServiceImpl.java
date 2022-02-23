@@ -45,6 +45,10 @@ public class BoardServiceImpl  implements BoardService{
 		int result = boardDao.create(board);
 		
 		return result;
+		
+		// 로그 삽입 첨부
+//		UserLog userLog = new UserLog();
+		
 	}
 
 	@Override

@@ -25,6 +25,8 @@ import com.spring.pjt.service.KakaoLoginService;
 import com.spring.pjt.service.UserMailSendService;
 import com.spring.pjt.service.UserService;
 
+import oracle.net.ano.Service;
+
 @Controller
 @RequestMapping(value = "/user")
 public class UserController {
@@ -216,7 +218,11 @@ public class UserController {
         	session.setAttribute("signInUserPosition", signInUser.getUser_position());
         	session.setAttribute("accessToken", accessToken);
         	session.setAttribute("state", state);
-        }          
+        } else { // DB에 없는(회원가입 안 한) 이메일        
+        	session.setAttribute("email", email);
+        	session.setAttribute("accessToken", accessToken);
+        	session.setAttribute("state", state);
+        }
 	}
 		
 	@RequestMapping(value = "/signout", method = RequestMethod.GET)
@@ -333,10 +339,21 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public void mypage() {
-		log.info("mypage() GET 호출");
-	}
+//	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
+//	public void mypage() {
+//		log.info("mypage() GET 호출");
+//	}
+	
+//	@RequestMapping(value = "/mypage")
+//	public String mypage_log(HttpServletRequest request, Model model) {
+//		HttpSession session =request.getSession();
+//		String signInUserNickname = (String) session.getAttribute("signInUserNickname");
+//		log.info("mypage(user_nickname : {}) GET 호출",signInUserNickname);
+//		model.addAttribute("mypage_log",userService.readUserByNickname(signInUserNickname));
+//		
+//		
+//		
+//	}
 	
 	@RequestMapping(value = "/userInfo", method = RequestMethod.GET)
 	public void userInfo(HttpServletRequest request, Model model) {
@@ -400,7 +417,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/simpleRegister", method = RequestMethod.POST)
-	public String simpleRegister(User user, HttpServletRequest request) {
+	public void simpleRegister(User user, HttpServletRequest request, HttpSession session) {
 		log.info("simpleRegister({}) POST 호출", user);
 		
 		// 회원가입창에 입력된 비밀번호를 읽음.
@@ -415,8 +432,12 @@ public class UserController {
 	    user.setUser_pwd(encryptPassword);
 	     
 		// 회원가입 메서드
-		userService.registerNewUser(user);
-		return "redirect:/";
+		int result = userService.registerNewUser(user);
+		if (result == 1) {
+			User signInUser = userService.readUserByEmail(session.getAttribute("email").toString());
+			session.setAttribute("signInUserNickname", signInUser.getUser_nickname());
+	    	session.setAttribute("signInUserPosition", signInUser.getUser_position());
+		}			
 	}
 	
 }

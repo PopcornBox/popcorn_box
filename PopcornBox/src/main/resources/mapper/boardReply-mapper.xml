@@ -32,6 +32,17 @@
 		SELECT ${COL_BOARD_NO} FROM ${TBL_BOARD_REPLIES}
 		WHERE ${COL_BOARD_REPLY_NO} = #{board_reply_no}
 	</select>
+	
+	<update id="updateNickname">
+		UPDATE ${TBL_BOARD_REPLIES}
+		SET ${COL_USER_NICKNAME} = #{user_nickname}
+		WHERE ${COL_BOARD_REPLY_NO} = #{board_reply_no}
+	</update>
+	
+	<select id="findReplyNo" resultType="Integer">
+		SELECT ${COL_BOARD_REPLY_NO} FROM ${TBL_BOARD_REPLIES}
+		WHERE ${COL_USER_NICKNAME} = #{user_nickname}
+	</select>
 
 
 
