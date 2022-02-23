@@ -21,7 +21,7 @@
 	</beans:bean>
 	
 	<!-- DispatcherServlet은 com.spring.pjt.controller 패키지와 그 하위 패키지의 컴포넌트들을 생성, 관리 -->
-	<context:component-scan base-package="com.spring.pjt.controller" />
+	<context:component-scan base-package="com.spring.pjt.*" />
 	
 	<!-- Interceptor 설정: (1) Bean 생성, 관리 (2) URL 매핑 -->
 	<!-- HandlerIntercept authInterceptor = new AuthInterceptor(); -->
