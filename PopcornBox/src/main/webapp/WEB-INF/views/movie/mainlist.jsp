@@ -33,6 +33,7 @@
 <link rel="stylesheet" href="../resources/css/slicknav.min.css"
 	type="text/css">
 <link rel="stylesheet" href="../resources/css/style.css" type="text/css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">	
 <style>
 
 </style>
@@ -179,7 +180,7 @@
 	
 	<div class="container">
 		<div class="movie__chart__table">
-		<table class="table">
+		<table id="movie_chart" class="table">
 			<thead class="thead-blue text-center">
 				<tr>
 					<th>영화순위</th>
@@ -202,8 +203,10 @@
 								<span style="font-size: 20px;">${movie.movie_title}</span>
 							</a>
 						</td>
-						<td></td>
-						<td></td>
+						<td class="points ${movie.movie_no}"></td>
+						<td>
+						    <i class="fa-regular fa-heart" id="${movie.movie_no}"></i>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -267,5 +270,221 @@
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
+	<script>
+	$(document).ready(function() {
+		
+		if ('${signInUserNickname}' == null || '${signInUserNickname}' == '') {
+			$('tr').find('i').removeClass('fa-solid');
+			$('tr').find('i').click(function() {
+				var answer = alert('로그인후 이용가능합니다.');
+				location.href = '/pjt/movie/like/signin';
+			});
+		} else {
+			// DB에서 좋아요 기록 불러와서 세팅.
+			read_like();
+			
+		
+		
+			
+			$('tr').find('i').click(function() {
+				if ($(this).hasClass('fa-regular') == true) { // 좋아요 누른 경우
+					$(this).removeClass('fa-regular');
+					$(this).addClass('fa-solid');
+					var id = $(this).attr('id');
+				    insert_like(id);
+					
+				} else {                                      // 해제한 경우
+					$(this).removeClass('fa-solid');
+					$(this).addClass('fa-regular');
+					var id = $(this).attr('id');
+					delete_like(id);
+				}
+			});
+		
+		
+		}
+		
+		
+		
+		
+		function read_like() {
+			var user_nickname = '${signInUserNickname}';
+			
+			 $.getJSON('/pjt/movie_like/check/' + user_nickname, function (data) {
+             	
+				 var a = $('tr').find('i');
+				 
+             	if (data == null) { // 좋아요 등록 이력이 없으면
+             	
+             		if (a.hasClass('fa-solid') == true) {
+             			a.classList.replace('fa-solid', 'fa-regular');
+             		}
+ 				
+ 				} else { // 있으면
+ 					
+ 					if (a.hasClass('fa-solid') == true) {
+ 						a.classList.replace('fa-solid', 'fa-regular');
+             		}
+ 					
+ 					data.forEach(function(element) {
+ 						var movie_no = element;
+ 						var icon = document.getElementById(movie_no);
+ 						icon.classList.remove('fa-regular');
+ 						icon.classList.add('fa-solid');
+ 						
+ 					});
+ 				}
+             	
+             });
+		}
+	
+		
+		function insert_like(movie_no) {
+    			
+        		$.ajax({
+        			// 요청 주소
+        			url: '/pjt/movie_like/insert',
+        			// 요청 타입
+        			type: 'POST',
+        			// 요청 HTTP 헤더
+        			headers: {
+        				'Content-Type': 'application/json',
+        				'X-HTTP-Method-Override': 'POST'
+        			},
+        			// 요청에 포함되는 데이터(JSON 문자열)
+        			data: JSON.stringify({
+        				'movie_no': movie_no,
+        				'user_nickname': '${signInUserNickname}'
+        			}),
+        			// 성공 응답(200 response)이 왔을 때 브라우저가 실행할 콜백 함수
+        			success: function (resp) {
+        				read_like();
+        			}
+        		});
+			}
+			
+		
+		
+    	
+    	
+		function delete_like(movie_no) {
+			
+        			$.ajax({
+        				// 요청 URL
+        				url: '/pjt/movie_like/delete/' + movie_no + '/' + '${signInUserNickname}',
+        				// 요청 타입
+        				type: 'DELETE',
+        				// 요청 헤더
+        				headers: {
+        					'Content-Type': 'application/json',
+        					'X-HTTP-Method-Override': 'DELETE'
+        				},
+        				// 성공 응답 콜백 함수
+        				success: function () {
+        					read_like();
+        				}
+        			});
+        		}
+		
+	// ---------------------- 위는 좋아요 코드, 아래는 일정 시간 주기로 평점 데이터 불어와서 세팅하는 코드 ------------------
+	
+			read_average_record();
+			set_table();
+			read_average_record2();
+			set_table();
+			
+	
+        	function read_average_record() {
+        		
+			 $.getJSON('/pjt/movie_rating/all_movies', function (data) {
+             	
+				 data.forEach(function(element) {
+					 var movie_no = element;
+					 average_score(movie_no);			// 평점 부여.		
+					 
+				 }); // for 반복
+             	
+             }); // getJson
+		} // read_average_record
+		
+		
+		
+		
+		function read_average_record2() {
+    		timer = setInterval(function() {
+		
+        	 $.getJSON('/pjt/movie_rating/all_movies', function (data) {
+              	
+				 data.forEach(function(element) {
+					 var movie_no = element;
+					 average_score(movie_no);			// 평점 부여.		
+					 
+				 }); // for 반복
+             	
+             }); // getJson
+           
+           }, 30000);  // 30초 마다
+             
+		} // read_average_record
+		
+		
+		
+		
+        	
+        	
+        	function average_score(movie_no) {
+       		 $.getJSON('/pjt/movie_rating/average/' + movie_no, function (average) {
+       				var tdList = document.getElementsByClassName('points');
+       				
+       				for(var i = 0; i < tdList.length; i++){
+       					console.log(tdList[i]);
+       				    if (tdList[i].classList.contains(movie_no) == true) {
+       				    	tdList[i].innerHTML = average.toFixed(1);
+       				    } 
+       				}		
+       					set_table();						// 테이블 순위별 배열.
+                });
+       		
+       	}
+	
+        	 function set_table() {
+        		 var rows = $('#movie_chart tbody tr').get();
+        		 rows.sort(function(a, b) {
+        			var A = $(a).children('td').eq(3).text();
+        			var B = $(b).children('td').eq(3).text();
+        			console.log(A);
+        			console.log(B);
+        			
+        			if (A < B) {
+        				return 1;
+        			}
+        			
+        			if (A > B) {
+        				return -1;
+        			}
+        			
+        			return 0;
+        			
+        		 });
+        		 
+        		 $.each(rows, function(index, row) { 	
+        			 $('#movie_chart').children('tbody').append(row); 
+        		 
+        		 });     		 
+        	 }	
+	
+	
+	
+	
+	
+	});
+	
+	
+	
+
+		
+	
+	
+	</script>
 </body>
 </html>
