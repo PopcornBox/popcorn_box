@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true" %>    
+<%@ page trimDirectiveWhitespaces="true" %>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
-	    <meta name="description" content="Male_Fashion Template">
-	    <meta name="keywords" content="Male_Fashion, unica, creative, html">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 	    <title>회원가입 | Popcorn Box</title>
 	    
 	    <!-- Google Font -->
@@ -20,10 +19,12 @@
 	    <link rel="stylesheet" href="../resources/css/font-awesome.min.css" type="text/css">
 	    <link rel="stylesheet" href="../resources/css/elegant-icons.css" type="text/css">
 	    <link rel="stylesheet" href="../resources/css/magnific-popup.css" type="text/css">
-	    <link rel="stylesheet" href="../resources/css/nice-select.css" type="text/css">
+	    <!-- <link rel="stylesheet" href="../resources/css/nice-select.css" type="text/css"> -->
 	    <link rel="stylesheet" href="../resources/css/owl.carousel.min.css" type="text/css">
 	    <link rel="stylesheet" href="../resources/css/slicknav.min.css" type="text/css">
 	    <link rel="stylesheet" href="../resources/css/style.css" type="text/css">
+			
+	<script src="https://kit.fontawesome.com/a39158855c.js" crossorigin="anonymous"></script>
 			
 		<style>
 		.valid_id, .valid_nickname, .valid_email, .valid_pwd, .valid_repwd {
@@ -36,84 +37,119 @@
 			display: none;
 		}	
 		</style>	
-	</head>
-	
+	</head>	
 	<body>
+	
 	    <!-- Page Preloder -->
 	    <div id="preloder">
 	        <div class="loader"></div>
 	    </div>
 	
 	
-	        <!-- Offcanvas Menu Begin -->
-	        <div class="offcanvas-menu-overlay"></div>
-	        <div class="offcanvas-menu-wrapper">
-	            <div class="offcanvas__option">
-	                <div class="offcanvas__links">
-	                    <a href="#">로그인</a>
-	                    <a href="#">회원가입</a>
-	                </div>
-	            </div>
-	            <div id="mobile-menu-wrap"></div>
-	            <div class="offcanvas__text">
-	                <p>PopcornBox</p>
+    	<!-- Offcanvas Menu Begin -->
+	    <div class="offcanvas-menu-overlay"></div>
+	    <div class="offcanvas-menu-wrapper">
+	        <div class="offcanvas__option">
+	            <div class="offcanvas__links">
+	            <ul>                        					
+					<c:if test="${empty signInUserNickname}">
+						<%-- 로그인 되어 있지 않은 경우 --%>
+						<li><a href="../user/signin">로그인</a></li>
+			            <li><a href="../user/register">회원가입</a></li>
+			            <li><a href="../user/mypage">마이페이지</a></li>
+					</c:if>
+					<c:if test="${not empty signInUserNickname}">
+						<%-- 로그인 되어 있는 경우 --%>
+						<c:if test="${empty accessToken}">
+							<%-- 일반 로그인의 경우 --%>  
+							<li><span>${signInUserNickname} 님</span></li>
+							<li><a href="../user/signout">로그아웃</a></li>
+							<li><a href="../user/register">회원가입</a></li>
+				            <li><a href="../user/mypage">마이페이지</a></li>
+			             </c:if>	 
+			             <c:if test="${not empty accessToken}">
+			                <%-- 카카오 로그인의 경우 --%>  
+				            <li><span>${signInUserNickname} 님</span></li>
+				            <li><a href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7
+				            &logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">로그아웃</a></li>
+							<li><a href="./user/register">회원가입</a></li>
+				            <li><a href="./user/mypage">마이페이지</a></li>
+						 </c:if>	 
+					</c:if>	              								
+	            </ul>
 	            </div>
 	        </div>
-	        <!-- Offcanvas Menu End -->
+	        <div id="mobile-menu-wrap"></div>
+	        <div class="offcanvas__text">
+	            <p>PopcornBox</p>
+	        </div>
+	    </div>
+	    <!-- Offcanvas Menu End -->
 	
-	        <!-- Header Section Begin -->
-	        <header class="header">
-	            <div class="header__top">
-	                <div class="container">
-	                    <div class="row">
-	                        <div class="col-lg-6 col-md-7">
-	                            <div class="header__top__left">
-	                                  <a href="../"><img src="../resources/img/popcornbox_logo.png" alt="logo" width="35%"></a>
-	                            </div>
-	                        </div>
-	                        <div class="col-lg-6 col-md-5">
-	                            <div class="header__top__right">
-	                                <div class="header__top__links">
-	                                    <a href="./signin">로그인</a>
-	                                    <a href="./register">회원가입</a>
-	                                    <a href="./mypage">마이페이지</a>
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
+	    <!-- Header Section Begin -->
+	    <header class="header">
+	        <div class="header__top">
+		                <div class="container">
+		                    <div class="row">
+		                        <div class="col-lg-6 col-md-7">
+		                            <div class="header__top__left">
+		                                  <a href="../"><img src="../resources/img/popcornbox_logo.png" alt="logo"></a>
+		                            </div>
+		                        </div>
+		                        <div class="col-lg-6 col-md-5">
+		                            <div class="header__top__right">
+		                                <div class="header__top__links">
+		                                	<c:if test="${empty signInUserNickname}">
+												<%-- 로그인 되어 있지 않은 경우 --%>
+												<a href="../user/signin"><i class="fa-solid fa-lock"></i>로그인</a>
+			                                    <a href="../user/register"><i class="fa-solid fa-user-plus"></i>회원가입</a>
+			                                    <a href="../user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
+											</c:if>
+											<c:if test="${not empty signInUserNickname}">
+												<%-- 로그인 되어 있는 경우 --%>
+												<c:if test="${empty accessToken}">
+													<%-- 일반 로그인의 경우 --%>  
+													<span>${signInUserNickname} 님</span><br>
+													<a href="../user/signout"><i class="fa-solid fa-lock"></i>로그아웃</a>
+													<a href="../user/register"><i class="fa-solid fa-user-plus"></i>회원가입</a>
+				                                    <a href="../user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
+			                                    </c:if>	 
+			                                    <c:if test="${not empty accessToken}">
+			                                    	<%-- 카카오 로그인의 경우 --%>  
+				                                    <span>${signInUserNickname} 님</span><br>
+				                                    <a href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7
+				                                    &logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">
+				                                    	<i class="fa-solid fa-lock"></i>로그아웃</a>
+													<a href="./user/register"><i class="fa-solid fa-user-plus"></i>회원가입</a>
+				                                    <a href="./user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
+												</c:if>	 
+											</c:if>	                  
+		                                </div>
+		                            </div>
+		                        </div>
+		                    </div>
+		                </div>
+		            </div>
+	        <div class="container">
+	            <div class="row" class="header__row__">
+	
+	                <div class="col-md-7 col-md-4">
+	                    <nav class="header__menu mobile-menu">
+	                        <ul>
+	                            <li><a href="../">홈</a></li>
+	                            <li><a href="../movie/mainlist">차트</a></li>
+	                            <li><a href="../board/main">커뮤니티</a></li>
+	                            <li><a href="../event/main">이벤트</a></li>
+	                        </ul>
+	                    </nav>
 	                </div>
 	            </div>
-	            <div class="container">
-	                <div class="row">
-	                    <div class="col-lg-6 col-md-6">
-	                        <nav class="header__menu mobile-menu">
-	                            <ul>
-	                                <li><a href="../">홈</a></li>
-	                                <li><a href="../movie/mainlist">차트</a></li>
-	                                <li><a href="../board/main">자유게시판</a>
-	                                  <!-- <ul class="dropdown">
-	                                        <li><a href="./about.html">공지사항</a></li>
-	                                        <li><a href="./pb_ßcommunity.html">자유게시판</a></li>
-	                                    </ul> -->
-	                                </li>
-	                                <li><a href="./pb_event.html">이벤트</a></li>
-	                            </ul>
-	                        </nav>
-	                    </div>
-	                    <div class="col-lg-3 col-md- 10">
-	                        <div class="header__nav__option">
-	                            <a href="#" class="search-switch"><img src="img/icon/search.png" alt=""></a>
-	
-	                        </div>
-	                    </div>
-	                </div>
-	                <div class="canvas__open"><i class="fa fa-bars"></i></div>
-	            </div>
-	        </header>
-	        <!-- Header Section End -->
-	
-	
+	            <div class="canvas__open"><i class="fa fa-bars"></i></div>
+	        </div>
+	    </header>
 	    <!-- Header Section End -->
+	
+	
 	
 	    <!-- Breadcrumb Section Begin -->
 	    <section class="breadcrumb-option">
@@ -168,7 +204,7 @@
 									<div class="invalid_repwd">비밀번호가 일치하지 않습니다.</div>	                                
 	                            </div>
 	                            <div class="checkout__input">
-	                                <p>이메일 주소<span>*</span></p>
+	                                <p>이메일<span>*</span></p>
 	                                <input type="email" id="user_email" name="user_email" placeholder="popcorn@box.com" required />
 	                                <div class="valid_email">사용 가능한 이메일입니다!</div>
 									<div class="invalid_email">이미 사용 중인 이메일입니다.</div>
@@ -176,50 +212,7 @@
 	                            </div>
 	                            <div class="col-lg-12 text-center">
 	                            <button type="submit" class="primary-btn">회원가입</button>	                            
-	                            </div>
-	
-	
-	
-	                      <!--  <div class="col-lg-4 col-md-6">
-	                            <div class="checkout__order">
-	                                <h4 class="order__title">Your order</h4>
-	                                <div class="checkout__order__products">Product <span>Total</span></div>
-	                                <ul class="checkout__total__products">
-	                                    <li>01. Vanilla salted caramel <span>$ 300.0</span></li>
-	                                    <li>02. German chocolate <span>$ 170.0</span></li>
-	                                    <li>03. Sweet autumn <span>$ 170.0</span></li>
-	                                    <li>04. Cluten free mini dozen <span>$ 110.0</span></li>
-	                                </ul>
-	                                <ul class="checkout__total__all">
-	                                    <li>Subtotal <span>$750.99</span></li>
-	                                    <li>Total <span>$750.99</span></li>
-	                                </ul>
-	                                <div class="checkout__input__checkbox">
-	                                    <label for="acc-or">
-	                                        Create an account?
-	                                        <input type="checkbox" id="acc-or">
-	                                        <span class="checkmark"></span>
-	                                    </label>
-	                                </div>
-	                                <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do eiusmod tempor incididunt
-	                                ut labore et dolore magna aliqua.</p>
-	                                <div class="checkout__input__checkbox">
-	                                    <label for="payment">
-	                                        Check Payment
-	                                        <input type="checkbox" id="payment">
-	                                        <span class="checkmark"></span>
-	                                    </label>
-	                                </div>
-	                                <div class="checkout__input__checkbox">
-	                                    <label for="paypal">
-	                                        Paypal
-	                                        <input type="checkbox" id="paypal">
-	                                        <span class="checkmark"></span>
-	                                    </label>
-	                                </div>
-	                                <button type="submit" class="site-btn">PLACE ORDER</button>
-	                            </div>
-	                        </div>-->
+	                            </div>               
 	                    </div>
 	                </form>
 	            </div>
@@ -267,17 +260,17 @@
     <!-- Footer Section End -->
 	    
 		
-	    <!-- Js Plugins -->
+	     <!-- Js Plugins -->
 	    <script src="../resources/js/jquery-3.3.1.min.js"></script>
 	    <script src="../resources/js/bootstrap.min.js"></script>
-	    <script src="../resources/js/jquery.nice-select.min.js"></script>
+	    <!-- <script src="../resources/js/jquery.nice-select.min.js"></script> -->
 	    <script src="../resources/js/jquery.nicescroll.min.js"></script>
 	    <script src="../resources/js/jquery.magnific-popup.min.js"></script>
 	    <script src="../resources/js/jquery.countdown.min.js"></script>
 	    <script src="../resources/js/jquery.slicknav.js"></script>
 	    <script src="../resources/js/mixitup.min.js"></script>
 	    <script src="../resources/js/owl.carousel.min.js"></script>
-	    <script src="../resources/js/main.js"></script>			
+	    <script src="../resources/js/main.js"></script>		
 		<script>
 		$(document).ready(function () {
 			

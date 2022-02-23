@@ -1,6 +1,6 @@
 package com.spring.pjt.domain;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Board {
 	private int board_no;

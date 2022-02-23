@@ -109,11 +109,11 @@
 		</div>
 	</header>
 	<!-- Header Section End -->
-	
+
 
 	<div class="container-fluid">
 		<div class="text-center">
-			<h3>팝콘박스 글쓰기</h3>
+			<h3>팝콘박스 운영자 공지 글 쓰기</h3>
 		</div>
 		<hr>
 
@@ -121,6 +121,9 @@
 			<!-- 입력 양식 -->
 			<form method="post">
 				<!-- /board/insert POST submit -->
+				<div>
+					<input type="hidden" id="board_mode" name="board_mode" value="1" required readonly />
+				</div>
 				<div>
 					<input type="text" name="board_title" placeholder="제목 입력" required
 						autofocus />
@@ -136,7 +139,12 @@
 				</div>
 
 				<div>
-					<input type="submit" class="btn btn-outline-dark" value="작성 완료">
+					<c:if test="${signInUserPosition eq 'B'}">
+						<input type="submit" class="btn btn-outline-dark" value="공지 작성 완료">
+					</c:if>
+					<c:if test="${signInUserPosition eq 'A'}">
+						<input type="submit" class="btn btn-outline-dark" value="공지 작성 완료">
+					</c:if>
 				</div>
 
 			</form>
@@ -151,8 +159,32 @@
 	</div>
 
 
+	<!-- Footer Section Begin -->
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-6 col-sm-6">
+					<div class="footer__about">
+						<div class="footer__logo">
+							<a href="#"><img src="../resources/img/logo_white.png" alt=""></a>
+						</div>
+						<p>
+							Copyright ©
+							<script>
+								document.write(new Date().getFullYear());
+							</script>
+							2020 All rights reserved | This template is made with <i
+								class="fa fa-heart-o" aria-hidden="true"></i> by <a
+								href="https://colorlib.com" target="_blank">Colorlib</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer Section End -->
 
-	<%@ include file="../footer.jsp"%>
+
 
 	<!-- Js Plugins -->
 	<script src="../resources/js/jquery-3.3.1.min.js"></script>

@@ -43,11 +43,11 @@ public class UserDaoImpl implements UserDao {
 		log.info("checkEmail(user_email={}) 호출", user_email);
 		return sqlSession.selectOne(USER_NAMESPACE + ".selectByEmail", user_email);
 	}
-
+	
 	@Override
-	public User read(User user) {
-		log.info("read({}) 호출", user);		
-		return sqlSession.selectOne(USER_NAMESPACE + ".selectById", user);
+	public User readByUserNickname(String user_nickname) {
+		log.info("readByUserNickname(user_nickname={}) 호출", user_nickname);
+		return sqlSession.selectOne(USER_NAMESPACE + ".userInfoByNickname", user_nickname);
 	}
 	
 	@Override
@@ -75,11 +75,6 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 	@Override
-	public User userInfo(String SignInUserNickname) {
-		return sqlSession.selectOne(USER_NAMESPACE + ".userInfo", SignInUserNickname);
-	}
-	
-	@Override
 	public void userInfoUpdate(User user) {
 		log.info("userInfoUpdate() 호출");
 		sqlSession.update(USER_NAMESPACE + ".userInfoUpdate", user);
@@ -98,9 +93,9 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public int delete(String user_nickname) {
-		log.info("delete(user_nickname={}) 호출", user_nickname);
-		return sqlSession.delete(USER_NAMESPACE + ".delete", user_nickname);
+	public int delete(User user) {
+		log.info("delete({}) 호출", user);
+		return sqlSession.delete(USER_NAMESPACE + ".delete", user);
 	}
 
 }

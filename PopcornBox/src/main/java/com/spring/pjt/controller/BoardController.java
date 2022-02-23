@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.spring.pjt.domain.Board;
+import com.spring.pjt.domain.PageCriteria;
+import com.spring.pjt.domain.PagingView;
 import com.spring.pjt.service.BoardService;
 
 @Controller
@@ -23,13 +25,16 @@ public class BoardController {
 	@Autowired private BoardService boardService;
 	
 	@RequestMapping(value="/main", method=RequestMethod.GET)
-	public void main(Model model) {
-		log.info("main() 호출");
+	public void main(Model model, PageCriteria pcri) {
+		log.info("main() + pcri :{} 호출",pcri);
 	
-
-		List<Board> list = boardService.select();
-		
+		List<Board> list = boardService.pagingList(pcri);
 		model.addAttribute("boardList", list);
+		
+		int totalContents = boardService.getTotalContents();
+		PagingView pagingView = new PagingView(pcri, totalContents);
+		
+		model.addAttribute("pagingView",pagingView);
 		
 	}
 	
@@ -47,6 +52,17 @@ public class BoardController {
 		return "redirect:/board/main";
 	}
 	
+	@RequestMapping(value = "/notice", method = RequestMethod.GET)
+	public void notice() {
+		log.info("notice() GET 호출");
+	}
+	
+	@RequestMapping(value = "/notice", method = RequestMethod.POST)
+	public void notice(Board board) {
+		log.info("notice() POST 호출");
+		board.getBoard_mode();
+		boardService.insert(board);
+	}
 	
 	@RequestMapping(value = "/detail", method=RequestMethod.GET)
 	public void detail (int board_no, Model model) {
