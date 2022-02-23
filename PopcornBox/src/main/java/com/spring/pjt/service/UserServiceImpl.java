@@ -60,13 +60,19 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User checkSignIn(User user) {
 		log.info("checkSignIn({}) 호출", user);		
-		return userDao.read(user);
+		return userDao.checkUserId(user.getUser_id());
 	}
 
 	@Override
 	public User readUserByEmail(String user_email) {
 		log.info("readUserByEmail(user_email: {}) 호출", user_email);
 		return userDao.checkEmail(user_email);
+	}
+	
+	@Override
+	public User readUserByNickname(String user_nickname) {
+		log.info("readUserByNickname(user_nickname: {}) 호출", user_nickname);
+		return userDao.readByUserNickname(user_nickname);
 	}
 	
 	@Override

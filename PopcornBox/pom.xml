@@ -186,6 +186,12 @@
 			<version>2.13.1</version>
 		</dependency>
 		
+		<dependency>
+  			<groupId>org.json</groupId>
+  			<artifactId>json</artifactId>
+  			<version>20211205</version>
+		</dependency>
+		
 		<!-- spring security (비밀번호 암호화) -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>

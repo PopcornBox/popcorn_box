@@ -74,7 +74,19 @@
 		<property name="COL_EVENT_REPLY_CONTENT" value="event_reply_content" />
 		<property name="COL_EVENT_REPLY_UPDATE_TIME" value="event_reply_update_time" />	
 		
+		<!-- Scores(영화 별점) 테이블 관련 상수들 -->
+		<property name="TABLE_SCORES" value="scores" />
+		<property name="COL_SCORE" value="score" />
+		<property name="COL_SCORE_UPDATE_TIME" value="score_update_time" />
 		
+		<!-- Averages(영화 평점) 테이블 관련 상수들 -->
+		<property name="TABLE_AVERAGES" value="averages" />
+		<property name="COL_AVERAGE" value="average" />
+		<property name="COL_AVERAGE_UPDATE_TIME" value="average_update_time" />
+		
+		<!-- Likes(좋아요) 테이블 관련 상수들 -->
+		<property name="TABLE_LIKES" value="likes" />
+		<property name="COL_LIKE_UPDATE_TIME" value="like_update_time" />		
 	</properties>
 	
 	<typeAliases>
