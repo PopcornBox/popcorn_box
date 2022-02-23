@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.spring.pjt.domain.MovieReply;
+import com.spring.pjt.domain.User;
 
 @Mapper
 public interface MovieReplyMapper {
