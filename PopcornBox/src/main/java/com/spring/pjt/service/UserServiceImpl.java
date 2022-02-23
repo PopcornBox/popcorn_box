@@ -88,13 +88,6 @@ public class UserServiceImpl implements UserService {
 	}	
 	
 	@Override
-	public User userInfo(String SignInUserNickname) {
-		log.info("userInfo() 호출");
-		return userDao.userInfo(SignInUserNickname);
-		
-	}
-	
-	@Override
 	public void userInfoUpdate(User user) {
 		log.info("userInfoUpdate(user: {}) 호출", user);
 		userDao.userInfoUpdate(user);
