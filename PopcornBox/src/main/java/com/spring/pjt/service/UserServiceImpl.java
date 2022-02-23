@@ -98,4 +98,5 @@ public class UserServiceImpl implements UserService {
 		log.info("deleteAccount({}) 호출", user);
 		return userDao.delete(user);
 	}
+	
 }
