@@ -45,6 +45,7 @@
 		<interceptor> <!-- 아이디/패스워드 확인 후 로그인 성공/실패 처리 -->
 			<mapping path="/user/signin"/>
 			<mapping path="/user/kakaologin"/>
+			<mapping path="/user/simpleRegister"/>
 			<beans:ref bean="signInInterceptor"/>
 		</interceptor>
 	</interceptors>

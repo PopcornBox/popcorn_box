@@ -218,7 +218,11 @@ public class UserController {
         	session.setAttribute("signInUserPosition", signInUser.getUser_position());
         	session.setAttribute("accessToken", accessToken);
         	session.setAttribute("state", state);
-        }          
+        } else { // DB에 없는(회원가입 안 한) 이메일        
+        	session.setAttribute("email", email);
+        	session.setAttribute("accessToken", accessToken);
+        	session.setAttribute("state", state);
+        }
 	}
 		
 	@RequestMapping(value = "/signout", method = RequestMethod.GET)
@@ -413,7 +417,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/simpleRegister", method = RequestMethod.POST)
-	public String simpleRegister(User user, HttpServletRequest request) {
+	public void simpleRegister(User user, HttpServletRequest request, HttpSession session) {
 		log.info("simpleRegister({}) POST 호출", user);
 		
 		// 회원가입창에 입력된 비밀번호를 읽음.
@@ -428,8 +432,12 @@ public class UserController {
 	    user.setUser_pwd(encryptPassword);
 	     
 		// 회원가입 메서드
-		userService.registerNewUser(user);
-		return "redirect:/";
+		int result = userService.registerNewUser(user);
+		if (result == 1) {
+			User signInUser = userService.readUserByEmail(session.getAttribute("email").toString());
+			session.setAttribute("signInUserNickname", signInUser.getUser_nickname());
+	    	session.setAttribute("signInUserPosition", signInUser.getUser_position());
+		}			
 	}
 	
 }
