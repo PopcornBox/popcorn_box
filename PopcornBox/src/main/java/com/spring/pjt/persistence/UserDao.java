@@ -8,7 +8,8 @@ public interface UserDao {
 	User checkUserId(String user_id);
 	User checkNickname(String user_nickname);
 	User checkEmail(String user_email);
-	User read(User user);
+	User readByUserId(User user);
+	User readByUserNickname(String user_nickname);
 	int getKey(String user_nickname, String user_key);
 	int alter_userKey(String user_nickname, String key);
 	int alter_userKey2(User user);
