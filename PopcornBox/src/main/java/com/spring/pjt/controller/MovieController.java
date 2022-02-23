@@ -47,4 +47,19 @@ public class MovieController {
 		
 		return "movie/mainlist"; 
 	}
+	
+	@RequestMapping(value="/rating/signin", method=RequestMethod.GET)
+	public String showRatingWindow(int movie_no) {
+		log.info("showRatingWindow() 호출");
+		
+		return "redirect:/movie/detail?movie_no=" + movie_no;		
+	}
+	
+	@RequestMapping(value="/like/signin", method=RequestMethod.GET)
+	public String allowLike() {
+		log.info("allowLike() 호출");
+		
+		return "redirect:/movie/mainlist";		
+	}
+	
 }

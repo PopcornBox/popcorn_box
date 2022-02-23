@@ -10,6 +10,24 @@
 <meta charset="UTF-8">
 <title>PopcornBox</title>
 
+<style>
+	.pagingView{
+	list-style : none;
+	display: inline-block;
+    margin: 50px 0 0 100px;      
+  }
+	.pagingView li{
+	float: left;
+	font-size: 20px;
+	margin-left: 18px;
+	padding: 7px;
+	font-weight: 500;
+  }
+ a:link {color:black; text-decoration: none;}
+ a:visited {color:black; text-decoration: none;}
+ a:hover {color:black; text-decoration: underline;}
+</style>
+
 
 
 </head>
@@ -47,6 +65,23 @@
 				</tbody>
 
 			</table>
+			
+			<!-- 페이징 기능 구현 -->
+			<div class="pagingView_area">
+  				<ul id="pagingView" class="pagingView">
+    				<c:if test="${pagingView.prev}">
+    					<li><a href="main${pagingView.makeQuery(pagingView.startPage - 1)}">이전</a></li>
+    				</c:if> 
+
+    				<c:forEach begin="${pagingView.startPage}" end="${pagingView.endPage}" var="idx">
+    					<li><a href="main${pagingView.makeQuery(idx)}">${idx}</a></li>
+    				</c:forEach>
+
+    				<c:if test="${pagingView.next && pagingView.endPage > 0}">
+    					<li><a href="main${pagingView.makeQuery(pagingView.endPage + 1)}">다음</a></li>
+    				</c:if> 
+  				</ul>
+			</div>
 
 
 

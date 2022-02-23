@@ -1,5 +1,8 @@
 package com.spring.pjt.domain;
 
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
+
 public class PagingView {
 	private int startPage;  // 시작 페이지
 	private int endPage;  // 끝 페이지
@@ -85,6 +88,16 @@ public class PagingView {
 	public String toString() {
 		return "PagingView [startPage=" + startPage + ", endPage=" + endPage + ", prev=" + prev + ", next=" + next
 				+ ", total=" + totalContents + ", pcri=" + pcri + "]";
+	}
+	
+	public String makeQuery(int page) {
+		UriComponents uriComponents =
+		UriComponentsBuilder.newInstance()
+						    .queryParam("pageNum", page)
+							.queryParam("contents", pcri.getContents())
+							.build();
+		   
+		return uriComponents.toUriString();
 	}
 
 }

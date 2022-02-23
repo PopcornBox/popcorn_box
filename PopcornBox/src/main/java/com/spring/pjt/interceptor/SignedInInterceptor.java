@@ -25,7 +25,7 @@ public class SignedInInterceptor implements HandlerInterceptor {
 		log.info("<<<<< postHandle() 호출");
 //		log.info("      handler: {}", handler);
 //		log.info("      modelAndView: {}", modelAndView);
-		log.info("      session: {}", request.getSession());
+//		log.info("      session: {}", request.getSession());
 		
 		HttpSession session = request.getSession(); // 세션 생성		
 		String state = (String) session.getAttribute("state");
