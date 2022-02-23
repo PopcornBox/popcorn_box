@@ -1,6 +1,7 @@
 package com.spring.pjt.persistence;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.test.context.jdbc.Sql;
 
 import com.spring.pjt.domain.User;
+import com.spring.pjt.mapper.EventReplyMapper;
+import com.spring.pjt.mapper.MovieReplyMapper;
 
 @Repository
 public class UserDaoImpl implements UserDao {
