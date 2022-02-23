@@ -16,8 +16,25 @@
 </head>
 <body>
 
+
 	<%-- 게시글 상세보기 --%>
 	<div class="container">
+			 <c:if test="${signInUserNickname == board.user_nickname}">
+               <div style="margin-left: auto; margin-right: 30px;">
+                  <!-- 로그인 사용자 아이디와 글 작성자 아이디가 일치할 때만 수정 메뉴를 보여줌. -->
+                  <ul style="display: inline-flex; list-style: none;font-size: 14px;">
+                     <li>
+                        <a href="./update?board_no=${board.board_no}">글 수정 |</a>
+                     </li>
+                     <li> 
+                        <a id="menu-delete" href="./delete?board_no=${board.board_no}">삭제</a>
+                     </li>
+                  </ul>
+               </div>
+            </c:if>
+	
+	
+	
 		<form>
 			<div>
 				<input type="hidden" id="board_no" value="${board.board_no}" />
@@ -46,6 +63,11 @@
 					value="${last_update_time}" readonly />
 			</div>
 		</form>
+		
+		
+
+		
+		
 	</div>
 
 	<div>
