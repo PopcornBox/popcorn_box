@@ -70,6 +70,12 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
+	public User readUserByNickname(String user_nickname) {
+		log.info("readUserByNickname(user_nickname: {}) 호출", user_nickname);
+		return userDao.readByUserNickname(user_nickname);
+	}
+	
+	@Override
 	public int resetPwd(User user) {
 		log.info("resetPwd(user: {}) 호출", user);
 		return userDao.resetPwd(user);
