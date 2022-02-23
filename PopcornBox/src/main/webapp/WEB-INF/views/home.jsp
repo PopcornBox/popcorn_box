@@ -64,7 +64,6 @@
 					<li><a href="./user/signout">로그아웃</a></li>
 					<li><a href="./user/register">회원가입</a></li>
 					<li><a href="./user/mypage">마이페이지</a></li>
-					<li><a href="./event/main">이벤트</a></li>
 				</c:if>
             </ul>
             </div>
@@ -160,19 +159,6 @@
     <!-- Banner Section Begin -->
     <section class="hero">
         <div class="hero__slider owl-carousel">
-            <div class="hero__items set-bg" data-setbg="./resources/img/banner_main_1.png">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-5 col-lg-7 col-md-8">
-                            <div class="hero__text">
-                                <h2 style="color: white;">루이스 웨인</h2>
-                                <p style="color: white;">당신의 봄을 아름답게 할,<br>단 하나의 러브 팔레트</p>
-                                <a href="#" class="primary-cta-m"> 보러가기 <span class="arrow_right"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="hero__items set-bg" data-setbg="./resources/img/banner_main_2.png">
                 <div class="container">
                     <div class="row">
@@ -180,6 +166,19 @@
                             <div class="hero__text">
                                 <h2>더 배트맨</h2>
                                 <p>히어로의 세대교체,<br> 어둠을 뚫고 그가 온다</p>
+                                <a href="#" class="primary-cta-m"> 보러가기 <span class="arrow_right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero__items set-bg" data-setbg="./resources/img/banner_main_1.png">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-5 col-lg-7 col-md-8">
+                            <div class="hero__text">
+                                <h2 style="color: white;">루이스 웨인</h2>
+                                <p style="color: white;">당신의 봄을 아름답게 할,<br>단 하나의 러브 팔레트</p>
                                 <a href="#" class="primary-cta-m"> 보러가기 <span class="arrow_right"></span></a>
                             </div>
                         </div>
@@ -237,88 +236,24 @@
 
         <div class="container">
             <div class="row product__filter">
-                <div class="">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="./resources/img/chart_list_355.jpg">
-                            <span class="label">1</span>
-                         
-                        </div>
-                        <div class="product__item__text">
-                          <h5>1_movie title</h5>
-
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="./resources/img/product/product-1.jpg">
-                            <span class="label">2</span>
-                         
-                        </div>
-                        <div class="product__item__text">
-                          <h5>2_movie title</h5>
-
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="./resources/img/product/product-1.jpg">
-                            <span class="label">3</span>
-                         
-                        </div>
-                        <div class="product__item__text">
-                          <h5>3_movie title</h5>
-
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="./resources/img/product/product-1.jpg">
-                            <span class="label">4</span>
-                         
-                        </div>
-                        <div class="product__item__text">
-                          <h5>4_movie title</h5>
-
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="./resources/img/product/product-1.jpg">
-                            <span class="label">5</span>
-                         
-                        </div>
-                        <div class="product__item__text">
-                          <h5>5_movie title</h5>
-
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                    </div>
-                </div>
+                
+                <c:forEach var="movie" items="${movieList}" end="4" varStatus="num">
+					<div class="">
+	                    <div class="product__item">
+	                        <div class="product__item__pic set-bg" data-setbg="${movie.movie_image}">
+	                            <p class="label">${num.count}</p>
+	                         
+	                        </div>
+	                        <div class="product__item__text">
+	                          <a href="./movie/detail?movie_no=${movie.movie_no}">${movie.movie_title}</a>
+	
+	                            <div class="rating">
+	                                <i class="fa fa-star-o"></i>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+				</c:forEach>
             </div>
         </div>
     </section>
@@ -336,24 +271,12 @@
                 <div class="col-lg-4 offset-lg-1">
                     <div class="categories__deal__countdown">
                         <span>현재 이벤트</span>
-                        <h2>인스타 업로드하고 여행가자!</h2>
-                        <div class="categories__deal__countdown__timer" id="countdown">
-                            <div class="cd-item">
-                                <span>3</span>
-                                <!-- <p>Days</p> -->
-                            </div>
-                            <div class="cd-item">
-                                <span>1</span>
-                            </div>
-                            <div class="cd-item">
-                                <span>50</span>
-                            </div>
-                            <div class="cd-item">
-                                <span>18</span>
-                                <p>Seconds</p>
-                            </div>
+                        <h2>[라라랜드]<br>감상평 이벤트!</h2>
+                        <div class="categories__deal__countdown__timer">
+                        	<div id="countdown"></div>
                         </div>
-                        <a href="#" class="primary-cta-m">응모하기</a>
+                    </div>
+                        <a href="#" class="primary-cta-m">참여하기</a>
                     </div>
                 </div>
             </div>
@@ -372,44 +295,7 @@
                         <h4>진행중인 이벤트</h4>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-            	<div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic set-bg" data-setbg="./resources/img/blog/blog-1.jpg"></div>
-                        <div class="blog__item__text">
-                            <span><img src="./resources/img/icon/calendar.png" alt=""> 21 February 2020</span>
-                            <h5>Eternity Bands Do Last Forever</h5>
-                            <a href="#">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            	
-            	
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic set-bg" data-setbg="./resources/img/blog/blog-2.jpg"></div>
-                        <div class="blog__item__text">
-                            <span><img src="./resources/img/icon/calendar.png" alt=""> 21 February 2020</span>
-                            <h5>Eternity Bands Do Last Forever</h5>
-                            <a href="#">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic set-bg" data-setbg="./resources/img/blog/blog-3.jpg"></div>
-                        <div class="blog__item__text">
-                            <span><img src="./resources/img/icon/calendar.png" alt=""> 28 February 2020</span>
-                            <h5>The Health Benefits Of Sunglasses</h5>
-                            <a href="#">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        
+            </div>        
         
         <div class="event_list">
 		<div class="row">
@@ -452,8 +338,8 @@
                 </div>
 			</c:forEach>	
 		</div>
+		</div>
 	</div>
-        
     </section>
     <!-- Latest Blog Section End -->
 
@@ -489,6 +375,12 @@
                        
                	</div>
                </div>
+               <div class="footer_icon">
+               		<a href=""><i class="fa-brands fa-instagram"></i></a>
+               		<a href=""><i class="fa-brands fa-facebook"></i></a>
+               		<a href=""><i class="fa-brands fa-twitter"></i></a>
+               		<a href=""><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+               </div>
         	</div>
            </div>
     </footer>
@@ -510,6 +402,45 @@
 		src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+		
+		
+	<script>
+	 CountDownTimer('02/25/2022', 'countdown');
+
+	    function CountDownTimer(dt, id)
+	    {
+	        var end = new Date(dt);
+
+	        var _second = 1000;
+	        var _minute = _second * 60;
+	        var _hour = _minute * 60;
+	        var _day = _hour * 24;
+	        var timer;
+
+	        function showRemaining() {
+	            var now = new Date();
+	            var distance = end - now;
+	            if (distance < 0) {
+
+	                clearInterval(timer);
+	                document.getElementById(id).innerHTML = 'EXPIRED!';
+
+	                return;
+	            }
+	            var days = Math.floor(distance / _day);
+	            var hours = Math.floor((distance % _day) / _hour);
+	            var minutes = Math.floor((distance % _hour) / _minute);
+	            var seconds = Math.floor((distance % _minute) / _second);
+
+	            document.getElementById(id).innerHTML = '<div class="cd-item"><span>'+ days + '</span></div>';
+	            document.getElementById(id).innerHTML += '<div class="cd-item"><span>'+ hours + '</span></div>';
+	            document.getElementById(id).innerHTML += '<div class="cd-item"><span>'+ minutes + '</span></div>';
+	            document.getElementById(id).innerHTML += '<div class="cd-item"><span>'+ seconds + '</span><p>Seconds</p></div>';
+	        }
+
+	        timer = setInterval(showRemaining, 1000);
+	    }
+</script>
 
 </body>
 </html>

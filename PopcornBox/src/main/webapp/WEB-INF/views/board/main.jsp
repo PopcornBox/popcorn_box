@@ -172,7 +172,7 @@
 	<!-- Header Section End -->
 
 	<div class="container-fluid">
-		<div class="container">
+		<div class="container" style="margin-bottom: 20px;">
 
 
 			<table class="table table-hover">
@@ -202,20 +202,21 @@
 			</table>
 
 
-
-			<div id="main-insertbtn">
-				<a href="./insert" class="btn btn-outline-dark">새 글 작성</a>
+			<div class="btnbox">
+				<div id="main-insertbtn">
+					<a href="./insert" class="primary-btn btn-outline-dark">새 글 작성</a>
+				</div>
+				<c:if test="${signInUserPosition eq 'A'}">
+					<div id="main-insertbtn">
+						<a href="./insert" class="primary-btn btn-outline-dark">공지 작성</a>
+					</div>
+				</c:if>
+				<c:if test="${signInUserPosition eq 'B'}">
+					<div id="main-insertbtn">
+						<a href="./insert" class="primary-btn btn-outline-dark">공지 작성</a>
+					</div>
+				</c:if>
 			</div>
-			<c:if test="${signInUserPosition eq 'A'}">
-				<div id="main-insertbtn">
-					<a href="./insert" class="btn btn-outline-dark">공지 작성</a>
-				</div>
-			</c:if>
-			<c:if test="${signInUserPosition eq 'B'}">
-				<div id="main-insertbtn">
-					<a href="./insert" class="btn btn-outline-dark">공지 작성</a>
-				</div>
-			</c:if>
 
 
 
