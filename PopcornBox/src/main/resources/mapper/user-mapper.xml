@@ -8,7 +8,7 @@
 	VALUES (#{user_id}, #{user_nickname}, #{user_pwd}, #{user_email}, 'C')
 	</insert>
 	
-	<!-- 중복 아이디 체크 -->
+	<!-- 중복 아이디 체크 and 로그인시 아이디 비교 --> 
 	<select id="selectByUserId" resultType="User">
 	SELECT * FROM ${TABLE_USERS} 
 	WHERE ${COL_USER_ID} = #{user_id}
@@ -24,12 +24,6 @@
 	<select id="selectByEmail" resultType="User">
 	SELECT * FROM ${TABLE_USERS} 
 	WHERE ${COL_USER_EMAIL} = #{user_email}
-	</select>
-	
-	<!-- 로그인시 아이디 비교 -->
-	<select id="selectById" resultType="User">
-	SELECT * FROM ${TABLE_USERS}
-	WHERE ${COL_USER_ID} = #{user_id}
 	</select>
 	
 	<!-- 회원 정보 확인 -->
