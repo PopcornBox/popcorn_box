@@ -73,6 +73,7 @@
 			where rownum <= #{pageNum} * #{contents}
 			)
 		where rn > (#{pageNum} - 1) * #{contents}
+		ORDER BY ${COL_BOARD_MODE} DESC, ${COL_BOARD_NO} DESC
 		]]>
     </select>
     
