@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import com.spring.pjt.domain.Board;
 import com.spring.pjt.domain.PageCriteria;
-import com.spring.pjt.domain.UserLog;
 import com.spring.pjt.mapper.BoardMapper;
 import com.spring.pjt.mapper.EventMapper;
 import com.spring.pjt.persistence.BoardDao;

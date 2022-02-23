@@ -65,7 +65,7 @@
     <!-- 회원 닉네임 변경 -->
     <update id="userInfoUpdate">
 	UPDATE ${TABLE_USERS}
-	SET ${COL_USER_NICKNAME} = #{user_nickname} where ${COL_USER_NO} = #{user_no}
+	SET ${COL_USER_NICKNAME} = #{user_nickname} where ${COL_USER_ID} = #{user_id}
     </update>
     
 	<!-- 회원 탈퇴 -->

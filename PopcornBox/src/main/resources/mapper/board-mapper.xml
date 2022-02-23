@@ -80,5 +80,16 @@
     <select id="getTotalContents" resultType="int">
     	select count(*) from BOARDS
 	</select>
+	
+    <update id="updateNickname">
+    UPDATE ${TBL_BOARDS} 
+    SET ${COL_USER_NICKNAME} = #{user_nickname}
+    WHERE ${COL_BOARD_NO} = #{board_no}
+    </update>
+    
+    <select id="findBoardNo" resultType="Integer">
+	SELECT ${COL_BOARD_NO} FROM ${TBL_BOARDS}
+	WHERE ${COL_USER_NICKNAME} = #{user_nickname}
+    </select>	
     
 </mapper>
