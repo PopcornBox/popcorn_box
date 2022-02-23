@@ -125,7 +125,7 @@ public class UserController {
 		}
 		
 	}
-//TODO
+
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
 	public void signIn(User user, Model model) {
 		log.info("signIn({}) POST 호출", user);
@@ -359,10 +359,8 @@ public class UserController {
 	
 	@RequestMapping(value = "/leave", method = RequestMethod.GET)
 	public void leave(HttpSession session, Model model) {
-		log.info("leave() GET 호출");	// 나중에 지워	
-//		HttpSession session = request.getSession();
+		log.info("leave() GET 호출");	
 		String signInUserNickname = (String) session.getAttribute("signInUserNickname");		
-		log.info("leave(user_nickname : {}) GET 호출", signInUserNickname);
 		User user = userService.userInfo(signInUserNickname);
 		
 		model.addAttribute("user",user);
@@ -371,32 +369,28 @@ public class UserController {
 	@RequestMapping(value = "/leave", method = RequestMethod.POST)
 	public String leave(HttpSession session, Model model, User user) {		
 		String signInUserNickname = (String) session.getAttribute("signInUserNickname");
-//		log.info("leave(user_nickname={}) POST 호출", user_nickname);
-//		 User user = (User) model.getAttribute("user");
-		log.info("leave({}) POST 호출", user);
-//		log.info("leave(model.getAttribute(user: {}) POST 호출", model.getAttribute("user"));
-//		log.info("leave(model.getAttribute(signInUserNickname: {}) POST 호출", model.getAttribute("signInUserNickname"));
-		log.info("leave(session.signInUserNickname: {} POST 호출", signInUserNickname);
+		log.info("leave(signInUserNickname: {}) POST 호출", signInUserNickname);
 		User signInUser = userService.userInfo(signInUserNickname);
-		log.info("signInUser.getUser_pwd: {}", signInUser.getUser_pwd());
-		String encodedPassword = signInUser.getUser_pwd();
-//		log.info("leave({}) POST 호출", user);
 		
 		String msg = "";
-		log.info("user.getUser_pwd: {}", user.getUser_pwd());
-		String rawPassword = user.getUser_pwd(); // 비밀번호 칸에 입력된 비밀번호
+		String rawPassword = user.getUser_pwd(); 
+		String encodedPassword = signInUser.getUser_pwd();
+		log.info("입력된 비밀번호: {}", rawPassword);
+		log.info("DB에 저장된 비밀번호: {}", encodedPassword);		
+		
 		if (passwordEncoder.matches(rawPassword, encodedPassword)) {
-			userService.deleteAccount(signInUser);
-			session.invalidate();
-			msg = "회원탈퇴가 완료되었습니다.";
+			int result = userService.deleteAccount(signInUser);
+			if (result == 1) {
+				session.invalidate();
+				msg = "회원탈퇴가 완료되었습니다.";
+				model.addAttribute("msg", msg);	
+			}				
 		} else {
 			msg = "비밀번호가 일치하지 않습니다.";
+			model.addAttribute("msg", msg);
 			return "redirect:/user/leave";
 		}
-						
-		
-		model.addAttribute("msg", msg);
-		
+								
 		return "redirect:/";
 	}
 	
