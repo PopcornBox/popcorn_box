@@ -187,7 +187,7 @@
 		<!-- 댓글 작성 양식 -->
 		<div>
 			<div id="reply_number"></div>
-			<input type="text" id="event_reply_content" name="event_reply_content" placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." />
+			<input type="text" id="event_reply_content_empty" name="event_reply_content_empty" placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." />
 			<input type="submit" id="btn_register_event_reply" value="등록" />
 		</div>
 		<hr>
@@ -219,7 +219,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     	<script>
     		$(document).ready(function() {
-    			$('#event_reply_content').click(function() {
+    			$('#event_reply_content_empty').click(function() {
     				if('${q}' >= 0) {
     					if ('${signInUserNickname}' == null || '${signInUserNickname}' == '') {
     						var message = '로그인이 필요한 서비스입니다. 로그인 페이지로 이동하시겠습니까?';
@@ -256,7 +256,11 @@
                             	numberlist += '<a href="./detail?event_no=' + ${event.event_no} + '&q=' + ${q} + '&vpage=' + i + '">' + i + '</a> ';
                             }
                              $('#page_number').html(numberlist);
-                    	}
+                    	} else {
+    	            		$('#reply_number').html(' ');
+   	            		$('#page_number').html(' ');
+   	            		return;
+                        }
                     	
                    
                     });
@@ -323,10 +327,10 @@
     			// 새 이벤트 댓글 등록
     			$('#btn_register_event_reply').click(function(event) {
     				
-    				var event_reply_content = $('#event_reply_content').val();
+    				var event_reply_content = $('#event_reply_content_empty').val();
     				if (event_reply_content == '') {
     					alert('내용을 입력해주세요.');
-    					$('#event_reply_content').focus();
+    					$('#event_reply_content_empty').focus();
     					return;
     				}
     				
@@ -353,7 +357,7 @@
             					alert('이미 이벤트에 참여하셨습니다.');
             				}
             				
-            				$('#event_reply_content').val('');
+            				$('#event_reply_content_empty').val('');
             				
             				getAllEventReplies();  // 댓글 목록 업데이트
             			}
