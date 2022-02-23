@@ -409,7 +409,7 @@
 		
 		
 		
-		
+	
 		function read_average_record2() {
     		timer = setInterval(function() {
 		
@@ -481,7 +481,6 @@
 	
 	
 	
-
 		
 	
 	
