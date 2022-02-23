@@ -361,7 +361,7 @@ public class UserController {
 	public void leave(HttpSession session, Model model) {
 		log.info("leave() GET 호출");	
 		String signInUserNickname = (String) session.getAttribute("signInUserNickname");		
-		User user = userService.userInfo(signInUserNickname);
+		User user = userService.readUserByNickname(signInUserNickname);
 		
 		model.addAttribute("user",user);
 	}
@@ -370,7 +370,7 @@ public class UserController {
 	public String leave(HttpSession session, Model model, User user) {		
 		String signInUserNickname = (String) session.getAttribute("signInUserNickname");
 		log.info("leave(signInUserNickname: {}) POST 호출", signInUserNickname);
-		User signInUser = userService.userInfo(signInUserNickname);
+		User signInUser = userService.readUserByNickname(signInUserNickname);
 		
 		String msg = "";
 		String rawPassword = user.getUser_pwd(); 

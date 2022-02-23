@@ -75,11 +75,6 @@ public class UserDaoImpl implements UserDao {
 	}
 	
 	@Override
-	public User userInfo(String SignInUserNickname) {
-		return sqlSession.selectOne(USER_NAMESPACE + ".userInfo", SignInUserNickname);
-	}
-	
-	@Override
 	public void userInfoUpdate(User user) {
 		log.info("userInfoUpdate() 호출");
 		sqlSession.update(USER_NAMESPACE + ".userInfoUpdate", user);
