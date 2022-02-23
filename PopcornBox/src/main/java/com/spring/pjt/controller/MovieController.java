@@ -30,12 +30,22 @@ public class MovieController {
 
 	//TODO
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
-	public void detail(int movie_no, Model model) {
+	public void detail(int movie_no, Model model, HttpServletRequest request) {
 		log.info("detail(movie_no={}) GET 호출", movie_no);
+		
+		int vpage = 0;
+		
+		String value = request.getParameter("vpage");
+		log.info("value:{}", value);
+		if (value != null) {
+			vpage = Integer.valueOf(value);
+		} else {
+			vpage = 1;
+		}
 		
 		Movie movie = movieService.select(movie_no);
 		model.addAttribute("movie", movie);
-		
+		model.addAttribute("viewpage", vpage);	
 	}
 	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
@@ -60,6 +70,14 @@ public class MovieController {
 		log.info("allowLike() 호출");
 		
 		return "redirect:/movie/mainlist";		
+	}
+	
+	// 댓글 작성 전에 로그인 여부 체크를 위해 만듦.
+	@RequestMapping(value = "/signin", method = RequestMethod.GET)
+	public String movieSignin(int movie_no) {
+		log.info("movieSignin(movie_no:{}) GET 호출", movie_no);
+			
+		return "redirect:/movie/detail?movie_no=" + movie_no;
 	}
 	
 }
