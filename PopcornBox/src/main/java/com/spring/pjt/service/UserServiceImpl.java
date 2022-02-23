@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User checkSignIn(User user) {
 		log.info("checkSignIn({}) 호출", user);		
-		return userDao.read(user);
+		return userDao.checkUserId(user.getUser_id());
 	}
 
 	@Override
