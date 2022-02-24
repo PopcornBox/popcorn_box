@@ -124,9 +124,10 @@ public class UserController {
 		
 		// 로그인 페이지가 요청됐을 때, 로그인 성공 후 이동할 페이지가 질의 문자열에 포함되어 있는 경우
 		if (url != null && !url.equals("")) { 
-			String encodedUrl = UriUtils.encode(url, "UTF-8");
-			model.addAttribute("url", encodedUrl); // 로그인 이후 이동할 페이지를 저장
-			log.info("url: {}", encodedUrl);
+//			String encodedUrl = UriUtils.encode(url, "UTF-8");
+//			model.addAttribute("url", encodedUrl); // 로그인 이후 이동할 페이지를 저장
+//			log.info("url: {}", encodedUrl);
+			model.addAttribute("url", url); // 로그인 이후 이동할 페이지를 저장.
 		} else { // AuthInterceptor를 거치지 않는 로그인의 경우 직접 url을 찾아서 저장
 			String referer = request.getHeader("Referer");
 			model.addAttribute("url", referer);
