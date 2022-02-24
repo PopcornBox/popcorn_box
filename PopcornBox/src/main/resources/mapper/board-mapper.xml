@@ -43,6 +43,13 @@
     WHERE ${COL_BOARD_NO} = #{board_no}
     </delete>
     
+    <update id="updateBoardReplyCnt">
+    UPDATE ${TBL_BOARDS}
+    SET ${COL_BOARD_REPLY_CNT} = ${COL_BOARD_REPLY_CNT} + #{increase}
+    WHERE ${COL_BOARD_NO} = #{board_no}
+    </update>
+    
+    
     <!-- 키워드 검색: (1) 제목, (2) 내용, (3) 제목+내용, (4) 작성자 -->
     <!-- Dynamic Query -->
     <select id="selectByKeyword" resultType="Board">

@@ -96,6 +96,4 @@
 		<result property="board_update_time" column="BOARD_UPDATE_TIME"/>
 	</resultMap>
 
-	
-	
 </mapper>

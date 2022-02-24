@@ -73,7 +73,7 @@ public class BoardReplyRestController {
 		int result = boardReplyService.delete(board_reply_no);
 		
 		ResponseEntity<Integer> entity = new ResponseEntity<Integer>(result, HttpStatus.OK);
-		
+
 		return entity;
 		
 	}
