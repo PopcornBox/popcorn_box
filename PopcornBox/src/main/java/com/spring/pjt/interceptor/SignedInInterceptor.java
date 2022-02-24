@@ -65,6 +65,7 @@ public class SignedInInterceptor implements HandlerInterceptor {
 		if (!request.getRequestURI().equals("/pjt/user/simpleRegister")) { // 간편가입 후 로그인이 아니면
 			// 로그인 성공 후 이동할 페이지(input type="hidden"에서 찾음)
 			String targetUrl = request.getParameter("url");
+			log.info("targetUrl: {}" , targetUrl);
 			
 			Object user = modelAndView.getModel().get("signInUser");
 			if (user != null) { // 테이블에 아이디/비밀번호가 일치하는 사용자가 있는 경우 -> 로그인 성공
