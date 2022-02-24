@@ -117,30 +117,32 @@
 		</div>
 		<hr>
 
-		<div>
+		<div class="contact__form">
 			<!-- 입력 양식 -->
 			<form method="post">
 				<!-- /board/insert POST submit -->
 				<div>
-					<input type="text" name="board_title" placeholder="제목 입력" required
-						autofocus />
+					<textarea id="board_title" name="board_title" maxlength="35" placeholder="제목 입력"
+						rows="1" onkeyup="resize(this)" required></textarea>
 				</div>
 				<div>
-					<textarea rows="5" name="board_content" placeholder="내용 입력"
-						required></textarea>
+					<textarea rows="5" id="board_content" name="board_content"  placeholder="내용 입력"
+						onkeyup="resize(this)" required></textarea>
 				</div>
 
 				<div>
-					<input type="text" name="user_nickname"
+					<input type="hidden" name="user_nickname"
 						value="${signInUserNickname}" required readonly />
 				</div>
 
-				<div>
-					<input type="submit" class="btn btn-outline-dark" value="작성 완료">
+				<div class="btnbox">
+					<input type="submit" class="primary-btn" value="작성 완료" style="color: #fff">
 				</div>
-
 			</form>
 		</div>
+
+	</div>
+	
 
 
 

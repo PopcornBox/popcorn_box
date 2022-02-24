@@ -184,20 +184,19 @@
 					readonly>${board.board_content}</div>
 			</div>
 		</form>
+		<hr>
 
-
-			<div>
-				<div>${board.user_nickname} :</div>
-
+			<div style="display: flex;">
+			
 				<%-- 댓글작성 --%>
-				<input type="text" id="board_reply_content"
+				<input type="text" id="board_reply_content" style="width: 600px; border: #ddd 1px solid;"
 					name="board_reply_content" placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." />
 				
 				<!-- 로그인한 사용자 아이디를 input의 값으로  설정-->
 				<input type="hidden" id="user_nickname" name="user_nickname"
-					value="${board.user_nickname}" readonly />
-				<button id="btn_create_boardReply" class="primary-btn btn-outline-dark" style="color: #fff">
-					댓글 작성 완료</button>
+					value="${board.user_nickname}" readonly/>
+				<button id="btn_create_boardReply" class="primary-btn" style="color: #fff">
+					댓글<br>입력</button>
 		
 			</div>
 

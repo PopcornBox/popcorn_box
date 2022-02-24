@@ -202,6 +202,13 @@ table a:hover {
 	min-width: 145px;
 }
 
+.primary-btn a{
+	color: #fff;
+}
+.primary-btn:hover{
+	color: #fff;
+}
+
 .site-btn {
 	font-size: 14px;
 	color: #ffffff;
@@ -2826,13 +2833,41 @@ header .search_option {
 	line-height: 40px;
 	text-align: center;
 }
-
+.table-hover {
+	counter-reset: bno;
+}
 .table-hover tbody tr:hover{
 	background-color: #f5f5f5;
 }
 .table-hover thead tr th:nth-child(2){
 	width: 45%;
 }
+
+/*
+.table-hover tbody tr:nth-child(1) td:nth-child(1){
+	visibility: hidden;
+}
+.table-hover tbody tr:nth-child(1) td:nth-child(1):before{
+	visibility: visible;
+	content: "공지";
+	color: red;
+}
+.table-hover tbody tr:nth-child(2) td:nth-child(1){
+	visibility: hidden;
+}
+.table-hover tbody tr:nth-child(2) td:nth-child(1):before{
+	visibility: visible;
+	content: "공지";
+	color: red;
+}
+
+
+.table-hover tbody td:nth-child(1):before{
+	counter-increment: bno;
+	content: counter(bno);
+	
+}
+*/
 
 .continue__btn.update__btn {
 	text-align: right;
@@ -3910,8 +3945,9 @@ header .search_option {
 	min-height: 180px;
 }
 
-#board_replye_content{
-	width:100%;
+.contact__form input#board_replye_content{
+	width:80%;
+	
 }
 
 .contact__form a:hover{
