@@ -16,4 +16,5 @@ public interface BoardService {
 	List<Board> select(int serachType, String searchKeyword);
 	List<Board> pagingList(PageCriteria pcri);
 	int getTotalContents();
+	
 }

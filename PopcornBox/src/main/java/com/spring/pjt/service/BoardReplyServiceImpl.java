@@ -29,6 +29,7 @@ public class BoardReplyServiceImpl implements BoardReplyService{
 	@Override
 	public int insert(BoardReply boardReply) {
 		int result = boardReplyDao.create(boardReply);
+
 		return result;
 	}
 

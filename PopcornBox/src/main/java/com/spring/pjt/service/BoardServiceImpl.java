@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.pjt.domain.Board;
 import com.spring.pjt.domain.PageCriteria;
+import com.spring.pjt.domain.User;
 import com.spring.pjt.mapper.BoardMapper;
 import com.spring.pjt.mapper.EventMapper;
 import com.spring.pjt.persistence.BoardDao;
@@ -45,9 +46,7 @@ public class BoardServiceImpl  implements BoardService{
 		int result = boardDao.create(board);
 		
 		return result;
-		
-		// 로그 삽입 첨부
-//		UserLog userLog = new UserLog();
+
 		
 	}
 
