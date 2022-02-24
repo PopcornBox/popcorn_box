@@ -37,6 +37,9 @@ public class BoardServiceImpl  implements BoardService{
 		Board board = boardDao.read(board_no);
 		boardDao.UpdateViewCnt(board_no);
 		
+	
+	
+		
 		return board;
 	}
 
@@ -86,5 +89,8 @@ public class BoardServiceImpl  implements BoardService{
 	public int getTotalContents() {
 		return mapper.getTotalContents();
 	}
+
+
+
 	
 }

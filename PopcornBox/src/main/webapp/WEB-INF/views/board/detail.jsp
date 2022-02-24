@@ -75,12 +75,7 @@
 
    <div>
    
-      <%-- 댓글작성 
-      <div id="reply_number"></div>
-      <input type="text" id="board_reply_content_empty" name="board_reply_content_empty" placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." style="width:600px;" />
-      <input type="submit" id="btn_create_boardReply" value="등록" />
-      
-		--%>
+
       <input type="text" id="board_reply_content"
          name="board_reply_content" placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." />
       <!-- 로그인한 사용자 아이디를 input의 값으로  설정-->
@@ -148,7 +143,7 @@
                               + '" readonly />'
                               + '<input type="text" id="board_reply_content" name="board_reply_content" value="'
                               + this.board_reply_content
-                              + '" />'
+                              + '" readonly />'
                               + '<input type="text" id="user_nickname" name="user_nickname" value="'
                               + this.user_nickname
                               + '" readonly />'

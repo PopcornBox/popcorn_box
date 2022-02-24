@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.pjt.mapper.BoardReplyMapper">
+
+
+	<insert id="insert">
+		INSET INTO ${TBL_BOARD_REPLIES}
+		(${COL_REPLY_CONTENT},
+		${COL_USER_NICKNAME}, ${COL_BOARD_NO})
+		#{user_nickname}, #{board_no}
+	</insert>
+
+	<select id="select" resultType="BoardReply">
+		SELECT * FROM ${TBL_BOARD_REPLIES}
+		WHERE ${COL_BOARD_NO} = #{board_no}
+		ORDER BY ${COL_BOARD_REPLY_NO} desc
+
+	</select>
+
+
+	<update id="update">
+		UPDATE ${TBL_BOARD_REPLIES}
+		SET ${COL_REPLY_CONTENT} = #{board_reply_content},
+		${COL_BOARD_REPLY_UPDATE_TIME} = sysdate
+		WHERE ${COL_BOARD_REPLY_NO} = #{board_reply_no}
+	</update>
+
+	<delete id="delete">
+		DELETE FROM ${TBL_BOARD_REPLIES} WHERE ${COL_BOARD_REPLY_NO} =
+		#{board_reply_no}
+	</delete>
+
+	<!-- 댓글번호 board_reply_no 댓글의 게시글 번호 찾기 -->
+	<select id="readBoardReplyNo" resultType="java.lang.Integer">
+		SELECT ${COL_BOARD_NO} FROM ${TBL_BOARD_REPLIES}
+		WHERE ${COL_BOARD_REPLY_NO} = #{board_reply_no}
+	</select>
+
+
+
+</mapper>

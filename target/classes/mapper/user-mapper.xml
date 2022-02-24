@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.pjt.mapper.UserMapper">
+
+	<!-- 회원가입 -->
+	<insert id="insert">
+	INSERT INTO ${TABLE_USERS} (${COL_USER_ID}, ${COL_USER_NICKNAME}, ${COL_USER_PWD}, ${COL_USER_EMAIL}, ${COL_USER_POSITION})
+	VALUES (#{user_id}, #{user_nickname}, #{user_pwd}, #{user_email}, 'C')
+	</insert>
+	
+	<!-- 중복 아이디 체크 and 로그인시 아이디 비교 --> 
+	<select id="selectByUserId" resultType="User">
+	SELECT * FROM ${TABLE_USERS} 
+	WHERE ${COL_USER_ID} = #{user_id}
+	</select>
+	
+	<!-- 중복 닉네임 체크 -->
+	<select id="selectByNickname" resultType="User">
+	SELECT * FROM ${TABLE_USERS} 
+	WHERE ${COL_USER_NICKNAME} = #{user_nickname}
+	</select>
+	
+	<!-- 중복 이메일 체크 -->
+	<select id="selectByEmail" resultType="User">
+	SELECT * FROM ${TABLE_USERS} 
+	WHERE ${COL_USER_EMAIL} = #{user_email}
+	</select>
+	
+	<!-- 회원 정보 확인 -->
+	<select id="userInfoByNickname" resultType="User">
+	SELECT * FROM ${TABLE_USERS}
+	WHERE ${COL_USER_NICKNAME} = #{user_nickname}
+	</select>
+	
+    <!-- 회원 인증키 (난수 생성후 주입) -->
+    <update id="getKey">
+    UPDATE ${TABLE_USERS} 
+    SET ${COL_USER_KEY} = #{user_key} where ${COL_USER_NICKNAME} = #{user_nickname}
+    </update> 
+    
+    <!-- 회원 인증키 (난수) Y로 변경 (계정 유효화) -->
+    <update id="alter_userKey">
+    UPDATE ${TABLE_USERS} 
+    SET ${COL_USER_KEY} = 'Y' where ${COL_USER_NICKNAME} = #{user_nickname} and ${COL_USER_KEY} = #{key}
+    </update> 
+    
+    <!-- 회원 인증키 (Y) L로 변경 (계정 lock) -->
+    <update id="lock_userKey">
+    UPDATE ${TABLE_USERS} 
+    SET ${COL_USER_KEY} = 'L' where ${COL_USER_NICKNAME} = #{user_nickname}
+    </update> 
+    
+    <!-- 닉네임으로 비번 재설정 -->
+    <update id="resetPwd">
+    UPDATE ${TABLE_USERS} 
+    SET ${COL_USER_PWD} = #{user_pwd} where ${COL_USER_NICKNAME} = #{user_nickname}
+    </update> 
+    
+     <!-- 잠긴 계정 유효화 -->
+    <update id="alter_userKey2">
+    UPDATE ${TABLE_USERS} 
+    SET ${COL_USER_KEY} = 'Y' where ${COL_USER_NICKNAME} = #{user_nickname} and ${COL_USER_KEY} = 'L'
+    </update> 
+    
+    <!-- 회원 닉네임 변경 -->
+    <update id="userInfoUpdate">
+	UPDATE ${TABLE_USERS}
+	SET ${COL_USER_NICKNAME} = #{user_nickname} where ${COL_USER_NO} = #{user_no}
+    </update>
+    
+	<!-- 회원 탈퇴 -->
+	<delete id="delete">
+	DELETE FROM ${TABLE_USERS}
+	WHERE ${COL_USER_NICKNAME} = #{user_nickname}
+		AND ${COL_USER_PWD} = #{user_pwd}
+	</delete>
+	
+</mapper>
