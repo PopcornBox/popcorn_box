@@ -75,13 +75,6 @@
 		AND ${COL_USER_PWD} = #{user_pwd}
 	</delete>
 	
-	<!-- 마이페이지 내 로그 -->
-	<!-- <insert id="insertMyLog" parameterType="UserLog">
-	insert into ${TABLE USERLOG} (${COL_LOGNO}, ${COL_USER_NO}, ${COL_USER_NICKNAME},
-		${COL_BOARD_NO}, ${COL_BOARD_REPLY_NO}, ${COL_EVENT_REPLY_NO}, ${COL_MOVIE_REPLY_NO}, ${COL_MOVIE_NO}, ${COL_LOGFIELD})
-		VALUES ((SELECT NVL(MAX(LOGNO), 0) + 1 FROM USERLOG),
-			#{user_no}, #{user_nickname}, #{board_no}, #{board_reply_no}, #{event_reply_no}, #{movie_reply_no}, #{movie_no}, #{logfield})
-	</insert> -->
 	
 	
 </mapper>
