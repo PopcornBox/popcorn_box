@@ -287,9 +287,7 @@
                });
             });
       
-	        	if($(".reply_item").length == 0){ // check if any hidden divs still exist
-                	document.getElementById("load").style.display = "none";
-                }
+	        
 	        $(function(){
 	            $(".reply_item").slice(0, 3).show(); // select the first three
 	            $("#load").click(function(e){ // click event for load more
