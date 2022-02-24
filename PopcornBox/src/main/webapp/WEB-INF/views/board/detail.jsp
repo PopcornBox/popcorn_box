@@ -186,31 +186,20 @@
 		</form>
 
 
-	<div class="row">
-		<!-- 로그인한 사용자 아이디를 input의 값으로  설정-->
-		<div type="text" id="user_nickname" name="user_nickname"
-			>${board.user_nickname} :</div>
+			<div>
+				<div>${board.user_nickname} :</div>
+
+				<%-- 댓글작성 --%>
+				<input type="text" id="board_reply_content"
+					name="board_reply_content" placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." />
+				
+				<!-- 로그인한 사용자 아이디를 input의 값으로  설정-->
+				<input type="hidden" id="user_nickname" name="user_nickname"
+					value="${board.user_nickname}" readonly />
+				<button id="btn_create_boardReply" class="primary-btn btn-outline-dark" style="color: #fff">
+					댓글 작성 완료</button>
 		
-	</div>
-
-	<div>
-		<%-- 댓글작성 --%>
-		<input type="text" id="board_replye_content"
-			name="board_replye_content" placeholder="댓글 입력">
-		<div id="btn_create_boardReply" class="btnbox">
-			<a class="primary-btn" style="color: #fff">댓글 작성 완료</a>
-		</div>
-		
-
-		<input type="text" id="board_reply_content"
-			name="board_reply_content" placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." />
-		<!-- 로그인한 사용자 아이디를 input의 값으로  설정-->
-		<input type="text" id="user_nickname" name="user_nickname"
-			value="${board.user_nickname}" readonly />
-		<button id="btn_create_boardReply" class="btn btn-outline-dark">
-			댓글 작성 완료</button>
-
-	</div>
+			</div>
 
 		</div>
 	</div>
