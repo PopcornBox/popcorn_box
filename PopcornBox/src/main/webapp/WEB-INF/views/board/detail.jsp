@@ -11,6 +11,16 @@
 <meta charset="UTF-8">
 <title>PopcornBox</title>
 
+<style>
+    .reply_item {
+    	display: none;
+    }
+    #load:hover{
+    text-decoration: none;
+    color: #fff;
+    }
+</style>
+
 </head>
 <body>
 
@@ -106,8 +116,9 @@
 
 
    <%-- 댓글 목록 --%>
-   <div id="board_replies">
-   </div>
+    	<div id="board_replies"></div>
+			<a href="#" id="load" class="primary-btn">댓글 더보기</a>
+
 
 		</div>
 	</div>
@@ -124,8 +135,6 @@
    <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
    <script>
-   
-
    
    
    
@@ -174,7 +183,7 @@
                               + '<input type="text" id="board_reply_update_time" name="board_reply_update_time" value="'
                               + dateStr
                               + '" readonly />'
-                              + '<textarea type="text" id="board_reply_content" name="board_reply_content" onkeyup="resize(this)">'
+                              + '<textarea type="text" id="board_reply_content" name="board_reply_content" onkeyup="resize(this)" readonly>'
                               + this.board_reply_content
                               + ' </textarea>';
                               if (this.user_nickname == '${signInUserNickname}'){
@@ -275,6 +284,18 @@
                });
             });
       
+	        $(function(){
+	            $(".reply_item").slice(0, 3).show(); // select the first three
+	            $("#load").click(function(e){ // click event for load more
+	                e.preventDefault();
+	                $(".reply_item:hidden").slice(0, 3).show(); // select next 3 hidden divs and show them
+	                if($(".reply_item:hidden").length == 0){ // check if any hidden divs still exist
+	                	document.getElementById("load").style.display = "none";
+	                }
+	            });
+	        });
+   
+   
    </script>
 </body>
 </html>
