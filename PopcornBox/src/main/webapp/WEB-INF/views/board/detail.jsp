@@ -10,12 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>PopcornBox</title>
-<style>
-      #board_reply_content {
-      width: 600px;
-      }
 
-</style>
 </head>
 <body>
 
@@ -95,39 +90,18 @@
 				<input type="text" id="board_reply_content" style="width: 600px; border: #ddd 1px solid;"
 					name="board_reply_content" placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." />
 				
-				<!-- 로그인한 사용자 아이디를 input의 값으로  설정-->
-				<input type="hidden" id="user_nickname" name="user_nickname"
-					value="${board.user_nickname}" readonly/>
+		        <!-- 로그인한 사용자 아이디를 input의 값으로  설정-->
+		      <input type="hidden" id="user_nickname" name="user_nickname"
+		         value="${signInUserNickname}" readonly />
 				<button id="btn_create_boardReply" class="primary-btn" style="color: #fff">
 					댓글<br>입력</button>
-		
-			</div>
-
-		</div>
-	</div>
-
-
-
-	<%-- 댓글 목록 --%>
-	<div id="board_replies"></div>
-
-
-
-   <div>
    
-      <%-- 댓글작성 
-      <div id="reply_number"></div>
-      <input type="text" id="board_reply_content_empty" name="board_reply_content_empty" placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." style="width:600px;" />
-      <input type="submit" id="btn_create_boardReply" value="등록" />
+			      <%-- 댓글작성 
+			      <div id="reply_number"></div>
+			      <input type="text" id="board_reply_content_empty" name="board_reply_content_empty" placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." style="width:600px;" />
+			      <input type="submit" id="btn_create_boardReply" value="등록" />--%>
       
-		--%>
-      <input type="text" id="board_reply_content"
-         name="board_reply_content" placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." />
-      <!-- 로그인한 사용자 아이디를 input의 값으로  설정-->
-      <input type="hidden" id="user_nickname" name="user_nickname"
-         value="${signInUserNickname}" readonly />
-      <button id="btn_create_boardReply" class="btn btn-outline-dark">
-         댓글 작성 완료</button>
+
    </div>
 
 
@@ -135,8 +109,9 @@
    <div id="board_replies">
    </div>
 
-
-
+		</div>
+	</div>
+</div>
 
 	
    <%@ include file="../footer.jsp"%>
@@ -189,21 +164,22 @@
                            var date = new Date(this.board_reply_update_time);
                            var dateStr = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
                            list += '<div class="reply_item">'
-                              + '<input type="text" id="board_reply_no" name="board_reply_no" value="'
+                              + '<input type="hidden" id="board_reply_no" name="board_reply_no" value="'
                               + this.board_reply_no
                               + '" readonly />'
-                              + '<input type="text" id="board_reply_content" name="board_reply_content" value="'
-                              + this.board_reply_content
-                              + '" />'
+                              +'<i class="fa-solid fa-user"></i>'
                               + '<input type="text" id="user_nickname" name="user_nickname" value="'
                               + this.user_nickname
                               + '" readonly />'
                               + '<input type="text" id="board_reply_update_time" name="board_reply_update_time" value="'
                               + dateStr
-                              + '" readonly />';
+                              + '" readonly />'
+                              + '<textarea type="text" id="board_reply_content" name="board_reply_content" onkeyup="resize(this)">'
+                              + this.board_reply_content
+                              + ' </textarea>';
                               if (this.user_nickname == '${signInUserNickname}'){
-                                 list += '<button class="reply_update">수정</button>'
-                                      + '<button class="reply_delete">삭제</button>';
+                                 list += '<div class="btnbox"><button class="reply_update">수정</button>'
+                                      + '<button class="reply_delete">삭제</button></div>';
                               }
                               list += '</div>';
                         });
@@ -298,6 +274,12 @@
                   }
                });
             });
+      
+      //텍스트 양에 맞춰서 textarea 높이 조절
+  	function resize(obj) {
+	    obj.style.height = '1px';
+	    obj.style.height = (12 + obj.scrollHeight) + 'px';
+	}
    </script>
 </body>
 </html>

@@ -3947,7 +3947,21 @@ header .search_option {
 
 .contact__form input#board_replye_content{
 	width:80%;
-	
+}
+
+.contact__form .reply_item {
+	border-bottom: 1px solid #e1e1e1;
+}
+.contact__form .reply_item input, i{
+	font-size: 12px;
+	color: 535353;
+}
+.contact__form .reply_item textarea#board_reply_content{
+	font-size: 16px;	
+	padding-left: 30px;
+	border: none;
+	margin: 0px;
+	height: auto;
 }
 
 .contact__form a:hover{
@@ -3958,6 +3972,13 @@ header .search_option {
 .contact__form button {
 	letter-spacing: 4px;
 	padding: 14px 35px;
+}
+
+.contact__form .reply_item button {
+	padding: 3px;
+	border: #fff 1px solid;
+	background-color: #000;
+	color: #fff;
 }
 
 .contact__form .trailer {
