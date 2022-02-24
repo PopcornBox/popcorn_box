@@ -339,10 +339,10 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-//	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-//	public void mypage() {
-//		log.info("mypage() GET 호출");
-//	}
+	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
+	public void mypage() {
+		log.info("mypage() GET 호출");
+	}
 	
 //	@RequestMapping(value = "/mypage")
 //	public String mypage_log(HttpServletRequest request, Model model) {
