@@ -287,8 +287,8 @@
                });
             });
       
+	        	
 	        $(function(){
-	            $(".reply_item").slice(0, 3).show(); // select the first three
 	            $("#load").click(function(e){ // click event for load more
 	                e.preventDefault();
 	                $(".reply_item:hidden").slice(0, 3).show(); // select next 3 hidden divs and show them
