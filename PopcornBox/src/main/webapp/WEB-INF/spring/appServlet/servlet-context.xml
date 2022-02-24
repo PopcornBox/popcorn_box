@@ -33,6 +33,7 @@
 	<interceptors>
 		<interceptor> <!-- 게시판 기능들 중 로그인이 필수인 서비스들 -->
 			<mapping path="/board/insert"/> <!-- 새 글 작성 -->
+			<mapping path="/board/signin"/> <!-- 보드 댓글 입력 이동 -->
 			<mapping path="/board/delete"/> <!-- 글 삭제 -->
 			<mapping path="/user/mypage"/> <!-- 마이페이지 -->
 			<mapping path="/event/signin"/> <!-- 이벤트 댓글 입력 이동 -->
