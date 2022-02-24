@@ -75,6 +75,5 @@
 		AND ${COL_USER_PWD} = #{user_pwd}
 	</delete>
 	
-	
-	
+
 </mapper>
