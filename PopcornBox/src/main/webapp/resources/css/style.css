@@ -3962,6 +3962,7 @@ header .search_option {
 	border: none;
 	margin: 0px;
 	height: auto;
+	word-break: break-word;
 }
 
 .contact__form a:hover{

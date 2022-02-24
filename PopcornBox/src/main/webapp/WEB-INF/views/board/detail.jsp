@@ -275,11 +275,6 @@
                });
             });
       
-      //텍스트 양에 맞춰서 textarea 높이 조절
-  	function resize(obj) {
-	    obj.style.height = '1px';
-	    obj.style.height = (12 + obj.scrollHeight) + 'px';
-	}
    </script>
 </body>
 </html>
