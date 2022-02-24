@@ -99,4 +99,9 @@ public class UserServiceImpl implements UserService {
 		return userDao.delete(user);
 	}
 	
+	public User callMypageBoardInfo(String user_nickname) {
+		log.info("callMypageBoardInfo(userNickname :{}, user_nickname) 호출", user_nickname);
+		return userDao.callMypageBoardInfo(user_nickname);
+	}
+	
 }

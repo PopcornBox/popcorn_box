@@ -147,5 +147,11 @@ public class UserDaoImpl implements UserDao {
 		log.info("delete({}) 호출", user);
 		return sqlSession.delete(USER_NAMESPACE + ".delete", user);
 	}
-
+	
+	@Override
+	public User callMypageBoardInfo(String user_nickname) {
+		log.info("callMypageBoardInfo(user_nickname={}) 호출", user_nickname);
+		return sqlSession.selectOne(USER_NAMESPACE + ".mypageBoardInfo", user_nickname);
+	}
+	
 }
