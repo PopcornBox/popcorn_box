@@ -15,6 +15,9 @@
     .reply_item {
     	display: none;
     }
+    .reply_item:nth-child(-n+3) {
+    	display: block;
+    }
     #load:hover{
     text-decoration: none;
     color: #fff;
