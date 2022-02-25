@@ -151,10 +151,11 @@
 			                        <option value="3">감독</option>
 			                        <option value="4">장르</option>
 			                    </select>
-			                    <input class="search" type="text" name="keyword" placeholder="검색어 입력"
+			                    <input class="search" type="text" name="keyword" placeholder="검색어 입력" id="search_area"
 			                    	required oninvalid="this.setCustomValidity('검색어를 입력하세요.')"
 											 oninput = "setCustomValidity('')"/>
 			                    <input class="btn" type="submit" value="" />
+					    <div id="recommend" class="text-center"></div>
 			                </form>
 			            </div>
                     </div>
@@ -525,6 +526,70 @@
 				if (message != null && message != '') {
 					alert(message);
 				}
+			
+				read_keyword();
+				
+				function read_keyword() {
+					
+					$('#search_area').keyup(function() {
+						var type = $('#type').val();
+						var keyword = $('#search_area').val();
+						console.log(type);
+						console.log(keyword);
+						
+						if (keyword == '') {
+							$('#recommend').html(' ');
+						}
+						
+						 $.getJSON('/pjt/movie_search/' + type + '/' + keyword, function (data) {
+				              	var text = '';
+							 data.forEach(function(element) {
+								 if (type == 1) {
+									 if (element.indexOf(keyword) > -1) {
+											text += '<div>' + element + '</div>'
+										}
+								 }
+								 if (type == 2) {
+									 if (element.indexOf(keyword) > -1) {
+										text += '<div>' + element + '</div>'
+									}
+								 }
+								 if (type == 3) {
+									 if (element.indexOf(keyword) > -1) {
+										text += '<div>' + element + '</div>'
+									}
+								 }
+								 if (type == 4) {
+									 if (keyword == 's' || keyword == 'sf') {
+										 text = '<div>SF</div>'
+									 }
+									if (element.indexOf(keyword) > -1) {
+										text += '<div>' + element + '</div>'
+									}
+								 }				 
+							 }); // for 반복
+							 
+			             	$('#recommend').html(text);
+							$('#recommend').find('div').each(function() {
+								 $(this).click(function() {
+									 $('#search_area').val($(this).text());
+									 $('#recommend').html(' ');
+								 });
+							 });
+							 
+							 
+			             }); // getJson
+						
+					});
+
+					
+				}
+		             
+				
+				
+				
+				
+				
 			});
 	</script>	
 </body>
