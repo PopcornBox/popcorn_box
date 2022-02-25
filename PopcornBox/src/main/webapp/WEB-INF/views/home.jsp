@@ -169,19 +169,6 @@
     <!-- Banner Section Begin -->
     <section class="hero">
         <div class="hero__slider owl-carousel">
-            <div class="hero__items set-bg" data-setbg="./resources/img/banner_main_1.png">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-5 col-lg-7 col-md-8">
-                            <div class="hero__text">
-                                <h2 style="color: white;">루이스 웨인</h2>
-                                <p style="color: white;">당신의 봄을 아름답게 할,<br>단 하나의 러브 팔레트</p>
-                                <a href="#" class="primary-cta-m"> 보러가기 <span class="arrow_right"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="hero__items set-bg" data-setbg="./resources/img/banner_main_2.png">
                 <div class="container">
                     <div class="row">
@@ -195,13 +182,26 @@
                     </div>
                 </div>
             </div>
+            <div class="hero__items set-bg" data-setbg="./resources/img/banner_main_1.png">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-5 col-lg-7 col-md-8">
+                            <div class="hero__text">
+                                <h2 style="color: white;">루이스 웨인</h2>
+                                <p style="color: white;">당신의 봄을 아름답게 할,<br>단 하나의 러브 팔레트</p>
+                                <a href="#" class="primary-cta-m"> 보러가기 <span class="arrow_right"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="hero__items set-bg" data-setbg="./resources/img/banner_main_3.png">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-5 col-lg-7 col-md-8">
                             <div class="hero__text">
                                 <h2>미니언즈 2</h2>
-                                <p>미니언들의 한층 새롭고 흥미로운 모험!</p>
+                                <p>오또카지 오또카지?<br>미니언들의 한층 새롭고 흥미로운 모험!</p>
                                 <a href="#" class="primary-cta-m"> 보러가기 <span class="arrow_right"></span></a>
                             </div>
                         </div>
@@ -246,88 +246,24 @@
 
         <div class="container">
             <div class="row product__filter">
-                <div class="">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="./resources/img/chart_list_355.jpg">
-                            <span class="label">1</span>
-                         
-                        </div>
-                        <div class="product__item__text">
-                          <h5>1_movie title</h5>
-
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="./resources/img/product/product-1.jpg">
-                            <span class="label">2</span>
-                         
-                        </div>
-                        <div class="product__item__text">
-                          <h5>2_movie title</h5>
-
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="./resources/img/product/product-1.jpg">
-                            <span class="label">3</span>
-                         
-                        </div>
-                        <div class="product__item__text">
-                          <h5>3_movie title</h5>
-
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="./resources/img/product/product-1.jpg">
-                            <span class="label">4</span>
-                         
-                        </div>
-                        <div class="product__item__text">
-                          <h5>4_movie title</h5>
-
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="./resources/img/product/product-1.jpg">
-                            <span class="label">5</span>
-                         
-                        </div>
-                        <div class="product__item__text">
-                          <h5>5_movie title</h5>
-
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                    </div>
-                </div>
+                
+                <c:forEach var="movie" items="${movieList}" end="4" varStatus="num">
+					<div class="">
+	                    <div class="product__item">
+	                        <div class="product__item__pic set-bg" data-setbg="${movie.movie_image}">
+	                            <p class="label">${num.count}</p>
+	                         
+	                        </div>
+	                        <div class="product__item__text">
+	                          <a href="./movie/detail?movie_no=${movie.movie_no}">${movie.movie_title}</a>
+	
+	                            <div class="rating">
+	                                <i class="fa fa-star-o"></i>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+				</c:forEach>
             </div>
         </div>
     </section>
@@ -345,24 +281,12 @@
                 <div class="col-lg-4 offset-lg-1">
                     <div class="categories__deal__countdown">
                         <span>현재 이벤트</span>
-                        <h2>인스타 업로드하고 여행가자!</h2>
-                        <div class="categories__deal__countdown__timer" id="countdown">
-                            <div class="cd-item">
-                                <span>3</span>
-                                <!-- <p>Days</p> -->
-                            </div>
-                            <div class="cd-item">
-                                <span>1</span>
-                            </div>
-                            <div class="cd-item">
-                                <span>50</span>
-                            </div>
-                            <div class="cd-item">
-                                <span>18</span>
-                                <p>Seconds</p>
-                            </div>
+                        <h2>[라라랜드]<br>감상평 이벤트!</h2>
+                        <div class="categories__deal__countdown__timer">
+                        	<div id="countdown"></div>
                         </div>
-                        <a href="#" class="primary-cta-m">응모하기</a>
+                    </div>
+                        <a href="#" class="primary-cta-m">참여하기</a>
                     </div>
                 </div>
             </div>
@@ -381,44 +305,7 @@
                         <h4>진행중인 이벤트</h4>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-            	<div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic set-bg" data-setbg="./resources/img/blog/blog-1.jpg"></div>
-                        <div class="blog__item__text">
-                            <span><img src="./resources/img/icon/calendar.png" alt=""> 21 February 2020</span>
-                            <h5>Eternity Bands Do Last Forever</h5>
-                            <a href="#">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            	
-            	
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic set-bg" data-setbg="./resources/img/blog/blog-2.jpg"></div>
-                        <div class="blog__item__text">
-                            <span><img src="./resources/img/icon/calendar.png" alt=""> 21 February 2020</span>
-                            <h5>Eternity Bands Do Last Forever</h5>
-                            <a href="#">Read More</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic set-bg" data-setbg="./resources/img/blog/blog-3.jpg"></div>
-                        <div class="blog__item__text">
-                            <span><img src="./resources/img/icon/calendar.png" alt=""> 28 February 2020</span>
-                            <h5>The Health Benefits Of Sunglasses</h5>
-                            <a href="#">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        
+            </div>        
         
         <div class="event_list">
 		<div class="row">
@@ -461,64 +348,53 @@
                 </div>
 			</c:forEach>	
 		</div>
+		</div>
 	</div>
-        
     </section>
     <!-- Latest Blog Section End -->
 
-    <!-- Footer Section Begin -->
-    <footer class="footer">
-        <div class="container">
-        	<div class="row">
-                   <div class="footer__about">
-                       <div class="footer__logo">
-                           <a href=""><img src="./resources/img/popcornbox_logo.png"></a>
-                       </div>
-                   </div>
-               <div class="footer_text">
-               	<div>
-                	<p>popcompany | 대표 김유은</p>
-                	<p>서울특별시 강남구 테헤란로 124 4층 | 사업자 등록번호 11110 22220 3333</p>
-                	<p>
-                		   <a href="">서비스 소개 </a>
-                           | 
-                           <a href="">이용약관 </a>
-                           | 
-                           <a href="">개인정보 처리 방침 </a>
-                           | 
-                           <a href="">고객센터 </a>
-                           | 
-                       	<a href="https://github.com/PopcornBox/popcorn_box">Github </a>
-                       </p>
-                       <p>Copyright ©
-                           <script>
-                               document.write(new Date().getFullYear());
-                           </script>2020 Popcorn Box. All rights reserved  
-                       </p>
-                       
-               	</div>
-               </div>
-        	</div>
-           </div>
-    </footer>
-    <!-- Footer Section End -->
+<%@ include file="./footer.jsp"%>
 
-	<!-- Js Plugins -->
-	<script src="./resources/js/jquery-3.3.1.min.js"></script>
-	<script src="./resources/js/bootstrap.min.js"></script>
-	<!-- <script src="./resources/js/jquery.nice-select.min.js"></script> -->
-	<script src="./resources/js/jquery.nicescroll.min.js"></script>
-	<script src="./resources/js/jquery.magnific-popup.min.js"></script>
-	<script src="./resources/js/jquery.countdown.min.js"></script>
-	<script src="./resources/js/jquery.slicknav.js"></script>
-	<script src="./resources/js/mixitup.min.js"></script>
-	<script src="./resources/js/owl.carousel.min.js"></script>
-	<script src="./resources/js/main.js"></script>
-	
-	<script
-		src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+		
+		
+	<script>
+	 CountDownTimer('02/25/2022', 'countdown');
+
+	    function CountDownTimer(dt, id)
+	    {
+	        var end = new Date(dt);
+
+	        var _second = 1000;
+	        var _minute = _second * 60;
+	        var _hour = _minute * 60;
+	        var _day = _hour * 24;
+	        var timer;
+
+	        function showRemaining() {
+	            var now = new Date();
+	            var distance = end - now;
+	            if (distance < 0) {
+
+	                clearInterval(timer);
+	                document.getElementById(id).innerHTML = 'EXPIRED!';
+
+	                return;
+	            }
+	            var days = Math.floor(distance / _day);
+	            var hours = Math.floor((distance % _day) / _hour);
+	            var minutes = Math.floor((distance % _hour) / _minute);
+	            var seconds = Math.floor((distance % _minute) / _second);
+
+	            document.getElementById(id).innerHTML = '<div class="cd-item"><span>'+ days + '</span></div>';
+	            document.getElementById(id).innerHTML += '<div class="cd-item"><span>'+ hours + '</span></div>';
+	            document.getElementById(id).innerHTML += '<div class="cd-item"><span>'+ minutes + '</span></div>';
+	            document.getElementById(id).innerHTML += '<div class="cd-item"><span>'+ seconds + '</span><p>Seconds</p></div>';
+	        }
+
+	        timer = setInterval(showRemaining, 1000);
+	    }
+</script>
+
 	
 	<script>
 			$(document).ready(function () {
@@ -592,5 +468,6 @@
 				
 			});
 	</script>	
+
 </body>
 </html>
