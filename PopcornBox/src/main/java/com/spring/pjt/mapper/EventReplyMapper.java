@@ -92,6 +92,12 @@ public interface EventReplyMapper {
 			 "SELECT ${COL_EVENT_REPLY_NO} FROM ${TABLE_EVENT_REPLIES} WHERE ${COL_USER_NICKNAME} = #{user_nickname}";	 
 	 
 	 @Select(FIND_EVENT_REPLY_NO)
-	 int[] findEventReplyNo(User user);      		
+	 int[] findEventReplyNo(User user);   
+	
+	 String CHOOSE_WINNER = 
+			 "SELECT * FROM (SELECT ${COL_USER_NICKNAME} from ${TABLE_EVENT_REPLIES} WHERE ${COL_EVENT_NO} = #{event_no})"
+			 + " WHERE ROWNUM <= #{winner_number}";		 
+	 @Select(CHOOSE_WINNER)
+	 List<String> chooseWinner(Map<String, Object> map);
 	    
 }
