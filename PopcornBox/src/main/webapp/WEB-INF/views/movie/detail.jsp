@@ -238,7 +238,23 @@
   					<div>
   						<i class="fa-regular fa-heart" id="btn_unlike"></i>
   						<i class="fa-solid fa-heart" id="btn_like"></i>
-  					</div>				
+						<div id="count_like"></div>
+  					</div>	
+			
+					<div>
+  						비슷한 장르물
+  						<table>
+  							<tbody class="text-center">
+								<c:forEach var="similar_movie" items="${similarMovieList}">
+									<tr>
+										<td>
+											${similar_movie.movie_title}
+										</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+  						</table>
+  					</div>
 
  					<!-- My Modal -->
   					<div class="modal" id="myModal">
@@ -855,7 +871,7 @@
 		
 		// DB에서 좋아요 기록 불러와서 세팅.
 		read_like();
-		
+		count_like();
 		
 		$('#btn_like').click(function() {  // 좋아요 클릭 -> 싫어요 전환 -> 삭제.
 			$('#btn_like').hide();
@@ -914,6 +930,7 @@
 			// 성공 응답(200 response)이 왔을 때 브라우저가 실행할 콜백 함수
 			success: function (resp) {
 				read_like();
+				count_like();
 			}
 		});
 	}
@@ -936,9 +953,32 @@
 			// 성공 응답 콜백 함수
 			success: function () {
 				read_like();
+				count_like();
 			}
 		});
 	}
+		
+	function count_like()  {
+		var movie_no = '${movie.movie_no}';
+		
+		$.getJSON('/pjt/movie_like/count/' + movie_no, function (data) {
+		 
+			console.log(data);
+			
+     	 	if (data != null) { // 좋아요 기록이 있으면 (카운팅)
+   			 				$('#count_like').html(data.length);
+   			 }
+   			 
+     	 	
+     	 	for (var i = 0; i < data.length; i++) {
+				if (data[i] == 0) {
+						$('#count_like').html(' ');
+			 		}
+			 }
+		
+ 		});
+
+	}	
 	
     
     

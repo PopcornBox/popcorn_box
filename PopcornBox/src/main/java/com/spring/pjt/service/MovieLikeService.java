@@ -11,5 +11,7 @@ public interface MovieLikeService {
 	int insertLike(int movie_no, int user_no);
 
 	int deleteLike(int movie_no, int user_no);
+	
+	List<Object> readUsers(int movie_no);
 
 }

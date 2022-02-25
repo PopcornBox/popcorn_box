@@ -1,6 +1,10 @@
 package com.spring.pjt.controller;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -46,7 +50,47 @@ public class MovieController {
 		}
 		
 		Movie movie = movieService.select(movie_no);
+		String genre = movie.getMovie_genre();
+		log.info("genre:{}", genre);
+		String[] array = genre.split(",");
+		
+		Set<Integer> set = new HashSet<>();
+		
+		for (int i = 0; i < array.length; i++) {
+			log.info("array[" + i + "] = {}", array[i]);
+			List<Movie> similarMovieList = movieService.select(4, array[i]);
+			
+			for (Movie m : similarMovieList) {
+				set.add(m.getMovie_no());
+			}
+		}
+		
+		List<Integer> newList = new ArrayList<>(set);		
+		Iterator<Integer> iter = newList.iterator();
+		
+		while (iter.hasNext()) {
+			int similarMovie = iter.next();
+			if (movie_no == similarMovie) {
+				iter.remove();
+			}
+			
+		}
+		
+		Set<Integer> reSet = new HashSet<>();
+		reSet.addAll(newList);
+		newList.clear();
+		newList.addAll(reSet);
+		
+		List<Movie> moList = new ArrayList<>();
+		
+		for (int index : newList) {
+			Movie newMovie = movieService.select(index);
+			moList.add(newMovie);
+		}
+		
+	
 		model.addAttribute("movie", movie);
+		model.addAttribute("similarMovieList", moList);
 		model.addAttribute("viewpage", vpage);	
 	}
 	
