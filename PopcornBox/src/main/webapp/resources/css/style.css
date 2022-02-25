@@ -1078,7 +1078,7 @@ header .search_option {
 
 .product__item {
 	overflow: hidden;
-	margin-right: 15px;
+	margin-right: 50px;
 }
 
 .product__item.sale .product__item__pic .label {
@@ -2771,6 +2771,12 @@ header .search_option {
 	font-size: 20px;
 	color: red;
 }
+
+#btn_unlike #btn_like {
+	color: red;
+	font-size: 32px;
+}
+
 
 /* 차트 리스트 넓이 */
 .movie__chart__table table tbody tr td.movie__chart__item {
