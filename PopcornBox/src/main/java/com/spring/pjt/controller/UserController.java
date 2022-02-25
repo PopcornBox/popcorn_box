@@ -353,8 +353,19 @@ public class UserController {
 		HttpSession session = request.getSession();
 		String signInUserNickname = (String)session.getAttribute("signInUserNickname");
 		log.info("mypage(userNickname : {}) GET 호출", signInUserNickname);
+		
 		User mypageBoardResult = userService.callMypageBoardInfo(signInUserNickname);
+		User mypageBoardReplyResult = userService.callMypageBoardReplyInfo(signInUserNickname);
+		User mypageEventReplyResult = userService.callMypageEventReplyInfo(signInUserNickname);
+		User mypageMovieReplyResult = userService.callMypageMovieReplyInfo(signInUserNickname);
+		User mypageMovieLikeResult = userService.callMypageMovieLikeInfo(signInUserNickname);
+		
+		// 구현부
 		model.addAttribute("mypageBoardResult",mypageBoardResult);
+		model.addAttribute("mypageBoardReplyResult",mypageBoardReplyResult);
+		model.addAttribute("mypageEventReplyResult",mypageEventReplyResult);
+		model.addAttribute("mypageMovieReplyResult",mypageMovieReplyResult);
+		model.addAttribute("mypageMovieLikeResult",mypageMovieLikeResult);
 	}
 	
 	

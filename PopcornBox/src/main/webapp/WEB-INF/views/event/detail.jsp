@@ -230,15 +230,14 @@
 		
 		<!-- 댓글 목록 -->
 		<div id="event_reply_list">
-		
 		</div>
 		
 		<!-- 페이지 넘버 -->
 		<div id="page_number" style="width:600px; text-align:center; margin-top:10px;">
-		   
+
 		</div>
 	</div>	
-	
+
 	   <!-- Js Plugins -->
    <script src="../resources/js/jquery-3.3.1.min.js"></script>
    <script src="../resources/js/bootstrap.min.js"></script>
@@ -501,4 +500,6 @@
     		});
     	</script>
     </body>
+    <footer>
+    </footer>
 </html>

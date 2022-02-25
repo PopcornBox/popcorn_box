@@ -148,10 +148,35 @@ public class UserDaoImpl implements UserDao {
 		return sqlSession.delete(USER_NAMESPACE + ".delete", user);
 	}
 	
+	// 마이페이지 구현 DAO 
 	@Override
 	public User callMypageBoardInfo(String user_nickname) {
 		log.info("callMypageBoardInfo(user_nickname={}) 호출", user_nickname);
 		return sqlSession.selectOne(USER_NAMESPACE + ".mypageBoardInfo", user_nickname);
+	}
+	
+	@Override
+	public User callMypageBoardReplyInfo(String user_nickname) {
+		log.info("callMypageBoardReplyInfo(user_nickname={}) 호출", user_nickname);
+		return sqlSession.selectOne(USER_NAMESPACE + ".mypageBoardReplyInfo", user_nickname);
+	}
+	
+	@Override
+	public User callMypageEventReplyInfo(String user_nickname) {
+		log.info("callMypageEventReplyInfo(user_nickname={}) 호출", user_nickname);
+		return sqlSession.selectOne(USER_NAMESPACE + ".mypageEventReplyInfo", user_nickname);
+	}
+	
+	@Override
+	public User callMypageMovieReplyInfo(String user_nickname) {
+		log.info("callMypageMovieReplyInfo(user_nickname={}) 호출", user_nickname);
+		return sqlSession.selectOne(USER_NAMESPACE + ".mypageMovieReplyInfo", user_nickname);
+	}
+	
+	@Override
+	public User callMypageMovieLikeInfo(String user_nickname) {
+		log.info("callMypageMovieLikeInfo(user_nickname={}) 호출", user_nickname);
+		return sqlSession.selectOne(USER_NAMESPACE + ".mypageMovieLikeInfo", user_nickname);
 	}
 	
 }

@@ -17,7 +17,11 @@ public interface UserDao {
 	void userInfoUpdate(User user);
 	
 	// 회원 활동 기록
-	User callMypageBoardInfo(String user_id);
+	User callMypageBoardInfo(String user_nickname);
+	User callMypageBoardReplyInfo(String user_nickname);
+	User callMypageEventReplyInfo(String user_nickname);
+	User callMypageMovieReplyInfo(String user_nickname);
+	User callMypageMovieLikeInfo(String user_nickname);
 	
 	int lock_userKey(User user);
 	int resetPwd(User user);
