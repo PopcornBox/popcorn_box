@@ -88,8 +88,9 @@ public class MovieController {
 			moList.add(newMovie);
 		}
 		
-		Movie movie = movieService.select(movie_no);
+	
 		model.addAttribute("movie", movie);
+		model.addAttribute("similarMovieList", moList);
 		model.addAttribute("viewpage", vpage);	
 	}
 	
