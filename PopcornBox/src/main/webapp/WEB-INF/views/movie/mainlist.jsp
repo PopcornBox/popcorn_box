@@ -169,7 +169,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__text">
-                        <h3>Top Movies</h3>
+                        <h4>Top Movies</h4>
                     </div>
                 </div>
             </div>

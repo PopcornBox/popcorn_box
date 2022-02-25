@@ -182,7 +182,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__text">
-                        <h3>EVENT</h3>
+                        <h4>EVENT</h4>
                     </div>
                 </div>
             </div>
@@ -201,7 +201,7 @@
 		
 		<hr />
 		
-		
+		<div class="container">
 	<div class="event_list">
 		<div class="row">
 			<c:forEach var="event" items="${eventList}">
@@ -244,7 +244,7 @@
 			</c:forEach>	
 		</div>
 	</div>
-		
+		</div>
 		
     <!-- Footer Section Begin -->
     <footer class="footer">

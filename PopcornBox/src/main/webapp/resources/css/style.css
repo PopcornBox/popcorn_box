@@ -2749,6 +2749,8 @@ header .search_option {
 .movie__chart__table table tbody tr td {
 	padding-bottom: 30px;
 	padding-top: 30px;
+	font-size: 18px;
+	vertical-align: middle;
 }
 
 .movie__chart__table table tbody tr td:first-child:before{
@@ -2763,12 +2765,11 @@ header .search_option {
 
 .movie__chart__table table tbody tr td:nth-child(3){
 	text-align: left !important;
-	vertical-align: middle;
     font-weight: 550;
 }
 
 .movie__chart__table table i {
-	font-size: 20px;
+	font-size: 17px;
 	color: red;
 }
 
@@ -2885,6 +2886,86 @@ header .search_option {
 	
 }
 */
+
+
+
+/*---------------------
+  USER 차트 Chart
+-----------------------*/
+
+.user__chart__table {
+	margin-bottom: 30px;
+	text-align: left;
+}
+
+.user__chart__table table {
+	width: 100%;
+}
+
+/* 차트 구분선 chrt line */
+.user__chart__table table thead {
+	
+}
+
+/* 차트항목이름 chrt categories name */
+.user__chart__table table thead tr td {
+	color: #111111;
+	font-size: 16px;
+	font-weight: normal;
+	text-transform: uppercase;
+	border-top: none;
+}
+
+.user__chart__table table thead tr td.poster{
+	width: 185px;
+}
+.user__chart__table table thead tr td.title{
+	width: 45%;
+}
+
+/* 차트 구분선 chrt line */
+.user__chart__table table tbody tr {
+	border-bottom: 1px solid #f2f2f2;
+}
+
+.user__chart__table table tbody tr:hover{
+	background-color: #f2f2f2;
+}
+
+.user__chart__table table tbody tr td {
+	padding-bottom: 25px;
+	padding-top: 25px;
+	vertical-align: baseline;
+}
+
+.user__chart__table table tbody tr td:first-child {
+	font-weight: bold;
+	 width: 20%;
+}
+
+
+/* 차트 리스트 넓이 */
+.user__chart__table table tbody tr td.user__chart__item {
+	width: 20px;
+}
+
+
+/*------------------------------------------------------------------------
+  USER */
+.form-control {
+	border: #e9ecef 1px solid;
+}
+
+.user_leave a{
+	font-size: 14px;
+}
+
+.user_leave a:hover{ /* 마우스 올린 효과 */
+	text-decoration: underline;
+	color: #848484;
+}
+
+/*------------------------------------------------------------------------*/
 
 .continue__btn.update__btn {
 	text-align: right;
@@ -3979,6 +4060,7 @@ header .search_option {
 	margin: 0px;
 	height: auto;
 	word-break: break-word;
+	background-color: #f5f5f5;
 }
 
 .contact__form a:hover{
@@ -4019,6 +4101,15 @@ header .search_option {
 	height: 393px; 
 }
 
+
+#leaveButton div:nth-child(-n+3) {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.mypage {
+	margin-bottom: 20px;
+}
 
 /*--------------------------------- Responsive Media Quaries -----------------------------*/
 
