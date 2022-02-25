@@ -148,12 +148,6 @@
 
 
 
-
-
-	</div>
-
-
-
 	<%@ include file="../footer.jsp"%>
 
 	<!-- Js Plugins -->

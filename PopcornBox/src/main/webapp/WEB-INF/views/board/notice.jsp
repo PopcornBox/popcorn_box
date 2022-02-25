@@ -117,24 +117,25 @@
 		</div>
 		<hr>
 
-		<div>
+		<div class="contact__form">
 			<!-- 입력 양식 -->
 			<form method="post">
 				<!-- /board/insert POST submit -->
 				<div>
-					<input type="hidden" id="board_mode" name="board_mode" value="1" required readonly />
+					<input type="hidden" id="board_mode" name="board_mode"  value="1" required readonly />
 				</div>
 				<div>
-					<input type="text" name="board_title" placeholder="제목 입력" required
-						autofocus />
+					<textarea type="text" id="board_title"  maxlength="35" maxlength="35" placeholder="제목 입력"
+						rows="1" onkeyup="resize(this)" required
+						autofocus></textarea>
 				</div>
 				<div>
 					<textarea rows="5" name="board_content" placeholder="내용 입력"
-						required></textarea>
+						onkeyup="resize(this)" required></textarea>
 				</div>
 
 				<div>
-					<input type="text" name="user_nickname"
+					<input type="hidden" name="user_nickname"
 						value="${signInUserNickname}" required readonly />
 				</div>
 
@@ -160,28 +161,7 @@
 
 
 	<!-- Footer Section Begin -->
-	<footer class="footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-6 col-sm-6">
-					<div class="footer__about">
-						<div class="footer__logo">
-							<a href="#"><img src="../resources/img/logo_white.png" alt=""></a>
-						</div>
-						<p>
-							Copyright ©
-							<script>
-								document.write(new Date().getFullYear());
-							</script>
-							2020 All rights reserved | This template is made with <i
-								class="fa fa-heart-o" aria-hidden="true"></i> by <a
-								href="https://colorlib.com" target="_blank">Colorlib</a>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
+	<%@ include file="../footer.jsp"%>
 	<!-- Footer Section End -->
 
 
