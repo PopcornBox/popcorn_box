@@ -4633,3 +4633,60 @@ header .search_option {
 		height: 250px;
 	}
 }
+
+
+/** 이벤트 event **/
+.event__input {
+	padding-bottom:60px;
+	/* margin-bottom: 30px; */
+	border-bottom:1px solid #e1e1e1;
+}
+
+.event__input p {
+	color: #111111;
+	margin-bottom: 12px;
+}
+
+.event__input p span {
+	color: #e53637;
+}
+
+.event__input input {
+	width: 80%;
+	border: 1px solid #e1e1e1;
+	font-size: 14px;
+	color: #535353;
+	padding: 20px;
+}
+
+.event__input input::-webkit-input-placeholder {
+	color: #b7b7b7;
+}
+
+.event__input input::-moz-placeholder {
+	color: #b7b7b7;
+}
+
+.event__input input:-ms-input-placeholder {
+	color: #b7b7b7;
+}
+
+.event__input input::-ms-input-placeholder {
+	color: #b7b7b7;
+}
+
+.event__input input::placeholder {
+	color: #b7b7b7;
+}
+
+.event-btn {
+	font-size: 14px;
+	padding: 20px;
+	width: 20%;
+	color: #ffffff;
+	background: #111111;
+	font-weight: 700;
+	border: none;
+	text-transform:;
+	display: inline-block;
+}
