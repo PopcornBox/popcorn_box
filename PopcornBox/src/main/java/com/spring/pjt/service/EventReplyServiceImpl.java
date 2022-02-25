@@ -64,5 +64,6 @@ public class EventReplyServiceImpl implements EventReplyService {
 		log.info("chooseWinner(event_no:{}, winner_number:{}) 호출", event_no, winner_number);
 		return eventReplyDao.chooseWinner(event_no, winner_number);
 	}
+
 }
 

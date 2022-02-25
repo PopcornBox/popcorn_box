@@ -256,7 +256,25 @@
 	</footer>
 	<!-- Footer Section End -->
 
-
+<script>
+		    $(document).ready(function(){
+    			// type 이 radio 이고 class 가 start_type_radio 인 input 을 click 했을 경우
+                $('input[type="radio"][class="data_type_radio"]').on('click',function(){
+					
+                    // startSetting 에 checked된 radio button의 value 값을 넣는다.
+                    var startSetting = $('input[type=radio][class="data_type_radio"]:checked').val();
+                   
+                   // startSetting이 later인 경우 style display를 flex로 변경한다. 
+                   if(startSetting == 'later'){
+                        $('#task_boardLog_setting').css('display','flex');
+                   
+                   // 그외의 경우 style display를 none 으로 변경한다.
+                    }else{
+                        $('#task_boardLog_setting').css('display','none');
+                    }
+                });
+            });
+	</script>
 	<!-- Js Plugins -->
 	<script src="../resources/js/jquery-3.3.1.min.js"></script>
 	<script src="../resources/js/bootstrap.min.js"></script>

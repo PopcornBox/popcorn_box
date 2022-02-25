@@ -120,7 +120,8 @@
 										<span>${signInUserNickname} 님</span>
 										<br>
 										<a
-											href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7&logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">
+											href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7
+											&logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">
 											<i class="fa-solid fa-lock"></i>로그아웃
 										</a>
 										<a href="./user/register"><i class="fa-solid fa-user-plus"></i>회원가입</a>
