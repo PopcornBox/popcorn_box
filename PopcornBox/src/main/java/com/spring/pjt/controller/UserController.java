@@ -352,6 +352,9 @@ public class UserController {
 	public void mypage(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		String signInUserNickname = (String)session.getAttribute("signInUserNickname");
+		String message = (String) session.getAttribute("msg");
+		session.removeAttribute("msg");
+		
 		log.info("mypage(userNickname : {}) GET 호출", signInUserNickname);
 		
 		User mypageBoardResult = userService.callMypageBoardInfo(signInUserNickname);
@@ -366,6 +369,9 @@ public class UserController {
 		model.addAttribute("mypageEventReplyResult",mypageEventReplyResult);
 		model.addAttribute("mypageMovieReplyResult",mypageMovieReplyResult);
 		model.addAttribute("mypageMovieLikeResult",mypageMovieLikeResult);
+		
+		
+		model.addAttribute("msg", message);
 	}
 	
 	
@@ -384,8 +390,15 @@ public class UserController {
 	public String userInfoUpdate(User user, HttpServletRequest request, Model model) {
 		log.info("userInfoUpdate 호출");
 		userService.userInfoUpdate(user);
+		String msg = request.getParameter("msg");
+		System.out.println("msg: " + msg);
 		HttpSession session = request.getSession();
 		session.setAttribute("signInUserNickname", user.getUser_nickname());
+		
+		if (msg != null) {
+			session.setAttribute("msg", msg);
+		}
+		
 		return "redirect:/user/mypage";
 	}
 	
