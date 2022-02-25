@@ -334,8 +334,16 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public void mypage() {
-		log.info("mypage() GET 호출");
+	public void mypage(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		String signInUserNickname = (String)session.getAttribute("signInUserNickname");
+		log.info("mypage(userNickname : {}) GET 호출", signInUserNickname);
+		User mypageBoardResult = userService.callMypageBoardInfo(signInUserNickname);
+		String message = (String) session.getAttribute("msg");
+		session.removeAttribute("msg");
+		
+		model.addAttribute("mypageBoardResult",mypageBoardResult);
+		model.addAttribute("msg", message);
 	}
 	
 	@RequestMapping(value = "/userInfo", method = RequestMethod.GET)
@@ -352,8 +360,14 @@ public class UserController {
 	public String userInfoUpdate(User user, HttpServletRequest request, Model model) {
 		log.info("userInfoUpdate 호출");
 		userService.userInfoUpdate(user);
+		String msg = request.getParameter("msg");
 		HttpSession session = request.getSession();
 		session.setAttribute("signInUserNickname", user.getUser_nickname());
+		
+		if (msg != null) {
+			session.setAttribute("msg", msg);
+		}
+		
 		return "redirect:/user/mypage";
 	}
 	

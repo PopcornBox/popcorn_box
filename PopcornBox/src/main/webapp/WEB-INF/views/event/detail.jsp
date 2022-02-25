@@ -211,6 +211,12 @@ background-color:#f1f1f1;
 				</div>
 			</div>
 		</div>
+<<<<<<< HEAD
+		<hr>
+		
+		<!-- 댓글 목록 -->
+		<div id="event_reply_list">
+=======
 		<div class="container">
 			<div class="row" class="header__row__">
 
@@ -228,7 +234,14 @@ background-color:#f1f1f1;
 			<div class="canvas__open">
 				<i class="fa fa-bars"></i>
 			</div>
+>>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
 		</div>
+<<<<<<< HEAD
+		
+		<!-- 페이지 넘버 -->
+		<div id="page_number" style="width:600px; text-align:center; margin-top:10px;">
+
+=======
 	</header>
 	<!-- Header Section End -->
 
@@ -259,7 +272,27 @@ background-color:#f1f1f1;
 					</tbody>
 				</table>
 			</div>
+>>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
 		</div>
+<<<<<<< HEAD
+	</div>	
+
+	   <!-- Js Plugins -->
+   <script src="../resources/js/jquery-3.3.1.min.js"></script>
+   <script src="../resources/js/bootstrap.min.js"></script>
+   <!-- <script src="../resources/js/jquery.nice-select.min.js"></script> -->
+   <script src="../resources/js/jquery.nicescroll.min.js"></script>
+   <script src="../resources/js/jquery.magnific-popup.min.js"></script>
+   <script src="../resources/js/jquery.countdown.min.js"></script>
+   <script src="../resources/js/jquery.slicknav.js"></script>
+   <script src="../resources/js/mixitup.min.js"></script>
+   <script src="../resources/js/owl.carousel.min.js"></script>
+   <script src="../resources/js/main.js"></script>
+	
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    	<script>
+=======
 
 
 		<div class="event_img_detail" style="text-align: center;">
@@ -319,6 +352,7 @@ background-color:#f1f1f1;
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 	<script>
+>>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
     		$(document).ready(function() {
     			$('#event_reply_content_empty').click(function() {
     				if('${q}' >= 0) {
@@ -570,5 +604,11 @@ background-color:#f1f1f1;
     			
     		});
     	</script>
+<<<<<<< HEAD
+    </body>
+    <footer>
+    </footer>
+=======
 </body>
+>>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
 </html>

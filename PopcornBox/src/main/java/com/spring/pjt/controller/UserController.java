@@ -352,9 +352,26 @@ public class UserController {
 	public void mypage(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		String signInUserNickname = (String)session.getAttribute("signInUserNickname");
+		String message = (String) session.getAttribute("msg");
+		session.removeAttribute("msg");
+		
 		log.info("mypage(userNickname : {}) GET 호출", signInUserNickname);
+		
 		User mypageBoardResult = userService.callMypageBoardInfo(signInUserNickname);
+		User mypageBoardReplyResult = userService.callMypageBoardReplyInfo(signInUserNickname);
+		User mypageEventReplyResult = userService.callMypageEventReplyInfo(signInUserNickname);
+		User mypageMovieReplyResult = userService.callMypageMovieReplyInfo(signInUserNickname);
+		User mypageMovieLikeResult = userService.callMypageMovieLikeInfo(signInUserNickname);
+		
+		// 구현부
 		model.addAttribute("mypageBoardResult",mypageBoardResult);
+		model.addAttribute("mypageBoardReplyResult",mypageBoardReplyResult);
+		model.addAttribute("mypageEventReplyResult",mypageEventReplyResult);
+		model.addAttribute("mypageMovieReplyResult",mypageMovieReplyResult);
+		model.addAttribute("mypageMovieLikeResult",mypageMovieLikeResult);
+		
+		
+		model.addAttribute("msg", message);
 	}
 	
 	
@@ -373,8 +390,15 @@ public class UserController {
 	public String userInfoUpdate(User user, HttpServletRequest request, Model model) {
 		log.info("userInfoUpdate 호출");
 		userService.userInfoUpdate(user);
+		String msg = request.getParameter("msg");
+		System.out.println("msg: " + msg);
 		HttpSession session = request.getSession();
 		session.setAttribute("signInUserNickname", user.getUser_nickname());
+		
+		if (msg != null) {
+			session.setAttribute("msg", msg);
+		}
+		
 		return "redirect:/user/mypage";
 	}
 	

@@ -75,7 +75,8 @@
 		AND ${COL_USER_PWD} = #{user_pwd}
 	</delete>
 	
-		<!-- 마이페이지 관련 내용-->
+	<!-- 마이페이지 관련 내용-->
+	<!-- 내 게시글 조회 -->
 	<select id="mypageBoardInfo" resultMap="mypageBoardResult">
 	SELECT U.USER_NICKNAME, U.USER_NO, B.BOARD_NO, B.BOARD_TITLE, B.BOARD_UPDATE_TIME
 	FROM USERS U
@@ -94,6 +95,95 @@
 		<result property="board_no" column="BOARD_NO"/>
 		<result property="board_title" column="BOARD_TITLE"/>
 		<result property="board_update_time" column="BOARD_UPDATE_TIME"/>
+	</resultMap>
+	
+	<!-- 내 게시글 댓글 조회 -->
+	<select id="mypageBoardReplyInfo" resultMap="mypageBoardReplyResult">
+	SELECT U.USER_NICKNAME, U.USER_NO, BR.BOARD_NO, BR.BOARD_REPLY_NO,
+    BR.BOARD_REPLY_CONTENT, BR.BOARD_REPLY_UPDATE_TIME
+    from USERS U
+    LEFT OUTER JOIN BOARD_REPLIES BR
+	ON U.USER_NICKNAME = BR.USER_NICKNAME
+	WHERE U.USER_NICKNAME = #{USER_NICKNAME}
+	</select>
+	
+	<resultMap type="User" id="mypageBoardReplyResult">
+		<result property="user_nickname" column="USER_NICKNAME"/>
+		<result property="user_no" column="USER_NO"/>
+		<collection property="myBoardReplyList" resultMap="myBoardReplyList"/>
+	</resultMap>
+	
+	<resultMap type="BoardReply" id="myBoardReplyList">
+		<result property="board_no" column="BOARD_NO"/>
+		<result property="board_reply_no" column="BOARD_REPLY_NO"/>
+		<result property="board_reply_content" column="BOARD_REPLY_CONTENT"/>
+		<result property="board_reply_update_time" column="BOARD_REPLY_UPDATE_TIME"/>
+	</resultMap>
+	
+	<!-- 내 이벤트 댓글 조회 -->
+	<select id="mypageEventReplyInfo" resultMap="mypageEventReplyResult">
+	SELECT U.USER_NICKNAME, U.USER_NO, ER.EVENT_NO, ER.EVENT_REPLY_NO,
+    ER.EVENT_REPLY_CONTENT, ER.EVENT_REPLY_UPDATE_TIME
+    from USERS U
+    LEFT OUTER JOIN EVENT_REPLIES ER
+	ON U.USER_NICKNAME = ER.USER_NICKNAME
+	WHERE U.USER_NICKNAME = #{USER_NICKNAME}
+	</select>
+	
+	<resultMap type="User" id="mypageEventReplyResult">
+		<result property="user_nickname" column="USER_NICKNAME"/>
+		<result property="user_no" column="USER_NO"/>
+		<collection property="myEventReplyList" resultMap="myEventReplyList"/>
+	</resultMap>
+	
+	<resultMap type="EventReply" id="myEventReplyList">
+		<result property="event_no" column="EVENT_NO"/>
+		<result property="event_reply_no" column="EVENT_REPLY_NO"/>
+		<result property="event_reply_content" column="EVENT_REPLY_CONTENT"/>
+		<result property="event_reply_update_time" column="EVENT_REPLY_UPDATE_TIME"/>
+	</resultMap>
+	
+	<!-- 내 영화 댓글 조회 -->
+	<select id="mypageMovieReplyInfo" resultMap="mypageMovieReplyResult">
+	SELECT U.USER_NICKNAME, U.USER_NO, MR.MOVIE_NO, MR.MOVIE_REPLY_NO,
+    MR.MOVIE_REPLY_CONTENT, MR.MOVIE_REPLY_UPDATE_TIME
+    from USERS U
+    LEFT OUTER JOIN MOVIE_REPLIES MR
+	ON U.USER_NICKNAME = MR.USER_NICKNAME
+	WHERE U.USER_NICKNAME = #{USER_NICKNAME}
+	</select>
+	
+	<resultMap type="User" id="mypageMovieReplyResult">
+		<result property="user_nickname" column="USER_NICKNAME"/>
+		<result property="user_no" column="USER_NO"/>
+		<collection property="myMovieReplyList" resultMap="myMovieReplyList"/>
+	</resultMap>
+	
+	<resultMap type="MovieReply" id="myMovieReplyList">
+		<result property="movie_no" column="MOVIE_NO"/>
+		<result property="movie_reply_no" column="MOVIE_REPLY_NO"/>
+		<result property="movie_reply_content" column="MOVIE_REPLY_CONTENT"/>
+		<result property="movie_reply_update_time" column="MOVIE_REPLY_UPDATE_TIME"/>
+	</resultMap>
+	
+	<!-- 내 좋아요 영화 조회 -->
+	<select id="mypageMovieLikeInfo" resultMap="mypageMovieLikeResult">
+	SELECT U.USER_NICKNAME, U.USER_NO, L.MOVIE_NO, L.LIKE_UPDATE_TIME
+    from USERS U
+    LEFT OUTER JOIN LIKES L
+	ON U.USER_NO = L.USER_NO
+	WHERE U.USER_NICKNAME = #{USER_NICKNAME}
+	</select>
+	
+	<resultMap type="User" id="mypageMovieLikeResult">
+		<result property="user_nickname" column="USER_NICKNAME"/>
+		<result property="user_no" column="USER_NO"/>
+		<collection property="myMovieLikeList" resultMap="myMovieLikeList"/>
+	</resultMap>
+	
+	<resultMap type="MovieLike" id="myMovieLikeList">
+		<result property="movie_no" column="MOVIE_NO"/>
+		<result property="like_update_time" column="LIKE_UPDATE_TIME"/>
 	</resultMap>
 
 </mapper>
