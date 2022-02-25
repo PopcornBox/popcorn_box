@@ -157,12 +157,48 @@
 				<c:if test="${signInUserPosition eq 'A'}">
 					<a href="./update?event_no=${event.event_no}"><button>수정</button></a>
 					<a id="delete_event" href="./delete?event_no=${event.event_no}"><button>삭제</button></a>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#winnerModal">
+  						당첨자 추첨
+					</button>
 				</c:if>
 				<c:if test="${signInUserPosition eq 'B'}">
 					<a href="./update?event_no=${event.event_no}"><button>수정</button></a>
 					<a id="delete_event" href="./delete?event_no=${event.event_no}"><button>삭제</button></a>
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#winnerModal">
+  						당첨자 추첨
+					</button>
 				</c:if>
 			</div>
+			
+			
+			<!-- The Modal -->
+<div class="modal" id="winnerModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100">당첨자 추첨</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body text-center">
+      ${event.event_title}
+      	<div>
+        	<input type="number" min="0" id="winner_number"  name="winner_number"  />
+      	</div>
+      	<div id="result"></div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" id="btn_choice" class="btn btn-danger">추첨</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 			
 			<table class="table">
 				<tbody>
@@ -432,6 +468,34 @@
     					location.href = '/pjt/event/delete?event_no=${event.event_no}';
     				}
     			});
+		
+			
+		if ('${q}' > 0) {
+    				$('#do_choose').attr('disabled', true);
+    			}
+    			
+    			
+    			
+    			
+    			$('#btn_choice').click(function () {
+    				var winner_number = $('#winner_number').val();
+    				get_winner(winner_number);
+    			});
+    			
+    			
+    			function get_winner(winner_number) {
+    				var event_no = '${event.event_no}';
+    				var list = '';
+    				$.getJSON('/pjt/event_replies/choose/' + winner_number + '/' + event_no, function (data) {
+    					data.forEach(function(element) {
+    						 var winner_nickname = element;
+    						 list += winner_nickname + ', '				
+    					 }); // for 반복
+    					 $('#result').html(list);
+    				});
+    			}
+		
+		
     			
     			
     		});
