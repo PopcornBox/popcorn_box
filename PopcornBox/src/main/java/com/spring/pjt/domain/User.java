@@ -18,13 +18,13 @@ public class User {
 	private List<BoardReply> myBoardReplyList;
 	private List<EventReply> myEventReplyList;
 	private List<MovieReply> myMovieReplyList;
-	private List<Movie> myMovieLikeList;
+	private List<MovieLike> myMovieLikeList;
 	
 	public User() {}
 
 	public User(int user_no, String user_id, String user_nickname, String user_pwd, String user_email,
 			Date user_update_time, String user_key, String user_position, List<Board> myBoardList,
-			List<BoardReply> myBoardReplyList, List<EventReply> myEventReplyList, List<MovieReply> myMovieReplyList, List<Movie> myMovieLikeList) {
+			List<BoardReply> myBoardReplyList, List<EventReply> myEventReplyList, List<MovieReply> myMovieReplyList, List<MovieLike> myMovieLikeList) {
 		this.user_no = user_no;
 		this.user_id = user_id;
 		this.user_nickname = user_nickname;
@@ -37,6 +37,7 @@ public class User {
 		this.myBoardReplyList = myBoardReplyList;
 		this.myEventReplyList = myEventReplyList;
 		this.myMovieReplyList = myMovieReplyList;
+		this.myMovieLikeList = myMovieLikeList;
 	}
 
 	public int getUser_no() {
@@ -135,11 +136,11 @@ public class User {
 		this.myMovieReplyList = myMovieReplyList;
 	}
 	
-	public List<Movie> getMyMovieLikeList() {
+	public List<MovieLike> getMyMovieLikeList() {
 		return myMovieLikeList;
 	}
 	
-	public void setMyMovieLikeList(List<Movie> myMovieLikeList) {
+	public void setMyMovieLikeList(List<MovieLike> myMovieLikeList) {
 		this.myMovieLikeList = myMovieLikeList;
 	}
 

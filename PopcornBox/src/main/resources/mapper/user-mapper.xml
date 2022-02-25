@@ -181,7 +181,7 @@
 		<collection property="myMovieLikeList" resultMap="myMovieLikeList"/>
 	</resultMap>
 	
-	<resultMap type="Movie" id="myMovieLikeList">
+	<resultMap type="MovieLike" id="myMovieLikeList">
 		<result property="movie_no" column="MOVIE_NO"/>
 		<result property="like_update_time" column="LIKE_UPDATE_TIME"/>
 	</resultMap>
