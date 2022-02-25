@@ -241,20 +241,7 @@
 						<div id="count_like"></div>
   					</div>	
 			
-					<div>
-  						비슷한 장르물
-  						<table>
-  							<tbody class="text-center">
-								<c:forEach var="similar_movie" items="${similarMovieList}">
-									<tr>
-										<td>
-											${similar_movie.movie_title}
-										</td>
-									</tr>
-								</c:forEach>
-							</tbody>
-  						</table>
-  					</div>
+
 
  					<!-- My Modal -->
   					<div class="modal" id="myModal">
@@ -360,7 +347,7 @@
                 <div class="col-lg-12 col-md-14">
                   <br><br>
                     <div class="contact__form" id="movie_content" name="movie_content" style="margin: 0px;">
-                      <p>${movie.movie_content}</p>
+                      <p class="container">${movie.movie_content}</p>
                       <br>
                       <br>
                       
@@ -372,10 +359,36 @@
                     </div>
                 </div>                                
             </div>
+          </div>
+            
+            
+	<div class="similarMovieTable">
+		<div class="container">
+		<h4>:: 비슷한 장르 추천 ::</h4>
+			<div>
+			<table>
+				<tbody class="text-center">
+					<tr>
+						<c:forEach var="similar_movie" items="${similarMovieList}">
+							<td>
+								<a href="./detail?movie_no=${similar_movie.movie_no}">
+									<img src="${similar_movie.movie_image}" style="height: 260px; width: 185px;">
+								</a>
+							</td>
+						</c:forEach>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+			</div>
+	</div>            
+            
+            
             
 				<br>
 				<hr>
                 <!-- 댓글 작성 양식 -->
+                <div class="container">
 				<div>
 					<div id="reply_number"></div>
 					<input type="text" id="movie_reply_content_empty" name="movie_reply_content_empty" placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." style="width:600px;" />

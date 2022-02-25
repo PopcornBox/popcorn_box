@@ -2887,6 +2887,36 @@ header .search_option {
 }
 */
 
+.similarMovieTable {
+	background-color: #e1e1e1;
+	padding: 30px;
+	color: #000;
+	font-size: 20px;
+}
+
+.similarMovieTable div  {
+	margin-top: 10px;
+	width: 100%;
+	overflow: auto;
+}
+
+.similarMovieTable table tr td img {
+	max-width: inherit;
+	margin: 10px;
+}
+
+.similarMovieTable div::-webkit-scrollbar {
+    height: 13px;
+  }
+  .similarMovieTable div::-webkit-scrollbar-thumb {
+    background-color: #fff ;
+    border-radius: 10px;
+    background-clip: padding-box;
+  }
+  .similarMovieTable div::-webkit-scrollbar-track {
+    border-radius: 6px;
+  }
+
 
 
 /*---------------------
@@ -4093,12 +4123,6 @@ header .search_option {
 
 .contact__form .trailer p:first-child {
 	font-size: 25px;
-}
-
-
-.contact__form .trailer p:last-child iframe { 
-	width: 700px; 
-	height: 393px; 
 }
 
 
