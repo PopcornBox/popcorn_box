@@ -153,15 +153,46 @@
     </section>
     <!-- Breadcrumb Section End -->
     
-    
-		</h1>
+
 		<ul>
 			<li><a href="./userInfo">회원정보확인</a></li>
 		</ul>
+		
 		<button type="button">전체활동기록</button>
 		<button type="button">작성한 게시글</button>
 		<button type="button">작성한 댓글</button>
 		<button type="button">좋아요한 영화</button>
+		
+		<div>
+			<c:forEach items="${mypageBoardResult.myBoardList}" var="signInUserNickname">
+			<tr>
+				<td>${signInUserNickname.board_no}</td>
+				<td><a href="../board/detail?board_no=${signInUserNickname.board_no}">${signInUserNickname.board_title}</a></td>
+				<td>${signInUserNickname.board_update_time}</td>
+				</br>
+			</tr>
+			</c:forEach>
+		</div>
+		
+	<script>
+		    $(document).ready(function(){
+    			// type 이 radio 이고 class 가 start_type_radio 인 input 을 click 했을 경우
+                $('input[type="radio"][class="data_type_radio"]').on('click',function(){
+					
+                    // startSetting 에 checked된 radio button의 value 값을 넣는다.
+                    var startSetting = $('input[type=radio][class="data_type_radio"]:checked').val();
+                   
+                   // startSetting이 later인 경우 style display를 flex로 변경한다. 
+                   if(startSetting == 'later'){
+                        $('#task_boardLog_setting').css('display','flex');
+                   
+                   // 그외의 경우 style display를 none 으로 변경한다.
+                    }else{
+                        $('#task_boardLog_setting').css('display','none');
+                    }
+                });
+            });
+	</script>
 		
 		
 

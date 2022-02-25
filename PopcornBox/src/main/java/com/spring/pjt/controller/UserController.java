@@ -353,9 +353,8 @@ public class UserController {
 		HttpSession session = request.getSession();
 		String signInUserNickname = (String)session.getAttribute("signInUserNickname");
 		log.info("mypage(userNickname : {}) GET 호출", signInUserNickname);
-		User mypageBoardInfo = userService.callMypageBoardInfo(signInUserNickname);
-		model.addAttribute("mypageBoardInfo", mypageBoardInfo);
-		
+		User mypageBoardResult = userService.callMypageBoardInfo(signInUserNickname);
+		model.addAttribute("mypageBoardResult",mypageBoardResult);
 	}
 	
 	

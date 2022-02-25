@@ -73,8 +73,8 @@
     					<li><a href="main${pagingView.makeQuery(pagingView.startPage - 1)}">이전</a></li>
     				</c:if> 
 
-    				<c:forEach begin="${pagingView.startPage}" end="${pagingView.endPage}" var="idx">
-    					<li><a href="main${pagingView.makeQuery(idx)}">${idx}</a></li>
+    				<c:forEach begin="${pagingView.startPage}" end="${pagingView.endPage}" var="page">
+    					<li><a href="main${pagingView.makeQuery(page)}">${page}</a></li>
     				</c:forEach>
 
     				<c:if test="${pagingView.next && pagingView.endPage > 0}">
