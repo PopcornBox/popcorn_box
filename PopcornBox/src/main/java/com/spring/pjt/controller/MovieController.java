@@ -46,6 +46,45 @@ public class MovieController {
 		}
 		
 		Movie movie = movieService.select(movie_no);
+		String genre = movie.getMovie_genre();
+		log.info("genre:{}", genre);
+		String[] array = genre.split(",");
+		
+		Set<Integer> set = new HashSet<>();
+		
+		for (int i = 0; i < array.length; i++) {
+			log.info("array[" + i + "] = {}", array[i]);
+			List<Movie> similarMovieList = movieService.select(4, array[i]);
+			
+			for (Movie m : similarMovieList) {
+				set.add(m.getMovie_no());
+			}
+		}
+		
+		List<Integer> newList = new ArrayList<>(set);		
+		Iterator<Integer> iter = newList.iterator();
+		
+		while (iter.hasNext()) {
+			int similarMovie = iter.next();
+			if (movie_no == similarMovie) {
+				iter.remove();
+			}
+			
+		}
+		
+		Set<Integer> reSet = new HashSet<>();
+		reSet.addAll(newList);
+		newList.clear();
+		newList.addAll(reSet);
+		
+		List<Movie> moList = new ArrayList<>();
+		
+		for (int index : newList) {
+			Movie newMovie = movieService.select(index);
+			moList.add(newMovie);
+		}
+		
+		Movie movie = movieService.select(movie_no);
 		model.addAttribute("movie", movie);
 		model.addAttribute("viewpage", vpage);	
 	}
