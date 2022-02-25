@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.spring.pjt.domain.Board;
 import com.spring.pjt.domain.PageCriteria;
 import com.spring.pjt.domain.PagingView;
+import com.spring.pjt.service.BoardReplyService;
 import com.spring.pjt.service.BoardService;
 
 @Controller
@@ -23,6 +24,7 @@ public class BoardController {
 	private static final Logger log = LoggerFactory.getLogger(BoardController.class);
 	
 	@Autowired private BoardService boardService;
+	@Autowired private BoardReplyService boardReplyService;
 	
 	@RequestMapping(value="/main", method=RequestMethod.GET)
 	public void main(Model model, PageCriteria pcri) {
@@ -89,12 +91,11 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public String delete(int board_no ) { // 
+	public String delete(int board_no) { // 
 		log.info("delete(board_no={}) 호출", board_no);
-
-		
+		boardReplyService.boardNoDelete(board_no);
 		boardService.delete(board_no);
-		
+
 		return "redirect:/board/main";
 		
 	}

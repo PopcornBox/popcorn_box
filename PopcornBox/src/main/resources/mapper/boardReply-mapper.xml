@@ -26,6 +26,12 @@
 		DELETE FROM ${TBL_BOARD_REPLIES} WHERE ${COL_BOARD_REPLY_NO} =
 		#{board_reply_no}
 	</delete>
+	
+	
+	<delete id="deleteReplyBNo">
+		DELETE FROM ${TBL_BOARD_REPLIES} WHERE ${COL_BOARD_NO} =
+		#{board_no}
+	</delete>
 
 	<!-- 댓글번호 board_reply_no 댓글의 게시글 번호 찾기 -->
 	<select id="readBoardReplyNo" resultType="java.lang.Integer">
@@ -44,6 +50,6 @@
 		WHERE ${COL_USER_NICKNAME} = #{user_nickname}
 	</select>
 
-
+	
 
 </mapper>

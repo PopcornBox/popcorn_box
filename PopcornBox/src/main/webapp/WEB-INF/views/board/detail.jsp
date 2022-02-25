@@ -12,6 +12,11 @@
 <title>PopcornBox</title>
 
 <style>
+      #board_reply_content {
+      width: 600px;
+      }
+
+<style>
     .reply_item {
     	display: none;
     }
@@ -96,10 +101,7 @@
 				<button id="btn_create_boardReply" class="primary-btn" style="color: #fff">
 					댓글<br>입력</button>
    
-			      <%-- 댓글작성 
-			      <div id="reply_number"></div>
-			      <input type="text" id="board_reply_content_empty" name="board_reply_content_empty" placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." style="width:600px;" />
-			      <input type="submit" id="btn_create_boardReply" value="등록" />--%>
+
       
 
    </div>
@@ -126,6 +128,7 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
    <script>
    
+
    
    
    
@@ -141,9 +144,6 @@
             }
       });
          
-
-
-
                      // input[id="board_no"] 요소의 value 속성값을 읽음.
                      var boardNo = $('#board_no').val();
             

@@ -10,4 +10,5 @@ public interface BoardReplyService {
 		int insert(BoardReply boardReply);
 		int update(BoardReply boardReply);
 		int delete(int board_reply_no);
+		int boardNoDelete(int board_no);
 }

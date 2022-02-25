@@ -45,14 +45,21 @@ public class BoardReplyServiceImpl implements BoardReplyService{
 	@Override
 	public int delete(int board_reply_no) {
 		log.info("delete({})", board_reply_no);
-		//int board_no = boardReplyDao.readBoardNo(board_reply_no);
+		int board_no = boardReplyDao.readBoardNo(board_reply_no);
 		int result = boardReplyDao.delete(board_reply_no);
 		
-		boardDao.updateBoardReplyCnt(board_reply_no, -1);
+		boardDao.updateBoardReplyCnt(board_no, -1);
 		return result;
 	}
+
+	@Override
+	public int boardNoDelete(int board_no) {
+		log.info("boardNoDelete({})", board_no);
+		
+		return boardReplyDao.deleteReplyBNo(board_no);
+	}
 	
-	
+		
 	
 	
 	
