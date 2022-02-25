@@ -58,11 +58,5 @@ public class MovieReplyServiceImpl implements MovieReplyService {
 		log.info("update(movieReply:{}) 호출", movieReply);
 		return movieReplyDao.update(movieReply);
 	}
-	
-	@Override
-	public List<String> chooseWinner(int event_no, int winner_number) {
-		log.info("chooseWinner(event_no:{}, winner_number:{}) 호출", event_no, winner_number);
-		return eventReplyDao.chooseWinner(event_no, winner_number);
-	}
 
 }

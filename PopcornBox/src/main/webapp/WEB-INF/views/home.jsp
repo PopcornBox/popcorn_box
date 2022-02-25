@@ -145,7 +145,7 @@
                          <div>
 							<form name="search" align="right" style="margin-right:20px;" method = "get"  
 								action ="./movie/search" >
-			                    <select name="type" class="search" style="padding-bottom: 1px;">
+			                    <select name="type"  id="type" class="search" style="padding-bottom: 1px;">
 			                        <option value="1">제목</option>
 			                        <option value="2">배우</option>
 			                        <option value="3">감독</option>

@@ -1,6 +1,10 @@
 package com.spring.pjt.controller;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -84,8 +88,9 @@ public class MovieController {
 			moList.add(newMovie);
 		}
 		
-		Movie movie = movieService.select(movie_no);
+	
 		model.addAttribute("movie", movie);
+		model.addAttribute("similarMovieList", moList);
 		model.addAttribute("viewpage", vpage);	
 	}
 	
