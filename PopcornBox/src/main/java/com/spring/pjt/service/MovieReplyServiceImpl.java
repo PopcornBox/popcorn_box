@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.pjt.domain.MovieReply;
+import com.spring.pjt.persistence.EventReplyDao;
 import com.spring.pjt.persistence.MovieReplyDao;
 
 @Service
@@ -15,6 +16,7 @@ public class MovieReplyServiceImpl implements MovieReplyService {
 
 	private static final Logger log = LoggerFactory.getLogger(MovieReplyServiceImpl.class);
 	@Autowired MovieReplyDao movieReplyDao;
+	@Autowired EventReplyDao eventReplyDao;
 	
 	@Override
 	public int insert(MovieReply movieReply) {
