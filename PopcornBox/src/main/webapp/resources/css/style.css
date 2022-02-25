@@ -3865,7 +3865,6 @@ header .search_option {
 .contact__form .row{
 	max-width: 700px;
 	margin-left: auto;
-	margin-bottom: 15px;
 	margin-top: 15px;
 	margin-right: 0px;
 }
@@ -3970,7 +3969,7 @@ header .search_option {
 	border-bottom: 1px solid #e1e1e1;
 }
 .contact__form .reply_item input, i{
-	font-size: 12px;
+	font-size: 14px;
 	color: 535353;
 }
 .contact__form .reply_item textarea#board_reply_content{
@@ -3997,6 +3996,12 @@ header .search_option {
 	border: #fff 1px solid;
 	background-color: #000;
 	color: #fff;
+}
+
+#board_reply_update_time {
+	margin-left: auto;
+	    opacity: .5;
+	font-size: 12px;
 }
 
 .contact__form .trailer {

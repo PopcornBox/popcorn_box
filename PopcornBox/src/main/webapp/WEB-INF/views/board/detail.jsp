@@ -29,19 +29,6 @@
 
    <%-- 게시글 상세보기 --%>
    <div class="container">
-          <c:if test="${signInUserNickname == board.user_nickname}">
-               <div style="margin-left: auto; margin-right: 30px;">
-                  <!-- 로그인 사용자 아이디와 글 작성자 아이디가 일치할 때만 수정 메뉴를 보여줌. -->
-                  <ul style="display: inline-flex; list-style: none;font-size: 14px;">
-                     <li>
-                        <a href="./update?board_no=${board.board_no}">글 수정 |</a>
-                     </li>
-                     <li> 
-                        <a id="menu-delete" href="./delete?board_no=${board.board_no}">삭제</a>
-                     </li>
-                  </ul>
-               </div>
-            </c:if>
 	
 	<hr>
 
@@ -175,17 +162,17 @@
                            //console.log(this);
                            var date = new Date(this.board_reply_update_time);
                            var dateStr = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
-                           list += '<div class="reply_item">'
+                           list += '<div class="reply_item"><div class="reply_header row">'
                               + '<input type="hidden" id="board_reply_no" name="board_reply_no" value="'
                               + this.board_reply_no
                               + '" readonly />'
-                              +'<i class="fa-solid fa-user"></i>'
+                              +'<div><i class="fa-solid fa-user"></i>'
                               + '<input type="text" id="user_nickname" name="user_nickname" value="'
                               + this.user_nickname
-                              + '" readonly />'
+                              + '" readonly /></div>'
                               + '<input type="text" id="board_reply_update_time" name="board_reply_update_time" value="'
                               + dateStr
-                              + '" readonly />'
+                              + '" readonly /></div>'
                               + '<textarea type="text" id="board_reply_content" name="board_reply_content" onkeyup="resize(this)" readonly>'
                               + this.board_reply_content
                               + ' </textarea>';
