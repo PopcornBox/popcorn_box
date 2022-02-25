@@ -130,7 +130,7 @@
 						autofocus></textarea>
 				</div>
 				<div>
-					<textarea rows="5" name="board_content" placeholder="내용 입력"
+					<textarea rows="15" name="board_content" placeholder="내용 입력"
 						onkeyup="resize(this)" required></textarea>
 				</div>
 
@@ -164,7 +164,12 @@
 	<%@ include file="../footer.jsp"%>
 	<!-- Footer Section End -->
 
-
+	<script>
+	function resize(obj) {
+	    obj.style.height = '1px';
+	    obj.style.height = (12 + obj.scrollHeight) + 'px';
+	}
+	</script>
 
 	<!-- Js Plugins -->
 	<script src="../resources/js/jquery-3.3.1.min.js"></script>

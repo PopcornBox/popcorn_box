@@ -95,13 +95,6 @@
 						</ul>
 					</nav>
 				</div>
-				<div class="col-lg-3 col-md- 10">
-					<div class="header__nav__option">
-						<a href="#" class="search-switch"><img
-							src="../resources/img/icon/search.png" alt=""></a>
-
-					</div>
-				</div>
 			</div>
 			<div class="canvas__open">
 				<i class="fa fa-bars"></i>
@@ -126,7 +119,7 @@
 						rows="1" onkeyup="resize(this)" required></textarea>
 				</div>
 				<div>
-					<textarea rows="5" id="board_content" name="board_content"  placeholder="내용 입력"
+					<textarea rows="15" id="board_content" name="board_content"  placeholder="내용 입력"
 						onkeyup="resize(this)" required></textarea>
 				</div>
 
@@ -149,6 +142,13 @@
 
 
 	<%@ include file="../footer.jsp"%>
+	
+		<script>
+	function resize(obj) {
+	    obj.style.height = '1px';
+	    obj.style.height = (12 + obj.scrollHeight) + 'px';
+	}
+	</script>
 
 	<!-- Js Plugins -->
 	<script src="../resources/js/jquery-3.3.1.min.js"></script>

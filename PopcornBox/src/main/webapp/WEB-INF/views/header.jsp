@@ -21,8 +21,6 @@
 <!-- Css Styles -->
 <link rel="stylesheet" href="../resources/css/bootstrap.min.css"
 	type="text/css">
-<link rel="stylesheet" href="../resources/css/bootstrap_watch.min.css"
-	type="text/css">
 <link rel="stylesheet" href="../resources/css/font-awesome.min.css"
 	type="text/css">
 <link rel="stylesheet" href="../resources/css/elegant-icons.css"

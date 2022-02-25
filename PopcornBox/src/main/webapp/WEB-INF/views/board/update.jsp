@@ -137,7 +137,7 @@
 						rows="1" onkeyup="resize(this)" required>${board.board_title}</textarea>
 				</div>
 				<div>
-					<textarea id="board_content" name="board_content" 
+					<textarea id="board_content" name="board_content" rows="15"
 						onkeyup="resize(this)" required autofocus>${board.board_content}
                         </textarea>
 				</div>
