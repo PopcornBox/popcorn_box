@@ -235,7 +235,7 @@
   					<button type="button" id="btn_your_score" class="btn btn-primary" data-target="#updateModal">	
   					</button>	
   					
-  					<div>
+  					<div style="color: red;">
   						<i class="fa-regular fa-heart" id="btn_unlike"></i>
   						<i class="fa-solid fa-heart" id="btn_like"></i>
   					</div>				
@@ -940,7 +940,7 @@
 		});
 	}
 	
-    
+  
     
         
 }); 
