@@ -18,5 +18,7 @@ public interface EventReplyDao {
 	int update(EventReply eventReply);
 
 	List<EventReply> readTenEventReplies(Integer event_no, Integer viewpage);
+	
+	List<String> chooseWinner(int event_no, int winner_number);
 
 }

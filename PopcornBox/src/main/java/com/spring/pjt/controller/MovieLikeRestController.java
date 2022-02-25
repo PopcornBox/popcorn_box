@@ -106,5 +106,29 @@ public class MovieLikeRestController {
 		return entity;
 	}
 	
+	@RequestMapping(value = "/count/{movie_no}", method = RequestMethod.GET)
+	public ResponseEntity<List<Integer>> countLike(@PathVariable(name = "movie_no") int movie_no) {
+			log.info("countLike(movie_no:{})", movie_no);
+			
+			List<Object> objList = movieLikeService.readUsers(movie_no);
+			
+			log.info("userNoList:{}", objList);
+			
+			List<Integer> userNoList = new ArrayList<>();
+			
+			if (objList.size() == 0) {
+				userNoList.add(0);
+			}
+			
+			for (Object obj : objList) {
+				int user_number = Integer.valueOf(String.valueOf(obj));
+				userNoList.add(user_number);
+			}
+			
+			ResponseEntity<List<Integer>> entity = new ResponseEntity<>(userNoList, HttpStatus.OK);
+			
+			return entity;
+	}
+	
 	
 }
