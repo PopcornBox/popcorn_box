@@ -22,6 +22,7 @@ import org.springframework.web.util.UriUtils;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.spring.pjt.domain.User;
+import com.spring.pjt.domain.UserLog;
 import com.spring.pjt.service.KakaoLoginService;
 import com.spring.pjt.service.UserMailSendService;
 import com.spring.pjt.service.UserService;
@@ -348,20 +349,15 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public void mypage() {
-		log.info("mypage() GET 호출");
+	public void mypage(HttpServletRequest request, Model model) {
+		HttpSession session = request.getSession();
+		String signInUserNickname = (String)session.getAttribute("signInUserNickname");
+		log.info("mypage(userNickname : {}) GET 호출", signInUserNickname);
+		User mypageBoardInfo = userService.callMypageBoardInfo(signInUserNickname);
+		model.addAttribute("mypageBoardInfo", mypageBoardInfo);
+		
 	}
 	
-//	@RequestMapping(value = "/mypage")
-//	public String mypage_log(HttpServletRequest request, Model model) {
-//		HttpSession session =request.getSession();
-//		String signInUserNickname = (String) session.getAttribute("signInUserNickname");
-//		log.info("mypage(user_nickname : {}) GET 호출",signInUserNickname);
-//		model.addAttribute("mypage_log",userService.readUserByNickname(signInUserNickname));
-//		
-//		
-//		
-//	}
 	
 	@RequestMapping(value = "/userInfo", method = RequestMethod.GET)
 	public void userInfo(HttpServletRequest request, Model model) {
@@ -369,6 +365,7 @@ public class UserController {
 		String signInUserNickname = (String) session.getAttribute("signInUserNickname");
 		log.info("userInfo(user_nickname : {}) GET 호출", signInUserNickname);
 		User user = userService.readUserByNickname(signInUserNickname);
+		
 		
 		model.addAttribute("user",user);
 	}

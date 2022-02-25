@@ -19,6 +19,7 @@ public class EventReplyServiceImpl implements EventReplyService {
 	@Override
 	public int insert(EventReply eventReply) {
 		log.info("insert(eventReply:{}) 호출", eventReply);
+		
 		return eventReplyDao.insert(eventReply);
 	}
 	

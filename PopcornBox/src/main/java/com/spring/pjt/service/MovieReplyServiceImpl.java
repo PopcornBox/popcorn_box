@@ -19,6 +19,7 @@ public class MovieReplyServiceImpl implements MovieReplyService {
 	@Override
 	public int insert(MovieReply movieReply) {
 		log.info("insert(movieReply:{}) 호출", movieReply);
+		
 		return movieReplyDao.insert(movieReply);
 	}
 

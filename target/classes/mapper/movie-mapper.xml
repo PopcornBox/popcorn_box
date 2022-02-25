@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.pjt.mapper.MovieMapper">
+
+<!-- 영화 전체 검색 -->
+<select id="selectAll" resultType="Movie">
+    SELECT * FROM ${TBL_MOVIES} 
+    ORDER BY ${COL_MOVIE_NO} DESC
+</select>
+
+<!-- 영화 no 검색 -->
+<select id="selectMovieNo" resultType="Movie">
+	SELECT * FROM ${TBL_MOVIES}
+	WHERE ${COL_MOVIE_NO} = #{movie_no}
+</select>
+
+    <!-- 키워드 검색: (1) 제목, (2) 배우, (3) 감독, (4) 쟝르 -->
+    <!-- Dynamic Query -->
+    <select id="selectByKeyword" resultType="Movie">
+    SELECT * FROM ${TBL_MOVIES}
+        <if test="type == 1">
+        WHERE lower(${COL_MOVIE_TITLE}) LIKE #{keyword}
+        </if>
+        <if test="type == 2">
+        WHERE lower(${COL_MOVIE_ACTOR}) LIKE #{keyword}
+        </if>
+        <if test="type == 3">
+        WHERE lower(${COL_MOVIE_DIRECTOR}) LIKE #{keyword}
+        </if>
+        <if test="type == 4">
+        WHERE lower(${COL_MOVIE_GENRE}) LIKE #{keyword}
+        </if>
+    ORDER BY ${COL_MOVIE_NO} DESC
+    </select>
+
+
+
+
+
+
+</mapper>

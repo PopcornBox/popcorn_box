@@ -15,6 +15,10 @@ public interface UserDao {
 	
 	// 회원 정보 수정
 	void userInfoUpdate(User user);
+	
+	// 회원 활동 기록
+	User callMypageBoardInfo(String user_id);
+	
 	int lock_userKey(User user);
 	int resetPwd(User user);
 	
