@@ -10,10 +10,23 @@
 <head>
 <meta charset="UTF-8">
 <title>PopcornBox</title>
+
 <style>
       #board_reply_content {
       width: 600px;
       }
+
+<style>
+    .reply_item {
+    	display: none;
+    }
+    .reply_item:nth-child(-n+3) {
+    	display: block;
+    }
+    #load:hover{
+    text-decoration: none;
+    color: #fff;
+    }
 </style>
 
 </head>
@@ -21,76 +34,91 @@
 
    <%-- 게시글 상세보기 --%>
    <div class="container">
-          <c:if test="${signInUserNickname == board.user_nickname}">
-               <div style="margin-left: auto; margin-right: 30px;">
-                  <!-- 로그인 사용자 아이디와 글 작성자 아이디가 일치할 때만 수정 메뉴를 보여줌. -->
-                  <ul style="display: inline-flex; list-style: none;font-size: 14px;">
-                     <li>
-                        <a href="./update?board_no=${board.board_no}">글 수정 |</a>
-                     </li>
-                     <li> 
-                        <a id="menu-delete" href="./delete?board_no=${board.board_no}">삭제</a>
-                     </li>
-                  </ul>
-               </div>
-            </c:if>
+	
+	<hr>
+
+
+	<%-- 게시글 상세보기 --%>
+	<div class="container">
+	<div class="contact__form">
+		<%-- 게시글 상세보기 --%>			
+		<form>
+			<div>
+				<input type="hidden" id="board_no" value="${board.board_no}" />
+				<%-- 글번호 숨김 --%>
+			</div>
+			<div class="contact__form" id="board_title"
+					name="board_title">${board.board_title}
+			</div>
+			
+				<div>
+					<i class="fa-solid fa-user"></i>
+					<input type="text"
+						id="board_user_nickname" name="board_user_nickname"
+						value="${board.user_nickname}" required readonly />
+				</div>
+				
+			
+			<div class="row">
+				<div>
+					<fmt:formatDate value="${board.board_update_time}"
+						pattern="yy/MM/dd  HH:mm" var="last_update_time" />
+					<input type="text" id="reg-date" name="reg_date"
+						value="${last_update_time}" readonly />
+				</div>
+				
+				<c:if test="${signInUserNickname == board.user_nickname}">
+					<div style="margin-left: auto; margin-right: 30px;">
+						<!-- 로그인 사용자 아이디와 글 작성자 아이디가 일치할 때만 수정 메뉴를 보여줌. -->
+						<ul style="display: inline-flex; list-style: none;font-size: 14px;">
+							<li>
+								<a href="./update?board_no=${board.board_no}">글 수정 |</a>
+							</li>
+							<li> 
+								<a id="menu-delete" href="./delete?board_no=${board.board_no}">삭제</a>
+							</li>
+						</ul>
+					</div>
+				</c:if>
+			</div>
+			<hr>
+			<div>
+				<div style="white-space:pre-wrap" id="board_content" name="board_content" required
+					readonly>${board.board_content}</div>
+			</div>
+		</form>
+		<hr>
+
+			<div style="display: flex;">
+			
+				<%-- 댓글작성 --%>
+				<input type="text" id="board_reply_content" style="width: 600px; border: #ddd 1px solid;"
+					name="board_reply_content" placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." />
+				
+		        <!-- 로그인한 사용자 아이디를 input의 값으로  설정-->
+		      <input type="hidden" id="user_nickname" name="user_nickname"
+		         value="${signInUserNickname}" readonly />
+				<button id="btn_create_boardReply" class="primary-btn" style="color: #fff">
+					댓글<br>입력</button>
    
-   
-   
-      <form>
-         <div>
-            <input type="hidden" id="board_no" value="${board.board_no}" />
-            <%-- 글번호 숨김 --%>
-         </div>
-         <div>
-            <label for="title">글 제목</label> <input type="text" id="board_title"
-               name="board_title" value="${board.board_title}" required autofocus
-               readonly />
-         </div>
-         <div>
-            <label for="content">글 내용</label>
-            <textarea rows="5" id="board_content" name="board_content" required
-               readonly>${board.board_content}</textarea>
-         </div>
-         <div>
-            <label for="board_user_nickname">닉네임</label> <input type="text"
-               id="board_user_nickname" name="board_user_nickname"
-               value="${board.user_nickname}" required readonly />
-         </div>
-         <div>
-            <label for="reg_date">최종 수정 시간</label>
-            <fmt:formatDate value="${board.board_update_time}"
-               pattern="yyyy/MM/dd HH/mm/ss" var="last_update_time" />
-            <input type="text" id="board_update_time" name="board_update_time"
-               value="${last_update_time}" readonly />
-         </div>
-      </form>
-      
-      
 
       
-      
+
    </div>
 
-   <div>
-   
-
-      <input type="text" id="board_reply_content"
-         name="board_reply_content" placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." />
-      <!-- 로그인한 사용자 아이디를 input의 값으로  설정-->
-      <input type="hidden" id="user_nickname" name="user_nickname"
-         value="${signInUserNickname}" readonly />
-      <button id="btn_create_boardReply" class="btn btn-outline-dark">
-         댓글 작성 완료</button>
-   </div>
 
    <%-- 댓글 목록 --%>
-   <div id="board_replies">
-   </div>
+    	<div id="board_replies"></div>
+			<a href="#" id="load" class="primary-btn">댓글 더보기</a>
 
 
+		</div>
+	</div>
+</div>
 
+	
    <%@ include file="../footer.jsp"%>
+
 
 
 
@@ -100,7 +128,7 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
    <script>
    
-   
+
    
    
    
@@ -134,22 +162,23 @@
                            //console.log(this);
                            var date = new Date(this.board_reply_update_time);
                            var dateStr = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
-                           list += '<div class="reply_item">'
-                              + '<input type="text" id="board_reply_no" name="board_reply_no" value="'
+                           list += '<div class="reply_item"><div class="reply_header row">'
+                              + '<input type="hidden" id="board_reply_no" name="board_reply_no" value="'
                               + this.board_reply_no
                               + '" readonly />'
-                              + '<input type="text" id="board_reply_content" name="board_reply_content" value="'
-                              + this.board_reply_content
-                              + '" readonly />'
+                              +'<div><i class="fa-solid fa-user"></i>'
                               + '<input type="text" id="user_nickname" name="user_nickname" value="'
                               + this.user_nickname
-                              + '" readonly />'
+                              + '" readonly /></div>'
                               + '<input type="text" id="board_reply_update_time" name="board_reply_update_time" value="'
                               + dateStr
-                              + '" readonly />';
+                              + '" readonly /></div>'
+                              + '<textarea type="text" id="board_reply_content" name="board_reply_content" onkeyup="resize(this)" readonly>'
+                              + this.board_reply_content
+                              + ' </textarea>';
                               if (this.user_nickname == '${signInUserNickname}'){
-                                 list += '<button class="reply_update">수정</button>'
-                                      + '<button class="reply_delete">삭제</button>';
+                                 list += '<div class="btnbox"><button class="reply_update">수정</button>'
+                                      + '<button class="reply_delete">삭제</button></div>';
                               }
                               list += '</div>';
                         });
@@ -249,6 +278,20 @@
                   }
                });
             });
+      
+	        
+	        $(function(){
+	            $(".reply_item").slice(0, 3).show(); // select the first three
+	            $("#load").click(function(e){ // click event for load more
+	                e.preventDefault();
+	                $(".reply_item:hidden").slice(0, 3).show(); // select next 3 hidden divs and show them
+	                if($(".reply_item:hidden").length == 0){ // check if any hidden divs still exist
+	                	document.getElementById("load").style.display = "none";
+	                }
+	            });
+	        });
+   
+   
    </script>
 </body>
 </html>

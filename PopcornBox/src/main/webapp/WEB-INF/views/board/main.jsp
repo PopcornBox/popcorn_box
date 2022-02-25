@@ -15,13 +15,19 @@
 		color:red;
 	}
 	.txt_1 a { color:red !important;}
+	.pagingView_area{
+		max-width:220px;
+		margin-left: auto;
+		margin-right: auto;	
+	}
 	
 	.pagingView{
 	list-style : none;
 	display: inline-block;
-    margin: 50px 0 0 100px;     
+    margin: 50px 0 0 100px;       
     
-    
+
+	margin-top: 50px;
   }
 	.pagingView li{
 	float: left;
@@ -30,9 +36,7 @@
 	padding: 7px;
 	font-weight: 500;
   }
- a:link {color:black; text-decoration: none;}
- a:visited {color:black; text-decoration: none;}
- a:hover {color:black; text-decoration: underline;}
+
 </style>
 
 
@@ -43,7 +47,7 @@
 
 
 	<div class="container-fluid">
-		<div class="container">
+		<div class="container" style="margin-bottom: 20px;">
 
 
 			<table class="table table-hover">
@@ -53,7 +57,7 @@
 						<th>제목</th>
 						<th>작성자</th>
 						<th>작성일</th>
-						<th>조회</th>
+						<th>조회수</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -91,21 +95,21 @@
 			</div>
 
 
-
-			<div id="main-insertbtn">
-				<a href="./insert" class="btn btn-outline-dark">새 글 작성</a>
+			<div class="btnbox">
+				<div id="main-insertbtn">
+					<a href="./insert" class="primary-btn">새 글 작성</a>
+				</div>
+				<c:if test="${signInUserPosition eq 'A'}">
+					<div id="main-insertbtn">
+						<a href="./notice" class="primary-btn">공지 작성</a>
+					</div>
+				</c:if>
+				<c:if test="${signInUserPosition eq 'B'}">
+					<div id="main-insertbtn">
+						<a href="./notice" class="primary-btn">공지 작성</a>
+					</div>
+				</c:if>
 			</div>
-			<c:if test="${signInUserPosition eq 'A'}">
-				<div id="main-insertbtn">
-					<a href="./notice" class="btn btn-outline-dark">공지 작성</a>
-				</div>
-			</c:if>
-			<c:if test="${signInUserPosition eq 'B'}">
-				<div id="main-insertbtn">
-					<a href="./notice" class="btn btn-outline-dark">공지 작성</a>
-				</div>
-			</c:if>
-
 
 
 

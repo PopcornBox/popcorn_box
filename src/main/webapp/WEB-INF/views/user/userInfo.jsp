@@ -155,7 +155,7 @@
 				<div class="form-group has-feedback">
 					<label class="control-label" for="user_nickname">닉네임</label>
 					<input class="form-control" type="text" id="user_nickname" name="user_nickname" value="${signInUserNickname}"/>
-					<button class="checknickname" type="button" id="checknickname" onclick="fn_checknickname();" value="N">중복확인</button>
+					<button class="checknickname" type="button" id="checknickname" value="N">중복확인</button>
 				</div>
 				<div class="form-group has-feedback">
 					<label class="control-label" for="user_email">이메일</label>
@@ -165,7 +165,7 @@
 					<label class="control-label" for="user_update_time">가입 일자</label>
 					<input class="form-control" type="text" id="user_update_time" name="user_update_time" value="${user.user_update_time}" readonly="readonly" disabled />
 				</div>
-			
+				<input class="form-control" type="hidden" name="msg" id="msg"></input>
 				<div class="form-group has-feedback">
 					<button class="btn btn-success" type="submit" id="submit">회원정보수정</button>
 					<button class="cancel btn btn-danger" type="button">취소</button>
@@ -229,25 +229,64 @@
    <script src="../resources/js/owl.carousel.min.js"></script>
    <script src="../resources/js/main.js"></script>
    <script>
-   $(documenct).ready(function(){
-		
+     $(document).ready(function(){
+	   
+	   var done = 0;
+	   
+	   $('#user_nickname').keyup(function() {
+		   done = 1;
+	   });
+	   
+	   
+	   
+	   $('#checknickname').click(function() {
+		   var user_nickname = $('#user_nickname').val();
+		   var user_no = '${user.user_no}';
+		   
+		   if (user_nickname == '') {
+			   alert('닉네임을 입력해주세요!');
+			   return;
+		   }
+		   
+		   $.ajax({
+			   async: true,
+			   type: 'POST',
+			   data: user_nickname,
+			   url: '/pjt/check_nickname/' + user_no,
+			   dataType: 'json',
+			   contentType: 'application/json; charset=UTF-8',
+			   success: function(data) {
+				   if (data.cnt > 0) {
+					   alert('사용가능한 닉네임입니다.');
+					   done = 2;
+				   } else {
+					   alert('닉네임이 존재합니다.');
+				   }
+			   }
+		   });
+		 });
+   
+   		
+	   	$('#submit').click(function(event) {
+	   		if (done == 0) {
+	   			$('#user_nickname').val('${signInUserNickname}');
+	   			$('#msg').val('닉네임이 변경되었습니다.');
+	   		}		
+	   		
+	   		if (done == 1) {
+	   			event.preventDefault();
+	   			alert('닉네임 중복확인을 해주세요!');
+	   		}
+	   		
+	   		if (done == 2) {
+	   			$('#msg').val('닉네임이 변경되었습니다.');
+	   		}
+	   			   		
+	   	});
+   
    });
-		function fn_checknickname(){
-			$.ajax({
-				url : "./checknickname",
-				type : "post",
-				dataType : "json",
-				data : {"user_nickname" : $("#user_nickname").val()},
-				success : function(data){
-					if(response == 'invalid'){
-						alert("중복된 닉네임입니다.");
-					}else if(response == 'valid'){
-						$("#checknickname").attr("value", "Y");
-						alert("사용가능한 아이디입니다.");
-					}
-				}
-			})
-		}
+		
+		
  	</script>
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
