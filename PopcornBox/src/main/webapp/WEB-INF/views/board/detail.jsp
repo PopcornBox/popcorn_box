@@ -223,38 +223,43 @@
                      });
                      
                      
-                     $('#board_replies').on('click', '.reply_item .reply_update', function () {
-                        // 수정 버튼이 포함된 div 요소에 포함된 board_reply_no와 
-                        //  $(this) reply_update인 버튼 요소
-                        var board_reply_no = $(this).prevAll('#board_reply_no').val();
-                        var board_reply_content = $(this).prevAll('#board_reply_content').val();
-                        
-                          $.ajax({
-                             // 요청 URL
-                             url: '/pjt/board_replies/' + board_reply_no,
-                             // 요청 방식
-                             type: 'PUT',
-                             // 요청 패킷 헤더
-                             headers: {
-                                'Content-Type': 'application/json',
-                                'X-HTTP-Method-Override': 'PUT'
-                             },
-                             // 요청 패킷 데이터
-                             data: JSON.stringify({'board_reply_content': board_reply_content}),
-                             // 성공 응답 콜백 함수
-                             success: function () {
-                                alert(board_reply_no + ' 댓글 수정 성공!');
-                                getAllReplies(); // 댓글 목록 업데이트
-                             }
-                          });
-                        
-                     });
+         			$('#board_replies').on('click', '.reply_item .reply_update', function () {
+        				
+        				$(this).prevAll('#board_reply_content').attr('readonly', false);
+        				$(this).prevAll('#board_reply_content').focus();
+        				
+        				$(this).prevAll('#board_reply_content').on('change', function(){
+        					$('#board_replies').on('click', '.reply_item .reply_update', function () {
+      								var board_reply_no = $(this).prevAll('#board_reply_no').val();
+                    				var board_reply_content = $(this).prevAll('#board_reply_content').val();
+                    		
+                    				$.ajax({
+                    						// 요청 URL
+                    						url: '/pjt/board_replies/' + board_reply_no,
+                    						// 요청 방식
+                    						type: 'PUT',
+                    						// 요청 패킷 헤더
+                    						headers: {
+                    							'Content-Type': 'application/json',
+                    							'X-HTTP-Method-Override': 'PUT'
+                    						},
+                    						// 요청 패킷 데이터
+                    						data: JSON.stringify({'board_reply_content': board_reply_content}),
+                    						// 성공 응답 콜백 함수
+                    						success: function () {
+                    						alert(' 댓글 수정 성공!');
+                    						getAllReplies(); // 댓글 목록 업데이트
+                    			}
+                    		});
+        				  });
+        				});
+        			});
                      
                      //댓글 삭제 버튼
                      $('#board_replies').on('click', '.reply_item .reply_delete', function (event) {
                         //console.log(this);
                         var board_reply_no = $(this).prevAll('#board_reply_no').val();
-                        var result = confirm(board_reply_no + '번 댓글을 정말 삭제할까요?')
+                        var result = confirm( '댓글을 정말 삭제할까요?')
                         
                         if (result) {
                            $.ajax({
@@ -266,7 +271,7 @@
                                 'X-HTTP-Method-Override': 'DELETE'
                            },
                              success: function () {
-                            	 alert(board_reply_no + ' 번 댓글 삭제 성공!');
+                            	 alert( '댓글 삭제 성공!');
                             	 getAllReplies(); // 댓글 목록 업데이트
                         }  
                      });
