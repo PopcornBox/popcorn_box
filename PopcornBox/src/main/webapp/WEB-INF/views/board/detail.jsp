@@ -14,7 +14,6 @@
       #board_reply_content {
       width: 600px;
       }
-
 </style>
 
 </head>
@@ -101,7 +100,6 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
    <script>
    
-
    
    
    
@@ -118,7 +116,6 @@
             }
       });
          
-
                      // input[id="board_no"] 요소의 value 속성값을 읽음.
                      var boardNo = $('#board_no').val();
             

@@ -43,7 +43,7 @@ public class BoardReplyDaoImpl implements BoardReplyDao {
 	@Override
 	public int delete(int board_reply_no) {
 		log.info("delete=(board_reply_no");
-		
+		 
 		return sqlSession.delete(NAMESPACE + ".delete", board_reply_no);
 	}
 	
@@ -51,7 +51,13 @@ public class BoardReplyDaoImpl implements BoardReplyDao {
 	public int readBoardNo(int board_reply_no) {
 		log.info("readBoardNo(board_reply_no={})" ,  board_reply_no);
 		
-		return sqlSession.selectOne(NAMESPACE + ".readBoardNo", board_reply_no);
+		return sqlSession.selectOne(NAMESPACE + ".readBoardReplyNo", board_reply_no);
+	}
+
+	@Override
+	public int deleteReplyBNo(int board_no) {
+		log.info("deleteReplyBNo(board_no={})" ,  board_no);
+		return sqlSession.delete(NAMESPACE+".deleteReplyBNo", board_no);
 	}
 
 }

@@ -11,10 +11,17 @@
 <title>PopcornBox</title>
 
 <style>
+	.txt_1 {
+		color:red;
+	}
+	.txt_1 a { color:red !important;}
+	
 	.pagingView{
 	list-style : none;
 	display: inline-block;
-    margin: 50px 0 0 100px;      
+    margin: 50px 0 0 100px;     
+    
+    
   }
 	.pagingView li{
 	float: left;
@@ -35,7 +42,6 @@
 
 
 
-
 	<div class="container-fluid">
 		<div class="container">
 
@@ -52,11 +58,12 @@
 				</thead>
 				<tbody>
 					<c:forEach var="board" items="${boardList}">
-						<tr>
-							<td>${board.board_no}</td>
-							<td><a href="./detail?board_no=${board.board_no}">${board.board_title}</a>
+						<tr class="txt_${board.board_mode}">
+							<td>${board.board_mode}</td>
+							<td ><a href="./detail?board_no=${board.board_no}">${board.board_title}</a>
 								<span>[${board.board_reply_cnt}]</span></td>
 							<td>${board.user_nickname}</td>
+							
 							<td><fmt:formatDate value="${board.board_update_time}"
 									pattern="yyyy/MM/dd HH:mm" /></td>
 							<td>${board.board_view_cnt}</td>

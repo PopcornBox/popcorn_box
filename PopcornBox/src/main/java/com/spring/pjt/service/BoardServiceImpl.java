@@ -36,8 +36,6 @@ public class BoardServiceImpl  implements BoardService{
 		log.info("select(board_no={}) 호출", board_no);
 		Board board = boardDao.read(board_no);
 		boardDao.UpdateViewCnt(board_no);
-		
-	
 	
 		
 		return board;
