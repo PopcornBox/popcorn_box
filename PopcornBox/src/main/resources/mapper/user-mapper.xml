@@ -166,24 +166,5 @@
 		<result property="movie_reply_update_time" column="MOVIE_REPLY_UPDATE_TIME"/>
 	</resultMap>
 	
-	<!-- 내 좋아요 영화 조회 -->
-	<select id="mypageMovieLikeInfo" resultMap="mypageMovieLikeResult">
-	SELECT U.USER_NICKNAME, U.USER_NO, L.MOVIE_NO, L.LIKE_UPDATE_TIME
-    from USERS U
-    LEFT OUTER JOIN LIKES L
-	ON U.USER_NO = L.USER_NO
-	WHERE U.USER_NICKNAME = #{USER_NICKNAME}
-	</select>
-	
-	<resultMap type="User" id="mypageMovieLikeResult">
-		<result property="user_nickname" column="USER_NICKNAME"/>
-		<result property="user_no" column="USER_NO"/>
-		<collection property="myMovieLikeList" resultMap="myMovieLikeList"/>
-	</resultMap>
-	
-	<resultMap type="MovieLike" id="myMovieLikeList">
-		<result property="movie_no" column="MOVIE_NO"/>
-		<result property="like_update_time" column="LIKE_UPDATE_TIME"/>
-	</resultMap>
 
 </mapper>

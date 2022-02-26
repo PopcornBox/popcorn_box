@@ -17,25 +17,25 @@
 	}
 	.txt_1 a { color:red !important;}
 	.pagingView_area{
-		max-width:220px;
+		max-width:500px;
 		margin-left: auto;
 		margin-right: auto;	
+		display: flex;
 	}
 	
 	.pagingView{
 	list-style : none;
 	display: inline-block;
-    margin: 50px 0 0 100px;       
-    
-
+    margin-left: auto;
+    margin-right: auto;       
 	margin-top: 50px;
   }
-	.pagingView li{
-	float: left;
-	font-size: 20px;
-	margin-left: 18px;
-	padding: 7px;
-	font-weight: 500;
+   .pagingView li{
+   float: left;
+   font-size: 20px;
+   margin-left: 18px;
+   padding: 7px;
+   font-weight: 500;
   }
 
 </style>
@@ -47,8 +47,8 @@
 
 
 
-	<div class="container-fluid">
-		<div class="container" style="margin-bottom: 20px;">
+   <div class="container-fluid">
+      <div class="container" style="margin-bottom: 20px;">
 
 
 			<table class="table table-hover">
@@ -76,18 +76,18 @@
 					</c:forEach>
 				</tbody>
 
-			</table>
-			
-			<!-- 페이징 기능 구현 -->
-			<div class="pagingView_area">
-  				<ul id="pagingView" class="pagingView">
-    				<c:if test="${pagingView.prev}">
-    					<li><a href="main${pagingView.makeQuery(pagingView.startPage - 1)}">이전</a></li>
-    				</c:if> 
+         </table>
+         
+         <!-- 페이징 기능 구현 -->
+         <div class="pagingView_area">
+              <ul id="pagingView" class="pagingView">
+                <c:if test="${pagingView.prev}">
+                   <li><a href="main${pagingView.makeQuery(pagingView.startPage - 1)}">이전</a></li>
+                </c:if> 
 
-    				<c:forEach begin="${pagingView.startPage}" end="${pagingView.endPage}" var="page">
-    					<li><a href="main${pagingView.makeQuery(page)}">${page}</a></li>
-    				</c:forEach>
+                <c:forEach begin="${pagingView.startPage}" end="${pagingView.endPage}" var="page">
+                   <li><a href="main${pagingView.makeQuery(page)}">${page}</a></li>
+                </c:forEach>
 
     				<c:if test="${pagingView.next && pagingView.endPage > 0}">
     					<li><a href="main${pagingView.makeQuery(pagingView.endPage + 1)}">다음</a></li>
@@ -123,9 +123,9 @@
 
 
 <%@ include file="../footer.jsp"%>
-	<script
-		src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+   <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+   <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
