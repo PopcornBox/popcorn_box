@@ -366,22 +366,24 @@
                          	var date = new Date(this.event_reply_update_time); // JavaScript Date 객체 생성
                          	var dateStr = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
                          	
+                             	// 댓글 번호
                              	event_list += '<div class="event_reply_item">'
                                                  + '<input type="hidden" id="event_reply_no" name="event_reply_no" value="'
                          		   				+ this.event_reply_no
                          		  				+ '" readonly />';
-                            
+                             // 댓글 작성자 닉네임
                              if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
-                                  event_list += '<input type="text" style="background-color:rgb(240, 248, 255);" id="user_nickname" name="user_nickname" value="'
+                                  event_list += '<input type="text" style="border:none; color:#333333; font-size:14px; width:100%; padding:20px; background-color:rgb(240, 248, 255)" id="user_nickname" name="user_nickname" value="'
                          		            	+ this.user_nickname
                          		            	+ '" readonly />';
                              } else {
                              	event_list += '<input type="text" style="border:none; width:50%; color:#333333; text-align:left; font-weight:700; padding-left:10px; padding-bottom: 20px;" id="user_nickname" name="user_nickname" value="'
-             		            				+ this.user_nickname.substring(0,1) + '*' + this.user_nickname.substring(2, this.user_nickname.length)
+             		            				+ this.user_nickname
              		            				+ '" readonly />';
                              }
+                             // 댓글 작성 시간
                              if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
-                             	event_list += '<input type="text" style="background-color:rgb(240, 248, 255);" id="event_reply_update_time" name="event_reply_update_time" value="'
+                             	event_list += '<input type="text" style="border:none; color:#333333; font-size:14px; width:100%; padding:20px; background-color:rgb(240, 248, 255)" id="event_reply_update_time" name="event_reply_update_time" value="'
                          		           		+ dateStr
                          		            	+ '" readonly />';
                              } else {
@@ -389,13 +391,10 @@
          		           						+ dateStr
          		            					+ '" readonly />';
                              }
-                         	if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
-                         		event_list += '<button class="event_reply_update">수정</button>'
-                         			          + '<button class="event_reply_delete">x</button>';
-                         	}
-                         	
+                           
+                         	// 댓글 내용
                          	 if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면	  				
-                             	 event_list += '<input type="text" style="background-color:rgb(240, 248, 255);" id="event_reply_content" name="event_reply_content" value="'
+                             	 event_list += '<input type="text" style="border:none; color:#333333; font-size:14px; width:100%; padding:20px; background-color:rgb(240, 248, 255)" id="event_reply_content" name="event_reply_content" value="'
        		  									+ this.event_reply_content
       		   		   			    			+'" readonly />';
                              } else {
@@ -403,6 +402,12 @@
  	  									+ this.event_reply_content
  	   		   			    			+'" readonly />';
                              }
+                         	
+                         	 // 댓글 수정, 삭제 버튼
+                          	if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
+                          		event_list += '<button class="event_reply_update">수정</button>'
+                          			          + '<button class="event_reply_delete">x</button>';
+                          	}
                          	
                          	
                          	
