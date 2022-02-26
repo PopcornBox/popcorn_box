@@ -262,8 +262,8 @@
 			style="text: bold; font-size: 16px; text-align: inherit; font-weight: 700; border-top: 1px solid #e1e1e1; padding-top: 40px; margin-bottom: 20px;">
 			댓글 작성하기</div>
 		<div class="event__input" style="display: flex;">
-			<input type="text" id="event_reply_content"
-				name="event_reply_content"
+			<input type="text" id="event_reply_content_empty"
+				name="event_reply_content_"
 				placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." />
 			<button type="submit" class="event-btn" id="btn_register_event_reply"
 				value="등록">등록</button>
