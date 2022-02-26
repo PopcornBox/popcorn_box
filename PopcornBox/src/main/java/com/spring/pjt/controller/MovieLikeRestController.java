@@ -131,4 +131,22 @@ public class MovieLikeRestController {
 	}
 	
 	
+	@RequestMapping(value = "/top", method = RequestMethod.GET)
+	public ResponseEntity<List<Movie>> selectTopLikes() {
+			log.info("selectTopLikes() 호출");
+			
+			List<Integer> top5_movie_no_list = movieLikeService.selectTopLikes();
+			List<Movie> top5_movie_list = new ArrayList<>();
+ 			
+			for (int movie_no : top5_movie_no_list) {
+				Movie movie = movieService.select(movie_no);
+				top5_movie_list.add(movie);
+			}
+					
+			ResponseEntity<List<Movie>> entity = new ResponseEntity<>(top5_movie_list, HttpStatus.OK);
+			
+			return entity;
+	}
+	
+	
 }
