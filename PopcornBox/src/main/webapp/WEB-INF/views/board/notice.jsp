@@ -161,7 +161,7 @@
 
 
 	<!-- Footer Section Begin -->
-	<%@ include file="../footer.jsp"%>
+
 	<!-- Footer Section End -->
 
 	<script>
