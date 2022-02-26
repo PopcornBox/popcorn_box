@@ -154,7 +154,7 @@
 				</div>
 				<div class="form-group has-feedback">
 					<label class="control-label" for="user_nickname">닉네임</label>
-					<input class="form-control" type="text" id="user_nickname" name="user_nickname" value="${signInUserNickname}"/>
+					<input class="form-control" type="text" id="user_nickname" name="user_nickname" placeholder="${signInUserNickname}"/>
 					<button class="checknickname" type="button" id="checknickname" value="N">중복확인</button>
 				</div>
 				<div class="form-group has-feedback">
