@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.spring.pjt.domain.MovieReply;
+import com.spring.pjt.domain.User;
 
 @Mapper
 public interface MovieReplyMapper {
@@ -78,5 +79,18 @@ public interface MovieReplyMapper {
 			+ " WHERE ${COL_MOVIE_REPLY_NO} = #{movie_reply_no}";
 	@Update(UPDATE_MOVIE_REPLY)
 	int updateMovieReply(MovieReply movieReply);	
+	
+	
+	String UPDATE_USER_NICKNAME =
+			"UPDATE ${TABLE_MOVIE_REPLIES} SET ${COL_USER_NICKNAME} = #{user_nickname}"
+			+ " WHERE ${COL_MOVIE_REPLY_NO} = #{movie_reply_no}";
+	@Update(UPDATE_USER_NICKNAME)
+	int updateNickname(Map<String, Object> map);
+	
+	
+	String FIND_MOVIE_REPLY_NO = 
+			 "SELECT ${COL_MOVIE_REPLY_NO} FROM ${TABLE_MOVIE_REPLIES} WHERE ${COL_USER_NICKNAME} = #{user_nickname}";
+	 @Select(FIND_MOVIE_REPLY_NO)
+	 int[] findMovieReplyNo(User user);
 	
 }

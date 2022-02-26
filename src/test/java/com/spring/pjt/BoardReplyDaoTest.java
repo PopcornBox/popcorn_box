@@ -33,10 +33,15 @@ public class BoardReplyDaoTest {
 	public void doTest() {
 		log.info("boardReplyDao: {}", boardReplyDao);
 		
-		//BoardReply boardReply = new BoardReply(1, "DAO 댓글 테스트", "eee", null, 70);
-		List<BoardReply> replyList = boardReplyDao.read(1);
-		log.info(replyList.toString());
+//		BoardReply boardReply = new BoardReply(1, "testupdate", null, null, 1);
+//		int result = boardReplyDao.update(boardReply);
+//		log.info("update result: {}", result);
+//		
+//		List<BoardReply> replyList = boardReplyDao.read(1);
+//		log.info(replyList.toString());
 		
+		int result = boardReplyDao.delete(2);
+		log.info("delete result: {}", result);
 
 	}
 	

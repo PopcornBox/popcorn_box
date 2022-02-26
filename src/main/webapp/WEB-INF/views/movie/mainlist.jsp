@@ -169,7 +169,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcrumb__text">
-                        <h3>Top Movies</h3>
+                        <h4>Top Movies</h4>
                     </div>
                 </div>
             </div>
@@ -275,6 +275,7 @@
 		
 		if ('${signInUserNickname}' == null || '${signInUserNickname}' == '') {
 			$('tr').find('i').removeClass('fa-solid');
+			count_like();
 			$('tr').find('i').click(function() {
 				var answer = alert('로그인후 이용가능합니다.');
 				location.href = '/pjt/movie/like/signin';
@@ -282,6 +283,7 @@
 		} else {
 			// DB에서 좋아요 기록 불러와서 세팅.
 			read_like();
+			count_like();
 			
 		
 		
@@ -359,6 +361,7 @@
         			// 성공 응답(200 response)이 왔을 때 브라우저가 실행할 콜백 함수
         			success: function (resp) {
         				read_like();
+					count_like();
         			}
         		});
 			}
@@ -382,9 +385,61 @@
         				// 성공 응답 콜백 함수
         				success: function () {
         					read_like();
+						count_like();
         				}
         			});
         		}
+		
+			function count_like() {
+			
+			 var iconList = $('tr').find('i');
+			 
+			 for (var i = 0; i < iconList.length; i++) {
+				 
+				 var movie_no = iconList[i].getAttribute('id');
+				 console.log(i);
+				 console.log(movie_no);
+				 get_data(movie_no);	 
+			 }
+			 
+			 
+		} 
+		
+
+		function get_data(movie_no)  {
+			$.getJSON('/pjt/movie_like/count/' + movie_no, function (data) {
+				console.log(movie_no); 
+				console.log(data); 
+			 
+         	 	if (data != null) { // 좋아요 기록이 있으면 (카운팅)
+		         	
+	         				var iconList = $('tr').find('i');
+	   			 
+	   			 			for (var i = 0; i < iconList.length; i++) {
+	   					 
+	   			 				if (iconList[i].getAttribute('id') == movie_no) {
+	   			 				iconList[i].innerHTML = '<span>&nbsp&nbsp&nbsp' + data.length + '</span>';
+	   			 				}
+	   			 			}
+				 }
+         	 	
+         	 	for (var i = 0; i < data.length; i++) {
+					if (data[i] == 0) {
+						
+						var iconList = $('tr').find('i');
+			   			 
+   			 			for (var i = 0; i < iconList.length; i++) {
+   					 
+   			 				if (iconList[i].getAttribute('id') == movie_no) {
+   			 				iconList[i].innerHTML = ' ';
+   			 				}
+   			 			}
+					}
+				}
+     	
+     		});
+	
+    }
 		
 	// ---------------------- 위는 좋아요 코드, 아래는 일정 시간 주기로 평점 데이터 불어와서 세팅하는 코드 ------------------
 	
@@ -409,7 +464,7 @@
 		
 		
 		
-		
+	
 		function read_average_record2() {
     		timer = setInterval(function() {
 		
@@ -481,7 +536,6 @@
 	
 	
 	
-
 		
 	
 	

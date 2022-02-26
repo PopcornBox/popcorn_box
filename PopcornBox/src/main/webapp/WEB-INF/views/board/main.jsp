@@ -25,10 +25,13 @@
    .pagingView{
    list-style : none;
    display: inline-block;
-    margin: 50px 0 0 100px;       
-    
 
-   margin-top: 50px;
+	
+	.pagingView{
+	list-style : none;
+	display: inline-block;
+    margin: 50px 0 0 100px;       
+	margin-top: 50px;
   }
    .pagingView li{
    float: left;
@@ -96,6 +99,7 @@
          </div>
 
 
+
          <div class="btnbox">
             <div id="main-insertbtn">
                <a href="./insert" class="primary-btn">새 글 작성</a>
@@ -111,6 +115,7 @@
                </div>
             </c:if>
          </div>
+
 
 
 

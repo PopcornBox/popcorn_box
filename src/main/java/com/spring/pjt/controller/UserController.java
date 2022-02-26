@@ -18,12 +18,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.util.UriUtils;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.spring.pjt.domain.User;
 import com.spring.pjt.service.KakaoLoginService;
 import com.spring.pjt.service.UserMailSendService;
 import com.spring.pjt.service.UserService;
+
+import oracle.net.ano.Service;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -121,11 +124,18 @@ public class UserController {
 		
 		// 로그인 페이지가 요청됐을 때, 로그인 성공 후 이동할 페이지가 질의 문자열에 포함되어 있는 경우
 		if (url != null && !url.equals("")) { 
-			model.addAttribute("url", url); // 로그인 이후 이동할 페이지를 저장
+//			String encodedUrl = UriUtils.encode(url, "UTF-8");
+//			model.addAttribute("url", encodedUrl); // 로그인 이후 이동할 페이지를 저장
+//			log.info("url: {}", encodedUrl);
+			model.addAttribute("url", url); // 로그인 이후 이동할 페이지를 저장.
+		} else { // AuthInterceptor를 거치지 않는 로그인의 경우 직접 url을 찾아서 저장
+			String referer = request.getHeader("Referer");
+			model.addAttribute("url", referer);
+			log.info("url: {}", referer);
 		}
 		
 	}
-//TODO
+
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
 	public void signIn(User user, Model model) {
 		log.info("signIn({}) POST 호출", user);
@@ -216,7 +226,11 @@ public class UserController {
         	session.setAttribute("signInUserPosition", signInUser.getUser_position());
         	session.setAttribute("accessToken", accessToken);
         	session.setAttribute("state", state);
-        }          
+        } else { // DB에 없는(회원가입 안 한) 이메일        
+        	session.setAttribute("email", email);
+        	session.setAttribute("accessToken", accessToken);
+        	session.setAttribute("state", state);
+        }
 	}
 		
 	@RequestMapping(value = "/signout", method = RequestMethod.GET)
@@ -337,21 +351,36 @@ public class UserController {
 	public void mypage(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		String signInUserNickname = (String)session.getAttribute("signInUserNickname");
-		log.info("mypage(userNickname : {}) GET 호출", signInUserNickname);
-		User mypageBoardResult = userService.callMypageBoardInfo(signInUserNickname);
 		String message = (String) session.getAttribute("msg");
 		session.removeAttribute("msg");
 		
+		log.info("mypage(userNickname : {}) GET 호출", signInUserNickname);
+		
+		User mypageBoardResult = userService.callMypageBoardInfo(signInUserNickname);
+		User mypageBoardReplyResult = userService.callMypageBoardReplyInfo(signInUserNickname);
+		User mypageEventReplyResult = userService.callMypageEventReplyInfo(signInUserNickname);
+		User mypageMovieReplyResult = userService.callMypageMovieReplyInfo(signInUserNickname);
+		User mypageMovieLikeResult = userService.callMypageMovieLikeInfo(signInUserNickname);
+		
+		// 구현부
 		model.addAttribute("mypageBoardResult",mypageBoardResult);
+		model.addAttribute("mypageBoardReplyResult",mypageBoardReplyResult);
+		model.addAttribute("mypageEventReplyResult",mypageEventReplyResult);
+		model.addAttribute("mypageMovieReplyResult",mypageMovieReplyResult);
+		model.addAttribute("mypageMovieLikeResult",mypageMovieLikeResult);
+		
+		
 		model.addAttribute("msg", message);
 	}
+	
 	
 	@RequestMapping(value = "/userInfo", method = RequestMethod.GET)
 	public void userInfo(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
 		String signInUserNickname = (String) session.getAttribute("signInUserNickname");
 		log.info("userInfo(user_nickname : {}) GET 호출", signInUserNickname);
-		User user = userService.userInfo(signInUserNickname);
+		User user = userService.readUserByNickname(signInUserNickname);
+		
 		
 		model.addAttribute("user",user);
 	}
@@ -361,6 +390,7 @@ public class UserController {
 		log.info("userInfoUpdate 호출");
 		userService.userInfoUpdate(user);
 		String msg = request.getParameter("msg");
+		System.out.println("msg: " + msg);
 		HttpSession session = request.getSession();
 		session.setAttribute("signInUserNickname", user.getUser_nickname());
 		
@@ -373,11 +403,9 @@ public class UserController {
 	
 	@RequestMapping(value = "/leave", method = RequestMethod.GET)
 	public void leave(HttpSession session, Model model) {
-		log.info("leave() GET 호출");	// 나중에 지워	
-//		HttpSession session = request.getSession();
+		log.info("leave() GET 호출");	
 		String signInUserNickname = (String) session.getAttribute("signInUserNickname");		
-		log.info("leave(user_nickname : {}) GET 호출", signInUserNickname);
-		User user = userService.userInfo(signInUserNickname);
+		User user = userService.readUserByNickname(signInUserNickname);
 		
 		model.addAttribute("user",user);
 	}
@@ -385,32 +413,28 @@ public class UserController {
 	@RequestMapping(value = "/leave", method = RequestMethod.POST)
 	public String leave(HttpSession session, Model model, User user) {		
 		String signInUserNickname = (String) session.getAttribute("signInUserNickname");
-//		log.info("leave(user_nickname={}) POST 호출", user_nickname);
-//		 User user = (User) model.getAttribute("user");
-		log.info("leave({}) POST 호출", user);
-//		log.info("leave(model.getAttribute(user: {}) POST 호출", model.getAttribute("user"));
-//		log.info("leave(model.getAttribute(signInUserNickname: {}) POST 호출", model.getAttribute("signInUserNickname"));
-		log.info("leave(session.signInUserNickname: {} POST 호출", signInUserNickname);
-		User signInUser = userService.userInfo(signInUserNickname);
-		log.info("signInUser.getUser_pwd: {}", signInUser.getUser_pwd());
-		String encodedPassword = signInUser.getUser_pwd();
-//		log.info("leave({}) POST 호출", user);
+		log.info("leave(signInUserNickname: {}) POST 호출", signInUserNickname);
+		User signInUser = userService.readUserByNickname(signInUserNickname);
 		
 		String msg = "";
-		log.info("user.getUser_pwd: {}", user.getUser_pwd());
-		String rawPassword = user.getUser_pwd(); // 비밀번호 칸에 입력된 비밀번호
+		String rawPassword = user.getUser_pwd(); 
+		String encodedPassword = signInUser.getUser_pwd();
+		log.info("입력된 비밀번호: {}", rawPassword);
+		log.info("DB에 저장된 비밀번호: {}", encodedPassword);		
+		
 		if (passwordEncoder.matches(rawPassword, encodedPassword)) {
-			userService.deleteAccount(signInUser);
-			session.invalidate();
-			msg = "회원탈퇴가 완료되었습니다.";
+			int result = userService.deleteAccount(signInUser);
+			if (result == 1) {
+				session.invalidate();
+				msg = "회원탈퇴가 완료되었습니다.";
+				model.addAttribute("msg", msg);	
+			}				
 		} else {
 			msg = "비밀번호가 일치하지 않습니다.";
+			model.addAttribute("msg", msg);
 			return "redirect:/user/leave";
 		}
-						
-		
-		model.addAttribute("msg", msg);
-		
+								
 		return "redirect:/";
 	}
 	
@@ -420,7 +444,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/simpleRegister", method = RequestMethod.POST)
-	public String simpleRegister(User user, HttpServletRequest request) {
+	public void simpleRegister(User user, HttpServletRequest request, HttpSession session) {
 		log.info("simpleRegister({}) POST 호출", user);
 		
 		// 회원가입창에 입력된 비밀번호를 읽음.
@@ -435,8 +459,12 @@ public class UserController {
 	    user.setUser_pwd(encryptPassword);
 	     
 		// 회원가입 메서드
-		userService.registerNewUser(user);
-		return "redirect:/";
+		int result = userService.registerNewUser(user);
+		if (result == 1) {
+			User signInUser = userService.readUserByEmail(session.getAttribute("email").toString());
+			session.setAttribute("signInUserNickname", signInUser.getUser_nickname());
+	    	session.setAttribute("signInUserPosition", signInUser.getUser_position());
+		}			
 	}
 	
 }

@@ -42,7 +42,6 @@ public class BoardDaoTest {
 	public void testpagingList() {
 		PageCriteria pcri = new PageCriteria();
 		log.info(pcri.toString());
-		pcri.setPageNum(2);
 		List list = service.pagingList(pcri);
 		
 		list.forEach(board -> log.info("" + board));

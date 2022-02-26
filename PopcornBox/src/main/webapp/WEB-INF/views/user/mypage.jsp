@@ -242,10 +242,7 @@
 					</c:if>
 				</ul>
 			</div>
->>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
 		</div>
-<<<<<<< HEAD
-		-->
 		
 
     <!-- Footer Section Begin -->
@@ -286,7 +283,6 @@
     <!-- Footer Section End -->
 
 		
-=======
 		<div id="mobile-menu-wrap"></div>
 		<div class="offcanvas__text">
 			<p>PopcornBox</p>
@@ -474,6 +470,12 @@
 
 <script>
 		    $(document).ready(function(){
+			    
+			    var message = '${msg}';
+				if (message != null && message != '') {
+					alert(message);
+				}
+			    
     			// type 이 radio 이고 class 가 start_type_radio 인 input 을 click 했을 경우
                 $('input[type="radio"][class="data_type_radio"]').on('click',function(){
 					

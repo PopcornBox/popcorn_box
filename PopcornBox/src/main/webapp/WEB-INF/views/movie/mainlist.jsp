@@ -275,6 +275,7 @@
 		
 		if ('${signInUserNickname}' == null || '${signInUserNickname}' == '') {
 			$('tr').find('i').removeClass('fa-solid');
+			count_like();
 			$('tr').find('i').click(function() {
 				var answer = alert('로그인후 이용가능합니다.');
 				location.href = '/pjt/movie/like/signin';

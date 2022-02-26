@@ -19,4 +19,6 @@ public interface EventReplyService {
 	int deleteAllOnEvent(int event_no);
 
 	int update(EventReply eventReply);
+	
+	List<String> chooseWinner(int event_no, int winner_number);
 }

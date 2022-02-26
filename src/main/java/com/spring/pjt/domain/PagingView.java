@@ -84,19 +84,20 @@ public class PagingView {
 		this.next = this.endPage < endCal;
 	}
 	
-	public String makeQuery(int page) {
-		UriComponents uriComponents = UriComponentsBuilder.newInstance()
-														.queryParam("pageNum", page)
-														.queryParam("contents", pcri.getContents())
-														.build();
-		
-		return uriComponents.toUriString();
-	}
-	
 	@Override
 	public String toString() {
 		return "PagingView [startPage=" + startPage + ", endPage=" + endPage + ", prev=" + prev + ", next=" + next
 				+ ", total=" + totalContents + ", pcri=" + pcri + "]";
+	}
+	
+	public String makeQuery(int page) {
+		UriComponents uriComponents =
+		UriComponentsBuilder.newInstance()
+						    .queryParam("pageNum", page)
+							.queryParam("contents", pcri.getContents())
+							.build();
+		   
+		return uriComponents.toUriString();
 	}
 
 }
