@@ -13,10 +13,6 @@
 <body>
 
     
-		<ul>
-			<li><a href="./userInfo">회원정보확인</a></li>
-		</ul>
-
 		<div>
 			<table>
 				<th>활동 내역</th><th>게시물 번호</th><th>게시글 제목</th><th>작성 일자</th>
@@ -66,8 +62,8 @@
 					</tr>
 					<tr>
 						<td>${signInUserNickname.movie_no}</td>
-						<td><a href="../movie/detail?movie_no=${signInUserNickname.movie_no}&q=0">${signInUserNickname.movie_reply_content}</a></td>
-						<td><fmt:formatDate value="${signInUserNickname.movie_reply_update_time}" pattern="yyyy/MM/dd HH:mm" /></td>
+						<td><a href="../movie/detail?movie_no=${signInUserNickname.movie_no}">${signInUserNickname.movie_no}</a></td>
+						<td><fmt:formatDate value="${signInUserNickname.like_update_time}" pattern="yyyy/MM/dd HH:mm" /></td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -101,8 +97,7 @@
 	<!-- UserName End -->
 
 
-
-	<!-- mypage List start (Shopping Cart Section Begin) -->
+	<!-- mypage List start -->
 	<section class="shopping-cart spad" style="padding:0px;">
 		<div class="container">
 			<div class="row">
@@ -145,18 +140,13 @@
 												<c:forEach items="${mypageMovieReplyResult.myMovieReplyList}" var="signInUserNickname">
 													<tr>
 														<td>영화 댓글</td>
-														<td><a href="../movie/detail?movie_no=${signInUserNickname.movie_no}&q=0">${signInUserNickname.movie_reply_content}</a></td>
+														<td><a href="../movie/detail?movie_no=${signInUserNickname.movie_no}">${signInUserNickname.movie_reply_content}</a></td>
 														<td><fmt:formatDate value="${signInUserNickname.movie_reply_update_time}" pattern="yyyy/MM/dd HH:mm" /></td>
 													</tr>
 												</c:forEach>
 											</tbody>
 										</table>
 									</td>
-								</tr>
-								<tr style="cursor: pointer;" onclick="location.href='./#'">
-									<td class="user__chart__item">
-									<i class="fa-solid fa-heart"></i></td>
-									<td class="chart__info">좋아요한 영화</td>
 								</tr>
 								<tr style="cursor: pointer;" onclick="location.href='./#'">
 									<td class="user__chart__item">
@@ -168,6 +158,11 @@
 									<i class="fa-solid fa-comment-dots"></i></td>
 									<td class="chart__info">작성한 댓글</td>
 								</tr>
+								<tr style="cursor: pointer;" onclick="location.href='./#'">
+									<td class="user__chart__item">
+									<i class="fa-solid fa-heart"></i></td>
+									<td class="chart__info">좋아요한 영화</td>
+								</tr>
 
 							</tbody>
 						</table>
@@ -176,7 +171,7 @@
 				</div>
 			</div>
 	</section>
-	<!-- mypage end (Shopping Cart Section Begin) -->
+	<!-- mypage end -->
 
 
 
@@ -188,7 +183,7 @@
 	<!-- Js Plugins -->
 	<script src="../resources/js/jquery-3.3.1.min.js"></script>
 	<script src="../resources/js/bootstrap.min.js"></script>
-	<script src="../resources/js/jquery.nice-select.min.js"></script>
+	<!-- <script src="../resources/js/jquery.nice-select.min.js"></script> -->
 	<script src="../resources/js/jquery.nicescroll.min.js"></script>
 	<script src="../resources/js/jquery.magnific-popup.min.js"></script>
 	<script src="../resources/js/jquery.countdown.min.js"></script>
