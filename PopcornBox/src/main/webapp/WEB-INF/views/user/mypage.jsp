@@ -11,7 +11,6 @@
 <title>Popcorn Box</title>
 </head>
 <body>
-<<<<<<< HEAD
 
 	<!-- Page Preloder -->
 	<div id="preloder">
@@ -21,9 +20,7 @@
 		<ul>
 			<li><a href="./userInfo">회원정보확인</a></li>
 		</ul>
-		
-=======
->>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
+
 		<div>
 			<table>
 				<th>활동 내역</th><th>게시물 번호</th><th>게시글 제목</th><th>작성 일자</th>
@@ -64,7 +61,7 @@
 			</table>
 		</div>
 
-<<<<<<< HEAD
+
 	<!-- Offcanvas Menu Begin -->
 	<div class="offcanvas-menu-overlay"></div>
 	<div class="offcanvas-menu-wrapper">
@@ -167,7 +164,7 @@
 		</div>
 	</header>
 	<!-- Header Section End -->
-=======
+	
 			<!-- 좋아요한 영화 전용 table -->
 			<table>
 				<c:forEach items="${mypageMovieLikeResult.myMovieLikeList}" var="signInUserNickname">
@@ -181,7 +178,6 @@
 					</tr>
 				</c:forEach>
 			</table>
->>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
 
 	<!-- Breadcrumb Section Begin -->
 	<section class="breadcrumb-option">
@@ -296,9 +292,6 @@
 	<!-- Footer Section End -->
 
 
-
-<<<<<<< HEAD
-
 	<!-- Js Plugins -->
 	<script src="../resources/js/jquery-3.3.1.min.js"></script>
 	<script src="../resources/js/bootstrap.min.js"></script>
@@ -317,43 +310,12 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
 	<script>
-		$(document).ready(function () {
-				var message = '${msg}';
-				if (message != null && message != '') {
-					alert(message);
-				}
-			});
-		
-	</script>
-
-=======
-<script>
 		    $(document).ready(function(){
 			    
 			    var message = '${msg}';
 				if (message != null && message != '') {
 					alert(message);
 				}
-			    
-    			// type 이 radio 이고 class 가 start_type_radio 인 input 을 click 했을 경우
-                $('input[type="radio"][class="data_type_radio"]').on('click',function(){
-					
-                    // startSetting 에 checked된 radio button의 value 값을 넣는다.
-                    var startSetting = $('input[type=radio][class="data_type_radio"]:checked').val();
-                   
-                   // startSetting이 later인 경우 style display를 flex로 변경한다. 
-                   if(startSetting == 'later'){
-                        $('#task_boardLog_setting').css('display','flex');
-                   
-                   // 그외의 경우 style display를 none 으로 변경한다.
-                    }else{
-                        $('#task_boardLog_setting').css('display','none');
-                    }
-                });
-            });
-		    
-		    
-		    
 		    
 		    
 	        $(function(){
@@ -363,6 +325,6 @@
 	            });
 	        });
 	</script>
->>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
+
 </body>
 </html>
