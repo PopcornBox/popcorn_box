@@ -11,11 +11,6 @@
 <title>Popcorn Box</title>
 </head>
 <body>
-
-	<!-- Page Preloder -->
-	<div id="preloder">
-		<div class="loader"></div>
-	</div>
     
 		<ul>
 			<li><a href="./userInfo">회원정보확인</a></li>
