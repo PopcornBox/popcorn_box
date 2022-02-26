@@ -875,6 +875,7 @@
 	if ('${signInUserNickname}' == null || '${signInUserNickname}' == '') {
 		$('#btn_like').hide();
 		$('#btn_unlike').show();
+		count_like();
 		$('#btn_unlike').click(function() {
 			var answer = alert('로그인후 이용가능합니다.');
 			location.href = '/pjt/movie/rating/signin?movie_no=' + ${movie.movie_no};
