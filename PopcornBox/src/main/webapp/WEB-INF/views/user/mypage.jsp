@@ -211,7 +211,9 @@
 	                $(".innerchart_all:hidden").show(); // hidden div show them
 	            });
 	        });
+	        
+});			    
 	</script>
-	
+
 </body>
 </html>

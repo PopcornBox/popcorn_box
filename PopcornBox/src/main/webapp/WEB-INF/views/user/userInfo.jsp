@@ -149,7 +149,7 @@
 	<!-- Header Section End -->
 
 
-<form>
+<form action="/pjt/user/userInfo" method="post">
 	<!-- Breadcrumb Section Begin -->
 	<section class="breadcrumb-option">
 		<div class="container">
@@ -203,7 +203,7 @@
 										<div class="form-group has-feedback">
 											<input
 												class="form-control" type="text" id="user_nickname"
-												name="user_nickname" value="${signInUserNickname}" />
+												name="user_nickname" placeholder="${signInUserNickname}" />
 										</div>
 									</td>
 									<td>
@@ -220,8 +220,8 @@
 										</div>
 									</td>
 									<td>
-										<button class="checknickname primary-btn" type="button" style="height: 40px; padding: 0px;"
-												id="checknickname" onclick="fn_checknickname();" value="N">비밀번호 변경하기</button>
+										<button class="checkpassword primary-btn" type="button" style="height: 40px; padding: 0px;"
+												id="checkpassword" onclick=# value="N">비밀번호 변경하기</button>
 									</td>
 								</tr>
 								<tr>
