@@ -11,8 +11,9 @@
 <title>PopcornBox</title>
 
 <style>
-	.txt_1 {
+	.txt_1 td:first-child:after {
 		color:red;
+		content: "공지";
 	}
 	.txt_1 a { color:red !important;}
 	.pagingView_area{
@@ -63,7 +64,7 @@
 				<tbody>
 					<c:forEach var="board" items="${boardList}">
 						<tr class="txt_${board.board_mode}">
-							<td>${board.board_mode}</td>
+							<td></td>
 							<td ><a href="./detail?board_no=${board.board_no}">${board.board_title}</a>
 								<span>[${board.board_reply_cnt}]</span></td>
 							<td>${board.user_nickname}</td>
