@@ -16,6 +16,7 @@ public class MovieLikeDaoImpl implements MovieLikeDao {
 	
 	private static final Logger log = LoggerFactory.getLogger(MovieLikeDaoImpl.class);
 	private static final String LIKE_NAMESPACE = "com.spring.pjt.mapper.LikeMapper";
+	private static final String MOVIE_NAMESPACE = "com.spring.pjt.mapper.MovieMapper";
 	@Autowired private SqlSession sqlSession;
 	
 	@Override
