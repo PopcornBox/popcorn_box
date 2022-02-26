@@ -12,10 +12,11 @@
 
 <style>
    .txt_1 td:first-child:after {
-      color:red;
+      color:#f90a37;
       content: "공지";
+    
    }
-   .txt_1 a { color:red !important;}
+   .txt_1 a { color:#f90a37 !important;}
    .pagingView_area{
       max-width:220px;
       margin-left: auto;
@@ -54,8 +55,8 @@
       <div class="container" style="margin-bottom: 20px;">
 
 
-         <table class="table table-hover">
-            <thead>
+         <table class="table table-hover ">
+            <thead class="text-center">
                <tr>
                   <th></th>
                   <th>제목</th>
@@ -64,7 +65,7 @@
                   <th>조회수</th>
                </tr>
             </thead>
-            <tbody>
+            <tbody >
                <c:forEach var="board" items="${boardList}">
                   <tr class="txt_${board.board_mode}">
                      <td></td>

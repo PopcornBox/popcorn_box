@@ -125,9 +125,8 @@
 					<input type="hidden" id="board_mode" name="board_mode"  value="1" required readonly />
 				</div>
 				<div>
-					<textarea type="text" id="board_title"  maxlength="35" maxlength="35" placeholder="제목 입력"
-						rows="1" onkeyup="resize(this)" required
-						autofocus></textarea>
+					<textarea type="text" id="board_title" name="board_title" maxlength="35" maxlength="35" placeholder="제목 입력"
+						rows="1" onkeyup="resize(this)" required autofocus></textarea>
 				</div>
 				<div>
 					<textarea rows="15" name="board_content" placeholder="내용 입력"
@@ -142,12 +141,11 @@
                <a href="./main" class="primary-btn">공지 작성 취소</a>
             	</div>
 				<div>
-					<c:if test="${signInUserPosition eq 'B'}">
-						<input type="submit" class="btn btn-outline-dark" value="공지 작성 완료">
-					</c:if>
-					<c:if test="${signInUserPosition eq 'A'}">
-						<input type="submit" class="btn btn-outline-dark" value="공지 작성 완료">
-					</c:if>
+				<div class="btnbox">
+					<input type="submit" class="primary-btn" value="공지 작성 완료" style="color: #fff">
+				</div>
+					
+					
 				</div>
 
 			</form>
@@ -156,13 +154,8 @@
 
 
 
-
-
-
 	</div>
 
-
-	<!-- Footer Section Begin -->
 
 	<!-- Footer Section End -->
 
