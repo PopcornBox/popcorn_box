@@ -2979,6 +2979,20 @@ header .search_option {
 	width: 20px;
 }
 
+/*-------------------
+    USER innerchart
+---------------------*/
+.innerchart_all {
+	max-width: 70%;
+	margin-top: 10px;
+    border: 1px solid #f2f2f2;
+    display: none;
+}
+
+.innerchart_all tbody td {
+	padding: 10px;
+}
+
 
 /*------------------------------------------------------------------------
   USER */
