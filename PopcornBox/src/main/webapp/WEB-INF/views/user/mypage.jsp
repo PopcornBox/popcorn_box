@@ -51,11 +51,6 @@
 			<li><a href="./userInfo">회원정보확인</a></li>
 		</ul>
 		
-		<button type="button">전체활동기록</button>
-		<button type="button">작성한 게시글</button>
-		<button type="button">작성한 댓글</button>
-		<button type="button">좋아요한 영화</button>
-		
 		<div>
 			<table>
 				<th>활동 내역</th><th>게시물 번호</th><th>게시글 제목</th><th>작성 일자</th>
@@ -294,7 +289,7 @@
 									<i class="fa-solid fa-user"></i></td>
 									<td class="chart__info">회원정보 확인</td>
 								</tr>
-								<tr style="cursor: pointer;" onclick="location.href='./#'">
+								<tr style="cursor: pointer;" onclick="openAllLog();">
 									<td class="user__chart__item">
 									<i class="fa-solid fa-rectangle-list"></i></td>
 									<td class="chart__info">전체활동 기록</td>
@@ -359,36 +354,7 @@
 	</footer>
 	<!-- Footer Section End -->
 
-<<<<<<< HEAD
 
-=======
-<script>
-		    $(document).ready(function(){
-			    
-			    var message = '${msg}';
-				if (message != null && message != '') {
-					alert(message);
-				}
-			    
-    			// type 이 radio 이고 class 가 start_type_radio 인 input 을 click 했을 경우
-                $('input[type="radio"][class="data_type_radio"]').on('click',function(){
-					
-                    // startSetting 에 checked된 radio button의 value 값을 넣는다.
-                    var startSetting = $('input[type=radio][class="data_type_radio"]:checked').val();
-                   
-                   // startSetting이 later인 경우 style display를 flex로 변경한다. 
-                   if(startSetting == 'later'){
-                        $('#task_boardLog_setting').css('display','flex');
-                   
-                   // 그외의 경우 style display를 none 으로 변경한다.
-                    }else{
-                        $('#task_boardLog_setting').css('display','none');
-                    }
-                });
-            });
-	</script>
->>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
->>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
 	<!-- Js Plugins -->
 	<script src="../resources/js/jquery-3.3.1.min.js"></script>
 	<script src="../resources/js/bootstrap.min.js"></script>
@@ -412,6 +378,13 @@
 					alert(message);
 				}
 			});
-	</script>	
+
+		$(function(){
+			$("#openAllLog").on("click",function(){
+				$("#allLog").toggle("show");
+			}
+		})
+		
+	</script>
 </body>
 </html>
