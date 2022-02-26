@@ -76,4 +76,59 @@ public class MovieLikeDaoImpl implements MovieLikeDao {
 		
 		return objList;
 	}
+	
+	@Override
+	public List<Integer> selectTop() {
+		log.info("selectTop5 호출");
+		
+		List<Integer> movie_no_list = new ArrayList<>();
+		
+		List<Object> objList = sqlSession.selectList(MOVIE_NAMESPACE + ".selectAll");
+		for (Object obj : objList) {
+			Movie movie = (Movie) obj;
+			int movie_no = movie.getMovie_no();
+			movie_no_list.add(movie_no);
+		}
+		
+		Map<Integer, Integer> map = new HashMap<>();
+		
+		for (int movie_number : movie_no_list) {
+			List<Object> userList = readAllUsers(movie_number);
+			int numberOfLikes = userList.size();
+			map.put(movie_number, numberOfLikes);
+		}
+		
+		List<Integer> top_movie_list = new ArrayList<>();	
+		
+		ValueComparator vc = new ValueComparator(map);
+		TreeMap<Integer, Integer> sorted_map = new TreeMap<>(vc);
+		sorted_map.putAll(map);
+		
+		for (int i = 1; i < 6; i++) {
+			Entry<Integer, Integer> e = sorted_map.pollFirstEntry();
+			int top_movie_no = e.getKey();
+			top_movie_list.add(top_movie_no);
+		}
+		return top_movie_list;
+	}
+	
+	class ValueComparator implements Comparator<Integer> {
+		
+		Map<Integer, Integer> base;
+		
+		public ValueComparator(Map<Integer, Integer> base) {
+			this.base = base;
+		}
+		
+		@Override
+		public int compare(Integer a, Integer b) {
+			if (base.get(a) >= base.get(b)) {
+				return - 1;
+			} else {
+				return 1;
+			}
+			
+		}
+		
+	}
 }
