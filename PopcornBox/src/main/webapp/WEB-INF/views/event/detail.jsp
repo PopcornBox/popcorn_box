@@ -56,29 +56,6 @@
 	border-bottom: 1px solid #e1e1e1;
 	dispaly: table-cell;
 }
-
-
-/* #user_nickname {
-	font-size: 14px;
-	text-align: left;
-	font-weight: 600;
-	
-	width: 50%;
-	border: none;
-	
-}
-
-#event_reply_update_time {
-	font-size: 14px;
-	text-align: right;
-	width: 50%;
-	border: none;
-}
-#event_reply_content{
-border:none;
-background-color:#f1f1f1;
-} */
-
 </style>
 
 
@@ -211,12 +188,6 @@ background-color:#f1f1f1;
 				</div>
 			</div>
 		</div>
-<<<<<<< HEAD
-		<hr>
-		
-		<!-- 댓글 목록 -->
-		<div id="event_reply_list">
-=======
 		<div class="container">
 			<div class="row" class="header__row__">
 
@@ -234,30 +205,31 @@ background-color:#f1f1f1;
 			<div class="canvas__open">
 				<i class="fa fa-bars"></i>
 			</div>
->>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
 		</div>
-<<<<<<< HEAD
-		
-		<!-- 페이지 넘버 -->
-		<div id="page_number" style="width:600px; text-align:center; margin-top:10px;">
-
-=======
 	</header>
 	<!-- Header Section End -->
 
+	<!-- container start -->
 	<div class="container">
 		<div style="text-align: center">
 			<div>
-				<div style="text-align: right;">
+				<div>
 					<c:if test="${signInUserPosition eq 'A'}">
 						<a href="./update?event_no=${event.event_no}"><button>수정</button></a>
 						<a id="delete_event" href="./delete?event_no=${event.event_no}"><button>삭제</button></a>
+						<button type="button" class="btn btn-primary" data-toggle="modal"
+							data-target="#winnerModal">당첨자 추첨</button>
 					</c:if>
 					<c:if test="${signInUserPosition eq 'B'}">
 						<a href="./update?event_no=${event.event_no}"><button>수정</button></a>
 						<a id="delete_event" href="./delete?event_no=${event.event_no}"><button>삭제</button></a>
+						<button type="button" class="btn btn-primary" data-toggle="modal"
+							data-target="#winnerModal">당첨자 추첨</button>
 					</c:if>
 				</div>
+
+
+
 
 				<table class="table"
 					style="border-bottom: 1px solid #e1e1e1; margin-bottom: 50px;">
@@ -272,27 +244,7 @@ background-color:#f1f1f1;
 					</tbody>
 				</table>
 			</div>
->>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
 		</div>
-<<<<<<< HEAD
-	</div>	
-
-	   <!-- Js Plugins -->
-   <script src="../resources/js/jquery-3.3.1.min.js"></script>
-   <script src="../resources/js/bootstrap.min.js"></script>
-   <!-- <script src="../resources/js/jquery.nice-select.min.js"></script> -->
-   <script src="../resources/js/jquery.nicescroll.min.js"></script>
-   <script src="../resources/js/jquery.magnific-popup.min.js"></script>
-   <script src="../resources/js/jquery.countdown.min.js"></script>
-   <script src="../resources/js/jquery.slicknav.js"></script>
-   <script src="../resources/js/mixitup.min.js"></script>
-   <script src="../resources/js/owl.carousel.min.js"></script>
-   <script src="../resources/js/main.js"></script>
-	
-		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    	<script>
-=======
 
 
 		<div class="event_img_detail" style="text-align: center;">
@@ -323,9 +275,7 @@ background-color:#f1f1f1;
 	<div class="container">
 		<div class="event_reply_list">
 
-			<div id="event_reply_list">	
-				
-			</div>
+			<div id="event_reply_list"></div>
 		</div>
 	</div>
 
@@ -334,6 +284,13 @@ background-color:#f1f1f1;
 		<div id="page_number"
 			style="width: 100%; text-align: center; margin-top: 10px;"></div>
 	</div>
+
+
+
+	<!-- container end -->
+
+	<!--  footer include-->
+	<%@ include file="../footer.jsp"%>
 
 	<!-- Js Plugins -->
 	<script src="../resources/js/jquery-3.3.1.min.js"></script>
@@ -352,7 +309,6 @@ background-color:#f1f1f1;
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 	<script>
->>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
     		$(document).ready(function() {
     			$('#event_reply_content_empty').click(function() {
     				if('${q}' >= 0) {
@@ -604,11 +560,5 @@ background-color:#f1f1f1;
     			
     		});
     	</script>
-<<<<<<< HEAD
-    </body>
-    <footer>
-    </footer>
-=======
 </body>
->>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
 </html>

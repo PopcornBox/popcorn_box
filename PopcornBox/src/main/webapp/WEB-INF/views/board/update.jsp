@@ -142,8 +142,13 @@
                         </textarea>
 				</div>
 				<div class="btnbox">
+               <a href="./main" class="primary-btn">수정 취소</a>
+            	</div>
+				<div class="btnbox">
 					<input class="primary-btn btn-outline-dark" type="submit" value="수정 완료" style="color: #fff"/>
 				</div>
+				
+				
 			</form>
 		</div>
 
