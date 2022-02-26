@@ -260,6 +260,11 @@
 	                            <div class="rating">
 	                                <i class="fa fa-star-o"></i>
 	                            </div>
+					
+					
+					 <div id="movie_like_list"></div>
+					
+					
 	                        </div>
 	                    </div>
 	                </div>
@@ -352,6 +357,30 @@
 	</div>
     </section>
     <!-- Latest Blog Section End -->
+	
+	
+	
+	
+	<div>
+    	<table>
+    		<thead>
+    			<tr>
+    				<th>순위</th>
+    				<th>영화 제목</th>
+    				<th>영화 개봉일</th>
+    				<th>누적 매출액</th>
+    				<th>누적 관객수</th>
+    			</tr>
+    		</thead>
+    		
+    		<tbody id="tbody">
+    		
+    		</tbody>
+    	</table>
+    </div>
+	
+	
+	
 
 <!-- Footer Section Begin -->
 <footer class="footer">
@@ -448,13 +477,19 @@
 	
 	<script>
 			$(document).ready(function () {
+				// 알림 메시지 있으면 띄워라.
 				var message = '${msg}';
 				if (message != null && message != '') {
 					alert(message);
 				}
 			
+			        // 검색어 읽어서 자동완성 시켜라.
 				read_keyword();
 				
+				// 좋아요 top 5 띄워라.
+				select_top5_1();
+				select_top5_2();						  
+										  
 				function read_keyword() {
 					
 					$('#search_area').keyup(function() {
@@ -511,8 +546,105 @@
 				}
 		             
 				
+				function select_top5_1() {
+			
+						 $.getJSON('/pjt/movie_like/top', function (data) {
+				              	var text = '';
+							 data.forEach(function(element) {
+								var movie_title = element.movie_title; 
+								text += '<div>' + movie_title + '</div>';
+							 });
+							 	$('#movie_like_list').html(text);						 
+			             }); // getJson			
+					  
+					}	
+										
+										  
+				function select_top5_2() {
+					
+				   timer = setInterval(function() {	
+					   
+					 $.getJSON('/pjt/movie_like/top', function (data) {
+			              	var text = '';
+						 data.forEach(function(element) {
+							var movie_title = element.movie_title; 
+							text += '<div>' + movie_title + '</div>';
+						 });
+						 	$('#movie_like_list').html(text);						 
+		             }); // getJson		
+		             
+				   }, 30000);  // 30초 마다
+				   
+				}						  
 				
+	// -------------------- 박스 오피스 api 사용하기 ----------------------------------------------------
 				
+				var today = new Date();
+				
+				var m = today.getMonth() + 1;
+				if (m < 10) {
+					var month = '0' + m;
+				} else {
+					var month = m + '';
+				}
+				
+				var d = today.getDate() - 1;
+				
+				if (d < 10) {
+					var day = '0' + d;
+				} else {
+					var day = d + '';
+				}
+				
+				var y = today.getFullYear();
+				
+				var year = y + '';
+				
+				var result = year + month + day;
+				
+				read_boxoffice();
+				
+				function read_boxoffice() {
+					$.ajax({
+						url : "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?key=c703c0c2818aa9a103c8b7f193e4b3bf&targetDt="
+							+ result + "&itemPerPage=5",
+							
+						dataType : "xml",	
+						
+						success : function(data) {
+							var $data = $(data)
+										.find("boxOfficeResult>dailyBoxOfficeList>dailyBoxOffice");
+							
+							var text = '';
+							
+							if ($data.length > 0) {
+								
+								$.each($data, function(i, o) {
+
+									var $rank = $(o).find("rank").text(); 
+									var $movieNm = $(o).find("movieNm").text(); 
+									var $openDt = $(o).find("openDt").text();
+									var $salesAcc = $(o).find("salesAcc").text();
+									var $audiAcc = $(o).find("audiAcc").text(); 
+									
+									text += '<tr><td>' + $rank + '</td>'
+											  + '<td>' + $movieNm + '</td>'
+											  + '<td>' + $openDt + '</td>'
+											  + '<td>' + $salesAcc + '</td>'
+											  + '<td>' + $audiAcc + '</td></tr>'
+
+								});// end of each 
+
+								$('#tbody').html(text);
+						
+							}
+						},
+						//에러 발생시 "실시간 박스오피스 로딩중"메시지가 뜨도록 한다.
+						error : function() {
+							alert("실시간 박스오피스 로딩중...");
+						}
+					});
+				}
 				
 				
 			});
