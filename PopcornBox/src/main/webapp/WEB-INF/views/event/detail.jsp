@@ -93,7 +93,6 @@ background-color:#f1f1f1;
 		<div class="loader"></div>
 	</div>
 
-<<<<<<< HEAD
 	<!-- Offcanvas Menu Begin -->
 	<div class="offcanvas-menu-overlay"></div>
 	<div class="offcanvas-menu-wrapper">
@@ -117,7 +116,7 @@ background-color:#f1f1f1;
 						<li><a href="../event/main">이벤트</a></li>
 					</c:if>
 				</ul>
-=======
+
     <!-- Offcanvas Menu Begin -->
     <div class="offcanvas-menu-overlay"></div>
     <div class="offcanvas-menu-wrapper">
@@ -230,10 +229,9 @@ background-color:#f1f1f1;
   						당첨자 추첨
 					</button>
 				</c:if>
->>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
+
 			</div>
-<<<<<<< HEAD
-=======
+
 			
 			
 			<!-- The Modal -->
@@ -274,7 +272,7 @@ background-color:#f1f1f1;
 					</tr>
 				</tbody>
 			</table>
->>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
+
 		</div>
 		<div id="mobile-menu-wrap"></div>
 		<div class="offcanvas__text">
@@ -332,12 +330,12 @@ background-color:#f1f1f1;
 				</div>
 			</div>
 		</div>
-<<<<<<< HEAD
+
 		<hr>
 		
 		<!-- 댓글 목록 -->
 		<div id="event_reply_list">
-=======
+
 		<div class="container">
 			<div class="row" class="header__row__">
 
@@ -355,14 +353,13 @@ background-color:#f1f1f1;
 			<div class="canvas__open">
 				<i class="fa fa-bars"></i>
 			</div>
->>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
+
 		</div>
-<<<<<<< HEAD
+
 		
 		<!-- 페이지 넘버 -->
 		<div id="page_number" style="width:600px; text-align:center; margin-top:10px;">
 
-=======
 	</header>
 	<!-- Header Section End -->
 
@@ -393,9 +390,9 @@ background-color:#f1f1f1;
 					</tbody>
 				</table>
 			</div>
->>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
+
 		</div>
-<<<<<<< HEAD
+
 	</div>	
 
 	   <!-- Js Plugins -->
@@ -413,7 +410,6 @@ background-color:#f1f1f1;
 		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     	<script>
-=======
 
 
 		<div class="event_img_detail" style="text-align: center;">
@@ -725,11 +721,10 @@ background-color:#f1f1f1;
     			
     		});
     	</script>
-<<<<<<< HEAD
     </body>
     <footer>
     </footer>
-=======
+
 </body>
->>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
+
 </html>
