@@ -208,7 +208,7 @@
 									</td>
 									<td>
 										<button class="checknickname primary-btn" type="button" style="height: 40px; padding: 0px;"
-												id="checknickname" onclick="fn_checknickname();" value="N">중복확인</button>
+												id="checknickname" value="N">중복확인</button>
 									</td>
 								</tr>
 								<tr>
@@ -243,6 +243,7 @@
 									</td>
 									<td></td>
 								</tr>
+								<input class="form-control" type="hidden" name="msg" id="msg"></input>
 							</tbody>
 						</table>
 					</div>
@@ -363,27 +364,62 @@
 	<script src="../resources/js/owl.carousel.min.js"></script>
 	<script src="../resources/js/main.js"></script>
 	<script>
-		$(documenct).ready(function() {
-
-		});
-		function fn_checknickname() {
-			$.ajax({
-				url : "./checknickname",
-				type : "post",
-				dataType : "json",
-				data : {
-					"user_nickname" : $("#user_nickname").val()
-				},
-				success : function(data) {
-					if (response == 'invalid') {
-						alert("중복된 닉네임입니다.");
-					} else if (response == 'valid') {
-						$("#checknickname").attr("value", "Y");
-						alert("사용가능한 아이디입니다.");
-					}
-				}
-			})
-		}
+        $(document).ready(function(){
+	   
+	   var done = 0;
+	   
+	   $('#user_nickname').keyup(function() {
+		   done = 1;
+	   });
+	   
+	   
+	   
+	   $('#checknickname').click(function() {
+		   var user_nickname = $('#user_nickname').val();
+		   var user_no = '${user.user_no}';
+		   
+		   if (user_nickname == '') {
+			   alert('닉네임을 입력해주세요!');
+			   return;
+		   }
+		   
+		   $.ajax({
+			   async: true,
+			   type: 'POST',
+			   data: user_nickname,
+			   url: '/pjt/check_nickname/' + user_no,
+			   dataType: 'json',
+			   contentType: 'application/json; charset=UTF-8',
+			   success: function(data) {
+				   if (data.cnt > 0) {
+					   alert('사용가능한 닉네임입니다.');
+					   done = 2;
+				   } else {
+					   alert('닉네임이 존재합니다.');
+				   }
+			   }
+		   });
+		 });
+   
+   		
+	   	$('#submit').click(function(event) {
+	   		if (done == 0) {
+	   			$('#user_nickname').val('${signInUserNickname}');
+	   			$('#msg').val('닉네임이 변경되었습니다.');
+	   		}		
+	   		
+	   		if (done == 1) {
+	   			event.preventDefault();
+	   			alert('닉네임 중복확인을 해주세요!');
+	   		}
+	   		
+	   		if (done == 2) {
+	   			$('#msg').val('닉네임이 변경되었습니다.');
+	   		}
+	   			   		
+	   	});
+   
+   });
 	</script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
