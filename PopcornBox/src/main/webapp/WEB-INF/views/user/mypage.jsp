@@ -242,10 +242,7 @@
 					</c:if>
 				</ul>
 			</div>
->>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
 		</div>
-<<<<<<< HEAD
-		-->
 		
 
     <!-- Footer Section Begin -->
@@ -286,7 +283,6 @@
     <!-- Footer Section End -->
 
 		
-=======
 		<div id="mobile-menu-wrap"></div>
 		<div class="offcanvas__text">
 			<p>PopcornBox</p>
