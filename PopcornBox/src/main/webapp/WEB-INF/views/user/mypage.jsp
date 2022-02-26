@@ -3,43 +3,15 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@include file="../header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Popcorn Box</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
-
-<!-- Google Font -->
-<link
-	href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
-	rel="stylesheet">
-
-<!-- Css Styles -->
-<link rel="stylesheet" href="../resources/css/bootstrap.min.css"
-	type="text/css">
-<link rel="stylesheet" href="../resources/css/font-awesome.min.css"
-	type="text/css">
-<link rel="stylesheet" href="../resources/css/elegant-icons.css"
-	type="text/css">
-<link rel="stylesheet" href="../resources/css/magnific-popup.css"
-	type="text/css">
-<!-- <link rel="stylesheet" href="../resources/css/nice-select.css"
-	type="text/css"> -->
-<link rel="stylesheet" href="../resources/css/owl.carousel.min.css"
-	type="text/css">
-<link rel="stylesheet" href="../resources/css/slicknav.min.css"
-	type="text/css">
-<link rel="stylesheet" href="../resources/css/style.css" type="text/css">
-
-<script src="https://kit.fontawesome.com/a39158855c.js"
-	crossorigin="anonymous"></script>
-
 </head>
 <body>
+<<<<<<< HEAD
 
 	<!-- Page Preloder -->
 	<div id="preloder">
@@ -50,6 +22,8 @@
 			<li><a href="./userInfo">회원정보확인</a></li>
 		</ul>
 		
+=======
+>>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
 		<div>
 			<table>
 				<th>활동 내역</th><th>게시물 번호</th><th>게시글 제목</th><th>작성 일자</th>
@@ -90,6 +64,7 @@
 			</table>
 		</div>
 
+<<<<<<< HEAD
 	<!-- Offcanvas Menu Begin -->
 	<div class="offcanvas-menu-overlay"></div>
 	<div class="offcanvas-menu-wrapper">
@@ -192,6 +167,21 @@
 		</div>
 	</header>
 	<!-- Header Section End -->
+=======
+			<!-- 좋아요한 영화 전용 table -->
+			<table>
+				<c:forEach items="${mypageMovieLikeResult.myMovieLikeList}" var="signInUserNickname">
+					<tr align="center">
+						<td>내가 좋아요한 영화</td>
+					</tr>
+					<tr>
+						<td>${signInUserNickname.movie_no}</td>
+						<td><a href="../movie/detail?movie_no=${signInUserNickname.movie_no}&q=0">${signInUserNickname.movie_reply_content}</a></td>
+						<td><fmt:formatDate value="${signInUserNickname.movie_reply_update_time}" pattern="yyyy/MM/dd HH:mm" /></td>
+					</tr>
+				</c:forEach>
+			</table>
+>>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
 
 	<!-- Breadcrumb Section Begin -->
 	<section class="breadcrumb-option">
@@ -236,10 +226,43 @@
 									<i class="fa-solid fa-user"></i></td>
 									<td class="chart__info">회원정보 확인</td>
 								</tr>
-								<tr style="cursor: pointer;" onclick="location.href='./#'">
+								<tr style="cursor: pointer;" >
 									<td class="user__chart__item">
 									<i class="fa-solid fa-rectangle-list"></i></td>
-									<td class="chart__info">전체활동 기록</td>
+									<td class="chart__info" id="load_all">전체활동 기록
+										<table class="innerchart_all">
+											<tbody>
+												<c:forEach items="${mypageBoardResult.myBoardList}" var="signInUserNickname">
+													<tr>
+														<td>커뮤니티 게시글</td>
+														<td><a href="../board/detail?board_no=${signInUserNickname.board_no}">${signInUserNickname.board_title}</a></td>
+														<td><fmt:formatDate value="${signInUserNickname.board_update_time}" pattern="yyyy/MM/dd HH:mm" /></td>
+													</tr>
+												</c:forEach>
+												<c:forEach items="${mypageBoardReplyResult.myBoardReplyList}" var="signInUserNickname">
+													<tr>
+														<td>게시판 댓글</td>
+														<td><a href="../board/detail?board_no=${signInUserNickname.board_no}">${signInUserNickname.board_reply_content}</a></td>
+														<td><fmt:formatDate value="${signInUserNickname.board_reply_update_time}" pattern="yyyy/MM/dd HH:mm" /></td>
+													</tr>
+												</c:forEach>
+												<c:forEach items="${mypageEventReplyResult.myEventReplyList}" var="signInUserNickname">
+													<tr>
+														<td>이벤트 댓글</td>
+														<td><a href="../event/detail?event_no=${signInUserNickname.event_no}&q=0">${signInUserNickname.event_reply_content}</a></td>
+														<td><fmt:formatDate value="${signInUserNickname.event_reply_update_time}" pattern="yyyy/MM/dd HH:mm" /></td>
+													</tr>
+												</c:forEach>
+												<c:forEach items="${mypageMovieReplyResult.myMovieReplyList}" var="signInUserNickname">
+													<tr>
+														<td>영화 댓글</td>
+														<td><a href="../movie/detail?movie_no=${signInUserNickname.movie_no}&q=0">${signInUserNickname.movie_reply_content}</a></td>
+														<td><fmt:formatDate value="${signInUserNickname.movie_reply_update_time}" pattern="yyyy/MM/dd HH:mm" /></td>
+													</tr>
+												</c:forEach>
+											</tbody>
+										</table>
+									</td>
 								</tr>
 								<tr style="cursor: pointer;" onclick="location.href='./#'">
 									<td class="user__chart__item">
@@ -260,7 +283,7 @@
 							</tbody>
 						</table>
 					</div>
-
+					</div>
 				</div>
 			</div>
 	</section>
@@ -269,38 +292,12 @@
 
 
 	<!-- Footer Section Begin -->
-	<footer class="footer">
-		<div class="container">
-			<div class="row">
-				<div class="footer__about">
-					<div class="footer__logo">
-						<a href="../"><img src="../resources/img/popcornbox_logo.png"></a>
-					</div>
-				</div>
-				<div class="footer_text">
-					<div>
-						<p>popcompany | 대표 김유은</p>
-						<p>서울특별시 강남구 테헤란로 124 4층 | 사업자 등록번호 11110 22220 3333</p>
-						<p>
-							<a href="../">서비스 소개 </a> | <a href="../">이용약관 </a> | <a
-								href="../">개인정보 처리 방침 </a> | <a href="../">고객센터 </a> | <a
-								href="https://github.com/PopcornBox/popcorn_box">Github </a>
-						</p>
-						<p>
-							Copyright ©
-							<script>
-								document.write(new Date().getFullYear());
-							</script>
-							2020 Popcorn Box. All rights reserved
-						</p>
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
+		<%@include file="../footer.jsp" %>
 	<!-- Footer Section End -->
 
+
+
+<<<<<<< HEAD
 
 	<!-- Js Plugins -->
 	<script src="../resources/js/jquery-3.3.1.min.js"></script>
@@ -329,5 +326,43 @@
 		
 	</script>
 
+=======
+<script>
+		    $(document).ready(function(){
+			    
+			    var message = '${msg}';
+				if (message != null && message != '') {
+					alert(message);
+				}
+			    
+    			// type 이 radio 이고 class 가 start_type_radio 인 input 을 click 했을 경우
+                $('input[type="radio"][class="data_type_radio"]').on('click',function(){
+					
+                    // startSetting 에 checked된 radio button의 value 값을 넣는다.
+                    var startSetting = $('input[type=radio][class="data_type_radio"]:checked').val();
+                   
+                   // startSetting이 later인 경우 style display를 flex로 변경한다. 
+                   if(startSetting == 'later'){
+                        $('#task_boardLog_setting').css('display','flex');
+                   
+                   // 그외의 경우 style display를 none 으로 변경한다.
+                    }else{
+                        $('#task_boardLog_setting').css('display','none');
+                    }
+                });
+            });
+		    
+		    
+		    
+		    
+		    
+	        $(function(){
+	            $("#load_all").click(function(e){ // click event for load more
+	                e.preventDefault();
+	                $(".innerchart_all:hidden").show(); // hidden div show them
+	            });
+	        });
+	</script>
+>>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
 </body>
 </html>

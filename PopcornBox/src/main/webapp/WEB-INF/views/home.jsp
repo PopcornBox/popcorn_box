@@ -352,6 +352,7 @@
 	</div>
     </section>
     <!-- Latest Blog Section End -->
+
 <!-- Footer Section Begin -->
 <footer class="footer">
 	<div class="container" style="display: flex;">
@@ -394,6 +395,24 @@
 </footer>
 <!-- Footer Section End -->
 
+<!-- Js Plugins -->
+<script src="./resources/js/jquery-3.3.1.min.js"></script>
+<script src="./resources/js/bootstrap.min.js"></script>
+<!-- <script src="./resources/js/jquery.nice-select.min.js"></script> -->
+<script src="./resources/js/jquery.nicescroll.min.js"></script>
+<script src="./resources/js/jquery.magnific-popup.min.js"></script>
+<script src="./resources/js/jquery.countdown.min.js"></script>
+<script src="./resources/js/jquery.slicknav.js"></script>
+<script src="./resources/js/mixitup.min.js"></script>
+<script src="./resources/js/owl.carousel.min.js"></script>
+<script src="./resources/js/main.js"></script>
+
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+		
 		
 	<script>
 	 CountDownTimer('02/25/2022', 'countdown');
@@ -498,20 +517,6 @@
 				
 			});
 	</script>	
-<!-- Js Plugins -->
-<script src="./resources/js/jquery-3.3.1.min.js"></script>
-<script src="./resources/js/bootstrap.min.js"></script>
-<!-- <script src="./resources/js/jquery.nice-select.min.js"></script> -->
-<script src="./resources/js/jquery.nicescroll.min.js"></script>
-<script src="./resources/js/jquery.magnific-popup.min.js"></script>
-<script src="./resources/js/jquery.countdown.min.js"></script>
-<script src="./resources/js/jquery.slicknav.js"></script>
-<script src="./resources/js/mixitup.min.js"></script>
-<script src="./resources/js/owl.carousel.min.js"></script>
-<script src="./resources/js/main.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

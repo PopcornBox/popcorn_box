@@ -1,3 +1,5 @@
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
@@ -57,6 +59,7 @@
 <script src="../resources/js/mixitup.min.js"></script>
 <script src="../resources/js/owl.carousel.min.js"></script>
 <script src="../resources/js/main.js"></script>
+
 <script
 	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 <script
