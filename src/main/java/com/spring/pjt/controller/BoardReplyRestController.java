@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.spring.pjt.domain.BoardReply;
 import com.spring.pjt.service.BoardReplyService;
 
-@RestController // REST 서비스를 지원하는 콘트롤러 
+@RestController // REST 서비스를 지원하는 컨트롤러 
 //RestController 클래스의 모든 메서드들이 리턴하는 값은 view(JSP)를 찾기 위한 문자열이 아니라 
 //응답(response)으로 클라이언트에게 전달되는 데이터.
 
@@ -33,6 +33,7 @@ public class BoardReplyRestController {
 		
 		log.info("readAllReplies(board_no={})", board_no);
 		List<BoardReply> boardReplyList = boardReplyService.slelct(board_no);
+//		log.info(boardReplyList.toString());
 		
 		ResponseEntity<List<BoardReply>> entity = new ResponseEntity<List<BoardReply>>(boardReplyList, HttpStatus.OK);
 		
@@ -65,5 +66,16 @@ public class BoardReplyRestController {
 		return entity;
 	}
 			
+	@RequestMapping(value="/{board_reply_no}", method = RequestMethod.DELETE)
+	public ResponseEntity<Integer> deleteBoardReply(@PathVariable(name="board_reply_no") Integer board_reply_no){
+		log.info("deleteBoardReply(board_reply_no={})", board_reply_no);
+		
+		int result = boardReplyService.delete(board_reply_no);
+		
+		ResponseEntity<Integer> entity = new ResponseEntity<Integer>(result, HttpStatus.OK);
+
+		return entity;
+		
+	}
 
 }

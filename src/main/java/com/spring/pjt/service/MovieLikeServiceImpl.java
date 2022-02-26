@@ -44,4 +44,10 @@ public class MovieLikeServiceImpl implements MovieLikeService {
 		return movieLikeDao.deleteLike(movie_no, user_no);
 	}
 	
+	@Override
+	public List<Object> readUsers(int movie_no) {
+		log.info("readUsers(movie_no:{}) 호출", movie_no);
+		
+		return movieLikeDao.readAllUsers(movie_no);
+	}
 }

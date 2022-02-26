@@ -22,6 +22,12 @@
     DELETE FROM ${TABLE_LIKES} 
     WHERE ${COL_MOVIE_NO} = #{movie_no} and ${COL_USER_NO} = #{user_no}
     </delete>
+	
+	 <!-- 해당 영화의 좋아요 수 계산 -->
+    	 <select id="selectAllUsers" resultType="Object">
+		SELECT ${COL_USER_NO} FROM ${TABLE_LIKES}
+		WHERE ${COL_MOVIE_NO} = #{movie_no}
+	 </select>
 
 
 

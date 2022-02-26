@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.pjt.domain.Board;
 import com.spring.pjt.domain.PageCriteria;
+import com.spring.pjt.domain.User;
 import com.spring.pjt.mapper.BoardMapper;
 import com.spring.pjt.mapper.EventMapper;
 import com.spring.pjt.persistence.BoardDao;
@@ -35,6 +36,7 @@ public class BoardServiceImpl  implements BoardService{
 		log.info("select(board_no={}) 호출", board_no);
 		Board board = boardDao.read(board_no);
 		boardDao.UpdateViewCnt(board_no);
+	
 		
 		return board;
 	}
@@ -45,6 +47,8 @@ public class BoardServiceImpl  implements BoardService{
 		int result = boardDao.create(board);
 		
 		return result;
+
+		
 	}
 
 	@Override
@@ -83,5 +87,8 @@ public class BoardServiceImpl  implements BoardService{
 	public int getTotalContents() {
 		return mapper.getTotalContents();
 	}
+
+
+
 	
 }

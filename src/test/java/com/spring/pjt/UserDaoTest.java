@@ -30,9 +30,9 @@ public class UserDaoTest {
 		// User user = new User(0, "yueun", "bonobono", "1234", "yueun@gmail.com", null);
 		// int result = userDao.create(user);
 		// log.info("create user 결과: {}", result);
-		
-		User user = new User(0, "kim328", "porori", "1234", "kim328@gmail.com", null, null, null);
-		int result = userDao.create(user);
-		log.info("create user 결과: {}", result);
+
+//		User user = new User(0, "kim328", "porori", "1234", "kim328@gmail.com", null, null, null);
+//		int result = userDao.create(user);
+//		log.info("create user 결과: {}", result);
 	}
 }
