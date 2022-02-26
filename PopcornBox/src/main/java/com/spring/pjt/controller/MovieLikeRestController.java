@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.spring.pjt.domain.Movie;
 import com.spring.pjt.service.MovieLikeService;
+import com.spring.pjt.service.MovieService;
 import com.spring.pjt.service.UserService;
 
 @RestController 
@@ -25,6 +27,7 @@ public class MovieLikeRestController {
 	private static final Logger log = LoggerFactory.getLogger(MovieLikeRestController.class);
 	@Autowired private MovieLikeService movieLikeService;
 	@Autowired private UserService userService;
+	@Autowired private MovieService movieService;
 
 	@RequestMapping(value = "/check/{user_nickname}", method = RequestMethod.GET)
 	public ResponseEntity<List<Integer>> readLike(@PathVariable(name = "user_nickname") String user_nickname) {
