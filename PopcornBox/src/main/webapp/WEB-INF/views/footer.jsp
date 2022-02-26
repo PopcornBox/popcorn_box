@@ -51,7 +51,7 @@
 <!-- Js Plugins -->
 <script src="../resources/js/jquery-3.3.1.min.js"></script>
 <script src="../resources/js/bootstrap.min.js"></script>
-<!-- <script src="./resources/js/jquery.nice-select.min.js"></script> -->
+<script src="./resources/js/jquery.nice-select.min.js"></script>
 <script src="../resources/js/jquery.nicescroll.min.js"></script>
 <script src="../resources/js/jquery.magnific-popup.min.js"></script>
 <script src="../resources/js/jquery.countdown.min.js"></script>
