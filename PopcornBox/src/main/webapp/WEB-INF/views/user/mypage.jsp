@@ -11,6 +11,16 @@
 <title>Popcorn Box</title>
 </head>
 <body>
+
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+    
+		<ul>
+			<li><a href="./userInfo">회원정보확인</a></li>
+		</ul>
+
 		<div>
 			<table>
 				<th>활동 내역</th><th>게시물 번호</th><th>게시글 제목</th><th>작성 일자</th>
@@ -51,6 +61,110 @@
 			</table>
 		</div>
 
+
+	<!-- Offcanvas Menu Begin -->
+	<div class="offcanvas-menu-overlay"></div>
+	<div class="offcanvas-menu-wrapper">
+		<div class="offcanvas__option">
+			<div class="offcanvas__links">
+				<ul>
+					<c:if test="${empty signInUserNickname}">
+						<%-- 로그인 되어 있지 않은 경우 --%>
+						<li><a href="../user/signin">로그인</a></li>
+						<li><a href="../user/register">회원가입</a></li>
+						<li><a href="../user/mypage">마이페이지</a></li>
+						<li><a href="./event/main">이벤트</a></li>
+					</c:if>
+					<c:if test="${not empty signInUserNickname}">
+						<%-- 로그인 되어 있는 경우 --%>
+						<li><span>${signInUserNickname} 님</span></li>
+						<li></li>
+						<li><a href="../user/signout">로그아웃</a></li>
+						<li><a href="../user/register">회원가입</a></li>
+						<li><a href="../user/mypage">마이페이지</a></li>
+						<li><a href="../event/main">이벤트</a></li>
+					</c:if>
+				</ul>
+			</div>
+		</div>
+
+		<div id="mobile-menu-wrap"></div>
+		<div class="offcanvas__text">
+			<p>PopcornBox</p>
+		</div>
+	</div>
+	<!-- Offcanvas Menu End -->
+
+	<!-- Header Section Begin -->
+	<header class="header">
+		<div class="header__top">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-md-7">
+						<div class="header__top__left">
+							<a href="../"><img src="../resources/img/popcornbox_logo.png"
+								alt="logo"></a>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-5">
+						<div class="header__top__right">
+							<div class="header__top__links">
+								<c:if test="${empty signInUserNickname}">
+									<%-- 로그인 되어 있지 않은 경우 --%>
+									<a href="../user/signin"><i class="fa-solid fa-lock"></i>로그인</a>
+									<a href="../user/register"><i class="fa-solid fa-user-plus"></i>회원가입</a>
+									<a href="../user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
+								</c:if>
+								<c:if test="${not empty signInUserNickname}">
+									<%-- 로그인 되어 있는 경우 --%>
+									<c:if test="${empty accessToken}">
+										<%-- 일반 로그인의 경우 --%>
+										<span>${signInUserNickname} 님</span>
+										<br>
+										<a href="../user/signout"><i class="fa-solid fa-lock"></i>로그아웃</a>
+										<a href="../user/register"><i
+											class="fa-solid fa-user-plus"></i>회원가입</a>
+										<a href="../user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
+									</c:if>
+									<c:if test="${not empty accessToken}">
+										<%-- 카카오 로그인의 경우 --%>
+										<span>${signInUserNickname} 님</span>
+										<br>
+										<a
+											href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7&logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">
+											<i class="fa-solid fa-lock"></i>로그아웃
+										</a>
+										<a href="./user/register"><i class="fa-solid fa-user-plus"></i>회원가입</a>
+										<a href="./user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
+									</c:if>
+								</c:if>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row" class="header__row__">
+
+				<div class="col-md-7 col-md-4">
+					<nav class="header__menu mobile-menu">
+						<ul>
+							<li><a href="../">홈</a></li>
+							<li><a href="../movie/mainlist">차트</a></li>
+							<li><a href="../board/main">커뮤니티</a></li>
+							<li><a href="../event/main">이벤트</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<div class="canvas__open">
+				<i class="fa fa-bars"></i>
+			</div>
+		</div>
+	</header>
+	<!-- Header Section End -->
+	
 			<!-- 좋아요한 영화 전용 table -->
 			<table>
 				<c:forEach items="${mypageMovieLikeResult.myMovieLikeList}" var="signInUserNickname">
@@ -178,34 +292,30 @@
 	<!-- Footer Section End -->
 
 
+	<!-- Js Plugins -->
+	<script src="../resources/js/jquery-3.3.1.min.js"></script>
+	<script src="../resources/js/bootstrap.min.js"></script>
+	<!-- <script src="../resources/js/jquery.nice-select.min.js"></script> -->
+	<script src="../resources/js/jquery.nicescroll.min.js"></script>
+	<script src="../resources/js/jquery.magnific-popup.min.js"></script>
+	<script src="../resources/js/jquery.countdown.min.js"></script>
+	<script src="../resources/js/jquery.slicknav.js"></script>
+	<script src="../resources/js/mixitup.min.js"></script>
+	<script src="../resources/js/owl.carousel.min.js"></script>
+	<script src="../resources/js/main.js"></script>
 
-<script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+	<script>
 		    $(document).ready(function(){
 			    
 			    var message = '${msg}';
 				if (message != null && message != '') {
 					alert(message);
 				}
-			    
-    			// type 이 radio 이고 class 가 start_type_radio 인 input 을 click 했을 경우
-                $('input[type="radio"][class="data_type_radio"]').on('click',function(){
-					
-                    // startSetting 에 checked된 radio button의 value 값을 넣는다.
-                    var startSetting = $('input[type=radio][class="data_type_radio"]:checked').val();
-                   
-                   // startSetting이 later인 경우 style display를 flex로 변경한다. 
-                   if(startSetting == 'later'){
-                        $('#task_boardLog_setting').css('display','flex');
-                   
-                   // 그외의 경우 style display를 none 으로 변경한다.
-                    }else{
-                        $('#task_boardLog_setting').css('display','none');
-                    }
-                });
-            });
-		    
-		    
-		    
 		    
 		    
 	        $(function(){
@@ -215,5 +325,6 @@
 	            });
 	        });
 	</script>
+
 </body>
 </html>
