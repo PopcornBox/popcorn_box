@@ -218,16 +218,18 @@
         </div>
       </div>
       <div class="container">
+      <form action="./leave" method="post">
         <h6 class="checkout__title" style="border:none; text-align:center;">탈퇴를 원하시면 비밀번호를 입력해주세요.</h6>
 			<div id="leaveButton">
           <div class="checkout__input" style="width:280px; text-align:center;">
-              <input type="text" placeholder="비밀번호를 입력해주세요." />
+              <input type="password" id="user_pwd" name="user_pwd" placeholder="비밀번호를 입력해주세요." required />
           </div>
           <div style ="display:flex; justify-content: space-between; width: 280px;">
              <a href="./mypage" class="btn btn-success" id="submit">취소</a>
-				<button class="cancel btn btn-danger" type="button">탈퇴하기</button>
+				<button class="cancel btn btn-danger" type="submit">탈퇴하기</button>
           </div>
 			</div>
+			</form>
       </div>
     </section>
     <!-- 탈퇴메세지 Section End -->
