@@ -17,7 +17,7 @@ public class BoardReply {
 		
 	public BoardReply(int board_reply_no, String board_reply_content, String user_nickname,
 			Date board_reply_update_time, int board_no) {
-		super();
+
 		this.board_reply_no = board_reply_no;
 		this.board_reply_content = board_reply_content;
 		this.user_nickname = user_nickname;
