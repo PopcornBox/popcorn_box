@@ -208,7 +208,7 @@
 									</td>
 									<td>
 										<button class="checknickname primary-btn" type="button" style="height: 40px; padding: 0px;"
-												id="checknickname" onclick="fn_checknickname();" value="N">중복확인</button>
+												id="checknickname" value="N">중복확인</button>
 									</td>
 								</tr>
 								<tr>
@@ -243,6 +243,7 @@
 									</td>
 									<td></td>
 								</tr>
+								<input class="form-control" type="hidden" name="msg" id="msg"></input>
 							</tbody>
 						</table>
 					</div>
