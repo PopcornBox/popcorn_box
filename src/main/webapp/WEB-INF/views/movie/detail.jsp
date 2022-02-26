@@ -238,7 +238,10 @@
   					<div>
   						<i class="fa-regular fa-heart" id="btn_unlike"></i>
   						<i class="fa-solid fa-heart" id="btn_like"></i>
-  					</div>				
+						<div id="count_like"></div>
+  					</div>	
+			
+
 
  					<!-- My Modal -->
   					<div class="modal" id="myModal">
@@ -344,7 +347,7 @@
                 <div class="col-lg-12 col-md-14">
                   <br><br>
                     <div class="contact__form" id="movie_content" name="movie_content" style="margin: 0px;">
-                      <p>${movie.movie_content}</p>
+                      <p class="container">${movie.movie_content}</p>
                       <br>
                       <br>
                       
@@ -356,27 +359,55 @@
                     </div>
                 </div>                                
             </div>
+          </div>
+            
+            
+	<div class="similarMovieTable">
+		<div class="container">
+		<h4>:: 비슷한 장르 추천 ::</h4>
+			<div>
+			<table>
+				<tbody class="text-center">
+					<tr>
+						<c:forEach var="similar_movie" items="${similarMovieList}">
+							<td>
+								<a href="./detail?movie_no=${similar_movie.movie_no}">
+									<img src="${similar_movie.movie_image}" style="height: 260px; width: 185px;">
+								</a>
+							</td>
+						</c:forEach>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+			</div>
+	</div>            
+            
+            
             
 				<br>
 				<hr>
                 <!-- 댓글 작성 양식 -->
-				<div>
-					<div id="reply_number"></div>
-					<input type="text" id="movie_reply_content" name="movie_reply_content" placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." style="width:600px;" />
-					<input type="submit" id="btn_register_movie_reply" value="등록" />
-					<hr>
+	<div class="container">
+		<div class="contact__form">
+			<div id="reply_number"></div>
+				<div style="display: flex;">
+					<input type="text" id="movie_reply_content_empty"
+						style="width: 600px; border: #ddd 1px solid;"
+						name="movie_reply_content_empty" placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." />
+					<input type="submit" id="btn_register_movie_reply" class="primary-btn" style="color: #fff" value="등록" />
 					
-					<!-- 댓글 목록 -->
-					<div id="movie_reply_list">		
-					</div>
-							
-					<!-- 페이지 넘버 -->
-					<div id="page_number" style="width:600px; text-align:center; margin-top:10px;">
-	                </div>        
-				</div>				        
+				</div>			
+			<!-- 댓글 목록 -->
+			<div id="movie_reply_list">
+			</div>
+					
+			<!-- 페이지 넘버 -->
+			<div id="page_number" style="width:600px; text-align:center; margin-top:10px;">
+               </div>
+		</div>				        
 
-        </div>
-        </div>
+	</div>
 
 	</section>
 
@@ -434,7 +465,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>	
 	<script>
 		$(document).ready(function () {
-			$('#movie_reply_content').click(function() {
+			$('#movie_reply_content_empty').click(function() {
 					if ('${signInUserNickname}' == null || '${signInUserNickname}' == '') {
 						var message = '로그인이 필요한 서비스입니다. 로그인 페이지로 이동하시겠습니까?';
 						var result = confirm(message);
@@ -463,6 +494,10 @@
 	                    	numberlist += '<a href="./detail?movie_no=' + ${movie.movie_no} + '&vpage=' + i + '">' + i + '</a> ';
 	                    }
 	                     $('#page_number').html(numberlist);
+	            	} else {
+	            		$('#reply_number').html(' ');
+	            		 $('#page_number').html(' ');
+	            		return;
 	            	}
 	            	
 	           
@@ -528,10 +563,10 @@
     			// 새 영화 리뷰 등록
     			$('#btn_register_movie_reply').click(function (event) {
     				
-    				var movie_reply_content = $('#movie_reply_content').val();
+    				var movie_reply_content = $('#movie_reply_content_empty').val();
     				if (movie_reply_content == '') {
     					alert('내용을 입력해주세요.');
-    					$('#movie_reply_content').focus();
+    					$('#movie_reply_content_empty').focus();
     					return;
     				}
     				
@@ -554,7 +589,7 @@
             			}),
             			// 성공 응답(200 response)이 왔을 때 브라우저가 실행할 콜백 함수
             			success: function (resp) {
-            				$('#movie_reply_content').val('');
+            				$('#movie_reply_content_empty').val('');
             				getAllMovieReplies();  // 댓글 목록 업데이트
             			}
             		});
@@ -587,6 +622,7 @@
                 						success: function () {
                 						alert(' 리뷰 수정 성공!');
                 						getAllMovieReplies(); // 리뷰 목록 업데이트
+                						//location.href = '/pjt/movie/detail?movie_no=' + ${movie.movie_no};
                 			}
                 		});
     				  });
@@ -597,7 +633,7 @@
     			// 댓글 삭제
             	$('#movie_reply_list').on('click', '.movie_reply_item .movie_reply_delete', function (event) {
             		var movie_reply_no = $(this).prevAll('#movie_reply_no').val();
-            		var result = confirm('댓글을 정말 삭제할까요?');
+            		var result = confirm('리뷰를 정말 삭제할까요?');
             		if (result) { // 확인(Yes) 버튼을 클릭했을 때
             			$.ajax({
             				// 요청 URL
@@ -611,7 +647,7 @@
             				},
             				// 성공 응답 콜백 함수
             				success: function () {
-            					alert('댓글 삭제 성공!');
+            					alert('리뷰 삭제 성공!');
             					getAllMovieReplies();
             				}
             			});
@@ -626,325 +662,343 @@
     					location.href = '/pjt/movie/delete?movie_no=${movie.movie_no}';
     				}
     			});
-    			
-		
-		----------------------------------------------------------------------------------------------------
+//    -------------------------------------------------------------------------------------------------------	
+    	
 		
 		// 평점 재계산.
-			average_score();
+		average_score();
+		
+		
+		$('#btn_your_score').hide();
+		
+		if ('${signInUserNickname}' == null || '${signInUserNickname}' == '') {
+			$('#btn_modal').click(function() {
+				location.href = '/pjt/movie/rating/signin?movie_no=' + ${movie.movie_no};
+			});
+		} else {
+			checkRatingRecord(); // 별점 등록 이력 확인.
+		}
+		
+		
+		
+		
+		$('#btn_rate').click(function() {
+			var star = document.getElementsByName('rating');
+			for (var i = 0; i < star.length; i++) {
+				if (star[i].checked) {
+					var a = star[i].value;
+					var databack = a.trim();
+				}
+			}
+				insert_score(databack);
+	    });
+		
+		
+		
+		
+		function insert_score(score) {
 			
-			
-			$('#btn_your_score').hide();
-			
-			if ('${signInUserNickname}' == null || '${signInUserNickname}' == '') {
-				$('#btn_modal').click(function() {
-					location.href = '/pjt/movie/rating/signin?movie_no=' + ${movie.movie_no};
-				});
-			} else {
-				checkRatingRecord(); // 별점 등록 이력 확인.
+        		$.ajax({
+        			// 요청 주소
+        			url: '/pjt/movie_rating/insert',
+        			// 요청 타입
+        			type: 'POST',
+        			// 요청 HTTP 헤더
+        			headers: {
+        				'Content-Type': 'application/json',
+        				'X-HTTP-Method-Override': 'POST'
+        			},
+        			// 요청에 포함되는 데이터(JSON 문자열)
+        			data: JSON.stringify({
+        				'movie_no': '${movie.movie_no}',
+        				'user_nickname': '${signInUserNickname}',
+        				'movie_score': score
+        			}),
+        			// 성공 응답(200 response)이 왔을 때 브라우저가 실행할 콜백 함수
+        			success: function (resp) {
+        				checkRatingRecord();
+        				
+        				// 평점 재계산.
+    					average_score();
+        				
+    					alert('별점이 등록되었습니다.');
+        			}
+        		});
+			}
+		
+		
+		
+		
+		
+    	function checkRatingRecord() {
+    		
+            $.getJSON('/pjt/movie_rating/check/' + '${movie.movie_no}' + '/' + '${signInUserNickname}', function (data) {
+            	
+            	var result = (data).toFixed(1);
+            	if (result == 0.0) { // 별점 등록 이력이 없으면
+            		$('#btn_your_score').hide();
+            		$('#btn_modal').show();
+            		$('#btn_modal').click(function() {
+						$('#myModal').modal('show');
+					});
+				} else { // 있으면
+					$('#btn_modal').hide();
+					$('#btn_your_score').html(result);
+					$('#btn_your_score').show();
+				}
+            	
+            });
+    	}
+		
+    	
+    	
+    	
+    	
+    	$('#btn_your_score').click(function() {
+    		var past_score = parseInt(this.innerHTML);
+    		$('#updateModal').modal('show');
+    		
+    		var star = document.getElementsByName('ratings');
+    	
+			for (var i = 0; i < 11 - past_score; i++) {
+				star[i].checked = true;
 			}
 			
+			$('#1-star1').click(function() {
+				this.checked = true;
+			});
 			
-			
-			
-			$('#btn_rate').click(function() {
-				var star = document.getElementsByName('rating');
+			$('#btn_rate_update').click(function() {
 				for (var i = 0; i < star.length; i++) {
 					if (star[i].checked) {
 						var a = star[i].value;
 						var databack = a.trim();
 					}
 				}
-					insert_score(databack);
-		    });
-			
-			
-			
-			
-			function insert_score(score) {
-    			
-            		$.ajax({
-            			// 요청 주소
-            			url: '/pjt/movie_rating/insert',
-            			// 요청 타입
-            			type: 'POST',
-            			// 요청 HTTP 헤더
-            			headers: {
-            				'Content-Type': 'application/json',
-            				'X-HTTP-Method-Override': 'POST'
-            			},
-            			// 요청에 포함되는 데이터(JSON 문자열)
-            			data: JSON.stringify({
-            				'movie_no': '${movie.movie_no}',
-            				'user_nickname': '${signInUserNickname}',
-            				'movie_score': score
-            			}),
-            			// 성공 응답(200 response)이 왔을 때 브라우저가 실행할 콜백 함수
-            			success: function (resp) {
-            				checkRatingRecord();
-            				
-            				// 평점 재계산.
-        					average_score();
-            				
-        					alert('별점이 등록되었습니다.');
-            			}
-            		});
-    			}
-			
-			
-			
-			
-			
-        	function checkRatingRecord() {
-        		
-                $.getJSON('/pjt/movie_rating/check/' + '${movie.movie_no}' + '/' + '${signInUserNickname}', function (data) {
-                	
-                	var result = (data).toFixed(1);
-                	if (result == 0.0) { // 별점 등록 이력이 없으면
-                		$('#btn_your_score').hide();
-                		$('#btn_modal').show();
-                		$('#btn_modal').click(function() {
-    						$('#myModal').modal('show');
-    					});
-    				} else { // 있으면
-    					$('#btn_modal').hide();
-    					$('#btn_your_score').html(result);
-    					$('#btn_your_score').show();
-    				}
-                	
-                });
-        	}
-			
-        	
-        	
-        	
-        	
-        	$('#btn_your_score').click(function() {
-        		var past_score = parseInt(this.innerHTML);
-        		$('#updateModal').modal('show');
-        		
-        		var star = document.getElementsByName('ratings');
-        	
-				for (var i = 0; i < 11 - past_score; i++) {
-					star[i].checked = true;
-				}
+				update_score(databack);
 				
-				$('#1-star1').click(function() {
-					this.checked = true;
-				});
-				
-				$('#btn_rate_update').click(function() {
-					for (var i = 0; i < star.length; i++) {
-						if (star[i].checked) {
-							var a = star[i].value;
-							var databack = a.trim();
-						}
-					}
-					update_score(databack);
-					
-				});
-				
-        	});
-        	
-        	
-        	
-        	
-        	
-        	var isRun = false;
-        	
-        	function update_score(updated_score) {
-        		if (isRun == true) {
-        			return;
-        		}
-        		
-        		isRun= true;
-        		
-        		$.ajax({
-					// 요청 URL
-					url: '/pjt/movie_rating/update/' + '${movie.movie_no}' + '/' + '${signInUserNickname}', 
-					// 요청 방식
-					type: 'PUT',
-					// 요청 패킷 헤더
-					headers: {
-						'Content-Type': 'application/json',
-						'X-HTTP-Method-Override': 'PUT'
-					},
-					// 요청 패킷 데이터
-					data: JSON.stringify({
-						'updated_score': updated_score
-					}),
-					
-					// 성공 응답 콜백 함수
-					success: function (result) {
-						isRun = false;
-							checkRatingRecord();
-		
-							// 평점 재계산.
-							average_score();
-							
-							alert("별점 수정 성공!");
-					}
-					
-				});
-        			
-        	}
-        	
-        	
-        	
-        	
-        	
-        	$('#btn_rate_delete').click(function(event) {
-            		var result = confirm('별점을 삭제할까요?');
-            		if (result) { // 확인(Yes) 버튼을 클릭했을 때
-            			$.ajax({
-            				// 요청 URL
-            				url: '/pjt/movie_rating/delete/' + '${movie.movie_no}' + '/' + '${signInUserNickname}',
-            				// 요청 타입
-            				type: 'DELETE',
-            				// 요청 헤더
-            				headers: {
-            					'Content-Type': 'application/json',
-            					'X-HTTP-Method-Override': 'DELETE'
-            				},
-            				// 성공 응답 콜백 함수
-            				success: function () {
-            					checkRatingRecord();
-            					
-            					// 평점 재계산.
-            					average_score();
-            					
-            					alert('별점 삭제 성공!');
-            				}
-            			});
-            		}
-            	});
-        	
-		
-			
-        	
-        	function average_score() {
-        		 $.getJSON('/pjt/movie_rating/average/' + '${movie.movie_no}', function (average) {
-                 	
-                 	var averageScore = average;
-                 	
-                 	var updated_average = average.toFixed(1);
-                 	
-                 	$('#average_score').html(updated_average);
-                 	
-                 	
-                 });
-        	}
-			
-	// ------------------------ 위는 평점, 별점 관련 코드, 밑은 좋아요 코드 -----------------------------------------------------------	
-	
-		if ('${signInUserNickname}' == null || '${signInUserNickname}' == '') {
-			$('#btn_like').hide();
-			$('#btn_unlike').show();
-			$('#btn_unlike').click(function() {
-				var answer = alert('로그인후 이용가능합니다.');
-				location.href = '/pjt/movie/rating/signin?movie_no=' + ${movie.movie_no};
 			});
 			
-		} else {	
-			$('#btn_like').hide();
-			$('#btn_unlike').show();
-			
-			// DB에서 좋아요 기록 불러와서 세팅.
-			read_like();
-			
-			
-			$('#btn_like').click(function() {  // 좋아요 클릭 -> 싫어요 전환 -> 삭제.
-				$('#btn_like').hide();
-				$('#btn_unlike').show();
-				delete_like();
-			});
-				
-					
-			$('#btn_unlike').click(function() { // 싫어요 클릭 -> 좋아요 전환 -> 등록.
-				$('#btn_unlike').hide();
-				$('#btn_like').show();
-				insert_like();
-			});	
-			
-			
-		}
-	
-		
-		function read_like() {
-			var user_nickname = '${signInUserNickname}';
-			var movie_no = '${movie.movie_no}';
-			
-			 $.getJSON('/pjt/movie_like/read/' + user_nickname + '/' + movie_no, function (data) {
-				 console.log(data);
-             	
- 						if (data == movie_no) {
- 							 $('#btn_like').show();
- 							 $('#btn_unlike').hide();
- 						} else {
- 							$('#btn_like').hide();
- 							$('#btn_unlike').show();
- 						}	
-             });
-		}
-	
-		
-		function insert_like() {
-			
-			var movie_no = '${movie.movie_no}';
-			
+    	});
+    	
+    	
+    	
+    	
+    	
+    	var isRun = false;
+    	
+    	function update_score(updated_score) {
+    		if (isRun == true) {
+    			return;
+    		}
+    		
+    		isRun= true;
+    		
     		$.ajax({
-    			// 요청 주소
-    			url: '/pjt/movie_like/insert',
-    			// 요청 타입
-    			type: 'POST',
-    			// 요청 HTTP 헤더
-    			headers: {
-    				'Content-Type': 'application/json',
-    				'X-HTTP-Method-Override': 'POST'
-    			},
-    			// 요청에 포함되는 데이터(JSON 문자열)
-    			data: JSON.stringify({
-    				'movie_no': movie_no,
-    				'user_nickname': '${signInUserNickname}'
-    			}),
-    			// 성공 응답(200 response)이 왔을 때 브라우저가 실행할 콜백 함수
-    			success: function (resp) {
-    				read_like();
-    			}
-    		});
-		}
-		
-		
-		function delete_like() {
-			
-			var movie_no = '${movie.movie_no}';
-			
-			$.ajax({
 				// 요청 URL
-				url: '/pjt/movie_like/delete/' + movie_no + '/' + '${signInUserNickname}',
-				// 요청 타입
-				type: 'DELETE',
-				// 요청 헤더
+				url: '/pjt/movie_rating/update/' + '${movie.movie_no}' + '/' + '${signInUserNickname}', 
+				// 요청 방식
+				type: 'PUT',
+				// 요청 패킷 헤더
 				headers: {
 					'Content-Type': 'application/json',
-					'X-HTTP-Method-Override': 'DELETE'
+					'X-HTTP-Method-Override': 'PUT'
 				},
+				// 요청 패킷 데이터
+				data: JSON.stringify({
+					'updated_score': updated_score
+				}),
+				
 				// 성공 응답 콜백 함수
-				success: function () {
-					read_like();
+				success: function (result) {
+					isRun = false;
+						checkRatingRecord();
+	
+						// 평점 재계산.
+						average_score();
+						
+						alert("별점 수정 성공!");
 				}
+				
 			});
-		}
-		
-		
-		
-		
-		
-		
-		
-		
     			
-    		});
+    	}
+    	
+    	
+    	
+    	
+    	
+    	$('#btn_rate_delete').click(function(event) {
+        		var result = confirm('별점을 삭제할까요?');
+        		if (result) { // 확인(Yes) 버튼을 클릭했을 때
+        			$.ajax({
+        				// 요청 URL
+        				url: '/pjt/movie_rating/delete/' + '${movie.movie_no}' + '/' + '${signInUserNickname}',
+        				// 요청 타입
+        				type: 'DELETE',
+        				// 요청 헤더
+        				headers: {
+        					'Content-Type': 'application/json',
+        					'X-HTTP-Method-Override': 'DELETE'
+        				},
+        				// 성공 응답 콜백 함수
+        				success: function () {
+        					checkRatingRecord();
+        					
+        					// 평점 재계산.
+        					average_score();
+        					
+        					alert('별점 삭제 성공!');
+        				}
+        			});
+        		}
+        	});
+    	
+	
+		
+    	
+    	function average_score() {
+    		 $.getJSON('/pjt/movie_rating/average/' + '${movie.movie_no}', function (average) {
+             	
+             	var averageScore = average;
+             	
+             	var updated_average = average.toFixed(1);
+             	
+             	$('#average_score').html(updated_average);
+             	
+             	
+             });
+    	}
+		
+// ------------------------ 위는 평점, 별점 관련 코드, 밑은 좋아요 코드 -----------------------------------------------------------	
+
+	if ('${signInUserNickname}' == null || '${signInUserNickname}' == '') {
+		$('#btn_like').hide();
+		$('#btn_unlike').show();
+		$('#btn_unlike').click(function() {
+			var answer = alert('로그인후 이용가능합니다.');
+			location.href = '/pjt/movie/rating/signin?movie_no=' + ${movie.movie_no};
+		});
+		
+	} else {	
+		$('#btn_like').hide();
+		$('#btn_unlike').show();
+		
+		// DB에서 좋아요 기록 불러와서 세팅.
+		read_like();
+		count_like();
+		
+		$('#btn_like').click(function() {  // 좋아요 클릭 -> 싫어요 전환 -> 삭제.
+			$('#btn_like').hide();
+			$('#btn_unlike').show();
+			delete_like();
+		});
+			
+				
+		$('#btn_unlike').click(function() { // 싫어요 클릭 -> 좋아요 전환 -> 등록.
+			$('#btn_unlike').hide();
+			$('#btn_like').show();
+			insert_like();
+		});	
+		
+		
+	}
+
+	
+	function read_like() {
+		var user_nickname = '${signInUserNickname}';
+		var movie_no = '${movie.movie_no}';
+		
+		 $.getJSON('/pjt/movie_like/read/' + user_nickname + '/' + movie_no, function (data) {
+			 console.log(data);
+         	
+						if (data == movie_no) {
+							 $('#btn_like').show();
+							 $('#btn_unlike').hide();
+						} else {
+							$('#btn_like').hide();
+							$('#btn_unlike').show();
+						}	
+         });
+	}
+
+	
+	function insert_like() {
+		
+		var movie_no = '${movie.movie_no}';
+		
+		$.ajax({
+			// 요청 주소
+			url: '/pjt/movie_like/insert',
+			// 요청 타입
+			type: 'POST',
+			// 요청 HTTP 헤더
+			headers: {
+				'Content-Type': 'application/json',
+				'X-HTTP-Method-Override': 'POST'
+			},
+			// 요청에 포함되는 데이터(JSON 문자열)
+			data: JSON.stringify({
+				'movie_no': movie_no,
+				'user_nickname': '${signInUserNickname}'
+			}),
+			// 성공 응답(200 response)이 왔을 때 브라우저가 실행할 콜백 함수
+			success: function (resp) {
+				read_like();
+				count_like();
+			}
+		});
+	}
+	
+	
+	function delete_like() {
+		
+		var movie_no = '${movie.movie_no}';
+		
+		$.ajax({
+			// 요청 URL
+			url: '/pjt/movie_like/delete/' + movie_no + '/' + '${signInUserNickname}',
+			// 요청 타입
+			type: 'DELETE',
+			// 요청 헤더
+			headers: {
+				'Content-Type': 'application/json',
+				'X-HTTP-Method-Override': 'DELETE'
+			},
+			// 성공 응답 콜백 함수
+			success: function () {
+				read_like();
+				count_like();
+			}
+		});
+	}
+		
+	function count_like()  {
+		var movie_no = '${movie.movie_no}';
+		
+		$.getJSON('/pjt/movie_like/count/' + movie_no, function (data) {
+		 
+			console.log(data);
+			
+     	 	if (data != null) { // 좋아요 기록이 있으면 (카운팅)
+   			 				$('#count_like').html(data.length);
+   			 }
+   			 
+     	 	
+     	 	for (var i = 0; i < data.length; i++) {
+				if (data[i] == 0) {
+						$('#count_like').html(' ');
+			 		}
+			 }
+		
+ 		});
+
+	}	
+	
+  
+    
+        
+}); 
     	</script>	
 	
 </body>

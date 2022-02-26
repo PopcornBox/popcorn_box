@@ -1,6 +1,7 @@
 package com.spring.pjt.persistence;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -11,14 +12,20 @@ import org.springframework.stereotype.Repository;
 import org.springframework.test.context.jdbc.Sql;
 
 import com.spring.pjt.domain.User;
+import com.spring.pjt.mapper.EventReplyMapper;
+import com.spring.pjt.mapper.MovieReplyMapper;
 
 @Repository
 public class UserDaoImpl implements UserDao {
 
 	private static final Logger log = LoggerFactory.getLogger(UserDaoImpl.class);
 	private static final String USER_NAMESPACE = "com.spring.pjt.mapper.UserMapper";
+	private static final String BOARD_REPLY_NAMESPACE="com.spring.pjt.mapper.BoardReplyMapper";
+	private static final String BOARD_NAMESPACE = "com.spring.pjt.mapper.BoardMapper";
 	
 	@Autowired private SqlSession sqlSession;
+	@Autowired private EventReplyMapper mapper;
+	@Autowired private MovieReplyMapper mo_mapper;
 	
 	@Override
 	public int create(User user) {
@@ -77,7 +84,50 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public void userInfoUpdate(User user) {
 		log.info("userInfoUpdate() 호출");
+		Object obj_user = sqlSession.selectOne(USER_NAMESPACE + ".selectByEmail", user);
+		User oldUser = (User) obj_user;
+		
+		List<Object> boardReplyList = sqlSession.selectList(BOARD_REPLY_NAMESPACE + ".findReplyNo", oldUser);
+		for (Object obj : boardReplyList) {
+			int index = (Integer) obj;
+			Map<String, Object> map = new HashMap<>();
+			map.put("board_reply_no", index);
+			map.put("user_nickname", user.getUser_nickname());
+			
+			sqlSession.update(BOARD_REPLY_NAMESPACE + ".updateNickname", map);
+		}
+		
+		
+		List<Object> boardList = sqlSession.selectList(BOARD_NAMESPACE + ".findBoardNo", oldUser);
+		for (Object obj : boardList) {
+			int index = (Integer) obj;
+			Map<String, Object> map = new HashMap<>();
+			map.put("board_no", index);
+			map.put("user_nickname", user.getUser_nickname());
+			
+			sqlSession.update(BOARD_NAMESPACE + ".updateNickname", map);
+		}
+		
+		
+		int[] eventReplyNo = mapper.findEventReplyNo(oldUser);
+		for(int i = 0; i < eventReplyNo.length; i++) {
+		Map<String, Object> map = new HashMap<>();
+		map.put("event_reply_no", eventReplyNo[i]);
+		map.put("user_nickname", user.getUser_nickname());
+		mapper.updateNickname(map);
+		}
+		
+		int[] movieReplyNo = mo_mapper.findMovieReplyNo(oldUser);
+		for(int i = 0; i < movieReplyNo.length; i++) {
+			Map<String, Object> newMap = new HashMap<>();
+			newMap.put("movie_reply_no", movieReplyNo[i]);
+			newMap.put("user_nickname", user.getUser_nickname());
+			
+			mo_mapper.updateNickname(newMap);		
+		}
+		
 		sqlSession.update(USER_NAMESPACE + ".userInfoUpdate", user);
+		
 	}
 	
 	@Override
@@ -97,5 +147,36 @@ public class UserDaoImpl implements UserDao {
 		log.info("delete({}) 호출", user);
 		return sqlSession.delete(USER_NAMESPACE + ".delete", user);
 	}
-
+	
+	// 마이페이지 구현 DAO 
+	@Override
+	public User callMypageBoardInfo(String user_nickname) {
+		log.info("callMypageBoardInfo(user_nickname={}) 호출", user_nickname);
+		return sqlSession.selectOne(USER_NAMESPACE + ".mypageBoardInfo", user_nickname);
+	}
+	
+	@Override
+	public User callMypageBoardReplyInfo(String user_nickname) {
+		log.info("callMypageBoardReplyInfo(user_nickname={}) 호출", user_nickname);
+		return sqlSession.selectOne(USER_NAMESPACE + ".mypageBoardReplyInfo", user_nickname);
+	}
+	
+	@Override
+	public User callMypageEventReplyInfo(String user_nickname) {
+		log.info("callMypageEventReplyInfo(user_nickname={}) 호출", user_nickname);
+		return sqlSession.selectOne(USER_NAMESPACE + ".mypageEventReplyInfo", user_nickname);
+	}
+	
+	@Override
+	public User callMypageMovieReplyInfo(String user_nickname) {
+		log.info("callMypageMovieReplyInfo(user_nickname={}) 호출", user_nickname);
+		return sqlSession.selectOne(USER_NAMESPACE + ".mypageMovieReplyInfo", user_nickname);
+	}
+	
+	@Override
+	public User callMypageMovieLikeInfo(String user_nickname) {
+		log.info("callMypageMovieLikeInfo(user_nickname={}) 호출", user_nickname);
+		return sqlSession.selectOne(USER_NAMESPACE + ".mypageMovieLikeInfo", user_nickname);
+	}
+	
 }

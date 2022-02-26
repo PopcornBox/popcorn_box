@@ -1,6 +1,12 @@
 package com.spring.pjt.controller;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,12 +36,62 @@ public class MovieController {
 
 	//TODO
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
-	public void detail(int movie_no, Model model) {
+	public void detail(int movie_no, Model model, HttpServletRequest request) {
 		log.info("detail(movie_no={}) GET 호출", movie_no);
 		
-		Movie movie = movieService.select(movie_no);
-		model.addAttribute("movie", movie);
+		int vpage = 0;
 		
+		String value = request.getParameter("vpage");
+		log.info("value:{}", value);
+		if (value != null) {
+			vpage = Integer.valueOf(value);
+		} else {
+			vpage = 1;
+		}
+		
+		Movie movie = movieService.select(movie_no);
+		String genre = movie.getMovie_genre();
+		log.info("genre:{}", genre);
+		String[] array = genre.split(",");
+		
+		Set<Integer> set = new HashSet<>();
+		
+		for (int i = 0; i < array.length; i++) {
+			log.info("array[" + i + "] = {}", array[i]);
+			List<Movie> similarMovieList = movieService.select(4, array[i]);
+			
+			for (Movie m : similarMovieList) {
+				set.add(m.getMovie_no());
+			}
+		}
+		
+		List<Integer> newList = new ArrayList<>(set);		
+		Iterator<Integer> iter = newList.iterator();
+		
+		while (iter.hasNext()) {
+			int similarMovie = iter.next();
+			if (movie_no == similarMovie) {
+				iter.remove();
+			}
+			
+		}
+		
+		Set<Integer> reSet = new HashSet<>();
+		reSet.addAll(newList);
+		newList.clear();
+		newList.addAll(reSet);
+		
+		List<Movie> moList = new ArrayList<>();
+		
+		for (int index : newList) {
+			Movie newMovie = movieService.select(index);
+			moList.add(newMovie);
+		}
+		
+	
+		model.addAttribute("movie", movie);
+		model.addAttribute("similarMovieList", moList);
+		model.addAttribute("viewpage", vpage);	
 	}
 	
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
@@ -60,6 +116,14 @@ public class MovieController {
 		log.info("allowLike() 호출");
 		
 		return "redirect:/movie/mainlist";		
+	}
+	
+	// 댓글 작성 전에 로그인 여부 체크를 위해 만듦.
+	@RequestMapping(value = "/signin", method = RequestMethod.GET)
+	public String movieSignin(int movie_no) {
+		log.info("movieSignin(movie_no:{}) GET 호출", movie_no);
+			
+		return "redirect:/movie/detail?movie_no=" + movie_no;
 	}
 	
 }

@@ -19,6 +19,7 @@ public class EventReplyServiceImpl implements EventReplyService {
 	@Override
 	public int insert(EventReply eventReply) {
 		log.info("insert(eventReply:{}) 호출", eventReply);
+		
 		return eventReplyDao.insert(eventReply);
 	}
 	
@@ -57,5 +58,12 @@ public class EventReplyServiceImpl implements EventReplyService {
 		log.info("update(eventReply:{}) 호출", eventReply);
 		return eventReplyDao.update(eventReply);
 	}
+	
+	@Override
+	public List<String> chooseWinner(int event_no, int winner_number) {
+		log.info("chooseWinner(event_no:{}, winner_number:{}) 호출", event_no, winner_number);
+		return eventReplyDao.chooseWinner(event_no, winner_number);
+	}
+
 }
 

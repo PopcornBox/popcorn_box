@@ -65,4 +65,15 @@ public class MovieLikeDaoImpl implements MovieLikeDao {
 		
 		return sqlSession.delete(LIKE_NAMESPACE + ".deleteLike", map);
 	}
+	
+	@Override
+	public List<Object> readAllUsers(int movie_no) {
+		log.info("readAllUsers(movie_no:{}) 호출", movie_no);
+		
+		List<Object> objList = sqlSession.selectList(LIKE_NAMESPACE + ".selectAllUsers", movie_no);
+		
+		log.info("objList:{} 호출", objList);
+		
+		return objList;
+	}
 }

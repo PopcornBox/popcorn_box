@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.spring.pjt.domain.Board;
 import com.spring.pjt.domain.PageCriteria;
 import com.spring.pjt.domain.PagingView;
+import com.spring.pjt.service.BoardReplyService;
 import com.spring.pjt.service.BoardService;
 
 @Controller
@@ -23,28 +24,19 @@ public class BoardController {
 	private static final Logger log = LoggerFactory.getLogger(BoardController.class);
 	
 	@Autowired private BoardService boardService;
-	
-//	@RequestMapping(value="/main", method=RequestMethod.GET)
-//	public void main(Model model) {
-//		log.info("main() 호출");
-//	
-//
-//		List<Board> list = boardService.select();
-//		
-//		model.addAttribute("boardList", list);
-//		
-//	}
+	@Autowired private BoardReplyService boardReplyService;
 	
 	@RequestMapping(value="/main", method=RequestMethod.GET)
 	public void main(Model model, PageCriteria pcri) {
-		log.info("main() + pcri :{} 호출", pcri);
+		log.info("main() + pcri :{} 호출",pcri);
+	
 		List<Board> list = boardService.pagingList(pcri);
 		model.addAttribute("boardList", list);
 		
 		int totalContents = boardService.getTotalContents();
-		
 		PagingView pagingView = new PagingView(pcri, totalContents);
-		model.addAttribute("pagingView", pagingView);
+		
+		model.addAttribute("pagingView",pagingView);
 		
 	}
 	
@@ -99,12 +91,11 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public String delete(int board_no ) { // 
+	public String delete(int board_no) { // 
 		log.info("delete(board_no={}) 호출", board_no);
-
-		
+		boardReplyService.boardNoDelete(board_no);
 		boardService.delete(board_no);
-		
+
 		return "redirect:/board/main";
 		
 	}
