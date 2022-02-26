@@ -469,4 +469,11 @@ public class UserController {
 		}			
 	}
 	
+	@RequestMapping(value = "/signin_email", method = RequestMethod.GET)
+	public String comeFromEmailToSignIn() {
+		log.info("comeFromEmailToSignIn() GET 호출");
+		
+		return "redirect:/";
+	}
+	
 }
