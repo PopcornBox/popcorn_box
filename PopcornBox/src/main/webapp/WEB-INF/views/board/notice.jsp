@@ -138,7 +138,9 @@
 					<input type="hidden" name="user_nickname"
 						value="${signInUserNickname}" required readonly />
 				</div>
-
+				<div class="btnbox">
+               <a href="./main" class="primary-btn">공지 작성 취소</a>
+            	</div>
 				<div>
 					<c:if test="${signInUserPosition eq 'B'}">
 						<input type="submit" class="btn btn-outline-dark" value="공지 작성 완료">
