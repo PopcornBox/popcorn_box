@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.spring.pjt.domain.EventReply;
+import com.spring.pjt.domain.User;
 
 @Mapper
 public interface EventReplyMapper {
@@ -78,7 +79,25 @@ public interface EventReplyMapper {
 			+ " WHERE ${COL_EVENT_REPLY_NO} = #{event_reply_no}";
 	@Update(UPDATE_EVENT_REPLY)
 	int updateEventReply(EventReply eventReply);
+	
+	
+	String UPDATE_USER_NICKNAME =
+			"UPDATE ${TABLE_EVENT_REPLIES} SET ${COL_USER_NICKNAME} = #{user_nickname}"
+			+ " WHERE ${COL_EVENT_REPLY_NO} = #{event_reply_no}";
+	@Update(UPDATE_USER_NICKNAME)
+	int updateNickname(Map<String, Object> map);
 	 
-	    		
+	
+	 String FIND_EVENT_REPLY_NO = 
+			 "SELECT ${COL_EVENT_REPLY_NO} FROM ${TABLE_EVENT_REPLIES} WHERE ${COL_USER_NICKNAME} = #{user_nickname}";	 
+	 
+	 @Select(FIND_EVENT_REPLY_NO)
+	 int[] findEventReplyNo(User user);   
+	
+	 String CHOOSE_WINNER = 
+			 "SELECT * FROM (SELECT ${COL_USER_NICKNAME} from ${TABLE_EVENT_REPLIES} WHERE ${COL_EVENT_NO} = #{event_no})"
+			 + " WHERE ROWNUM <= #{winner_number}";		 
+	 @Select(CHOOSE_WINNER)
+	 List<String> chooseWinner(Map<String, Object> map);
 	    
 }

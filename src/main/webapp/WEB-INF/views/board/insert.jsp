@@ -95,13 +95,6 @@
 						</ul>
 					</nav>
 				</div>
-				<div class="col-lg-3 col-md- 10">
-					<div class="header__nav__option">
-						<a href="#" class="search-switch"><img
-							src="../resources/img/icon/search.png" alt=""></a>
-
-					</div>
-				</div>
 			</div>
 			<div class="canvas__open">
 				<i class="fa fa-bars"></i>
@@ -109,7 +102,7 @@
 		</div>
 	</header>
 	<!-- Header Section End -->
-
+	
 
 	<div class="container-fluid">
 		<div class="text-center">
@@ -117,66 +110,45 @@
 		</div>
 		<hr>
 
-		<div>
+		<div class="contact__form">
 			<!-- 입력 양식 -->
 			<form method="post">
 				<!-- /board/insert POST submit -->
 				<div>
-					<input type="text" name="board_title" placeholder="제목 입력" required
-						autofocus />
+					<textarea id="board_title" name="board_title" maxlength="35" placeholder="제목 입력"
+						rows="1" onkeyup="resize(this)" required></textarea>
 				</div>
 				<div>
-					<textarea rows="5" name="board_content" placeholder="내용 입력"
-						required></textarea>
+					<textarea rows="15" id="board_content" name="board_content"  placeholder="내용 입력"
+						onkeyup="resize(this)" required></textarea>
 				</div>
 
 				<div>
-					<input type="text" name="user_nickname"
+					<input type="hidden" name="user_nickname"
 						value="${signInUserNickname}" required readonly />
 				</div>
 
-				<div>
-					<input type="submit" class="btn btn-outline-dark" value="작성 완료">
+				<div class="btnbox">
+					<input type="submit" class="primary-btn" value="작성 완료" style="color: #fff">
 				</div>
-
 			</form>
 		</div>
 
-
-
-
-
-
-
 	</div>
+	
 
 
-	<!-- Footer Section Begin -->
-	<footer class="footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-3 col-md-6 col-sm-6">
-					<div class="footer__about">
-						<div class="footer__logo">
-							<a href="#"><img src="../resources/img/logo_white.png" alt=""></a>
-						</div>
-						<p>
-							Copyright ©
-							<script>
-								document.write(new Date().getFullYear());
-							</script>
-							2020 All rights reserved | This template is made with <i
-								class="fa fa-heart-o" aria-hidden="true"></i> by <a
-								href="https://colorlib.com" target="_blank">Colorlib</a>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!-- Footer Section End -->
 
 
+
+	<%@ include file="../footer.jsp"%>
+	
+		<script>
+	function resize(obj) {
+	    obj.style.height = '1px';
+	    obj.style.height = (12 + obj.scrollHeight) + 'px';
+	}
+	</script>
 
 	<!-- Js Plugins -->
 	<script src="../resources/js/jquery-3.3.1.min.js"></script>

@@ -11,5 +11,6 @@ public interface BoardReplyDao {
 	int update(BoardReply boardReply);
 	int delete(int board_reply_no);
 	int readBoardNo(int board_reply_no);
+	int deleteReplyBNo(int board_no);
 
 }

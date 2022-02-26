@@ -74,4 +74,13 @@ public class EventReplyDaoImpl implements EventReplyDao {
 		return mapper.updateEventReply(eventReply);
 	}
 	
+	@Override
+	public List<String> chooseWinner(int event_no, int winner_number) {
+		log.info("chooseWinner(event_no:{}, winner_number:{})", event_no, winner_number);
+		Map<String, Object> map = new HashMap<>();
+		map.put("event_no", event_no);
+		map.put("winner_number", winner_number);
+		return mapper.chooseWinner(map);
+	}
+	
 }

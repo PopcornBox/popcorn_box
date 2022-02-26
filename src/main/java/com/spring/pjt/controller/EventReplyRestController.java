@@ -97,5 +97,16 @@ public class EventReplyRestController {
 		
 		return entity;
 	}
+	
+	@RequestMapping(value = "/choose/{winner_number}/{event_no}", method = RequestMethod.GET)
+	public ResponseEntity<List<String>> chooseWinners(@PathVariable(name = "winner_number") Integer winner_number, @PathVariable(name = "event_no") Integer event_no) {
+			log.info("chooseWinners(winner_no:{}, event_no:{})", winner_number, event_no);
+			
+			List<String> winnerList = eventReplyService.chooseWinner(event_no, winner_number);
+			
+			ResponseEntity<List<String>> entity = new ResponseEntity<>(winnerList, HttpStatus.OK);
+			
+			return entity;
+	}
 }
 

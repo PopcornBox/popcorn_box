@@ -98,4 +98,31 @@ public class UserServiceImpl implements UserService {
 		log.info("deleteAccount({}) 호출", user);
 		return userDao.delete(user);
 	}
+	
+	// 마이 페이지 구현 서비스들
+	public User callMypageBoardInfo(String user_nickname) {
+		log.info("callMypageBoardInfo(userNickname :{}, user_nickname) 호출", user_nickname);
+		return userDao.callMypageBoardInfo(user_nickname);
+	}
+	
+	public User callMypageBoardReplyInfo(String user_nickname) {
+		log.info("callMypageBoardReplyInfo(userNickname :{}, user_nickname) 호출", user_nickname);
+		return userDao.callMypageBoardReplyInfo(user_nickname);
+	}
+	
+	public User callMypageEventReplyInfo(String user_nickname) {
+		log.info("callMypageEventReplyInfo(userNickname :{}, user_nickname) 호출", user_nickname);
+		return userDao.callMypageEventReplyInfo(user_nickname);
+	}
+	
+	public User callMypageMovieReplyInfo(String user_nickname) {
+		log.info("callMypageMovieReplyInfo(userNickname :{}, user_nickname) 호출", user_nickname);
+		return userDao.callMypageMovieReplyInfo(user_nickname);
+	}
+	
+	public User callMypageMovieLikeInfo(String user_nickname) {
+		log.info("callMypageMovieLikeInfo(userNickname :{}, user_nickname) 호출", user_nickname);
+		return userDao.callMypageMovieLikeInfo(user_nickname);
+	}
+	
 }
