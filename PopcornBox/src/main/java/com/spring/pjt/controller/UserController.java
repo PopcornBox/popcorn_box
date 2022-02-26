@@ -361,14 +361,14 @@ public class UserController {
 		User mypageBoardReplyResult = userService.callMypageBoardReplyInfo(signInUserNickname);
 		User mypageEventReplyResult = userService.callMypageEventReplyInfo(signInUserNickname);
 		User mypageMovieReplyResult = userService.callMypageMovieReplyInfo(signInUserNickname);
-//		User mypageMovieLikeResult = userService.callMypageMovieLikeInfo(signInUserNickname);
+		User mypageMovieLikeResult = userService.callMypageMovieLikeInfo(signInUserNickname);
 		
 		// 구현부
 		model.addAttribute("mypageBoardResult",mypageBoardResult);
 		model.addAttribute("mypageBoardReplyResult",mypageBoardReplyResult);
 		model.addAttribute("mypageEventReplyResult",mypageEventReplyResult);
 		model.addAttribute("mypageMovieReplyResult",mypageMovieReplyResult);
-//		model.addAttribute("mypageMovieLikeResult",mypageMovieLikeResult);
+		model.addAttribute("mypageMovieLikeResult",mypageMovieLikeResult);
 		
 		
 		model.addAttribute("msg", message);

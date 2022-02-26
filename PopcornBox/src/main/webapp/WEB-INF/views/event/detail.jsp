@@ -48,37 +48,14 @@
 	padding: 10px; border 1px solid #e1e1e1;
 	border-collapse: collapse;
 }
-
 .event_reply_item {
-	padding-top: 30px; 
-	padding-bottom: 30px; 
-	dispaly : table-cell;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	dispaly: table-cell;
 	border-bottom: 1px solid #e1e1e1;
 	dispaly: table-cell;
+	dispaly: table-cell;
 }
-
-
-/* #user_nickname {
-	font-size: 14px;
-	text-align: left;
-	font-weight: 600;
-	
-	width: 50%;
-	border: none;
-	
-}
-
-#event_reply_update_time {
-	font-size: 14px;
-	text-align: right;
-	width: 50%;
-	border: none;
-}
-#event_reply_content{
-border:none;
-background-color:#f1f1f1;
-} */
-
 </style>
 
 
@@ -93,7 +70,8 @@ background-color:#f1f1f1;
 		<div class="loader"></div>
 	</div>
 
-<<<<<<< HEAD
+
+
 	<!-- Offcanvas Menu Begin -->
 	<div class="offcanvas-menu-overlay"></div>
 	<div class="offcanvas-menu-wrapper">
@@ -117,164 +95,7 @@ background-color:#f1f1f1;
 						<li><a href="../event/main">이벤트</a></li>
 					</c:if>
 				</ul>
-=======
-    <!-- Offcanvas Menu Begin -->
-    <div class="offcanvas-menu-overlay"></div>
-    <div class="offcanvas-menu-wrapper">
-        <div class="offcanvas__option">
-            <div class="offcanvas__links">
-            <ul>
-            	<c:if test="${empty signInUserNickname}">
-					<%-- 로그인 되어 있지 않은 경우 --%>					
-					<li><a href="../user/signin">로그인</a></li>
-					<li><a href="../user/register">회원가입</a></li>
-					<li><a href="../user/mypage">마이페이지</a></li>
-			                <li><a href="./event/main">이벤트</a></li>
-				</c:if>
-				<c:if test="${not empty signInUserNickname}">
-					<%-- 로그인 되어 있는 경우 --%>
-					<li><span>${signInUserNickname} 님</span></li>
-					<li>　</li>
-					<li><a href="../user/signout">로그아웃</a></li>
-					<li><a href="../user/register">회원가입</a></li>
-					<li><a href="../user/mypage">마이페이지</a></li>
-					<li><a href="../event/main">이벤트</a></li>
-				</c:if>
-            </ul>
-            </div>
-        </div>
-        <div id="mobile-menu-wrap"></div>
-        <div class="offcanvas__text">
-            <p>PopcornBox</p>
-        </div>
-    </div>
-    <!-- Offcanvas Menu End -->
-
-    <!-- Header Section Begin -->
-    <header class="header">
-        <div class="header__top">
-	                <div class="container">
-	                    <div class="row">
-	                        <div class="col-lg-6 col-md-7">
-	                            <div class="header__top__left">
-	                                  <a href="../"><img src="../resources/img/popcornbox_logo.png" alt="logo"></a>
-	                            </div>
-	                        </div>
-	                        <div class="col-lg-6 col-md-5">
-	                            <div class="header__top__right">
-	                                <div class="header__top__links">
-	                                	<c:if test="${empty signInUserNickname}">
-											<%-- 로그인 되어 있지 않은 경우 --%>
-											<a href="../user/signin"><i class="fa-solid fa-lock"></i>로그인</a>
-		                                    <a href="../user/register"><i class="fa-solid fa-user-plus"></i>회원가입</a>
-		                                    <a href="../user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
-										</c:if>
-										<c:if test="${not empty signInUserNickname}">
-											<%-- 로그인 되어 있는 경우 --%>
-											<c:if test="${empty accessToken}">
-												<%-- 일반 로그인의 경우 --%>
-												<span>${signInUserNickname} 님</span><br>
-												<a href="../user/signout"><i class="fa-solid fa-lock"></i>로그아웃</a>
-												<a href="../user/register"><i class="fa-solid fa-user-plus"></i>회원가입</a>
-			                                    <a href="../user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
-		                                    </c:if>	 
-		                                    <c:if test="${not empty accessToken}">
-		                                    	<%-- 카카오 로그인의 경우 --%>  
-			                                    <span>${signInUserNickname} 님</span><br>
-			                                    <a href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7&logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">
-			                                    	<i class="fa-solid fa-lock"></i>로그아웃</a>
-												<a href="./user/register"><i class="fa-solid fa-user-plus"></i>회원가입</a>
-			                                    <a href="./user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
-											</c:if>	 
-										</c:if>	                  
-	                                </div>
-	                            </div>
-	                        </div>
-	                    </div>
-	                </div>
-	            </div>
-        <div class="container">
-            <div class="row" class="header__row__">
-
-                <div class="col-md-7 col-md-4">
-                    <nav class="header__menu mobile-menu">
-                        <ul>
-                            <li><a href="../">홈</a></li>
-                            <li><a href="../movie/mainlist">차트</a></li>
-                            <li><a href="../board/main">커뮤니티</a></li>
-                            <li class="active"><a href="../event/main">이벤트</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-            <div class="canvas__open"><i class="fa fa-bars"></i></div>
-        </div>
-    </header>
-    <!-- Header Section End -->
-    
-    
-	<div style="text-align:center">
-		<div>
-			<div>
-				<c:if test="${signInUserPosition eq 'A'}">
-					<a href="./update?event_no=${event.event_no}"><button>수정</button></a>
-					<a id="delete_event" href="./delete?event_no=${event.event_no}"><button>삭제</button></a>
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#winnerModal">
-  						당첨자 추첨
-					</button>
-				</c:if>
-				<c:if test="${signInUserPosition eq 'B'}">
-					<a href="./update?event_no=${event.event_no}"><button>수정</button></a>
-					<a id="delete_event" href="./delete?event_no=${event.event_no}"><button>삭제</button></a>
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#winnerModal">
-  						당첨자 추첨
-					</button>
-				</c:if>
->>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
 			</div>
-<<<<<<< HEAD
-=======
-			
-			
-			<!-- The Modal -->
-<div class="modal" id="winnerModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100">당첨자 추첨</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body text-center">
-      ${event.event_title}
-      	<div>
-        	<input type="number" min="0" id="winner_number"  name="winner_number"  />
-      	</div>
-      	<div id="result"></div>
-      </div>
-
-      <!-- Modal footer -->
-      <div class="modal-footer">
-        <button type="button" id="btn_choice" class="btn btn-danger">추첨</button>
-      </div>
-
-    </div>
-  </div>
-</div>
-			
-			<table class="table">
-				<tbody>
-					<tr>
-						<td style="display: none;">${event.event_no}</td>
-						<td>${event.event_title}</td>
-						<td>기간: <fmt:formatDate value="${event.event_start_time}" pattern="yyyy.MM.dd"/> ~ <fmt:formatDate value="${event.event_last_time}" pattern="yyyy.MM.dd."/></td>
-					</tr>
-				</tbody>
-			</table>
->>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
 		</div>
 		<div id="mobile-menu-wrap"></div>
 		<div class="offcanvas__text">
@@ -332,12 +153,6 @@ background-color:#f1f1f1;
 				</div>
 			</div>
 		</div>
-<<<<<<< HEAD
-		<hr>
-		
-		<!-- 댓글 목록 -->
-		<div id="event_reply_list">
-=======
 		<div class="container">
 			<div class="row" class="header__row__">
 
@@ -355,30 +170,31 @@ background-color:#f1f1f1;
 			<div class="canvas__open">
 				<i class="fa fa-bars"></i>
 			</div>
->>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
 		</div>
-<<<<<<< HEAD
-		
-		<!-- 페이지 넘버 -->
-		<div id="page_number" style="width:600px; text-align:center; margin-top:10px;">
-
-=======
 	</header>
 	<!-- Header Section End -->
 
+	<!-- container start -->
 	<div class="container">
 		<div style="text-align: center">
 			<div>
-				<div style="text-align: right;">
+				<div>
 					<c:if test="${signInUserPosition eq 'A'}">
 						<a href="./update?event_no=${event.event_no}"><button>수정</button></a>
 						<a id="delete_event" href="./delete?event_no=${event.event_no}"><button>삭제</button></a>
+						<button type="button" class="btn btn-primary" data-toggle="modal"
+							data-target="#winnerModal">당첨자 추첨</button>
 					</c:if>
 					<c:if test="${signInUserPosition eq 'B'}">
 						<a href="./update?event_no=${event.event_no}"><button>수정</button></a>
 						<a id="delete_event" href="./delete?event_no=${event.event_no}"><button>삭제</button></a>
+						<button type="button" class="btn btn-primary" data-toggle="modal"
+							data-target="#winnerModal">당첨자 추첨</button>
 					</c:if>
 				</div>
+
+
+
 
 				<table class="table"
 					style="border-bottom: 1px solid #e1e1e1; margin-bottom: 50px;">
@@ -393,27 +209,7 @@ background-color:#f1f1f1;
 					</tbody>
 				</table>
 			</div>
->>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
 		</div>
-<<<<<<< HEAD
-	</div>	
-
-	   <!-- Js Plugins -->
-   <script src="../resources/js/jquery-3.3.1.min.js"></script>
-   <script src="../resources/js/bootstrap.min.js"></script>
-   <!-- <script src="../resources/js/jquery.nice-select.min.js"></script> -->
-   <script src="../resources/js/jquery.nicescroll.min.js"></script>
-   <script src="../resources/js/jquery.magnific-popup.min.js"></script>
-   <script src="../resources/js/jquery.countdown.min.js"></script>
-   <script src="../resources/js/jquery.slicknav.js"></script>
-   <script src="../resources/js/mixitup.min.js"></script>
-   <script src="../resources/js/owl.carousel.min.js"></script>
-   <script src="../resources/js/main.js"></script>
-	
-		<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    	<script>
-=======
 
 
 		<div class="event_img_detail" style="text-align: center;">
@@ -444,9 +240,7 @@ background-color:#f1f1f1;
 	<div class="container">
 		<div class="event_reply_list">
 
-			<div id="event_reply_list">	
-				
-			</div>
+			<div id="event_reply_list"></div>
 		</div>
 	</div>
 
@@ -455,6 +249,13 @@ background-color:#f1f1f1;
 		<div id="page_number"
 			style="width: 100%; text-align: center; margin-top: 10px;"></div>
 	</div>
+
+
+
+	<!-- container end -->
+
+	<!--  footer include-->
+	<%@ include file="../footer.jsp"%>
 
 	<!-- Js Plugins -->
 	<script src="../resources/js/jquery-3.3.1.min.js"></script>
@@ -473,7 +274,6 @@ background-color:#f1f1f1;
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 	<script>
->>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
     		$(document).ready(function() {
     			$('#event_reply_content_empty').click(function() {
     				if('${q}' >= 0) {
@@ -725,11 +525,5 @@ background-color:#f1f1f1;
     			
     		});
     	</script>
-<<<<<<< HEAD
-    </body>
-    <footer>
-    </footer>
-=======
 </body>
->>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
 </html>

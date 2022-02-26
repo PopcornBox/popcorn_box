@@ -127,10 +127,14 @@
 					<input type="hidden" name="user_nickname"
 						value="${signInUserNickname}" required readonly />
 				</div>
-
+				<div id="btnbox">
+               <a href="./main" class="primary-btn">작성 취소</a>
+            	</div>
 				<div class="btnbox">
 					<input type="submit" class="primary-btn" value="작성 완료" style="color: #fff">
 				</div>
+				
+
 			</form>
 		</div>
 

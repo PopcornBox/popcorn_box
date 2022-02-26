@@ -51,4 +51,10 @@ public class MovieLike {
 		this.like_update_time = like_update_time;
 	}
 
+	@Override
+	public String toString() {
+		return "MovieLike [user_no=" + user_no + ", user_id=" + user_id + ", movie_no=" + movie_no
+				+ ", like_update_time=" + like_update_time + "]";
+	}
+	
 }

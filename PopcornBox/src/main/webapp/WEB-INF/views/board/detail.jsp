@@ -16,7 +16,7 @@
       width: 600px;
       }
 
-<style>
+
     .reply_item {
     	display: none;
     }
@@ -80,6 +80,28 @@
 						</ul>
 					</div>
 				</c:if>
+				<c:if test="${signInUserPosition eq 'A'}">
+					<div style="margin-left: auto; margin-right: 30px;">
+						<!-- 로그인 사용자 아이디와 글 작성자 아이디가 일치할 때만 수정 메뉴를 보여줌. -->
+						<ul style="display: inline-flex; list-style: none;font-size: 14px;">
+
+							<li> 
+								<a id="menu-delete" href="./delete?board_no=${board.board_no}">관리자 권한삭제</a>
+							</li>
+						</ul>
+					</div>
+				</c:if>
+								<c:if test="${signInUserPosition eq 'B'}">
+					<div style="margin-left: auto; margin-right: 30px;">
+						<!-- 로그인 사용자 아이디와 글 작성자 아이디가 일치할 때만 수정 메뉴를 보여줌. -->
+						<ul style="display: inline-flex; list-style: none;font-size: 14px;">
+							<li> 
+								<a id="menu-delete" href="./delete?board_no=${board.board_no}">관리자 권한삭제</a>
+							</li>
+						</ul>
+					</div>
+				</c:if>
+
 			</div>
 			<hr>
 			<div>
@@ -127,159 +149,154 @@
    <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
    <script>
-   
 
-   
-   
-   
-      $(document).ready(function() {
-         
-         $('#board_reply_content').click(function() {
-            if ('${signInUserNickname}' == null || '${signInUserNickname}' == '') {
-               var message = '로그인이 필요한 서비스입니다. 로그인 페이지로 이동하시겠습니까?';
-               var result = confirm(message);
-               if (result == true) {
-               location.href = '/pjt/user/signin?board_no=' + ${board.board_no};
-               }
-            }
-      });
-         
-                     // input[id="board_no"] 요소의 value 속성값을 읽음.
-                     var boardNo = $('#board_no').val();
-            
-                     // 게시글 번호(boardNo)에 달려 있는 모든 댓글 목록을 읽어오는 Ajax 함수 정의(선언)
-                     function getAllReplies() {
-                        // $.getJSON(요청URL, 콜백 함수): URL로 Ajax GET 요청을 보내고 
-                        // JSON 문자열을 응답으로 전달받아서 처리하는 함수.
-                        $.getJSON('/pjt/board_replies/all/' + boardNo, function(respText) {
-                                       
-                        $('#board_replies').empty();
-                        
-                        var list = '';
-                        
-                        
-                        $(respText).each(function () {
-                           //console.log(this);
-                           var date = new Date(this.board_reply_update_time);
-                           var dateStr = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
-                           list += '<div class="reply_item"><div class="reply_header row">'
-                              + '<input type="hidden" id="board_reply_no" name="board_reply_no" value="'
-                              + this.board_reply_no
-                              + '" readonly />'
-                              +'<div><i class="fa-solid fa-user"></i>'
-                              + '<input type="text" id="user_nickname" name="user_nickname" value="'
-                              + this.user_nickname
-                              + '" readonly /></div>'
-                              + '<input type="text" id="board_reply_update_time" name="board_reply_update_time" value="'
-                              + dateStr
-                              + '" readonly /></div>'
-                              + '<textarea type="text" id="board_reply_content" name="board_reply_content" onkeyup="resize(this)" readonly>'
-                              + this.board_reply_content
-                              + ' </textarea>';
-                              if (this.user_nickname == '${signInUserNickname}'){
-                                 list += '<div class="btnbox"><button class="reply_update">수정</button>'
-                                      + '<button class="reply_delete">삭제</button></div>';
-                              }
-                              list += '</div>';
-                        });
-                        
-                        $('#board_replies').html(list);
-                        
-                        }); // end getJSON()
-                     } //getAllReplies()
-                     
-                     getAllReplies(); //함수 호출
-                     // 댓글 작성 완료 버튼 클릭 이벤트 처리
-                     $('#btn_create_boardReply').click(function (event) {
-                        // 댓글 내용을 읽음
-                        var replyText = $('#board_reply_content').val();
-                        if (replyText == '') { // 입력된 댓글이 없으면
-                           alert('댓글 내용을 입력하세요...');
-                           $('#board_replye_content').focus();
-                           return; // 콜백함수종료
-                        }
-                        
-                        // 댓글 작성자 아이디
-                        var replier = $('#user_nickname').val();
-                        $.ajax({
-                           url: '/pjt/board_replies',
-                           type: 'POST',
-                           headers: {
-                              'Content-Type': 'application/json',
-                              'X-HTTP-Method-Override': 'POST'
-                           },
-                           data: JSON.stringify({
-                              'board_no': boardNo,
-                              'board_reply_content': replyText,
-                              'user_nickname': replier
-                              
-                           }),
-                           success: function (resp) {
-                              console.log(resp);
-                              $('#board_reply_content').val('');
-                              getAllReplies(); // 댓글 목록 업데이트
-                           }
-                        });
-                     });
-                     
-                     
-         			$('#board_replies').on('click', '.reply_item .reply_update', function () {
-        				
-        				$(this).prevAll('#board_reply_content').attr('readonly', false);
-        				$(this).prevAll('#board_reply_content').focus();
-        				
-        				$(this).prevAll('#board_reply_content').on('change', function(){
-        					$('#board_replies').on('click', '.reply_item .reply_update', function () {
-      								var board_reply_no = $(this).prevAll('#board_reply_no').val();
-                    				var board_reply_content = $(this).prevAll('#board_reply_content').val();
-                    		
-                    				$.ajax({
-                    						// 요청 URL
-                    						url: '/pjt/board_replies/' + board_reply_no,
-                    						// 요청 방식
-                    						type: 'PUT',
-                    						// 요청 패킷 헤더
-                    						headers: {
-                    							'Content-Type': 'application/json',
-                    							'X-HTTP-Method-Override': 'PUT'
-                    						},
-                    						// 요청 패킷 데이터
-                    						data: JSON.stringify({'board_reply_content': board_reply_content}),
-                    						// 성공 응답 콜백 함수
-                    						success: function () {
-                    						alert(' 댓글 수정 성공!');
-                    						getAllReplies(); // 댓글 목록 업데이트
-                    			}
-                    		});
-        				  });
-        				});
-        			});
-                     
-                     //댓글 삭제 버튼
-                     $('#board_replies').on('click', '.reply_item .reply_delete', function (event) {
-                        //console.log(this);
-                        var board_reply_no = $(this).prevAll('#board_reply_no').val();
-                        var result = confirm( '댓글을 정말 삭제할까요?')
-                        
-                        if (result) {
-                           $.ajax({
-                           // Ajax
-                           url: '/pjt/board_replies/' + board_reply_no,
-                           type:'DELETE',
-                           headers: {
-                              'Content-Type': 'application/json',
-                                'X-HTTP-Method-Override': 'DELETE'
-                           },
-                             success: function () {
-                            	 alert( '댓글 삭제 성공!');
-                            	 getAllReplies(); // 댓글 목록 업데이트
-                        }  
-                     });
-                  }
-               });
-            });
+   $(document).ready(function() {
       
+      $('#board_reply_content').click(function() {
+         if ('${signInUserNickname}' == null || '${signInUserNickname}' == '') {
+            var message = '로그인이 필요한 서비스입니다. 로그인 페이지로 이동하시겠습니까?';
+            var result = confirm(message);
+            if (result == true) {
+            location.href = '/pjt/user/signin?board_no=' + ${board.board_no};
+            }
+         }
+   });
+      
+                  // input[id="board_no"] 요소의 value 속성값을 읽음.
+                  var boardNo = $('#board_no').val();
+         
+                  // 게시글 번호(boardNo)에 달려 있는 모든 댓글 목록을 읽어오는 Ajax 함수 정의(선언)
+                  function getAllReplies() {
+                     // $.getJSON(요청URL, 콜백 함수): URL로 Ajax GET 요청을 보내고 
+                     // JSON 문자열을 응답으로 전달받아서 처리하는 함수.
+                     $.getJSON('/pjt/board_replies/all/' + boardNo, function(respText) {
+                                    
+                     $('#board_replies').empty();
+                     
+                     var list = '';
+                     
+                     
+                     $(respText).each(function () {
+                        //console.log(this);
+                        var date = new Date(this.board_reply_update_time);
+                        var dateStr = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+                        list += '<div class="reply_item">'
+                           + '<input type="text" id="board_reply_no" name="board_reply_no" value="'
+                           + this.board_reply_no
+                           + '" readonly />'
+                           + '<input type="text" id="board_reply_content" name="board_reply_content" value="'
+                           + this.board_reply_content
+                           + '" readonly />'
+                           + '<input type="text" id="user_nickname" name="user_nickname" value="'
+                           + this.user_nickname
+                           + '" readonly />'
+                           + '<input type="text" id="board_reply_update_time" name="board_reply_update_time" value="'
+                           + dateStr
+                           + '" readonly />';
+                           if (this.user_nickname == '${signInUserNickname}'){
+                              list += '<button class="reply_update">수정</button>'
+                                   + '<button class="reply_delete">삭제</button>';
+                           }
+                           list += '</div>';
+                     });
+                     
+                     $('#board_replies').html(list);
+                     
+                     }); // end getJSON()
+                  } //getAllReplies()
+                  
+                  getAllReplies(); //함수 호출
+                  // 댓글 작성 완료 버튼 클릭 이벤트 처리
+                  $('#btn_create_boardReply').click(function (event) {
+                     // 댓글 내용을 읽음
+                     var replyText = $('#board_reply_content').val();
+                     if (replyText == '') { // 입력된 댓글이 없으면
+                        alert('댓글 내용을 입력하세요...');
+                        $('#board_replye_content').focus();
+                        return; // 콜백함수종료
+                     }
+                     
+                     // 댓글 작성자 아이디
+                     var replier = $('#user_nickname').val();
+                     $.ajax({
+                        url: '/pjt/board_replies',
+                        type: 'POST',
+                        headers: {
+                           'Content-Type': 'application/json',
+                           'X-HTTP-Method-Override': 'POST'
+                        },
+                        data: JSON.stringify({
+                           'board_no': boardNo,
+                           'board_reply_content': replyText,
+                           'user_nickname': replier
+                           
+                        }),
+                        success: function (resp) {
+                           console.log(resp);
+                           $('#board_reply_content').val('');
+                           getAllReplies(); // 댓글 목록 업데이트
+                        }
+                     });
+                  });
+                  
+                  
+      			$('#board_replies').on('click', '.reply_item .reply_update', function () {
+     				
+     				$(this).prevAll('#board_reply_content').attr('readonly', false);
+     				$(this).prevAll('#board_reply_content').focus();
+     				
+     				$(this).prevAll('#board_reply_content').on('change', function(){
+     					$('#board_replies').on('click', '.reply_item .reply_update', function () {
+   								var board_reply_no = $(this).prevAll('#board_reply_no').val();
+                 				var board_reply_content = $(this).prevAll('#board_reply_content').val();
+                 		
+                 				$.ajax({
+                 						// 요청 URL
+                 						url: '/pjt/board_replies/' + board_reply_no,
+                 						// 요청 방식
+                 						type: 'PUT',
+                 						// 요청 패킷 헤더
+                 						headers: {
+                 							'Content-Type': 'application/json',
+                 							'X-HTTP-Method-Override': 'PUT'
+                 						},
+                 						// 요청 패킷 데이터
+                 						data: JSON.stringify({'board_reply_content': board_reply_content}),
+                 						// 성공 응답 콜백 함수
+                 						success: function () {
+                 						alert(' 댓글 수정 성공!');
+                 						getAllReplies(); // 댓글 목록 업데이트
+                 			}
+                 		});
+     				  });
+     				});
+     			});
+                  
+                  //댓글 삭제 버튼
+                  $('#board_replies').on('click', '.reply_item .reply_delete', function (event) {
+                     //console.log(this);
+                     var board_reply_no = $(this).prevAll('#board_reply_no').val();
+                     var result = confirm( '댓글을 정말 삭제할까요?')
+                     
+                     if (result) {
+                        $.ajax({
+                        // Ajax
+                        url: '/pjt/board_replies/' + board_reply_no,
+                        type:'DELETE',
+                        headers: {
+                           'Content-Type': 'application/json',
+                             'X-HTTP-Method-Override': 'DELETE'
+                        },
+                          success: function () {
+                         	 alert( '댓글 삭제 성공!');
+                         	 getAllReplies(); // 댓글 목록 업데이트
+                     }  
+                  });
+               }
+            });
+         });
 	        
+ 
 	        $(function(){
 	            $(".reply_item").slice(0, 3).show(); // select the first three
 	            $("#load").click(function(e){ // click event for load more
@@ -291,7 +308,7 @@
 	            });
 	        });
    
-   
+
    </script>
 </body>
 </html>
