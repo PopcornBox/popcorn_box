@@ -53,9 +53,6 @@ public class AuthInterceptor implements HandlerInterceptor {
 				target = UriUtils.encode(reqUrl, "UTF-8");
 			} else { // 질의 문자열(query string)이 있는 경우
 				target = UriUtils.encode(reqUrl + "?" + query, "UTF-8");
-//				if (reqUri.equals("/pjt/event/winner") || reqUri.equals("/pjt/event/signin")) { // 질의 문자열에 q가 포함되어 있는 경우
-//					target = UriUtils.encode(target, "UTF-8");
-//				}
 			}
 			log.debug("URI 디코딩 후: {}", target);
 			
