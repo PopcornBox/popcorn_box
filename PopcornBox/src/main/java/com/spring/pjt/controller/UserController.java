@@ -125,15 +125,15 @@ public class UserController {
 		
 		// 로그인 페이지가 요청됐을 때, 로그인 성공 후 이동할 페이지가 질의 문자열에 포함되어 있는 경우
 		if (url != null && !url.equals("")) { 
-//			String encodedUrl = UriUtils.encode(url, "UTF-8");
-//			model.addAttribute("url", encodedUrl); // 로그인 이후 이동할 페이지를 저장
-//			log.info("url: {}", encodedUrl);
-			model.addAttribute("url", url); // 로그인 이후 이동할 페이지를 저장.
+			model.addAttribute("url", url); // 로그인 이후 이동할 페이지를 저장.			
+			// 카카오용 encodedUrl
+			String encodedUrl = UriUtils.encode(url, "UTF-8");
+			model.addAttribute("encodedUrl", encodedUrl); 
 
-		} else { // AuthInterceptor를 거치지 않는 로그인의 경우 직접 url을 찾아서 저장
+		} else { // AuthInterceptor를 거치지 않는 로그인의 경우 직접 이전 url을 찾아서 저장
 			String referer = request.getHeader("Referer");
 			model.addAttribute("url", referer);
-			log.info("url: {}", referer);
+			model.addAttribute("encodedUrl", referer);
 		}
 		
 	}
@@ -427,13 +427,13 @@ public class UserController {
 		if (passwordEncoder.matches(rawPassword, encodedPassword)) {
 			int result = userService.deleteAccount(signInUser);
 			if (result == 1) {
-				session.invalidate();
 				msg = "회원탈퇴가 완료되었습니다.";
-				model.addAttribute("msg", msg);	
+				session.setAttribute("msg", msg);
+				session.invalidate();				
 			}				
 		} else {
 			msg = "비밀번호가 일치하지 않습니다.";
-			model.addAttribute("msg", msg);
+			session.setAttribute("msg", msg);
 			return "redirect:/user/leave";
 		}
 								

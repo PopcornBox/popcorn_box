@@ -41,7 +41,8 @@
 			<mapping path="/movie/rating/signin"/> <!-- 영화 별점 입력 이동 -->
 			<mapping path="/movie/like/signin"/> <!-- 영화 좋아요 입력 이동 -->
 			<mapping path="/movie/signin"/> <!-- 영화 리뷰 입력 이동--> 
-			<mapping path="/user/signin_email"/> <!-- 이메일 인증으로부 이동-->
+			<mapping path="/user/signin_email"/> <!-- 이메일 인증으로부터 이동-->
+			<mapping path="/user/leave"/> <!-- 회원탈퇴 -->
 			<beans:ref bean="authInterceptor"/> 
 		</interceptor>
 		<interceptor> <!-- 아이디/패스워드 확인 후 로그인 성공/실패 처리 -->
