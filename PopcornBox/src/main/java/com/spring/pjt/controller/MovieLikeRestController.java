@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.pjt.domain.Movie;
 import com.spring.pjt.service.MovieLikeService;
-import com.spring.pjt.service.MovieService;
 import com.spring.pjt.service.UserService;
 
 @RestController 
@@ -27,7 +25,6 @@ public class MovieLikeRestController {
 	private static final Logger log = LoggerFactory.getLogger(MovieLikeRestController.class);
 	@Autowired private MovieLikeService movieLikeService;
 	@Autowired private UserService userService;
-	@Autowired private MovieService movieService;
 
 	@RequestMapping(value = "/check/{user_nickname}", method = RequestMethod.GET)
 	public ResponseEntity<List<Integer>> readLike(@PathVariable(name = "user_nickname") String user_nickname) {
@@ -129,24 +126,6 @@ public class MovieLikeRestController {
 			}
 			
 			ResponseEntity<List<Integer>> entity = new ResponseEntity<>(userNoList, HttpStatus.OK);
-			
-			return entity;
-	}
-	
-	
-	@RequestMapping(value = "/top", method = RequestMethod.GET)
-	public ResponseEntity<List<Movie>> selectTopLikes() {
-			log.info("selectTopLikes() 호출");
-			
-			List<Integer> top5_movie_no_list = movieLikeService.selectTopLikes();
-			List<Movie> top5_movie_list = new ArrayList<>();
- 			
-			for (int movie_no : top5_movie_no_list) {
-				Movie movie = movieService.select(movie_no);
-				top5_movie_list.add(movie);
-			}
-					
-			ResponseEntity<List<Movie>> entity = new ResponseEntity<>(top5_movie_list, HttpStatus.OK);
 			
 			return entity;
 	}

@@ -51,29 +51,7 @@
 	<div class="offcanvas-menu-wrapper">
 		<div class="offcanvas__option">
 			<div class="offcanvas__links">
-				<ul>
-            	<c:if test="${empty signInUserNickname}">
-					<%-- 로그인 되어 있지 않은 경우 --%>
-					<li><a href="../user/signin">로그인</a></li>
-		            <li><a href="../user/register">회원가입</a></li>
-		            <li><a href="../user/mypage">마이페이지</a></li>
-				</c:if>
-				<c:if test="${not empty signInUserNickname}">
-					<%-- 로그인 되어 있는 경우 --%>
-					<c:if test="${empty accessToken}">
-						<%-- 일반 로그인의 경우 --%>  
-						<li><span>${signInUserNickname} 님</span></li>
-						<li><a href="../user/signout">로그아웃</a></li>
-			            <li><a href="../user/mypage">마이페이지</a></li>
-		             </c:if>	 
-		             <c:if test="${not empty accessToken}">
-		                <%-- 카카오 로그인의 경우 --%>  
-			            <li><span>${signInUserNickname} 님</span></li>
-			            <li><a href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7&logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">로그아웃</a></li>
-			            <li><a href="../user/mypage">마이페이지</a></li>
-					 </c:if>	 
-				</c:if>	      
-            </ul>
+				<a href="#">로그인</a> <a href="#">회원가입</a>
 			</div>
 		</div>
 		<div id="mobile-menu-wrap"></div>
@@ -97,28 +75,8 @@
 					<div class="col-lg-6 col-md-5">
 						<div class="header__top__right">
 							<div class="header__top__links">
-								<c:if test="${empty signInUserNickname}">
-											<%-- 로그인 되어 있지 않은 경우 --%>
-											<a href="../user/signin"><i class="fa-solid fa-lock"></i>로그인</a>
-		                                    <a href="../user/register"><i class="fa-solid fa-user-plus"></i>회원가입</a>
-		                                    <a href="../user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
-										</c:if>
-										<c:if test="${not empty signInUserNickname}">
-											<%-- 로그인 되어 있는 경우 --%>
-											<c:if test="${empty accessToken}">
-												<%-- 일반 로그인의 경우 --%>  
-												<span>${signInUserNickname} 님</span><br>
-												<a href="../user/signout"><i class="fa-solid fa-lock"></i>로그아웃</a>
-			                                    <a href="../user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
-		                                    </c:if>	 
-		                                    <c:if test="${not empty accessToken}">
-		                                    	<%-- 카카오 로그인의 경우 --%>  
-			                                    <span>${signInUserNickname} 님</span><br>
-			                                    <a href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7&logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">
-			                                    	<i class="fa-solid fa-lock"></i>로그아웃</a>
-			                                    <a href="../user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
-											</c:if>	 
-										</c:if>	
+								<a href="./pb_login.html">로그인</a> <a
+									href="./pb_join_member.html">회원가입</a>
 							</div>
 						</div>
 					</div>
@@ -132,8 +90,8 @@
 						<ul>
 							<li><a href="../">홈</a></li>
 							<li><a href="../movie/mainlist">차트</a></li>
-							<li class="active"><a href="../board/main">커뮤니티</a></li>
-							<li><a href="../event/main">이벤트</a></li>
+							<li class="active"><a href="../board/main">자유게시판</a></li>
+							<li><a href="./pb_event.html">이벤트</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -167,8 +125,9 @@
 					<input type="hidden" id="board_mode" name="board_mode"  value="1" required readonly />
 				</div>
 				<div>
-					<textarea type="text" id="board_title" name="board_title" maxlength="35" maxlength="35" placeholder="제목 입력"
-						rows="1" onkeyup="resize(this)" required autofocus></textarea>
+					<textarea type="text" id="board_title"  maxlength="35" maxlength="35" placeholder="제목 입력"
+						rows="1" onkeyup="resize(this)" required
+						autofocus></textarea>
 				</div>
 				<div>
 					<textarea rows="15" name="board_content" placeholder="내용 입력"
@@ -183,11 +142,12 @@
                <a href="./main" class="primary-btn">공지 작성 취소</a>
             	</div>
 				<div>
-				<div class="btnbox">
-					<input type="submit" class="primary-btn" value="공지 작성 완료" style="color: #fff">
-				</div>
-					
-					
+					<c:if test="${signInUserPosition eq 'B'}">
+						<input type="submit" class="btn btn-outline-dark" value="공지 작성 완료">
+					</c:if>
+					<c:if test="${signInUserPosition eq 'A'}">
+						<input type="submit" class="btn btn-outline-dark" value="공지 작성 완료">
+					</c:if>
 				</div>
 
 			</form>
@@ -196,8 +156,13 @@
 
 
 
+
+
+
 	</div>
 
+
+	<!-- Footer Section Begin -->
 
 	<!-- Footer Section End -->
 

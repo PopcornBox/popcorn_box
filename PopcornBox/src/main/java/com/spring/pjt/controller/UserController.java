@@ -124,16 +124,15 @@ public class UserController {
 	    session.invalidate();
 		
 		// 로그인 페이지가 요청됐을 때, 로그인 성공 후 이동할 페이지가 질의 문자열에 포함되어 있는 경우
-		if (url != null && !url.equals("")) { 
+		if (url != null && !url.equals("")) {
 			model.addAttribute("url", url); // 로그인 이후 이동할 페이지를 저장.			
 			// 카카오용 encodedUrl
 			String encodedUrl = UriUtils.encode(url, "UTF-8");
 			model.addAttribute("encodedUrl", encodedUrl); 
-
-		} else { // AuthInterceptor를 거치지 않는 로그인의 경우 직접 이전 url을 찾아서 저장
+		} else { // AuthInterceptor를 거치지 않는 로그인의 경우 직접 url을 찾아서 저장
 			String referer = request.getHeader("Referer");
 			model.addAttribute("url", referer);
-			model.addAttribute("encodedUrl", referer);
+			log.info("url: {}", referer);
 		}
 		
 	}
@@ -432,13 +431,13 @@ public class UserController {
 					// 결괏값 출력
 					log.info("연결 끊기 후 반환되는 아이디 : {}", node.get("id"));	
 				}	
+				session.invalidate();
 				msg = "회원탈퇴가 완료되었습니다.";
-				session.setAttribute("msg", msg);
-				session.invalidate();				
+				model.addAttribute("msg", msg);	
 			}				
 		} else {
 			msg = "비밀번호가 일치하지 않습니다.";
-			session.setAttribute("msg", msg);
+			model.addAttribute("msg", msg);
 			return "redirect:/user/leave";
 		}
 								
@@ -472,13 +471,6 @@ public class UserController {
 			session.setAttribute("signInUserNickname", signInUser.getUser_nickname());
 	    	session.setAttribute("signInUserPosition", signInUser.getUser_position());
 		}			
-	}
-	
-	@RequestMapping(value = "/signin_email", method = RequestMethod.GET)
-	public String comeFromEmailToSignIn() {
-		log.info("comeFromEmailToSignIn() GET 호출");
-		
-		return "redirect:/";
 	}
 	
 }

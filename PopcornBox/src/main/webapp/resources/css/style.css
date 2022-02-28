@@ -2982,14 +2982,14 @@ header .search_option {
 /*-------------------
     USER innerchart
 ---------------------*/
-.innerchart_all {
+#innerchart {
 	max-width: 70%;
 	margin-top: 10px;
     border: 1px solid #f2f2f2;
-    display: none;
+
 }
 
-.innerchart_all tbody td {
+.innerchart tbody td {
 	padding: 10px;
 }
 
@@ -4092,14 +4092,16 @@ header .search_option {
 
 .contact__form .reply_item {
 	border-bottom: 1px solid #e1e1e1;
+	word-break:break-all;
+	word-wrap:break-word
 }
 .contact__form .reply_item input, i{
 	font-size: 14px;
 	color: 535353;
 }
-.contact__form .reply_item textarea#board_reply_content{
+.contact__form .reply_item #board_reply_content{
 	font-size: 16px;	
-	padding-left: 30px;
+	padding-left: 15px;
 	border: none;
 	margin: 0px;
 	height: auto;
