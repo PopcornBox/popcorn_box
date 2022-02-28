@@ -12,7 +12,7 @@
 	<div class="container" style="display: flex;">
 		<div class="footer__about" style="width: 30%; margin: -10px;">
 			<div class="footer__logo">
-				<a href=""><img src="./resources/img/logo_gray.png"></a>
+				<a href=""><img src="../resources/img/logo_gray.png"></a>
 			</div>
 		</div>
 		<div class="footer_text">
