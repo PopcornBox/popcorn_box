@@ -60,12 +60,10 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/notice", method = RequestMethod.POST)
-	public String notice(Board board) {
+	public void notice(Board board) {
 		log.info("notice() POST 호출");
 		board.getBoard_mode();
 		boardService.insert(board);
-		
-		return "redirect:/board/main";
 	}
 	
 	@RequestMapping(value = "/detail", method=RequestMethod.GET)

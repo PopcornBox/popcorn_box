@@ -76,7 +76,20 @@
    .star-rating label:hover ~ label {
   		color:#fc0; 
 	}
-	
+
+   .movie_reply_list {
+     	dispaly: table;
+	padding: 10px; border 1px solid #e1e1e1;
+	border-collapse: collapse;
+    }
+
+    .movie_reply_item {
+	padding-top: 30px; 
+	padding-bottom: 30px; 
+	dispaly : table-cell;
+	border-bottom: 1px solid #e1e1e1;
+	dispaly: table-cell;
+     }	
     
   </style>	
 
@@ -95,29 +108,21 @@
             <div class="offcanvas__links">
             <ul>
             	<c:if test="${empty signInUserNickname}">
-					<%-- 로그인 되어 있지 않은 경우 --%>
+					<%-- 로그인 되어 있지 않은 경우 --%>					
 					<li><a href="../user/signin">로그인</a></li>
-		            <li><a href="../user/register">회원가입</a></li>
-		            <li><a href="../user/mypage">마이페이지</a></li>
+					<li><a href="../user/register">회원가입</a></li>
+					<li><a href="../user/mypage">마이페이지</a></li>
+			                <li><a href="./event/main">이벤트</a></li>
 				</c:if>
 				<c:if test="${not empty signInUserNickname}">
 					<%-- 로그인 되어 있는 경우 --%>
-					<c:if test="${empty accessToken}">
-						<%-- 일반 로그인의 경우 --%>  
-						<li><span>${signInUserNickname} 님</span></li>
-						<li><a href="../user/signout">로그아웃</a></li>
-						<li><a href="../user/register">회원가입</a></li>
-			            <li><a href="../user/mypage">마이페이지</a></li>
-		             </c:if>	 
-		             <c:if test="${not empty accessToken}">
-		                <%-- 카카오 로그인의 경우 --%>  
-			            <li><span>${signInUserNickname} 님</span></li>
-			            <li><a href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7
-			            &logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">로그아웃</a></li>
-						<li><a href="./user/register">회원가입</a></li>
-			            <li><a href="./user/mypage">마이페이지</a></li>
-					 </c:if>	 
-				</c:if>	              	
+					<li><span>${signInUserNickname} 님</span></li>
+					<li>　</li>
+					<li><a href="../user/signout">로그아웃</a></li>
+					<li><a href="../user/register">회원가입</a></li>
+					<li><a href="../user/mypage">마이페이지</a></li>
+					<li><a href="../event/main">이벤트</a></li>
+				</c:if>
             </ul>
             </div>
         </div>
@@ -363,7 +368,6 @@
                           <p>:: MOVIE TRAILER ::</p>
                           <p>${movie.movie_trailer}</p>
                       </div>
-                        <!-- 댓글기능 -->
                     </div>
                 </div>                                
             </div>
@@ -394,28 +398,33 @@
             
             
 				<br>
-				<hr>
-                <!-- 댓글 작성 양식 -->
+        <!-- 리뷰 작성 양식 -->
 	<div class="container">
-		<div class="contact__form">
-			<div id="reply_number"></div>
-				<div style="display: flex;">
+			<div id="reply_number"
+				style="text-align: center; text: bold; font-size: 20px; text-align: center; font-weight: 700; margin-block: 40px;"></div>
+			<div
+			    style="text: bold; font-size: 16px; text-align: inherit; font-weight: 700; border-top: 1px solid #e1e1e1; padding-top: 40px; margin-bottom: 20px;">
+				리뷰 작성하기</div>
+			<div class="event__input" style="display: flex;">	
 					<input type="text" id="movie_reply_content_empty"
-						style="width: 600px; border: #ddd 1px solid;"
 						name="movie_reply_content_empty" placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." />
-					<input type="submit" id="btn_register_movie_reply" class="primary-btn" style="color: #fff" value="등록" />
+					<button type="submit" id="btn_register_movie_reply" class="event-btn" value="등록" >등록</button>		
+				</div>	
+			</div>	
+			<!-- 리류 작성 끝 -->	
 					
-				</div>			
-			<!-- 댓글 목록 -->
-			<div id="movie_reply_list">
+			<!-- 리뷰 목록 -->
+			<div class="container">
+				<div class="movie_reply_list">
+				
+					<div id="movie_reply_list"></div>
 			</div>
+		</div>
 					
 			<!-- 페이지 넘버 -->
-			<div id="page_number" style="width:600px; text-align:center; margin-top:10px;">
-               </div>
-		</div>				        
-
-	</div>
+			<div class="container">
+				<div id="page_number" style="width:100%; text-align:center; margin-top:10px;"></div>
+            </div>
 
 	</section>
 
@@ -521,41 +530,51 @@
 	                 	var date = new Date(this.movie_reply_update_time); // JavaScript Date 객체 생성
 	                 	var dateStr = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
 	                 	
+	                   	// 리뷰 번호
 	                     	movie_list += '<div class="movie_reply_item">'
 	                                         + '<input type="hidden" id="movie_reply_no" name="movie_reply_no" value="'
 	                 		   				+ this.movie_reply_no
 	                 		  				+ '" readonly />';
-	                     if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면	  				
-	                    	 movie_list += '<input type="text" style="background-color:rgb(240, 248, 255);" id="movie_reply_content" name="movie_reply_content" value="'
+	                 		  				
+	                        // 리뷰 작성자 닉네임
+	               	        if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
+	               	                movie_list += '<input type="text" style="border:none; width:50%; text-align:left; font-weight:700; padding-left:10px; padding-bottom: 20px; background-color:rgb(240, 248, 255);" id="user_nickname" name="user_nickname" value="'
+	               	                 		            	+ this.user_nickname
+	               	                 		            	+ '" readonly />';
+	               	        } else {
+	               	                 movie_list += '<input type="text" style="border:none; width:50%; color:#333333; text-align:left; font-weight:700; padding-left:10px; padding-bottom: 20px;" id="user_nickname" name="user_nickname" value="'
+	               	     		            				+ this.user_nickname
+	               	     		            				+ '" readonly />';
+	               	        }	
+	                 		
+	               	  		 // 리뷰 작성시간
+		                     if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
+		                    	 movie_list += '<input type="text" style="border:none; width:50%; text-align:right; padding-right:10px; padding-bottom: 20px; background-color:rgb(240, 248, 255);" id="movie_reply_update_time" name="movie_reply_update_time" value="'
+		                 		           		+ dateStr
+		                 		            	+ '" readonly />';
+		                     } else {
+		                    	 movie_list += '<input type="text" style="border:none; color:#333333; width:50%; text-align:right; padding-right:10px;" id="movie_reply_update_time" name="movie_reply_update_time" value="'
+		 		           						+ dateStr
+		 		            					+ '" readonly />';
+		                     }		
+	                 		  				
+	                 	// 리뷰 내용	  				
+	                     	if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면	  				
+	                    	 	movie_list += '<input type="text" style="border:none; font-size:14px; width:100%; padding:20px; background-color:rgb(240, 248, 255);" id="movie_reply_content" name="movie_reply_content" value="'
 			  									+ this.movie_reply_content
 			   		   			    			+'" readonly />';
-	                     } else {
-	                    	 movie_list += '<input type="text" id="movie_reply_content" name="movie_reply_content" value="'
+	                     	} else {
+	                    	 	movie_list += '<input type="text" style="border:none; color:#333333; font-size:14px; width:100%; padding:20px; background-color:#f9f9f9" id="movie_reply_content" name="movie_reply_content" value="'
 										+ this.movie_reply_content
 			   			    			+'" readonly />';
-	                     }
-	                     if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
-	                    	 movie_list += '<input type="text" style="background-color:rgb(240, 248, 255);" id="user_nickname" name="user_nickname" value="'
-	                 		            	+ this.user_nickname
-	                 		            	+ '" readonly />';
-	                     } else {
-	                    	 movie_list += '<input type="text" id="user_nickname" name="user_nickname" value="'
-	     		            				+ this.user_nickname.substring(0,1) + '*' + this.user_nickname.substring(2, this.user_nickname.length)
-	     		            				+ '" readonly />';
-	                     }
-	                     if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
-	                    	 movie_list += '<input type="text" style="background-color:rgb(240, 248, 255);" id="movie_reply_update_time" name="movie_reply_update_time" value="'
-	                 		           		+ dateStr
-	                 		            	+ '" readonly />';
-	                     } else {
-	                    	 movie_list += '<input type="text" id="movie_reply_update_time" name="movie_reply_update_time" value="'
-	 		           						+ dateStr
-	 		            					+ '" readonly />';
-	                     }
-	                 	if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
-	                 		movie_list += '<button class="movie_reply_update">수정</button>'
-	                 			          + '<button class="movie_reply_delete">x</button>';
-	                 	}
+	                     	}
+	                 	
+	                 		// 수정, 삭제 버튼
+	                 		if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
+	                 			movie_list += '<button class="movie_reply_update">수정</button>'
+	                 			          	+ '<button class="movie_reply_delete">x</button>';
+	                 		}
+				 
 	                 	movie_list += '</div>';
 	                 	    
 	                 });

@@ -83,10 +83,20 @@
 				<c:if test="${signInUserPosition eq 'A'}">
 					<div style="margin-left: auto; margin-right: 30px;">
 						<!-- 로그인 사용자 아이디와 글 작성자 아이디가 일치할 때만 수정 메뉴를 보여줌. -->
-						<ul style="display: inline-flex; list-style: none;font-size: 14px;">
+						<ul style="display: inline-flex; list-style: none; font-size: 14px;">
 
 							<li> 
-								<a id="menu-delete" href="./delete?board_no=${board.board_no}">관리자 권한 글 삭제</a>
+								<a id="menu-ntdelete" href="./delete?board_no=${board.board_no}">관리자 권한 글 삭제</a>
+							</li>
+						</ul>
+					</div>
+				</c:if>
+				<c:if test="${signInUserPosition eq 'B'}">
+					<div style="margin-left: auto; margin-right: 30px;">
+						<!-- 로그인 사용자 아이디와 글 작성자 아이디가 일치할 때만 수정 메뉴를 보여줌. -->
+						<ul style="display: inline-flex; list-style: none;font-size: 14px;">
+							<li> 
+								<a id="menu-ntdelete" href="./delete?board_no=${board.board_no}">관리자 권한삭제</a>
 							</li>
 						</ul>
 					</div>
@@ -96,7 +106,7 @@
 						<!-- 로그인 사용자 아이디와 글 작성자 아이디가 일치할 때만 수정 메뉴를 보여줌. -->
 						<ul style="display: inline-flex; list-style: none;font-size: 14px;">
 							<li> 
-								<a id="menu-delete" href="./delete?board_no=${board.board_no}">관리자 권한삭제</a>
+								<a id="menu-update" href="./update?board_no=${board.board_no}">관리자 권한수정</a>
 							</li>
 						</ul>
 					</div>
@@ -149,6 +159,8 @@
    <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
    <script>
+   
+   
 
    $(document).ready(function() {
       
@@ -181,17 +193,17 @@
                         var date = new Date(this.board_reply_update_time);
                         var dateStr = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
                         list += '<div class="reply_item">'
-                           + '<input type="text" id="board_reply_no" name="board_reply_no" value="'
+                           + '<input type="hidden" id="board_reply_no" name="board_reply_no" value="'
                            + this.board_reply_no
-                           + '" readonly />'
-                           + '<input type="text" id="board_reply_content" name="board_reply_content" value="'
-                           + this.board_reply_content
                            + '" readonly />'
                            + '<input type="text" id="user_nickname" name="user_nickname" value="'
                            + this.user_nickname
                            + '" readonly />'
                            + '<input type="text" id="board_reply_update_time" name="board_reply_update_time" value="'
                            + dateStr
+                           + '" readonly />'
+                           + '<input type="text" id="board_reply_content" name="board_reply_content" value="'
+                           + this.board_reply_content
                            + '" readonly />';
                            if (this.user_nickname == '${signInUserNickname}'){
                               list += '<button class="reply_update">수정</button>'
@@ -296,6 +308,25 @@
             });
          });
 	        
+   
+   $(document).ready(function(){
+   	
+   	$('#menu-delete').click(function (event) {
+   		event.preventDefault(); // 링크를 클릭했을 때의 기본 동작인 요청 보내기를 하지 않음.
+   		var result = confirm('정말 삭제할까요?');
+   		if (result) { // 사용자가 YES를 선택했을 때
+   			location = $(this).attr('href'); // 원래 이동하려고 했던 요청 주소로 요청 보내기.
+   		}
+   	});
+   	
+   	$('#menu-ntdelete').click(function (event) {
+   		event.preventDefault(); // 링크를 클릭했을 때의 기본 동작인 요청 보내기를 하지 않음.
+   		var result = confirm('관리자 권한으로 정말 삭제할까요?');
+   		if (result) { // 사용자가 YES를 선택했을 때
+   			location = $(this).attr('href'); // 원래 이동하려고 했던 요청 주소로 요청 보내기.
+   		}
+   	});
+ 	});
  
 	        $(function(){
 	            $(".reply_item").slice(0, 3).show(); // select the first three

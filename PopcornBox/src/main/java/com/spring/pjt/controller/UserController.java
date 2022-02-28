@@ -129,7 +129,6 @@ public class UserController {
 //			model.addAttribute("url", encodedUrl); // 로그인 이후 이동할 페이지를 저장
 //			log.info("url: {}", encodedUrl);
 			model.addAttribute("url", url); // 로그인 이후 이동할 페이지를 저장.
-
 		} else { // AuthInterceptor를 거치지 않는 로그인의 경우 직접 url을 찾아서 저장
 			String referer = request.getHeader("Referer");
 			model.addAttribute("url", referer);
@@ -362,14 +361,14 @@ public class UserController {
 		User mypageBoardReplyResult = userService.callMypageBoardReplyInfo(signInUserNickname);
 		User mypageEventReplyResult = userService.callMypageEventReplyInfo(signInUserNickname);
 		User mypageMovieReplyResult = userService.callMypageMovieReplyInfo(signInUserNickname);
-//		User mypageMovieLikeResult = userService.callMypageMovieLikeInfo(signInUserNickname);
+		User mypageMovieLikeResult = userService.callMypageMovieLikeInfo(signInUserNickname);
 		
 		// 구현부
 		model.addAttribute("mypageBoardResult",mypageBoardResult);
 		model.addAttribute("mypageBoardReplyResult",mypageBoardReplyResult);
 		model.addAttribute("mypageEventReplyResult",mypageEventReplyResult);
 		model.addAttribute("mypageMovieReplyResult",mypageMovieReplyResult);
-//		model.addAttribute("mypageMovieLikeResult",mypageMovieLikeResult);
+		model.addAttribute("mypageMovieLikeResult",mypageMovieLikeResult);
 		
 		
 		model.addAttribute("msg", message);

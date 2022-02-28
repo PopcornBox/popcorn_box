@@ -8,9 +8,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Popcorn Box</title>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="https://kit.fontawesome.com/a39158855c.js" crossorigin="anonymous"></script>
 
@@ -335,7 +332,7 @@
 								<em id="finish">마감</em>
 							</c:if>
                         </div>
-                        <div class="blog__item__text ">
+                        <div class="blog__item__text">
                             <span><img src="./resources/img/icon/calendar.png" alt="">
 									<fmt:formatDate value="${event.event_start_time}" pattern="yyyy.MM.dd"/> ~ <fmt:formatDate value="${event.event_last_time}" pattern="yyyy.MM.dd."/>
 						    		&nbsp;&nbsp;
