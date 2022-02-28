@@ -261,7 +261,7 @@
 			댓글 작성하기</div>
 		<div class="event__input" style="display: flex;">
 			<input type="text" id="event_reply_content_empty"
-				name="event_reply_content_"
+				name="event_reply_content_empty"
 				placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." />
 			<button type="submit" class="event-btn" id="btn_register_event_reply"
 				value="등록">등록</button>
@@ -322,7 +322,10 @@
     			});
     					
     			if ('${q}' < 0) {
-    				$('#btn_register_event_reply').attr('disabled', true);
+    				$('#event_reply_content_empty').attr('disabled', true);
+    				$('#btn_register_event_reply').click(function() {
+    					alert('만료된 이벤트입니다.');
+    				});
     			}
     			
             	
@@ -428,9 +431,11 @@
     				
     				var event_reply_content = $('#event_reply_content_empty').val();
     				if (event_reply_content == '') {
-    					alert('내용을 입력해주세요.');
-    					$('#event_reply_content_empty').focus();
-    					return;
+					if ('${q}' >= 0) {
+    						alert('내용을 입력해주세요.');
+    						$('#event_reply_content_empty').focus();
+    						return;
+					}	
     				}
     				
             		// 댓글 insert 요청을 Ajax 방식으로 보냄.
