@@ -56,7 +56,7 @@
 
 
          <table class="table table-hover ">
-            <thead class="text-center">
+            <thead>
                <tr>
                   <th></th>
                   <th>제목</th>
