@@ -166,7 +166,7 @@
 		<result property="movie_reply_update_time" column="MOVIE_REPLY_UPDATE_TIME"/>
 	</resultMap>
 	
-		<!-- 내 영화 댓글 조회 -->
+		<!-- 좋아요한 영화 조회 -->
 	<select id="mypageMovieLikeInfo" resultMap="mypageMovieLikeResult">
 	SELECT U.USER_NICKNAME, U.USER_NO,
     L.MOVIE_NO, L.LIKE_UPDATE_TIME
