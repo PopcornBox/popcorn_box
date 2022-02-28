@@ -86,7 +86,7 @@
 						<ul style="display: inline-flex; list-style: none;font-size: 14px;">
 
 							<li> 
-								<a id="menu-delete" href="./delete?board_no=${board.board_no}">관리자 권한삭제</a>
+								<a id="menu-delete" href="./delete?board_no=${board.board_no}">관리자 권한 글 삭제</a>
 							</li>
 						</ul>
 					</div>

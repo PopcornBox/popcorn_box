@@ -7,7 +7,7 @@ public class PageCriteria {
 	
 	// 기본 세팅(현재 페이지 : 1 , 페이지 당 게시글 10개)
 	public PageCriteria() {
-		this(1, 20);
+		this(1, 15);
 	}
 	
 	public PageCriteria(int pageNum, int contents) {
