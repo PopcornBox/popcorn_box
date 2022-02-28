@@ -164,8 +164,8 @@
     </header>
     <!-- Header Section End -->
 
-    <!-- Banner Section Begin -->
-    <section class="hero">
+       <!-- Banner Section Begin -->
+<!--  <section class="hero">
         <div class="hero__slider owl-carousel">
             <div class="hero__items set-bg" data-setbg="./resources/img/banner_main_2.png">
                 <div class="container">
@@ -174,7 +174,7 @@
                             <div class="hero__text">
                                 <h2>더 배트맨</h2>
                                 <p>히어로의 세대교체,<br> 어둠을 뚫고 그가 온다</p>
-                                <a href="#" class="primary-cta-m"> 보러가기 <span class="arrow_right"></span></a>
+                                <a href="http://localhost:8181/pjt/movie/detail?movie_no=11" class="primary-cta-m"> 보러가기 <span class="arrow_right"></span></a>
                             </div>
                         </div>
                     </div>
@@ -208,7 +208,101 @@
             </div>
         </div>
     </section>
-    <!-- Banner Section End -->
+    Banner Section End -->
+
+    <!-- Auto Slide Section Start -->
+<section class="carousel" aria-label="Gallery">
+  <ol class="carousel__viewport">
+    <li id="carousel__slide1"
+        tabindex="0"
+        class="carousel__slide">
+      <div class="carousel__snapper">
+        <a href="#carousel__slide3"
+           class="carousel__prev">Go to last slide</a>
+           <div class="autoslide set-bg" data-setbg="./resources/img/banner_main_2.png">
+           <div class="container">
+           
+                            <div class="carousel__text">
+                                <h2>더 배트맨</h2>
+                                <p>히어로의 세대교체,<br> 어둠을 뚫고 그가 온다</p>
+                                <a href="http://localhost:8181/pjt/movie/detail?movie_no=11" class="primary-cta-m"> 보러가기 <i class="fa-solid fa-angle-right"></i></a>
+	           		 </div>
+	           	 </div>
+            	</div>
+           
+        <a href="#carousel__slide2"
+           class="carousel__next">Go to next slide</a>
+      </div>
+    </li>
+    
+    <li id="carousel__slide2"
+        tabindex="0"
+        class="carousel__slide">
+      <div class="carousel__snapper">
+      <div class="hero__items set-bg"
+						data-setbg="./resources/img/banner_main_1.png">
+            <div class="container">
+                    <div class="row">
+                        <div class="col-xl-5 col-lg-7 col-md-8">
+                            <div class="carousel__text">
+                                <h2 style="color: white;">루이스 웨인</h2>
+                                <p style="color: white;">당신의 봄을 아름답게 할,<br>단 하나의 러브 팔레트</p>
+                                 <a href="#" class="primary-cta-m"> 보러가기 <i class="fa-solid fa-angle-right"></i></a>
+                                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+           </div>
+      <a href="#carousel__slide1"
+         class="carousel__prev">Go to previous slide</a>
+      <a href="#carousel__slide3"
+         class="carousel__next">Go to next slide</a>
+    </li>
+    
+    <li id="carousel__slide3"
+        tabindex="0"
+        class="carousel__slide">
+      <div class="carousel__snapper">
+      	<div class="hero__items set-bg" data-setbg="./resources/img/banner_main_3.png">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-5 col-lg-7 col-md-8">
+                            <div class="carousel__text">
+                                <h2>미니언즈 2</h2>
+                                <p>오또카지 오또카지?<br>미니언들의 한층 새롭고 흥미로운 모험!</p>
+                                <a href="#" class="primary-cta-m"> 보러가기 <i class="fa-solid fa-angle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+      <a href="#carousel__slide2"
+         class="carousel__prev">Go to previous slide</a>
+      <a href="#carousel__slide1"
+         class="carousel__next">Go to next slide</a>
+    </li>
+  </ol>
+  
+  <aside class="carousel__navigation">
+    <ol class="carousel__navigation-list">
+      <li class="carousel__navigation-item">
+        <a href="#carousel__slide1"
+           class="carousel__navigation-button">Go to slide 1</a>
+      </li>
+      <li class="carousel__navigation-item">
+        <a href="#carousel__slide2"
+           class="carousel__navigation-button">Go to slide 2</a>
+      </li>
+      <li class="carousel__navigation-item">
+        <a href="#carousel__slide3"
+           class="carousel__navigation-button">Go to slide 3</a>
+      </li>
+    </ol>
+  </aside>
+</section>
+    <!-- Auto Slide Section End -->
 
 
     <!-- chart Section Begin -->
