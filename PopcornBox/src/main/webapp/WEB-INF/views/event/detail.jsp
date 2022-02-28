@@ -325,7 +325,10 @@
     			});
     					
     			if ('${q}' < 0) {
-    				$('#btn_register_event_reply').attr('disabled', true);
+    				$('#event_reply_content_empty').attr('disabled', true);
+    				$('#btn_register_event_reply').click(function() {
+    					alert('만료된 이벤트입니다.');
+    				});
     			}
     			
             	
@@ -426,9 +429,11 @@
     				
     				var event_reply_content = $('#event_reply_content_empty').val();
     				if (event_reply_content == '') {
-    					alert('내용을 입력해주세요.');
-    					$('#event_reply_content_empty').focus();
-    					return;
+					if ('${q}' >= 0) {
+    						alert('내용을 입력해주세요.');
+    						$('#event_reply_content_empty').focus();
+    						return;
+					}	
     				}
     				
             		// 댓글 insert 요청을 Ajax 방식으로 보냄.
