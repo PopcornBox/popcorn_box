@@ -157,6 +157,18 @@
 
 	<div class="contact__form">
 		<form action="./update" method="post">
+		
+						<c:if test="${signInUserNickname == board.user_nickname}">
+					<div style="margin-left: auto; margin-right: 30px;">
+						<!-- 로그인 사용자 아이디와 글 작성자 아이디가 일치할 때만 수정 메뉴를 보여줌. -->
+						<ul style="display: inline-flex; list-style: none;font-size: 14px;">
+
+							<li> 
+								<a id="menu-delete" href="./delete?board_no=${board.board_no}">삭제</a>
+							</li>
+						</ul>
+					</div>
+				</c:if>
 			<div>
 				<input type="hidden" name="board_mode"
 					value="${board.board_mode}" required readonly />
@@ -170,6 +182,8 @@
 			<div>
 				<textarea id="board_title" name="board_title" maxlength="35"
 					rows="1" onkeyup="resize(this)" required>${board.board_title}</textarea>
+					
+					
 			</div>
 			<div>
 				<textarea id="board_content" name="board_content" rows="15"
@@ -186,8 +200,7 @@
 				<a href="./main" class="primary-btn">수정 취소</a>
 			</div>
 			<div class="btnbox">
-				<input class="primary-btn btn-outline-dark" type="submit"
-					value="수정 완료" style="color: #fff" />
+				<input class="primary-btn btn-outline-dark" type="submit" id="menu-update" value="수정 완료" style="color: #fff" />
 			</div>
 
 
@@ -240,6 +253,32 @@
 			obj.style.height = '1px';
 			obj.style.height = (12 + obj.scrollHeight) + 'px';
 		}
+		
+        $(document).ready(function () {
+        	
+        	$('#menu-delete').click(function (event) {
+        		event.preventDefault(); // 링크를 클릭했을 때의 기본 동작인 요청 보내기를 하지 않음.
+        		var result = confirm('정말 삭제할까요?');
+        		if (result) { // 사용자가 YES를 선택했을 때
+        			location = $(this).attr('href'); // 원래 이동하려고 했던 요청 주소로 요청 보내기.
+        		}
+        	});
+        	
+        	$('#menu-update').click(function (event) {
+        		event.preventDefault(); // 링크를 클릭했을 때의 기본 동작인 요청 보내기를 하지 않음.
+        		var result = confirm('정말 수정할까요?');
+        		if (result) { // 사용자가 YES를 선택했을 때
+        			location = $(this).attr('href'); // 원래 이동하려고 했던 요청 주소로 요청 보내기.
+        		}
+        	});
+        	
+        });
+            
+
+        
+
+
+		
 	</script>
 
 
