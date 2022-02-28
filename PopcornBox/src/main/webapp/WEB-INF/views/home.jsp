@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Popcorn Box</title>
+<title>POPCORN BOX</title>
 
     <script src="https://kit.fontawesome.com/a39158855c.js" crossorigin="anonymous"></script>
 
@@ -80,7 +80,7 @@
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__text">
-            <p>PopcornBox</p>
+            <p>POPCORN BOX</p>
         </div>
     </div>
     <!-- Offcanvas Menu End -->

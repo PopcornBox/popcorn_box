@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Movie_info</title>
+<title>영화정보 | POPCORN BOX</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta charset="UTF-8">
@@ -134,7 +134,7 @@
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__text">
-            <p>PopcornBox</p>
+            <p>POPCORN BOX</p>
         </div>
     </div>
     <!-- Offcanvas Menu End -->
@@ -662,7 +662,7 @@
     			// 댓글 삭제
             	$('#movie_reply_list').on('click', '.movie_reply_item .movie_reply_delete', function (event) {
             		var movie_reply_no = $(this).prevAll('#movie_reply_no').val();
-            		var result = confirm('리뷰를 정말 삭제할까요?');
+            		var result = confirm('리뷰를 삭제하시겠습니까?');
             		if (result) { // 확인(Yes) 버튼을 클릭했을 때
             			$.ajax({
             				// 요청 URL
@@ -676,7 +676,7 @@
             				},
             				// 성공 응답 콜백 함수
             				success: function () {
-            					alert('리뷰 삭제 성공!');
+            					alert('리뷰가 삭제되었습니다.');
             					getAllMovieReplies();
             				}
             			});
@@ -846,7 +846,7 @@
 						// 평점 재계산.
 						average_score();
 						
-						alert("별점 수정 성공!");
+						alert("별점이 변경되었습니다.");
 				}
 				
 			});
@@ -858,7 +858,7 @@
     	
     	
     	$('#btn_rate_delete').click(function(event) {
-        		var result = confirm('별점을 삭제할까요?');
+        		var result = confirm('별점을 삭제하시겠습니까?');
         		if (result) { // 확인(Yes) 버튼을 클릭했을 때
         			$.ajax({
         				// 요청 URL
@@ -877,7 +877,7 @@
         					// 평점 재계산.
         					average_score();
         					
-        					alert('별점 삭제 성공!');
+        					alert('별점이 삭제되었습니다.');
         				}
         			});
         		}
@@ -906,7 +906,7 @@
 		$('#btn_unlike').show();
 		count_like();
 		$('#btn_unlike').click(function() {
-			var answer = alert('로그인후 이용가능합니다.');
+			var answer = alert('로그인 후 이용 가능합니다.');
 			location.href = '/pjt/movie/rating/signin?movie_no=' + ${movie.movie_no};
 		});
 		

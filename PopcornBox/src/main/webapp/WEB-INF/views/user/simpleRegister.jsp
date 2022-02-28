@@ -61,7 +61,7 @@
 	        </div>
 	        <div id="mobile-menu-wrap"></div>
 	        <div class="offcanvas__text">
-	            <p>PopcornBox</p>
+	            <p>POPCORN BOX</p>
 	        </div>
 	    </div>
 	    <!-- Offcanvas Menu End -->
@@ -225,43 +225,7 @@
 	    <script src="../resources/js/owl.carousel.min.js"></script>
 	    <script src="../resources/js/main.js"></script>			
 		<script>
-		$(document).ready(function () {
-			
-			// user_id 아이디를 갖는 HTML 요소(input)에 변화가 생겼을 때 호출될 이벤트 리스너 콜백 함수를 등록
-			$('#user_id').change(function (event) {
-				// 아이디 중복 체크 및 유효성 검사
-				var params = { user_id: $(this).val() };
-				var id = $(this).val();
-				var spe = id.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
-				var kor = id.search(/[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/gi); 
-				// $.post(Ajax 요청 주소, 요청 파라미터, 응답 성공일 때 실행될 콜백 함수);
-				$.post('./checkid', params, function (response) {	
-					if (response == 'invalid') { // 중복된 아이디(DB에 있는 아이디)인 경우
-						$('.valid_id').hide(); 
-						$('.invalid_id').show(); 
-						$('.invalid_id2').hide();
-						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
-					/*
-					} else if (id.length < 5 || id.length > 20) {
-						$('.valid_id').hide(); 
-						$('.invalid_id').hide(); 
-						$('.invalid_id2').show(); 
-						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
-					}
-					else if (spe > 0 || kor > 0) { // 특수문자나 한글을 포함하는 경우
-						$('.valid_id').hide(); 
-						$('.invalid_id').hide(); 
-						$('.invalid_id2').show(); 
-						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
-					*/	
-					} else {
-						$('.valid_id').show(); 
-						$('.invalid_id').hide(); 
-						$('.invalid_id2').hide(); 
-						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
-					}
-				});
-			});
+		$(document).ready(function () {	
 			
 			$('#user_nickname').change(function (event) {
 				var params = { user_nickname: $(this).val() };
@@ -284,9 +248,7 @@
 						$('.invalid_nickname2').hide();
 					}
 				});
-			});
-			
-		
+			});		
 			
 			$('#user_pwd').change(function (event) {
 				var pwd = $(this).val();

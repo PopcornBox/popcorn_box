@@ -76,7 +76,7 @@
 		</div>
 		<div id="mobile-menu-wrap"></div>
 		<div class="offcanvas__text">
-			<p>PopcornBox</p>
+			<p>POPCORN BOX</p>
 		</div>
 	</div>
 	<!-- Offcanvas Menu End -->
