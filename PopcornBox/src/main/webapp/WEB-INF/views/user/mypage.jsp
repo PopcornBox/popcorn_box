@@ -150,11 +150,11 @@
 													<td colspan = "5">내가 좋아요한 영화</td>
 												</tr>
 												<c:forEach items="${mypageMovieLikeResult.myMovieLikeList}" var="signInUserNickname">
-													<tr>
-														<td>${signInUserNickname.movie_no}</td>
+													<td>
+														<tr>${signInUserNickname.movie_no}</tr>
 														<td><a href="../movie/detail?movie_no=${signInUserNickname.movie_no}">${signInUserNickname.movie_no}</a></td>
 														<td><fmt:formatDate value="${signInUserNickname.like_update_time}" pattern="yyyy/MM/dd HH:mm" /></td>
-													</tr>
+													</td>
 												</c:forEach>
 											</tbody>
 										</table>
