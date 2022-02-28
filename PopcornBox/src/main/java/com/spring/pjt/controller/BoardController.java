@@ -64,8 +64,8 @@ public class BoardController {
 		log.info("notice() POST 호출");
 		board.getBoard_mode();
 		boardService.insert(board);
-		return "redirect:/board/main";
 		
+		return "redirect:/board/main";
 	}
 	
 	@RequestMapping(value = "/detail", method=RequestMethod.GET)
@@ -83,7 +83,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value="/update", method = RequestMethod.POST)
-	public String update(Board board) {
+	public String update(Board board, Model model) {
 		log.info("update(board_no={}) POST호출", board);
 		
 		boardService.update(board);

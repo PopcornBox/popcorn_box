@@ -32,19 +32,20 @@ public class BoardDaoTest {
 	
 	@Test
 	public void doTest() {
-//	log.info("boardDao: {}", boardDao);
-//	List<Board> list = boardDao.read();
-		Board board = boardDao.read(1);
-		log.info(board.toString());
+	log.info("boardDao: {}", boardDao);
+	List<Board> list = boardDao.read();
+	
+//		Board board = boardDao.read(1);
+//		log.info(board.toString());
 	}
 	
-	@Test
-	public void testpagingList() {
-		PageCriteria pcri = new PageCriteria();
-		log.info(pcri.toString());
-		List list = service.pagingList(pcri);
-		
-		list.forEach(board -> log.info("" + board));
-	}
+//	@Test
+//	public void testpagingList() {
+//		PageCriteria pcri = new PageCriteria();
+//		log.info(pcri.toString());
+//		List list = service.pagingList(pcri);
+//		
+//		list.forEach(board -> log.info("" + board));
+//	}
 
 }

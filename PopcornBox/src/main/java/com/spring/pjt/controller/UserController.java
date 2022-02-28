@@ -1,6 +1,8 @@
 package com.spring.pjt.controller;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,9 +23,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriUtils;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.spring.pjt.domain.MovieLike;
 import com.spring.pjt.domain.User;
 import com.spring.pjt.domain.UserLog;
 import com.spring.pjt.service.KakaoLoginService;
+import com.spring.pjt.service.MovieService;
 import com.spring.pjt.service.UserMailSendService;
 import com.spring.pjt.service.UserService;
 
@@ -39,6 +43,7 @@ public class UserController {
 	@Autowired private UserService userService; 
 	@Autowired private UserMailSendService mailsender;
 	@Autowired private KakaoLoginService kakaoLoginService;
+	@Autowired private MovieService movieService;
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void register() {
@@ -362,14 +367,17 @@ public class UserController {
 		User mypageBoardReplyResult = userService.callMypageBoardReplyInfo(signInUserNickname);
 		User mypageEventReplyResult = userService.callMypageEventReplyInfo(signInUserNickname);
 		User mypageMovieReplyResult = userService.callMypageMovieReplyInfo(signInUserNickname);
-//		User mypageMovieLikeResult = userService.callMypageMovieLikeInfo(signInUserNickname);
+		User mypageMovieLikeResult = userService.callMypageMovieLikeInfo(signInUserNickname);
+//		List<MovieLike> ml = mypageMovieLikeResult.getMyMovieLikeList();
+		
 		
 		// 구현부
 		model.addAttribute("mypageBoardResult",mypageBoardResult);
 		model.addAttribute("mypageBoardReplyResult",mypageBoardReplyResult);
 		model.addAttribute("mypageEventReplyResult",mypageEventReplyResult);
 		model.addAttribute("mypageMovieReplyResult",mypageMovieReplyResult);
-//		model.addAttribute("mypageMovieLikeResult",mypageMovieLikeResult);
+		model.addAttribute("mypageMovieLikeResult",mypageMovieLikeResult);
+		
 		
 		
 		model.addAttribute("msg", message);
