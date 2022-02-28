@@ -18,6 +18,7 @@
 	</div>
    
 
+<<<<<<< HEAD
 		<ul>
 			<li><a href="./userInfo">회원정보확인</a></li>
 		</ul>
@@ -68,6 +69,9 @@
 		</div>
 
 
+=======
+			<!-- 좋아요한 영화 전용 table -->
+>>>>>>> branch 'master' of https://github.com/PopcornBox/popcorn_box.git
 			<table>
 				<c:forEach items="${mypageMovieLikeResult.myMovieLikeList}" var="signInUserNickname">
 					<tr align="center">
@@ -127,7 +131,7 @@
 									<td class="user__chart__item">
 									<i class="fa-solid fa-rectangle-list"></i></td>
 									<td class="chart__info" id="load_all">전체활동 기록
-										<table class="innerchart_all">
+										<table id="openAllLog" value="hide">
 											<tbody>
 												<c:forEach items="${mypageBoardResult.myBoardList}" var="signInUserNickname">
 													<tr>
@@ -161,20 +165,73 @@
 										</table>
 									</td>
 								</tr>
-								<tr style="cursor: pointer;" onclick="location.href='./#'">
+								<tr style="cursor: pointer;">
 									<td class="user__chart__item">
 									<i class="fa-solid fa-pen-to-square"></i></td>
-									<td class="chart__info">작성한 게시글</td>
+									<td class="chart__info" id="load_board">작성한 게시글
+										<table id="openBoardLog" value="hide">
+											<tbody>
+												<c:forEach items="${mypageBoardResult.myBoardList}" var="signInUserNickname">
+													<tr>
+														<td>커뮤니티 게시글</td>
+														<td><a href="../board/detail?board_no=${signInUserNickname.board_no}">${signInUserNickname.board_title}</a></td>
+														<td><fmt:formatDate value="${signInUserNickname.board_update_time}" pattern="yyyy/MM/dd HH:mm" /></td>
+													</tr>
+												</c:forEach>
+											</tbody>
+										</table>
+									</td>
 								</tr>
-								<tr style="cursor: pointer;" onclick="location.href='./#'">
+								<tr style="cursor: pointer;">
 									<td class="user__chart__item">
 									<i class="fa-solid fa-comment-dots"></i></td>
-									<td class="chart__info">작성한 댓글</td>
+									<td class="chart__info" id="load_reply">작성한 댓글
+										<table id="openReplyLog" value="hide">
+											<tbody>
+												<c:forEach items="${mypageBoardReplyResult.myBoardReplyList}" var="signInUserNickname">
+													<tr>
+														<td>게시판 댓글</td>
+														<td><a href="../board/detail?board_no=${signInUserNickname.board_no}">${signInUserNickname.board_reply_content}</a></td>
+														<td><fmt:formatDate value="${signInUserNickname.board_reply_update_time}" pattern="yyyy/MM/dd HH:mm" /></td>
+													</tr>
+												</c:forEach>
+												<c:forEach items="${mypageEventReplyResult.myEventReplyList}" var="signInUserNickname">
+													<tr>
+														<td>이벤트 댓글</td>
+														<td><a href="../event/detail?event_no=${signInUserNickname.event_no}&q=0">${signInUserNickname.event_reply_content}</a></td>
+														<td><fmt:formatDate value="${signInUserNickname.event_reply_update_time}" pattern="yyyy/MM/dd HH:mm" /></td>
+													</tr>
+												</c:forEach>
+												<c:forEach items="${mypageMovieReplyResult.myMovieReplyList}" var="signInUserNickname">
+													<tr>
+														<td>영화 댓글</td>
+														<td><a href="../movie/detail?movie_no=${signInUserNickname.movie_no}">${signInUserNickname.movie_reply_content}</a></td>
+														<td><fmt:formatDate value="${signInUserNickname.movie_reply_update_time}" pattern="yyyy/MM/dd HH:mm" /></td>
+													</tr>
+												</c:forEach>
+											</tbody>
+										</table>
+									</td>
 								</tr>
-								<tr style="cursor: pointer;" onclick="location.href='./#'">
+								<tr style="cursor: pointer;">
 									<td class="user__chart__item">
 									<i class="fa-solid fa-heart"></i></td>
-									<td class="chart__info">좋아요한 영화</td>
+									<td class="chart__info" id="load_like">좋아요한 영화
+										<table id="openLikeLog" value="hide">
+											<tbody>
+												<tr align="center">
+													<td colspan = "5">내가 좋아요한 영화</td>
+												</tr>
+												<c:forEach items="${mypageMovieLikeResult.myMovieLikeList}" var="signInUserNickname">
+													<tr>
+														<td>${signInUserNickname.movie_no}</td>
+														<td><a href="../movie/detail?movie_no=${signInUserNickname.movie_no}">${signInUserNickname.movie_no}</a></td>
+														<td><fmt:formatDate value="${signInUserNickname.like_update_time}" pattern="yyyy/MM/dd HH:mm" /></td>
+													</tr>
+												</c:forEach>
+											</tbody>
+										</table>
+									</td>
 								</tr>
 
 							</tbody>
@@ -251,12 +308,37 @@
 					alert(message);
 				}
 		    
-		    
+		    // 전체 기록 호출
 	        $(function(){
 	            $("#load_all").click(function(e){ // click event for load more
-	                e.preventDefault();
-	                $(".innerchart_all:hidden").show(); // hidden div show them
+	                $("#openAllLog").toggle(); // hidden div show them
 	            });
+	            $("#openAllLog").hide();
+	        });
+		    
+		    // 작성한 게시글 호출
+	        $(function(){
+	            $("#load_board").click(function(e){ // click event for load more
+	                $("#openBoardLog").toggle(); // hidden div show them
+	            });
+	            $("#openBoardLog").hide();
+	        });
+		    
+		    // 작성한 댓글 호출
+	        $(function(){
+	            $("#load_reply").click(function(e){ // click event for load more
+	                $("#openReplyLog").toggle(); // hidden div show them
+	            });
+	            $("#openReplyLog").hide();
+	        });
+		    
+		    // 좋아요한 영화 호출
+		    // 작성한 댓글 호출
+	        $(function(){
+	            $("#load_like").click(function(e){ // click event for load more
+	                $("#openLikeLog").toggle(); // hidden div show them
+	            });
+	            $("#openLikeLog").hide();
 	        });
 	        
 });			    

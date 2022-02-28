@@ -41,21 +41,26 @@
             <div class="offcanvas__links">
             <ul>
             	<c:if test="${empty signInUserNickname}">
-					<%-- 로그인 되어 있지 않은 경우 --%>					
-					<li><a href="./user/signin">로그인</a></li>
-					<li><a href="./user/register">회원가입</a></li>
-					<li><a href="./user/mypage">마이페이지</a></li>
-			                <li><a href="./event/main">이벤트</a></li>
+					<%-- 로그인 되어 있지 않은 경우 --%>
+					<li><a href="../user/signin">로그인</a></li>
+		            <li><a href="../user/register">회원가입</a></li>
+		            <li><a href="../user/mypage">마이페이지</a></li>
 				</c:if>
 				<c:if test="${not empty signInUserNickname}">
 					<%-- 로그인 되어 있는 경우 --%>
-					<li><span>${signInUserNickname} 님</span></li>
-					<li>　</li>
-					<li><a href="./user/signout">로그아웃</a></li>
-					<li><a href="./user/register">회원가입</a></li>
-					<li><a href="./user/mypage">마이페이지</a></li>
-					<li><a href="./event/main">이벤트</a></li>
-				</c:if>
+					<c:if test="${empty accessToken}">
+						<%-- 일반 로그인의 경우 --%>  
+						<li><span>${signInUserNickname} 님</span></li>
+						<li><a href="../user/signout">로그아웃</a></li>
+			            <li><a href="../user/mypage">마이페이지</a></li>
+		             </c:if>	 
+		             <c:if test="${not empty accessToken}">
+		                <%-- 카카오 로그인의 경우 --%>  
+			            <li><span>${signInUserNickname} 님</span></li>
+			            <li><a href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7&logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">로그아웃</a></li>
+			            <li><a href="../user/mypage">마이페이지</a></li>
+					 </c:if>	 
+				</c:if>	      
             </ul>
             </div>
         </div>
