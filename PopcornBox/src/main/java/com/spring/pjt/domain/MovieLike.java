@@ -4,16 +4,16 @@ import java.sql.Date;
 
 public class MovieLike {
 	private int user_no;
-	private String user_id;
+	private String user_nickname;
 	private int movie_no;
 	private Date like_update_time;
 	
 	// Constructor
 	public MovieLike() {}
 	
-	public MovieLike(int user_no, String user_id, int movie_no, Date like_update_time) {
+	public MovieLike(int user_no, String user_nickname, int movie_no, Date like_update_time) {
 		this.user_no = user_no;
-		this.user_id = user_id;
+		this.user_nickname = user_nickname;
 		this.movie_no = movie_no;
 		this.like_update_time = like_update_time;
 	}
@@ -27,12 +27,12 @@ public class MovieLike {
 		this.user_no = user_no;
 	}
 
-	public String getUser_id() {
-		return user_id;
+	public String getUser_nickname() {
+		return user_nickname;
 	}
 
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
+	public void setUser_id(String user_nickname) {
+		this.user_nickname = user_nickname;
 	}
 
 	public int getMovie_no() {
@@ -53,7 +53,7 @@ public class MovieLike {
 
 	@Override
 	public String toString() {
-		return "MovieLike [user_no=" + user_no + ", user_id=" + user_id + ", movie_no=" + movie_no
+		return "MovieLike [user_no=" + user_no + ", user_nickname=" + user_nickname + ", movie_no=" + movie_no
 				+ ", like_update_time=" + like_update_time + "]";
 	}
 	

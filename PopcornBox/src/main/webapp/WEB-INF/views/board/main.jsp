@@ -11,27 +11,23 @@
 <title>PopcornBox</title>
 
 <style>
-   .txt_1 td:first-child:after {
-      color:#f90a37;
-      content: "공지";
-    
-   }
-   .txt_1 a { color:#f90a37 !important;}
-   .pagingView_area{
-      max-width:220px;
-      margin-left: auto;
-      margin-right: auto;   
-   }
-   
-   .pagingView{
-   list-style : none;
-   display: inline-block;
-
+	.txt_1 td:first-child:after {
+		color:red;
+		content: "공지";
+	}
+	.txt_1 a { color:red !important;}
+	.pagingView_area{
+		max-width:500px;
+		margin-left: auto;
+		margin-right: auto;	
+		display: flex;
+	}
 	
 	.pagingView{
 	list-style : none;
 	display: inline-block;
-    margin: 50px 0 0 100px;       
+    margin-left: auto;
+    margin-right: auto;       
 	margin-top: 50px;
   }
    .pagingView li{
@@ -41,7 +37,7 @@
    padding: 7px;
    font-weight: 500;
   }
-
+  
 </style>
 
 
@@ -100,31 +96,29 @@
 			</div>
 
 
-
-         <div class="btnbox">
-            <div id="main-insertbtn">
-               <a href="./insert" class="primary-btn">새 글 작성</a>
-            </div>
-            <c:if test="${signInUserPosition eq 'A'}">
-               <div id="main-insertbtn">
-                  <a href="./notice" class="primary-btn">공지 작성</a>
-               </div>
-            </c:if>
-            <c:if test="${signInUserPosition eq 'B'}">
-               <div id="main-insertbtn">
-                  <a href="./notice" class="primary-btn">공지 작성</a>
-               </div>
-            </c:if>
-         </div>
-
+			<div class="btnbox">
+				<div id="main-insertbtn">
+					<a href="./insert" class="primary-btn">새 글 작성</a>
+				</div>
+				<c:if test="${signInUserPosition eq 'A'}">
+					<div id="main-insertbtn">
+						<a href="./notice" class="primary-btn">공지 작성</a>
+					</div>
+				</c:if>
+				<c:if test="${signInUserPosition eq 'B'}">
+					<div id="main-insertbtn">
+						<a href="./notice" class="primary-btn">공지 작성</a>
+					</div>
+				</c:if>
+			</div>
 
 
 
 
-      </div>
+		</div>
 
 
-   </div>
+	</div>
 
 
 

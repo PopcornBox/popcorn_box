@@ -13,5 +13,7 @@ public interface MovieLikeService {
 	int deleteLike(int movie_no, int user_no);
 	
 	List<Object> readUsers(int movie_no);
+	
+	List<Integer> selectTopLikes();
 
 }
