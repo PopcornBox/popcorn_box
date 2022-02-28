@@ -8,7 +8,7 @@
 	<head>
 		<meta charset="UTF-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <title>로그인 | Popcorn Box</title>
+	    <title>로그인 | POPCORN BOX</title>
 		
 		<!-- Google Font -->
 	    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
@@ -52,18 +52,15 @@
 						<%-- 일반 로그인의 경우 --%>  
 						<li><span>${signInUserNickname} 님</span></li>
 						<li><a href="../user/signout">로그아웃</a></li>
-						<li><a href="../user/register">회원가입</a></li>
 			            <li><a href="../user/mypage">마이페이지</a></li>
 		             </c:if>	 
 		             <c:if test="${not empty accessToken}">
 		                <%-- 카카오 로그인의 경우 --%>  
 			            <li><span>${signInUserNickname} 님</span></li>
-			            <li><a href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7
-			            &logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">로그아웃</a></li>
-						<li><a href="./user/register">회원가입</a></li>
-			            <li><a href="./user/mypage">마이페이지</a></li>
+			            <li><a href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7&logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">로그아웃</a></li>
+			            <li><a href="../user/mypage">마이페이지</a></li>
 					 </c:if>	 
-				</c:if>	              								
+				</c:if>	          								
             </ul>
             </div>
         </div>
@@ -99,19 +96,16 @@
 												<%-- 일반 로그인의 경우 --%>  
 												<span>${signInUserNickname} 님</span><br>
 												<a href="../user/signout"><i class="fa-solid fa-lock"></i>로그아웃</a>
-												<a href="../user/register"><i class="fa-solid fa-user-plus"></i>회원가입</a>
 			                                    <a href="../user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
 		                                    </c:if>	 
 		                                    <c:if test="${not empty accessToken}">
 		                                    	<%-- 카카오 로그인의 경우 --%>  
 			                                    <span>${signInUserNickname} 님</span><br>
-			                                    <a href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7
-			                                    &logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">
+			                                    <a href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7&logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">
 			                                    	<i class="fa-solid fa-lock"></i>로그아웃</a>
-												<a href="./user/register"><i class="fa-solid fa-user-plus"></i>회원가입</a>
-			                                    <a href="./user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
+			                                    <a href="../user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
 											</c:if>	 
-										</c:if>	                  
+										</c:if>	                   
 	                                </div>
 	                            </div>
 	                        </div>
@@ -213,42 +207,49 @@
 	    </section>
 	    <!-- Login(Checkout Section End -->			
 			
+    
     <!-- Footer Section Begin -->
-    <footer class="footer">
-        <div class="container">
-        	<div class="row">
-                   <div class="footer__about">
-                       <div class="footer__logo">
-                           <a href="../"><img src="../resources/img/popcornbox_logo.png"></a>
-                       </div>
-                   </div>
-               <div class="footer_text">
-               	<div>
-                	<p>popcompany | 대표 김유은</p>
-                	<p>서울특별시 강남구 테헤란로 124 4층 | 사업자 등록번호 11110 22220 3333</p>
-                	<p>
-                		   <a href="../">서비스 소개 </a>
-                           | 
-                           <a href="../">이용약관 </a>
-                           | 
-                           <a href="../">개인정보 처리 방침 </a>
-                           | 
-                           <a href="../">고객센터 </a>
-                           | 
-                       	<a href="https://github.com/PopcornBox/popcorn_box">Github </a>
-                       </p>
-                       <p>Copyright ©
-                           <script>
+<footer class="footer">
+	<div class="container" style="display: flex;">
+		<div class="footer__about" style="width: 30%; margin: -10px;">
+			<div class="footer__logo">
+				<a href=""><img src="../resources/img/logo_gray.png"></a>
+			</div>
+		</div>
+		<div class="footer_text">
+			<div>
+				<p
+					footer_text" style="font-weight: 600; font-size: 12px; color: 555555;">(06234)
+					서울특별시 강남구 테헤란로 124 4층</p>
+				<p footer_text" style="font-weight: 600; font-size: 12px;">POP
+					COMPANY | 대표 김유은 | 사업자 등록번호 11110 22220 3333</p>
+				<p footer_text" style="font-weight: 600; font-size: 12px;">
+					Copyright ©
+					<script>
                                document.write(new Date().getFullYear());
-                           </script>2020 Popcorn Box. All rights reserved  
-                       </p>
-                       
-               	</div>
-               </div>
-        	</div>
-           </div>
-    </footer>
-    <!-- Footer Section End -->	
+                           </script>
+					POPCORN BOX. All rights reserved
+				</p>
+				<p>
+					<a href="">서비스 소개 </a> | <a href="">이용약관 </a> | <a href="">개인정보
+						처리 방침 </a> | <a href="">고객센터 </a> | <a
+						href="https://github.com/PopcornBox/popcorn_box">Github </a>
+				</p>
+			</div>
+		</div>
+		<div class="sns_btn" style="margin-left: 60px; font-size: 30px;">
+			<a href=""><i class="fa-brands fa-instagram"
+				style="color: #666; padding-left: 20px;"></i></a> <a href=""></a><i
+				class="fa-brands fa-facebook-f"
+				style="color: #666; padding-left: 20px;"></i></a> <a href=""><i
+				class="fa-brands fa-twitter"
+				style="color: #666; padding-left: 20px;"></i></a> <a href=""><i
+				class="fa-brands fa-github" style="color: #666; padding-left: 20px;"></i></a>
+		</div>
+	</div>
+</footer>
+<!-- Footer Section End -->
+    
 						
 	    <!-- Js Plugins -->
 	    <script src="../resources/js/jquery-3.3.1.min.js"></script>

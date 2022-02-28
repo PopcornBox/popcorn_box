@@ -170,17 +170,11 @@
 					</div>
 				</c:if>
 			<div>
-				<input type="hidden" name="board_mode"
-					value="${board.board_mode}" required readonly />
-			</div>
-			<div>
-				<input type="hidden" name="board_no"
-					value="${board.board_no}" required readonly />
+				<input type="hidden" name="board_no" value="${board.board_no}" required readonly />
 			</div>
 
 
-			<div>
-				<textarea id="board_title" name="board_title" maxlength="35"
+			<div><textarea id="board_title" name="board_title" maxlength="35"
 					rows="1" onkeyup="resize(this)" required>${board.board_title}</textarea>
 					
 					
@@ -191,10 +185,6 @@
                         </textarea>
 			</div>
 
-			<div>
-				<input type="hidden" name="user_nickname"
-					value="${signInUserNickname}" required readonly />
-			</div>
 
 			<div class="btnbox">
 				<a href="./main" class="primary-btn">수정 취소</a>
@@ -207,7 +197,7 @@
 		</form>
 	</div>
 
-	</div>
+
 
 	<!-- Footer Section Begin -->
 	<footer class="footer">
@@ -264,20 +254,17 @@
         		}
         	});
         	
-        	$('#menu-update').click(function (event) {
-        		event.preventDefault(); // 링크를 클릭했을 때의 기본 동작인 요청 보내기를 하지 않음.
-        		var result = confirm('정말 수정할까요?');
-        		if (result) { // 사용자가 YES를 선택했을 때
-        			location = $(this).attr('href'); // 원래 이동하려고 했던 요청 주소로 요청 보내기.
-        		}
-        	});
+           	$('#menu-update').click(function (event) {
+           		
+           		var result = alert('수정완료!');
+           		if (result) { // 사용자가 YES를 선택했을 때
+           			location = $(this).attr('href'); // 원래 이동하려고 했던 요청 주소로 요청 보내기.
+           		}
+           	});
         	
         });
             
-
         
-
-
 		
 	</script>
 
