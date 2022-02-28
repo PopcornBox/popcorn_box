@@ -87,7 +87,7 @@ public class BoardController {
 		log.info("update(board_no={}) POST호출", board);
 		
 		boardService.update(board);
-		model.addAttribute("수정완료!");
+		
 		return "redirect:/board/main";
 		
 	}
