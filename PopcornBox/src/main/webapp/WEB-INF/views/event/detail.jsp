@@ -261,7 +261,7 @@
 			댓글 작성하기</div>
 		<div class="event__input" style="display: flex;">
 			<input type="text" id="event_reply_content_empty"
-				name="event_reply_content_"
+				name="event_reply_content_empty"
 				placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." />
 			<button type="submit" class="event-btn" id="btn_register_event_reply"
 				value="등록">등록</button>
