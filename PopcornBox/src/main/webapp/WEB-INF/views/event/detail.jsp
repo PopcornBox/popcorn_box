@@ -48,12 +48,12 @@
 	padding: 10px; border 1px solid #e1e1e1;
 	border-collapse: collapse;
 }
+
 .event_reply_item {
-	padding-top: 30px;
-	padding-bottom: 30px;
-	dispaly: table-cell;
+	padding-top: 30px; 
+	padding-bottom: 30px; 
+	dispaly : table-cell;
 	border-bottom: 1px solid #e1e1e1;
-	dispaly: table-cell;
 	dispaly: table-cell;
 }
 </style>
@@ -71,38 +71,73 @@
 	</div>
 
 
+    <!-- Offcanvas Menu Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="offcanvas__option">
+            <div class="offcanvas__links">
+            <ul>
+            	<c:if test="${empty signInUserNickname}">
+					<%-- 로그인 되어 있지 않은 경우 --%>					
+					<li><a href="../user/signin">로그인</a></li>
+					<li><a href="../user/register">회원가입</a></li>
+					<li><a href="../user/mypage">마이페이지</a></li>
+			                <li><a href="./event/main">이벤트</a></li>
+				</c:if>
+				<c:if test="${not empty signInUserNickname}">
+					<%-- 로그인 되어 있는 경우 --%>
+					<li><span>${signInUserNickname} 님</span></li>
+					<li>　</li>
+					<li><a href="../user/signout">로그아웃</a></li>
+					<li><a href="../user/register">회원가입</a></li>
+					<li><a href="../user/mypage">마이페이지</a></li>
+					<li><a href="../event/main">이벤트</a></li>
+				</c:if>
+            </ul>
+            </div>
+        </div>
+        <div id="mobile-menu-wrap"></div>
+        <div class="offcanvas__text">
+            <p>PopcornBox</p>
+        </div>
+    </div>
+    <!-- Offcanvas Menu End -->
 
-	<!-- Offcanvas Menu Begin -->
-	<div class="offcanvas-menu-overlay"></div>
-	<div class="offcanvas-menu-wrapper">
-		<div class="offcanvas__option">
-			<div class="offcanvas__links">
-				<ul>
-					<c:if test="${empty signInUserNickname}">
-						<%-- 로그인 되어 있지 않은 경우 --%>
-						<li><a href="../user/signin">로그인</a></li>
-						<li><a href="../user/register">회원가입</a></li>
-						<li><a href="../user/mypage">마이페이지</a></li>
-						<li><a href="./event/main">이벤트</a></li>
-					</c:if>
-					<c:if test="${not empty signInUserNickname}">
-						<%-- 로그인 되어 있는 경우 --%>
-						<li><span>${signInUserNickname} 님</span></li>
-						<li></li>
-						<li><a href="../user/signout">로그아웃</a></li>
-						<li><a href="../user/register">회원가입</a></li>
-						<li><a href="../user/mypage">마이페이지</a></li>
-						<li><a href="../event/main">이벤트</a></li>
-					</c:if>
-				</ul>
+
 			</div>
-		</div>
-		<div id="mobile-menu-wrap"></div>
-		<div class="offcanvas__text">
-			<p>PopcornBox</p>
-		</div>
-	</div>
-	<!-- Offcanvas Menu End -->
+
+			
+			
+			<!-- The Modal -->
+<div class="modal" id="winnerModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100">당첨자 추첨</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body text-center">
+      ${event.event_title}
+      	<div>
+        	<input type="number" min="0" id="winner_number"  name="winner_number"  />
+      	</div>
+      	<div id="result"></div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" id="btn_choice" class="btn btn-danger">추첨</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+			
+
 
 	<!-- Header Section Begin -->
 	<header class="header">
@@ -227,8 +262,8 @@
 			style="text: bold; font-size: 16px; text-align: inherit; font-weight: 700; border-top: 1px solid #e1e1e1; padding-top: 40px; margin-bottom: 20px;">
 			댓글 작성하기</div>
 		<div class="event__input" style="display: flex;">
-			<input type="text" id="event_reply_content"
-				name="event_reply_content"
+			<input type="text" id="event_reply_content_empty"
+				name="event_reply_content_"
 				placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." />
 			<button type="submit" class="event-btn" id="btn_register_event_reply"
 				value="등록">등록</button>

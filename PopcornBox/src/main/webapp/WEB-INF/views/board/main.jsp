@@ -65,7 +65,7 @@
                   <th>조회수</th>
                </tr>
             </thead>
-            <tbody >
+            <tbody>
                <c:forEach var="board" items="${boardList}">
                   <tr class="txt_${board.board_mode}">
                      <td></td>

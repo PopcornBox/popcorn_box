@@ -1,3 +1,5 @@
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
@@ -10,7 +12,7 @@
 	<div class="container" style="display: flex;">
 		<div class="footer__about" style="width: 30%; margin: -10px;">
 			<div class="footer__logo">
-				<a href=""><img src="../resources/img/logo_gray.png"></a>
+				<a href=""><img src="./resources/img/logo_gray.png"></a>
 			</div>
 		</div>
 		<div class="footer_text">
@@ -46,6 +48,7 @@
 	</div>
 </footer>
 <!-- Footer Section End -->
+
 <!-- Js Plugins -->
 <script src="../resources/js/jquery-3.3.1.min.js"></script>
 <script src="../resources/js/bootstrap.min.js"></script>
@@ -57,6 +60,7 @@
 <script src="../resources/js/mixitup.min.js"></script>
 <script src="../resources/js/owl.carousel.min.js"></script>
 <script src="../resources/js/main.js"></script>
+
 <script
 	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 <script
