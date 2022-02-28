@@ -91,12 +91,22 @@
 						</ul>
 					</div>
 				</c:if>
-								<c:if test="${signInUserPosition eq 'B'}">
+				<c:if test="${signInUserPosition eq 'B'}">
 					<div style="margin-left: auto; margin-right: 30px;">
 						<!-- 로그인 사용자 아이디와 글 작성자 아이디가 일치할 때만 수정 메뉴를 보여줌. -->
 						<ul style="display: inline-flex; list-style: none;font-size: 14px;">
 							<li> 
 								<a id="menu-delete" href="./delete?board_no=${board.board_no}">관리자 권한삭제</a>
+							</li>
+						</ul>
+					</div>
+				</c:if>
+								<c:if test="${signInUserPosition eq 'B'}">
+					<div style="margin-left: auto; margin-right: 30px;">
+						<!-- 로그인 사용자 아이디와 글 작성자 아이디가 일치할 때만 수정 메뉴를 보여줌. -->
+						<ul style="display: inline-flex; list-style: none;font-size: 14px;">
+							<li> 
+								<a id="menu-update" href="./update?board_no=${board.board_no}">관리자 권한수정</a>
 							</li>
 						</ul>
 					</div>
