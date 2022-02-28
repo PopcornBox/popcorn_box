@@ -157,8 +157,7 @@
 									<option value="2">내용</option>
 									<option value="3">제목+내용</option>
 									<option value="4">작성자</option>
-								</select>
-								<input class="search" type="text" name="keyword"
+								</select> <input class="search" type="text" name="keyword"
 									placeholder="검색어 입력" required
 									oninvalid="this.setCustomValidity('검색어를 입력하세요.')"
 									oninput="setCustomValidity('')" /> <input class="btn"
