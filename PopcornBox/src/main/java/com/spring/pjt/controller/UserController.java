@@ -435,6 +435,11 @@ public class UserController {
 		if (passwordEncoder.matches(rawPassword, encodedPassword)) {
 			int result = userService.deleteAccount(signInUser);
 			if (result == 1) {
+				if (session.getAttribute("accessToken") != null) {
+					JsonNode node = kakaoLoginService.kakaoUnlink(session.getAttribute("accessToken").toString());
+					// 결괏값 출력
+					log.info("연결 끊기 후 반환되는 아이디 : {}", node.get("id"));	
+				}	
 				msg = "회원탈퇴가 완료되었습니다.";
 				session.setAttribute("msg", msg);
 				session.invalidate();				
