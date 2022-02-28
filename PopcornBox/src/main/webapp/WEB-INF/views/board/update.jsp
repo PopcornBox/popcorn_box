@@ -256,7 +256,7 @@
         	
            	$('#menu-update').click(function (event) {
            		
-           		var result = alert('수정완료!');
+           		var result = alert('수정 완료되었습니다.');
            		if (result) { // 사용자가 YES를 선택했을 때
            			location = $(this).attr('href'); // 원래 이동하려고 했던 요청 주소로 요청 보내기.
            		}

@@ -13,7 +13,8 @@
 <style>
    .txt_1 td:first-child:after {
       color:#f90a37;
-      content: "공지";
+      content: "공지";	
+ 
     
    }
    .txt_1 a { color:#f90a37 !important;}
