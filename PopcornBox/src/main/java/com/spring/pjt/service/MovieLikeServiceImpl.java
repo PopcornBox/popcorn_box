@@ -50,4 +50,10 @@ public class MovieLikeServiceImpl implements MovieLikeService {
 		
 		return movieLikeDao.readAllUsers(movie_no);
 	}
+	
+	@Override
+	public List<Integer> selectTopLikes() {
+		log.info("selectTopLikes() 호출");
+		return movieLikeDao.selectTop();
+	}
 }

@@ -103,7 +103,6 @@ public class SignedInInterceptor implements HandlerInterceptor {
 				if (state != null && !state.equals("")) {
 					response.sendRedirect(state);
 					session.removeAttribute(state); // 이후 필요 없으므로 세션에서 삭제
-					log.info("state 제거 후 session.state : {}", session.getAttribute(state));
 				} else {
 					response.sendRedirect("/pjt");
 				}

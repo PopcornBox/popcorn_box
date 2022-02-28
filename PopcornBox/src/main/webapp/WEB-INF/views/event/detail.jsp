@@ -78,21 +78,26 @@
             <div class="offcanvas__links">
             <ul>
             	<c:if test="${empty signInUserNickname}">
-					<%-- 로그인 되어 있지 않은 경우 --%>					
+					<%-- 로그인 되어 있지 않은 경우 --%>
 					<li><a href="../user/signin">로그인</a></li>
-					<li><a href="../user/register">회원가입</a></li>
-					<li><a href="../user/mypage">마이페이지</a></li>
-			                <li><a href="./event/main">이벤트</a></li>
+		            <li><a href="../user/register">회원가입</a></li>
+		            <li><a href="../user/mypage">마이페이지</a></li>
 				</c:if>
 				<c:if test="${not empty signInUserNickname}">
 					<%-- 로그인 되어 있는 경우 --%>
-					<li><span>${signInUserNickname} 님</span></li>
-					<li>　</li>
-					<li><a href="../user/signout">로그아웃</a></li>
-					<li><a href="../user/register">회원가입</a></li>
-					<li><a href="../user/mypage">마이페이지</a></li>
-					<li><a href="../event/main">이벤트</a></li>
-				</c:if>
+					<c:if test="${empty accessToken}">
+						<%-- 일반 로그인의 경우 --%>  
+						<li><span>${signInUserNickname} 님</span></li>
+						<li><a href="../user/signout">로그아웃</a></li>
+			            <li><a href="../user/mypage">마이페이지</a></li>
+		             </c:if>	 
+		             <c:if test="${not empty accessToken}">
+		                <%-- 카카오 로그인의 경우 --%>  
+			            <li><span>${signInUserNickname} 님</span></li>
+			            <li><a href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7&logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">로그아웃</a></li>
+			            <li><a href="../user/mypage">마이페이지</a></li>
+					 </c:if>	 
+				</c:if>	      
             </ul>
             </div>
         </div>
@@ -154,34 +159,27 @@
 						<div class="header__top__right">
 							<div class="header__top__links">
 								<c:if test="${empty signInUserNickname}">
-									<%-- 로그인 되어 있지 않은 경우 --%>
-									<a href="../user/signin"><i class="fa-solid fa-lock"></i>로그인</a>
-									<a href="../user/register"><i class="fa-solid fa-user-plus"></i>회원가입</a>
-									<a href="../user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
-								</c:if>
-								<c:if test="${not empty signInUserNickname}">
-									<%-- 로그인 되어 있는 경우 --%>
-									<c:if test="${empty accessToken}">
-										<%-- 일반 로그인의 경우 --%>
-										<span>${signInUserNickname} 님</span>
-										<br>
-										<a href="../user/signout"><i class="fa-solid fa-lock"></i>로그아웃</a>
-										<a href="../user/register"><i
-											class="fa-solid fa-user-plus"></i>회원가입</a>
-										<a href="../user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
-									</c:if>
-									<c:if test="${not empty accessToken}">
-										<%-- 카카오 로그인의 경우 --%>
-										<span>${signInUserNickname} 님</span>
-										<br>
-										<a
-											href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7&logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">
-											<i class="fa-solid fa-lock"></i>로그아웃
-										</a>
-										<a href="./user/register"><i class="fa-solid fa-user-plus"></i>회원가입</a>
-										<a href="./user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
-									</c:if>
-								</c:if>
+											<%-- 로그인 되어 있지 않은 경우 --%>
+											<a href="../user/signin"><i class="fa-solid fa-lock"></i>로그인</a>
+		                                    <a href="../user/register"><i class="fa-solid fa-user-plus"></i>회원가입</a>
+		                                    <a href="../user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
+										</c:if>
+										<c:if test="${not empty signInUserNickname}">
+											<%-- 로그인 되어 있는 경우 --%>
+											<c:if test="${empty accessToken}">
+												<%-- 일반 로그인의 경우 --%>  
+												<span>${signInUserNickname} 님</span><br>
+												<a href="../user/signout"><i class="fa-solid fa-lock"></i>로그아웃</a>
+			                                    <a href="../user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
+		                                    </c:if>	 
+		                                    <c:if test="${not empty accessToken}">
+		                                    	<%-- 카카오 로그인의 경우 --%>  
+			                                    <span>${signInUserNickname} 님</span><br>
+			                                    <a href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7&logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">
+			                                    	<i class="fa-solid fa-lock"></i>로그아웃</a>
+			                                    <a href="../user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
+											</c:if>	 
+										</c:if>	        
 							</div>
 						</div>
 					</div>
@@ -262,9 +260,8 @@
 			style="text: bold; font-size: 16px; text-align: inherit; font-weight: 700; border-top: 1px solid #e1e1e1; padding-top: 40px; margin-bottom: 20px;">
 			댓글 작성하기</div>
 		<div class="event__input" style="display: flex;">
-
 			<input type="text" id="event_reply_content_empty"
-				name="event_reply_content_empty"
+				name="event_reply_content_"
 				placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." />
 			<button type="submit" class="event-btn" id="btn_register_event_reply"
 				value="등록">등록</button>
@@ -325,10 +322,7 @@
     			});
     					
     			if ('${q}' < 0) {
-    				$('#event_reply_content_empty').attr('disabled', true);
-    				$('#btn_register_event_reply').click(function() {
-    					alert('만료된 이벤트입니다.');
-    				});
+    				$('#btn_register_event_reply').attr('disabled', true);
     			}
     			
             	
@@ -370,22 +364,24 @@
                          	var date = new Date(this.event_reply_update_time); // JavaScript Date 객체 생성
                          	var dateStr = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
                          	
+                             	 // 댓글 번호
                              	event_list += '<div class="event_reply_item">'
                                                  + '<input type="hidden" id="event_reply_no" name="event_reply_no" value="'
                          		   				+ this.event_reply_no
                          		  				+ '" readonly />';
-                            
+                             // 댓글 작성자 닉네임
                              if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
-                                  event_list += '<input type="text" style="background-color:rgb(240, 248, 255);" id="user_nickname" name="user_nickname" value="'
+                                  event_list += '<input type="text" style="border:none; width:50%; text-align:left; font-weight:700; padding-left:10px; padding-bottom: 20px; background-color:rgb(240, 248, 255);" id="user_nickname" name="user_nickname" value="'
                          		            	+ this.user_nickname
                          		            	+ '" readonly />';
                              } else {
                              	event_list += '<input type="text" style="border:none; width:50%; color:#333333; text-align:left; font-weight:700; padding-left:10px; padding-bottom: 20px;" id="user_nickname" name="user_nickname" value="'
-             		            				+ this.user_nickname.substring(0,1) + '*' + this.user_nickname.substring(2, this.user_nickname.length)
+             		            				+ this.user_nickname
              		            				+ '" readonly />';
                              }
+                             // 댓글 작성 시간
                              if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
-                             	event_list += '<input type="text" style="background-color:rgb(240, 248, 255);" id="event_reply_update_time" name="event_reply_update_time" value="'
+                             	event_list += '<input type="text" style="border:none; width:50%; text-align:right; padding-right:10px; padding-bottom: 20px; background-color:rgb(240, 248, 255);" id="event_reply_update_time" name="event_reply_update_time" value="'
                          		           		+ dateStr
                          		            	+ '" readonly />';
                              } else {
@@ -393,13 +389,10 @@
          		           						+ dateStr
          		            					+ '" readonly />';
                              }
-                         	if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
-                         		event_list += '<button class="event_reply_update">수정</button>'
-                         			          + '<button class="event_reply_delete">x</button>';
-                         	}
-                         	
+                           
+                         	// 댓글 내용
                          	 if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면	  				
-                             	 event_list += '<input type="text" style="background-color:rgb(240, 248, 255);" id="event_reply_content" name="event_reply_content" value="'
+                             	 event_list += '<input type="text" style="border:none; font-size:14px; width:100%; padding:20px; background-color:rgb(240, 248, 255);" id="event_reply_content" name="event_reply_content" value="'
        		  									+ this.event_reply_content
       		   		   			    			+'" readonly />';
                              } else {
@@ -407,6 +400,12 @@
  	  									+ this.event_reply_content
  	   		   			    			+'" readonly />';
                              }
+                         	
+                         	 // 댓글 수정, 삭제 버튼
+                          	if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
+                          		event_list += '<button class="event_reply_update">수정</button>'
+                          			          + '<button class="event_reply_delete">x</button>';
+                          	}
                          	
                          	
                          	
@@ -429,11 +428,9 @@
     				
     				var event_reply_content = $('#event_reply_content_empty').val();
     				if (event_reply_content == '') {
-					if ('${q}' >= 0) {
-    						alert('내용을 입력해주세요.');
-    						$('#event_reply_content_empty').focus();
-    						return;
-					}	
+    					alert('내용을 입력해주세요.');
+    					$('#event_reply_content_empty').focus();
+    					return;
     				}
     				
             		// 댓글 insert 요청을 Ajax 방식으로 보냄.
