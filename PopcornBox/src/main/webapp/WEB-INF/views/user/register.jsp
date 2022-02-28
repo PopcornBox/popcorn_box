@@ -304,12 +304,12 @@
 						$('.valid_id').show(); 
 						$('.invalid_id').hide(); 
 						$('.invalid_id2').hide(); 
-						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
+						$('#btn-complete').removeAttr('disabled'); // 버튼 활성화
 					}
 				});
 			});
 			
-			$('#user_nickname').change(function (event) {
+			$('#user_nicknam').change(function (event) {
 				var params = { user_nickname: $(this).val() };
 				var spe = $(this).val().search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
 				$.post('./checknickname', params, function (response) {
@@ -323,11 +323,13 @@
 						$('.valid_nickname').hide(); 
 						$('.invalid_nickname').hide();  
 						$('.invalid_nickname2').show(); 
+						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
 						
 					} else {
 						$('.valid_nickname').show(); 
 						$('.invalid_nickname').hide(); 
 						$('.invalid_nickname2').hide();
+						$('#btn-complete').removeAttr('disabled'); // 버튼 활성화
 					}
 				});
 			});
