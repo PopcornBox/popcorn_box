@@ -8,7 +8,7 @@
 	<head>
 		<meta charset="UTF-8">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <title>로그인 | Popcorn Box</title>
+	    <title>로그인 | POPCORN BOX</title>
 		
 		<!-- Google Font -->
 	    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
@@ -52,16 +52,13 @@
 						<%-- 일반 로그인의 경우 --%>  
 						<li><span>${signInUserNickname} 님</span></li>
 						<li><a href="../user/signout">로그아웃</a></li>
-						<li><a href="../user/register">회원가입</a></li>
 			            <li><a href="../user/mypage">마이페이지</a></li>
 		             </c:if>	 
 		             <c:if test="${not empty accessToken}">
 		                <%-- 카카오 로그인의 경우 --%>  
 			            <li><span>${signInUserNickname} 님</span></li>
-			            <li><a href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7
-			            &logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">로그아웃</a></li>
-						<li><a href="./user/register">회원가입</a></li>
-			            <li><a href="./user/mypage">마이페이지</a></li>
+			            <li><a href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7&logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">로그아웃</a></li>
+			            <li><a href="../user/mypage">마이페이지</a></li>
 					 </c:if>	 
 				</c:if>	              								
             </ul>
@@ -99,17 +96,14 @@
 												<%-- 일반 로그인의 경우 --%>  
 												<span>${signInUserNickname} 님</span><br>
 												<a href="../user/signout"><i class="fa-solid fa-lock"></i>로그아웃</a>
-												<a href="../user/register"><i class="fa-solid fa-user-plus"></i>회원가입</a>
 			                                    <a href="../user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
 		                                    </c:if>	 
 		                                    <c:if test="${not empty accessToken}">
 		                                    	<%-- 카카오 로그인의 경우 --%>  
 			                                    <span>${signInUserNickname} 님</span><br>
-			                                    <a href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7
-			                                    &logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">
+			                                    <a href="https://kauth.kakao.com/oauth/logout?client_id=cc1754dab9a17adb7dd44164ff108ba7&logout_redirect_uri=http://localhost:8181/pjt/user/kakaologout">
 			                                    	<i class="fa-solid fa-lock"></i>로그아웃</a>
-												<a href="./user/register"><i class="fa-solid fa-user-plus"></i>회원가입</a>
-			                                    <a href="./user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
+			                                    <a href="../user/mypage"><i class="fa-solid fa-user"></i>마이페이지</a>
 											</c:if>	 
 										</c:if>	                  
 	                                </div>
