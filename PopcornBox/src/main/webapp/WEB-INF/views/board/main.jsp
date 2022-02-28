@@ -18,19 +18,18 @@
    }
    .txt_1 a { color:#f90a37 !important;}
    .pagingView_area{
-      max-width:220px;
+      max-width:250px;
       margin-left: auto;
       margin-right: auto;   
    }
    
    .pagingView{
    list-style : none;
-   display: inline-block;
+   display: inline-block;}
 	
 	.pagingView{
 	list-style : none;
-	display: inline-block;
-    margin: 50px 0 0 100px;       
+	display: inline-block;     
 	margin-top: 50px;
   }
    .pagingView li{
