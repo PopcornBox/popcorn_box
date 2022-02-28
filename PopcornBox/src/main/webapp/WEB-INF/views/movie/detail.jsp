@@ -43,6 +43,28 @@
 
     <script src="https://kit.fontawesome.com/a39158855c.js" crossorigin="anonymous"></script>
 <style>
+	.similarMovieTable{
+		margin: 0px;
+	}
+	.similarMovieTable div, 
+	.similarMovieTable div div,
+	.similarMovieTable div i {
+		margin: auto;
+		font-size: large;
+	}	
+	
+	#btn_modal, #btn_your_score {
+		color: #000;
+	    min-width: 60px;
+	    border: 1px #000 solid;
+	    background: none;
+	    font-size: 20px;
+	    border-radius: 5px;
+	}
+	
+	#btn_your_score {
+		color: #df8600;
+	}
    .img-center {
     display: block;
     margin-left: auto;
@@ -240,22 +262,25 @@
                     </div>
                 </div>
 		
-		<div class="container">
+		<div class="container similarMovieTable text-center">
   					<!-- Button to Open the Modal -->
-  					<div>average score</div>
-  					<div id="average_score"> </div>
-  					
-  					<div>your rating</div>
-  					<button type="button" id="btn_modal" class="btn btn-primary" data-target="#myModal">
-    					(별)Rate
-  					</button>
-  					<button type="button" id="btn_your_score" class="btn btn-primary" data-target="#updateModal">	
-  					</button>	
-  					
   					<div>
-  						<i class="fa-regular fa-heart" id="btn_unlike"></i>
-  						<i class="fa-solid fa-heart" id="btn_like"></i>
-						<div id="count_like"></div>
+	  					<div>영화 평점</div>
+	  					<div id="average_score"> </div>
+  					</div>
+  					
+  					<div>별점 주기　
+	  					<button type="button" id="btn_modal" data-target="#myModal">
+	    					&#9733;
+	  					</button>
+	  					<button type="button" id="btn_your_score" data-target="#updateModal">	
+	  					</button>
+  					</div>	
+  					
+  					<div style="display: flex; font-size: 1rem;">
+  						<i class="fa-regular fa-heart" id="btn_unlike" style="margin-right: 0px; cursor: pointer;"></i>
+  						<i class="fa-solid fa-heart" id="btn_like" style="margin-right: 0px; color: red; cursor: pointer;"></i>
+						<div id="count_like" style="width: 30px; margin-left: 0px;"></div>
   					</div>	
 			
 
