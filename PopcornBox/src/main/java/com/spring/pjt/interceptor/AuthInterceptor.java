@@ -44,9 +44,6 @@ public class AuthInterceptor implements HandlerInterceptor {
 			String query = request.getQueryString();
 			log.debug("Query String: {}", query);
 			
-			String reqUri = request.getRequestURI();
-			log.debug("request URI: {}", reqUri);
-			
 			String target = "";
 			// 특수기호(:, /, ?)들을 UTF-8 코드값으로 변환
 			if (query == null) { // 질의 문자열(query string)이 없는 경우

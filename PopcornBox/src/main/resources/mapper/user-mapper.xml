@@ -166,17 +166,14 @@
 		<result property="movie_reply_update_time" column="MOVIE_REPLY_UPDATE_TIME"/>
 	</resultMap>
 	
-		<!-- 좋아요한 영화 조회 -->
+		<!-- 내 영화 댓글 조회 -->
 	<select id="mypageMovieLikeInfo" resultMap="mypageMovieLikeResult">
-	<![CDATA[
-	SELECT * FROM (SELECT U.USER_NICKNAME, U.USER_NO,
+	SELECT U.USER_NICKNAME, U.USER_NO,
     L.MOVIE_NO, L.LIKE_UPDATE_TIME
-    FROM USERS U
+    from USERS U
     LEFT OUTER JOIN LIKES L
 	ON U.USER_NO = L.USER_NO
 	WHERE U.USER_NICKNAME = #{USER_NICKNAME}
-    ORDER BY LIKE_UPDATE_TIME DESC) WHERE ROWNUM < 6
-    ]]>
 	</select>
 	
 	<resultMap type="User" id="mypageMovieLikeResult">

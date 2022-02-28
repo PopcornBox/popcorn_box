@@ -12,6 +12,4 @@ public interface MovieLikeDao {
 	int deleteLike(int movie_no, int user_no);
 	
 	List<Object> readAllUsers(int movie_no);
-	
-	List<Integer> selectTop();
 }
