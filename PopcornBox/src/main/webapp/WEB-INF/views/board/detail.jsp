@@ -83,10 +83,10 @@
 				<c:if test="${signInUserPosition eq 'A'}">
 					<div style="margin-left: auto; margin-right: 30px;">
 						<!-- 로그인 사용자 아이디와 글 작성자 아이디가 일치할 때만 수정 메뉴를 보여줌. -->
-						<ul style="display: inline-flex; list-style: none;font-size: 14px;">
+						<ul style="display: inline-flex; list-style: none; font-size: 14px;">
 
 							<li> 
-								<a id="menu-delete" href="./delete?board_no=${board.board_no}">관리자 권한 글 삭제</a>
+								<a id="menu-ntdelete" href="./delete?board_no=${board.board_no}">관리자 권한 글 삭제</a>
 							</li>
 						</ul>
 					</div>
@@ -96,7 +96,7 @@
 						<!-- 로그인 사용자 아이디와 글 작성자 아이디가 일치할 때만 수정 메뉴를 보여줌. -->
 						<ul style="display: inline-flex; list-style: none;font-size: 14px;">
 							<li> 
-								<a id="menu-delete" href="./delete?board_no=${board.board_no}">관리자 권한삭제</a>
+								<a id="menu-ntdelete" href="./delete?board_no=${board.board_no}">관리자 권한삭제</a>
 							</li>
 						</ul>
 					</div>
@@ -309,9 +309,17 @@
          });
 	        
    
-   $(document).ready(function () {
+   $(document).ready(function(){
    	
    	$('#menu-delete').click(function (event) {
+   		event.preventDefault(); // 링크를 클릭했을 때의 기본 동작인 요청 보내기를 하지 않음.
+   		var result = confirm('정말 삭제할까요?');
+   		if (result) { // 사용자가 YES를 선택했을 때
+   			location = $(this).attr('href'); // 원래 이동하려고 했던 요청 주소로 요청 보내기.
+   		}
+   	});
+   	
+   	$('#menu-ntdelete').click(function (event) {
    		event.preventDefault(); // 링크를 클릭했을 때의 기본 동작인 요청 보내기를 하지 않음.
    		var result = confirm('정말 삭제할까요?');
    		if (result) { // 사용자가 YES를 선택했을 때
