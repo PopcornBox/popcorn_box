@@ -4093,6 +4093,8 @@ header .search_option {
 
 .contact__form .reply_item {
 	border-bottom: 1px solid #e1e1e1;
+	padding-top: 30px;
+    padding-bottom: 30px;
 }
 .contact__form .reply_item input, i{
 	font-size: 14px;
