@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>PopcornBox</title>
+<title>게시글 | POPCORN BOX</title>
 
 <style>
     .reply_item {

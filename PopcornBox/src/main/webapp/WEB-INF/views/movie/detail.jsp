@@ -427,7 +427,7 @@
             
             
 				<br>
-         <!-- 리뷰 작성 양식 -->
+         <!-- 댓글 작성 양식 -->
 	<div class="container">
 		<div id="reply_number"
 				style="text-align: center; text: bold; font-size: 20px; text-align: center; font-weight: 700; margin-block: 40px;"></div>
@@ -440,9 +440,9 @@
 					<button type="submit" id="btn_register_movie_reply" class="event-btn" value="등록" >등록</button>		
 				</div>		
 			</div>	
-			<!-- 리류 작성 끝 -->	
+			<!-- 댓글 작성 끝 -->	
 			
-				<!-- 리뷰 목록 -->
+				<!-- 댓글 목록 -->
 			<div class="container">
 				<div class="movie_reply_list contact__form">
 
@@ -570,21 +570,21 @@
                  		  					movie_list += '<div class="movie_reply_item"><div class="not_my_reply">';
                  		  				}
 
-	                 // 리뷰 번호
+	                 // 댓글 번호
                      		movie_list +='<input type="hidden" id="movie_reply_no" name="movie_reply_no" value="'
 	                 		   				+ this.movie_reply_no
 	                 		  				+ '" readonly />'
-	                       // 리뷰 작성자 닉네임
+	                       // 댓글 작성자 닉네임
 	                       					+'<div style="display:flex;"><input type="text" id="user_nickname" name="user_nickname" value="'
 	               	     					+ this.user_nickname
 	               	     		            + ' 님" readonly /><div style="width: 80%;"></div>'
 	            	                 		
-	            	               	  		 // 리뷰 작성시간
+	            	               	  		 // 댓글 작성시간
 	            		                    +'<input type="text" id="movie_reply_update_time" name="movie_reply_update_time" value="'
 	            		 		           	+ dateStr
 	            		 		            + '" readonly /></div>';		
             	                 		  				
-            	                 		// 리뷰 내용	  				
+            	                 		// 댓글 내용	  				
             	                     	movie_list += '<textarea type="text" readonly id="movie_reply_content" name="movie_reply_content">'
 				  									+ this.movie_reply_content
 				   		   			    			+'</textarea>';
@@ -606,7 +606,7 @@
 	     	
 	    	getAllMovieReplies(); // 함수 호출	
             	
-    			// 새 영화 리뷰 등록
+    			// 새 영화 댓글 등록
     			$('#btn_register_movie_reply').click(function (event) {
     				
     				var movie_reply_content = $('#movie_reply_content_empty').val();
@@ -666,8 +666,8 @@
                 						data: JSON.stringify({'movie_reply_content': movie_reply_content}),
                 						// 성공 응답 콜백 함수
                 						success: function () {
-                						alert(' 코멘트 수정 성공!');
-                						getAllMovieReplies(); // 리뷰 목록 업데이트
+                						alert('코멘트가 수정되었습니다.');
+                						getAllMovieReplies(); // 댓글 목록 업데이트
                 						//location.href = '/pjt/movie/detail?movie_no=' + ${movie.movie_no};
                 			}
                 		});
@@ -703,7 +703,7 @@
     			
     			$('#delete_movie').click(function (event) {
     				event.preventDefault();
-    				var answer = confirm('정말 삭제할까요?');
+    				var answer = confirm('정말 삭제하시겠습니까?');
     				if (answer) {
     					location.href = '/pjt/movie/delete?movie_no=${movie.movie_no}';
     				}

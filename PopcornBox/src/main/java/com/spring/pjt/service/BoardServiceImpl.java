@@ -2,20 +2,15 @@ package com.spring.pjt.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Mapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.authority.mapping.MapBasedAttributes2GrantedAuthoritiesMapper;
 import org.springframework.stereotype.Service;
 
 import com.spring.pjt.domain.Board;
 import com.spring.pjt.domain.PageCriteria;
-import com.spring.pjt.domain.User;
 import com.spring.pjt.mapper.BoardMapper;
-import com.spring.pjt.mapper.EventMapper;
 import com.spring.pjt.persistence.BoardDao;
-import com.spring.pjt.persistence.UserDao;
 
 @Service
 public class BoardServiceImpl  implements BoardService{
@@ -79,7 +74,7 @@ public class BoardServiceImpl  implements BoardService{
 	
 	@Override
 	public List<Board> pagingList(PageCriteria pcri) {
-		log.info("Board getList() 호출" + pcri.toString());
+		log.info("Board getList() 호출111111111" + pcri.toString());
 		return mapper.pagingList(pcri);
 	}
 	
