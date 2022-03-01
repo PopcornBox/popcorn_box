@@ -169,6 +169,7 @@
 					</ul>
 				</div>
 			</c:if>
+
 			<div>
 				<input type="hidden" name="board_no" value="${board.board_no}"
 					required readonly />
@@ -192,12 +193,14 @@
 			</div>
 
 
-			<div class="btnbox">
+			<div style="display: flex;">
 				<a href="./main" class="primary-btn">수정 취소</a>
 			</div>
 			<div class="btnbox">
 				<input class="primary-btn btn-outline-dark" type="submit"
 					id="menu-update" value="수정 완료" style="color: #fff" />
+			<div style="width: 80%;"></div>
+				<input class="primary-btn btn-outline-dark" type="submit" id="menu-update" value="수정 완료" style="color: #fff" />
 			</div>
 
 
