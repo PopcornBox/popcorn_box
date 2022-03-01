@@ -405,7 +405,7 @@
             
 	<div class="similarMovieTable">
 		<div class="container">
-		<h4>:: 비슷한 장르 추천 ::</h4>
+		<h4>:: 비슷한 장르의 영화 ::</h4>
 			<div>
 			<table>
 				<tbody class="text-center">
@@ -427,24 +427,24 @@
             
             
 				<br>
-         <!-- 리뷰 작성 양식 -->
+         <!-- 댓글 작성 양식 -->
 	<div class="container">
 		<div id="reply_number"
 				style="text-align: center; text: bold; font-size: 20px; text-align: center; font-weight: 700; margin-block: 40px;"></div>
 			<div
 			    style="text: bold; font-size: 16px; text-align: inherit; font-weight: 700; border-top: 1px solid #e1e1e1; padding-top: 40px; margin-bottom: 20px;">
-				리뷰 작성하기</div>
+				코멘트 작성하기</div>
 			<div class="event__input" style="display: flex;">	
 					<input type="text" id="movie_reply_content_empty"
 						name="movie_reply_content_empty" placeholder="운영원칙에 어긋나는 게시물로 판단되는 글은 제재 조치를 받을 수 있습니다." />
 					<button type="submit" id="btn_register_movie_reply" class="event-btn" value="등록" >등록</button>		
 				</div>		
 			</div>	
-			<!-- 리류 작성 끝 -->	
+			<!-- 댓글 작성 끝 -->	
 			
-				<!-- 리뷰 목록 -->
+				<!-- 댓글 목록 -->
 			<div class="container">
-				<div class="movie_reply_list">
+				<div class="movie_reply_list contact__form">
 
 					<div id="movie_reply_list"></div>
 				</div>
@@ -536,7 +536,7 @@
 	                
 	           		var n = respText.length; 
 	            	if (n > 0) {
-	            		$('#reply_number').html(n + '개의 리뷰');
+	            		$('#reply_number').html(n + '개의 코멘트');
 	            		
 	            		var lastpage = parseInt((n + 9) / 10);
 	            	    
@@ -563,51 +563,38 @@
 	                 $(respText).each(function () {
 	                 	var date = new Date(this.movie_reply_update_time); // JavaScript Date 객체 생성
 	                 	var dateStr = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
-	                 	
-				 // 리뷰 번호
-	                     	movie_list += '<div class="movie_reply_item">'
-	                                         + '<input type="hidden" id="movie_reply_no" name="movie_reply_no" value="'
+                 		  				
+	                 					if (this.user_nickname == '${signInUserNickname}'){
+                 		  					movie_list += '<div class="movie_reply_item"><div class="my_reply">';
+                 		  				}else {
+                 		  					movie_list += '<div class="movie_reply_item"><div class="not_my_reply">';
+                 		  				}
+
+	                 // 댓글 번호
+                     		movie_list +='<input type="hidden" id="movie_reply_no" name="movie_reply_no" value="'
 	                 		   				+ this.movie_reply_no
-	                 		  				+ '" readonly />';
-	                       // 리뷰 작성자 닉네임
-	            	               	        if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
-	            	               	                movie_list += '<input type="text" style="border:none; width:50%; text-align:left; font-weight:700; padding-left:10px; padding-bottom: 20px; background-color:rgb(240, 248, 255);" id="user_nickname" name="user_nickname" value="'
-	            	               	                 		            	+ this.user_nickname
-	            	               	                 		            	+ '" readonly />';
-	            	               	        } else {
-	            	               	                 movie_list += '<input type="text" style="border:none; width:50%; color:#333333; text-align:left; font-weight:700; padding-left:10px; padding-bottom: 20px;" id="user_nickname" name="user_nickname" value="'
-	            	               	     		            				+ this.user_nickname
-	            	               	     		            				+ '" readonly />';
-	            	               	        }	
+	                 		  				+ '" readonly />'
+	                       // 댓글 작성자 닉네임
+	                       					+'<div style="display:flex;"><input type="text" id="user_nickname" name="user_nickname" value="'
+	               	     					+ this.user_nickname
+	               	     		            + ' 님" readonly /><div style="width: 80%;"></div>'
 	            	                 		
-	            	               	  		 // 리뷰 작성시간
-	            		                     if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
-	            		                    	 movie_list += '<input type="text" style="border:none; width:50%; text-align:right; padding-right:10px; padding-bottom: 20px; background-color:rgb(240, 248, 255);" id="movie_reply_update_time" name="movie_reply_update_time" value="'
-	            		                 		           		+ dateStr
-	            		                 		            	+ '" readonly />';
-	            		                     } else {
-	            		                    	 movie_list += '<input type="text" style="border:none; color:#333333; width:50%; text-align:right; padding-right:10px;" id="movie_reply_update_time" name="movie_reply_update_time" value="'
-	            		 		           						+ dateStr
-	            		 		            					+ '" readonly />';
-	            		                     }		
-	            	                 		  				
-	            	                 		// 리뷰 내용	  				
-	            	                     	if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면	  				
-	            	                    	 	movie_list += '<input type="text" style="border:none; font-size:14px; width:100%; padding:20px; background-color:rgb(240, 248, 255);" id="movie_reply_content" name="movie_reply_content" value="'
-	            			  									+ this.movie_reply_content
-	            			   		   			    			+'" readonly />';
-	            	                    	} else {
-	            	                    	 	movie_list += '<input type="text" style="border:none; color:#333333; font-size:14px; width:100%; padding:20px; background-color:#f9f9f9" id="movie_reply_content" name="movie_reply_content" value="'
-	            										+ this.movie_reply_content
-	            			   			    			+'" readonly />';	 
-	            	                    	}
-	            		                 	
-	            	                 		// 수정, 삭제 버튼
-	            	                 		if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
-	            	                 			movie_list += '<button class="movie_reply_update">수정</button>'
-	            	                 			          	+ '<button class="movie_reply_delete">x</button>';
-	            	                 		}
-	                 	movie_list += '</div>';
+	            	               	  		 // 댓글 작성시간
+	            		                    +'<input type="text" id="movie_reply_update_time" name="movie_reply_update_time" value="'
+	            		 		           	+ dateStr
+	            		 		            + '" readonly /></div>';		
+            	                 		  				
+            	                 		// 댓글 내용	  				
+            	                     	movie_list += '<textarea type="text" readonly id="movie_reply_content" name="movie_reply_content">'
+				  									+ this.movie_reply_content
+				   		   			    			+'</textarea>';
+            		                 	
+            	                 		// 수정, 삭제 버튼
+            	                 		if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
+            	                 			movie_list += '<button class="movie_reply_delete reply_btn">삭제</button>'
+    	                 			          			+ '<button class="movie_reply_update reply_btn">수정</button>';
+            	                 		}
+                 	movie_list += '</div></div>';
 	                 	    
 	                 });
 	                 
@@ -619,7 +606,7 @@
 	     	
 	    	getAllMovieReplies(); // 함수 호출	
             	
-    			// 새 영화 리뷰 등록
+    			// 새 영화 댓글 등록
     			$('#btn_register_movie_reply').click(function (event) {
     				
     				var movie_reply_content = $('#movie_reply_content_empty').val();
@@ -679,8 +666,8 @@
                 						data: JSON.stringify({'movie_reply_content': movie_reply_content}),
                 						// 성공 응답 콜백 함수
                 						success: function () {
-                						alert(' 리뷰 수정 성공!');
-                						getAllMovieReplies(); // 리뷰 목록 업데이트
+                						alert('코멘트가 수정되었습니다.');
+                						getAllMovieReplies(); // 댓글 목록 업데이트
                 						//location.href = '/pjt/movie/detail?movie_no=' + ${movie.movie_no};
                 			}
                 		});
@@ -692,7 +679,7 @@
     			// 댓글 삭제
             	$('#movie_reply_list').on('click', '.movie_reply_item .movie_reply_delete', function (event) {
             		var movie_reply_no = $(this).prevAll('#movie_reply_no').val();
-            		var result = confirm('리뷰를 삭제하시겠습니까?');
+            		var result = confirm('코멘트를 삭제하시겠습니까?');
             		if (result) { // 확인(Yes) 버튼을 클릭했을 때
             			$.ajax({
             				// 요청 URL
@@ -706,7 +693,7 @@
             				},
             				// 성공 응답 콜백 함수
             				success: function () {
-            					alert('리뷰가 삭제되었습니다.');
+            					alert('코멘트가 삭제되었습니다.');
             					getAllMovieReplies();
             				}
             			});
@@ -716,7 +703,7 @@
     			
     			$('#delete_movie').click(function (event) {
     				event.preventDefault();
-    				var answer = confirm('정말 삭제할까요?');
+    				var answer = confirm('정말 삭제하시겠습니까?');
     				if (answer) {
     					location.href = '/pjt/movie/delete?movie_no=${movie.movie_no}';
     				}
