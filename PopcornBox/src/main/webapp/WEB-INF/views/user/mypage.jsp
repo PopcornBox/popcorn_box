@@ -146,20 +146,6 @@
 	</header>
 	<!-- Header Section End -->
 
-			<!-- 좋아요한 영화 전용 table -->
-			<table>
-				<c:forEach items="${mypageMovieLikeResult.myMovieLikeList}" var="signInUserNickname">
-					<tr align="center">
-						<td>내가 좋아요한 영화</td>
-					</tr>
-					<tr>
-						<td>${signInUserNickname.movie_no}</td>
-						<td><a href="../movie/detail?movie_no=${signInUserNickname.movie_no}">${signInUserNickname.movie_no}</a></td>
-						<td><fmt:formatDate value="${signInUserNickname.like_update_time}" pattern="yyyy/MM/dd HH:mm" /></td>
-					</tr>
-				</c:forEach>
-			</table>
-
 	<!-- Breadcrumb Section Begin -->
 	<section class="breadcrumb-option">
 		<div class="container">
@@ -297,13 +283,22 @@
 												<tr align="center">
 													<td colspan = "5">내가 좋아요한 영화</td>
 												</tr>
-												<c:forEach items="${mypageMovieLikeResult.myMovieLikeList}" var="signInUserNickname">
-													<tr>
-														<td>${signInUserNickname.movie_no}</td>
-														<td><a href="../movie/detail?movie_no=${signInUserNickname.movie_no}">${signInUserNickname.movie_no}</a></td>
-														<td><fmt:formatDate value="${signInUserNickname.like_update_time}" pattern="yyyy/MM/dd HH:mm" /></td>
-													</tr>
+												<tr>
+												<c:forEach items="${mypageMovieLikeImage}" var="mypageMovieLikeImage">
+													<td>
+														<a href="../movie/detail?movie_no=${mypageMovieLikeImage.movie_no}">
+															<img src="${mypageMovieLikeImage.movie_image}" style="height: 260px; width: 185px;">
+														</a>
+													</td>
 												</c:forEach>
+												</tr>
+												<tr>										
+												<c:forEach items="${mypageMovieLikeResult.myMovieLikeList}" var="signInUserNickname">
+													<td>
+														<fmt:formatDate value="${signInUserNickname.like_update_time}" pattern="yyyy/MM/dd HH:mm" />
+													</td>
+												</c:forEach>
+												</tr>
 											</tbody>
 										</table>
 									</td>
