@@ -128,8 +128,11 @@ table a:hover {
 -----------------------*/
 
 .section-title {
-	margin-bottom: 45px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	margin-bottom: 30px;
 	text-align: center;
+	background-color: #B50022;
 }
 
 .section-title span {
@@ -142,10 +145,12 @@ table a:hover {
 	display: block;
 }
 
-.section-title h2 {
-	color: #111111;
-	font-weight: 700;
-	line-height: 46px;
+.section-title h4 {
+	color: #fff;
+}
+.section-title-a:hover{
+	text-decoration: none !important;
+	
 }
 
 .set-bg {
