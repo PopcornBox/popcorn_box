@@ -1,9 +1,7 @@
 package com.spring.pjt.controller;
 
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,8 +22,6 @@ import com.spring.pjt.service.BoardService;
 public class BoardController {
 	
 	private static final Logger log = LoggerFactory.getLogger(BoardController.class);
-	private List<List<Board>> result = new ArrayList<List<Board>>();
-	private int last_page = 0;
 	
 	@Autowired private BoardService boardService;
 	@Autowired private BoardReplyService boardReplyService;
@@ -110,50 +106,10 @@ public class BoardController {
 	public String search(int type, String keyword, Model model) {
 		log.info("search(type={}, keyword={})", type, keyword);
 		
-		result.clear();
-		last_page = 0;
-		
 		List<Board> list = boardService.select(type, keyword);
-		int totalBoards = list.size();
-		log.info("totalBoards={}", totalBoards);
+		model.addAttribute("boardList", list);
 		
-		last_page = (totalBoards + 14) / 15;
-		log.info("last_page={}", last_page);
-		
-		if (totalBoards == 0) {
-			model.addAttribute("boardList", new ArrayList<Board>());
-			model.addAttribute("last_page", 0);
-			
-			return "board/answer";
-		}
-		
-		final int chunkSize = 15;
-		final AtomicInteger counter = new AtomicInteger();
-		for (Board b : list) {
-			if (counter.getAndIncrement() % chunkSize == 0) {
-				result.add(new ArrayList<>());
-			}
-			result.get(result.size() - 1).add(b);
-		}
-		
-		List<Board> firstOne = result.get(0);
-		model.addAttribute("boardList", firstOne);
-		model.addAttribute("last_page", last_page);
-		
-		return "board/answer";
-		
-	}
-	
-	@RequestMapping(value = "/answer", method = RequestMethod.GET)
-	public String show(int page, Model model) {
-		log.info("show(page={})", page);
-		
-		List<Board> answer = result.get(page - 1);
-		
-		model.addAttribute("boardList", answer);
-		model.addAttribute("last_page", last_page);
-		
-		return "board/answer";
+		return "board/main";
 		
 	}
 	
