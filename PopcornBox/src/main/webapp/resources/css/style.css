@@ -188,6 +188,7 @@ table a:hover {
 
 .primary-cta-m:hover{
 	color: black;
+	text-decoration: none;
 }
 
 .primary-btn {
@@ -402,6 +403,11 @@ table a:hover {
 	letter-spacing: 3px;
 	margin-left: 32px;
 	display: inline-block;
+}
+
+.header__top__links a:hover {
+	text-decoration: none;
+	color: #888;
 }
 
 .header__top__links i {
@@ -1221,7 +1227,6 @@ header .search_option {
 	position: absolute;
 	left: 25px;
 	top: 10px;
-	transition: all 0.5s linear .1s;
 }
 
 .product__item__text a:hover{
@@ -1240,7 +1245,7 @@ header .search_option {
 }
 
 .product__item__text .rating {
-	margin-bottom: 6px;
+	margin-bottom: 15px;
 }
 
 .product__item__text .rating i {
@@ -2529,8 +2534,8 @@ header .search_option {
 }
 
 .notice__chart__table table tbody tr td {
-	padding-bottom: 30px;
-	padding-top: 30px;
+	padding-bottom: 15px;
+	padding-top: 15px;
 }
 
 /* 차트 리스트 넓이 */

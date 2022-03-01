@@ -362,62 +362,14 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h4>진행중인 이벤트</h4>
+                        <h4>박스오피스 순위</h4>
                     </div>
                 </div>
-            </div>        
-        
-        <div class="event_list">
-		<div class="row">
-			<c:forEach var="event" items="${eventList}">
-				<!-- 디데이 계산을 위한 날짜 세팅 변환 -->
-				<fmt:formatDate var="startTime" value="${event.event_start_time}" pattern="yyyy-MM-dd"/> 
-				<fmt:formatDate var="lastTime"  value="${event.event_last_time}" pattern="yyyy-MM-dd"/>
-				<fmt:formatDate var="todayNow" value="${today}" pattern="yyyy-MM-dd"/> 
-			
-			    <fmt:parseDate value="${lastTime}" var="event_last" pattern="yyyy-MM-dd"></fmt:parseDate>
-				<fmt:parseNumber value="${event_last.time / (1000*60*60*24)}" integerOnly="true" var="lastDate"></fmt:parseNumber>
-			    <fmt:parseDate value="${todayNow}" var="now" pattern="yyyy-MM-dd"></fmt:parseDate>
-			    <fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="todayDate"></fmt:parseNumber>
-		
-				<div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic set-bg" data-setbg="${event.event_thumb}">
-                        	<c:if test="${lastDate - todayDate < 0}">
-								<em id="finish">마감</em>
-							</c:if>
-                        </div>
-                        <div class="blog__item__text">
-                            <span><img src="./resources/img/icon/calendar.png" alt="">
-									<fmt:formatDate value="${event.event_start_time}" pattern="yyyy.MM.dd"/> ~ <fmt:formatDate value="${event.event_last_time}" pattern="yyyy.MM.dd."/>
-						    		&nbsp;&nbsp;
-						   			<c:if test="${lastDate - todayDate > 0}">
-						   				<em id="d-day">D - ${lastDate - todayDate}</em> 
-						   			</c:if>
-							</span>
-                            <h5>${event.event_title}</h5>
-                            <div class="readmore">
-	                            <a href="./event/detail?event_no=${event.event_no}&q=${lastDate - todayDate}">Read More</a>
-	                            
-					   			<c:if test="${lastDate - todayDate < 0}">
-					   				<a href="./event/winner?event_no=${event.event_no}&q=${lastDate - todayDate}">당첨자 확인</a> 
-					   			</c:if>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-			</c:forEach>	
-		</div>
-		</div>
-	</div>
-    </section>
-    <!-- Latest Blog Section End -->
+            </div>    	
 	
 	
-	
-	
-	<div>
-    	<table>
+	<div class="notice__chart__table">
+    	<table class="box_office">
     		<thead>
     			<tr>
     				<th>순위</th>
@@ -435,7 +387,12 @@
     </div>
 	
 	
+	  
+	</div>
+    </section>
+    <!-- Latest Blog Section End -->
 	
+
 
 <!-- Footer Section Begin -->
 <footer class="footer">
@@ -682,7 +639,7 @@
 				function read_boxoffice() {
 					$.ajax({
 						url : "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?key=c703c0c2818aa9a103c8b7f193e4b3bf&targetDt="
-							+ result + "&itemPerPage=5",
+							+ result + "&itemPerPage=6",
 							
 						dataType : "xml",	
 						
