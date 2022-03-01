@@ -12,9 +12,6 @@
 <title>게시글 | POPCORN BOX</title>
 
 <style>
-      #board_reply_content {
-      width: 600px;
-      }
     .reply_item {
     	display: none;
     }
@@ -189,24 +186,31 @@
                         //console.log(this);
                         var date = new Date(this.board_reply_update_time);
                         var dateStr = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+                        
+                        if (this.user_nickname == '${signInUserNickname}'){
+                        	list += '<div class="my_reply">';
+                        }else{
+                        	list += '<div class="not_my_reply">';
+                        }
+                        
                         list += '<div class="reply_item">'
-                           + '<input type="text" id="board_reply_no" name="board_reply_no" value="'
+                           + '<input type="hidden" id="board_reply_no" name="board_reply_no" value="'
                            + this.board_reply_no
                            + '" readonly />'
-                           + '<input type="text" id="board_reply_content" name="board_reply_content" value="'
-                           + this.board_reply_content
-                           + '" readonly />'
-                           + '<input type="text" id="user_nickname" name="user_nickname" value="'
+                           + '<div style="display:flex;"><input type="text" id="user_nickname" name="user_nickname" value="'
                            + this.user_nickname
-                           + '" readonly />'
+                           + ' 님" readonly /><div style="width: 80%;"></div>'
                            + '<input type="text" id="board_reply_update_time" name="board_reply_update_time" value="'
                            + dateStr
-                           + '" readonly />';
+                           + '" readonly /></div>'
+                           + '<textarea type="text" readonly id="board_reply_content" name="board_reply_content">'
+                           + this.board_reply_content
+                           + '</textarea>';
                            if (this.user_nickname == '${signInUserNickname}'){
-                              list += '<button class="reply_update">수정</button>'
-                                   + '<button class="reply_delete">삭제</button>';
+                              list += '<button class="reply_delete reply_btn">삭제</button>'
+                              		+'<button class="reply_update reply_btn">수정</button>';
                            }
-                           list += '</div>';
+                           list += '</div></div>';
                      });
                      
                      $('#board_replies').html(list);
