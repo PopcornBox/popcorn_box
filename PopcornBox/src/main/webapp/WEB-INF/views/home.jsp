@@ -328,31 +328,6 @@
     </section>
     <!-- Product Section End -->
 
-    <!-- Categories Section Begin -->
-    <section class="categories spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="categories__hot__deal">
-                        <img src="./resources/img/banner_main_event.jpeg" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-4 offset-lg-1">
-                    <div class="categories__deal__countdown">
-                        <span>현재 이벤트</span>
-                        <h2>[라라랜드]<br>감상평 이벤트!</h2>
-                        <div class="categories__deal__countdown__timer">
-                        	<span>남은 시간</span>
-                        	<div id="countdown"></div>
-                        </div>
-                    </div>
-                        <a href="#" class="primary-cta-m">참여하기</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Categories Section End -->
 
 
 
@@ -385,8 +360,63 @@
     		</tbody>
     	</table>
     </div>
+    </div>
+    </section>
 	
 	
+	<section class="latest spad">
+    <div class="container">
+		<a class="section-title-a" href="./event/main">
+			<div class="row">
+            	<div class="col-lg-12">
+                	<div class="section-title">
+                    	<h4>진행중인 이벤트</h4>
+                	</div>
+            	</div>
+            </div>
+		</a>
+	<div class="event_list">
+		<div class="row">
+			<c:forEach var="event" items="${eventList}">
+				<!-- 디데이 계산을 위한 날짜 세팅 변환 -->
+				<fmt:formatDate var="startTime" value="${event.event_start_time}" pattern="yyyy-MM-dd"/> 
+				<fmt:formatDate var="lastTime"  value="${event.event_last_time}" pattern="yyyy-MM-dd"/>
+				<fmt:formatDate var="todayNow" value="${today}" pattern="yyyy-MM-dd"/> 
+			
+			    <fmt:parseDate value="${lastTime}" var="event_last" pattern="yyyy-MM-dd"></fmt:parseDate>
+				<fmt:parseNumber value="${event_last.time / (1000*60*60*24)}" integerOnly="true" var="lastDate"></fmt:parseNumber>
+			    <fmt:parseDate value="${todayNow}" var="now" pattern="yyyy-MM-dd"></fmt:parseDate>
+			    <fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="todayDate"></fmt:parseNumber>
+		
+				<div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="blog__item">
+                        <div class="blog__item__pic set-bg" data-setbg="${event.event_thumb}">
+                        	<c:if test="${lastDate - todayDate < 0}">
+								<em id="finish">마감</em>
+							</c:if>
+                        </div>
+                        <div class="blog__item__text">
+                            <span><img src="./resources/img/icon/calendar.png" alt="">
+									<fmt:formatDate value="${event.event_start_time}" pattern="yyyy.MM.dd"/> ~ <fmt:formatDate value="${event.event_last_time}" pattern="yyyy.MM.dd."/>
+						    		&nbsp;&nbsp;
+						   			<c:if test="${lastDate - todayDate > 0}">
+						   				<em id="d-day">D - ${lastDate - todayDate}</em> 
+						   			</c:if>
+							</span>
+                            <h5>${event.event_title}</h5>
+                            <div class="readmore">
+	                            <a href="./event/detail?event_no=${event.event_no}&q=${lastDate - todayDate}">Read More</a>
+	                            
+					   			<c:if test="${lastDate - todayDate < 0}">
+					   				<a href="./event/winner?event_no=${event.event_no}&q=${lastDate - todayDate}">당첨자 확인</a> 
+					   			</c:if>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</c:forEach>	
+		</div>
+		</div>
 	  
 	</div>
     </section>
