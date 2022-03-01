@@ -339,30 +339,10 @@
     <section class="product spad">
 
         <div class="container">
-            <div class="row product__filter">
+            <div class="product__filter">
                 
-                <c:forEach var="movie" items="${movieList}" end="4" varStatus="num">
-					<div class="">
-	                    <div class="product__item">
-	                        <div class="product__item__pic set-bg" data-setbg="${movie.movie_image}">
-	                            <p class="label">${num.count}</p>
-	                         
-	                        </div>
-	                        <div class="product__item__text">
-	                          <a href="./movie/detail?movie_no=${movie.movie_no}">${movie.movie_title}</a>
-	
-	                            <div class="rating">
-	                                <i class="fa fa-star-o"></i>
-	                            </div>
-					
-					
-					 <div id="movie_like_list"></div>
-					
-					
-	                        </div>
-	                    </div>
-	                </div>
-				</c:forEach>
+					 <div class="row" id="movie_like_list" style="display: flex;"></div>
+               
             </div>
         </div>
     </section>
@@ -645,8 +625,18 @@
 						 $.getJSON('/pjt/movie_like/top', function (data) {
 				              	var text = '';
 							 data.forEach(function(element) {
-								var movie_title = element.movie_title; 
-								text += '<div>' + movie_title + '</div>';
+								var movie_image = element.movie_image; 
+								var movie_no= element.movie_no;
+								var movie_title = element.movie_title
+								text += '<div class="set-bg poster"><img class="product__item__pic" src="' 
+									+ movie_image 
+									+ '"><p class="label"></p>'
+									+'<div class="product__item__text">'
+			                        +'<a href="./movie/detail?movie_no='
+			                        + movie_no
+			                        +'">'
+			                        + movie_title
+			                        +'</a><div class="rating"><i class="fa fa-star-o"></i></div></div></div>';
 							 });
 							 	$('#movie_like_list').html(text);						 
 			             }); // getJson			
@@ -661,8 +651,18 @@
 					 $.getJSON('/pjt/movie_like/top', function (data) {
 			              	var text = '';
 						 data.forEach(function(element) {
-							var movie_title = element.movie_title; 
-							text += '<div>' + movie_title + '</div>';
+							var movie_image = element.movie_image; 
+							var movie_no= element.movie_no;
+							var movie_title = element.movie_title
+							text += '<div class="set-bg poster"><img class="product__item__pic" src="' 
+								+ movie_image 
+								+ '"><p class="label"></p>'
+								+'<div class="product__item__text">'
+		                        +'<a href="./movie/detail?movie_no='
+		                        + movie_no
+		                        +'">'
+		                        + movie_title
+		                        +'</a><div class="rating"><i class="fa fa-star-o"></i></div></div></div>';
 						 });
 						 	$('#movie_like_list').html(text);						 
 		             }); // getJson		
