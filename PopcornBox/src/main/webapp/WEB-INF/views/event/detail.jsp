@@ -246,7 +246,7 @@
 
 
 		<div class="event_img_detail" style="text-align: center;">
-			<img style="width: 90%" alt="${event.event_title}"
+			<img style="width: 70%" alt="${event.event_title}"
 				src="${event.event_content}">
 		</div>
 	</div>

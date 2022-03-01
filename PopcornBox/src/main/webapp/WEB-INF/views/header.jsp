@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <title>PopcornBox</title>
 
-
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
@@ -76,7 +75,7 @@
 		</div>
 		<div id="mobile-menu-wrap"></div>
 		<div class="offcanvas__text">
-			<p>PopcornBox</p>
+			<p>POPCORN BOX</p>
 		</div>
 	</div>
 	<!-- Offcanvas Menu End -->

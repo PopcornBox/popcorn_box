@@ -214,14 +214,10 @@
 								<tr>
 									<td class="chart__info">비밀번호</td>
 									<td style="width: 50%">
-										<div class="form-group has-feedback">
-											<input class="form-control" type="password" id="user_pwd"
-												name="user_pwd" />
-										</div>
 									</td>
 									<td>
 										<button class="checkpassword primary-btn" type="button" style="height: 40px; padding: 0px;"
-												id="checkpassword" onclick=# value="N">비밀번호 변경하기</button>
+												id="checkpassword" data-target="#myModal">비밀번호 변경하기</button>
 									</td>
 								</tr>
 								<tr>
@@ -253,7 +249,7 @@
 	<div class="container" style="text-align: center;">
 		<div class="form-group has-feedback">
 			<div>
-				<button class="cancel btn btn-danger" type="button">취소</button>
+				<button class="cancel btn btn-danger" id="cancel" type="button">취소</button>
 				<button class="btn btn-success" type="submit" id="submit">회원정보수정</button>
 			</div>
 			<br>
@@ -262,6 +258,74 @@
 	</div>
 </section>
 </form>
+	
+				<!-- My Modal -->
+  					<div class="modal" id="myModal">
+    					<div class="modal-dialog">
+      						<div class="modal-content">
+      
+        						<!-- Modal Header -->
+        						<div class="modal-header text-center">
+          							<h4 class="modal-title w-100">Change your password</h4>
+          							<button type="button" class="close" data-dismiss="modal">&times;</button>
+        						</div>
+        
+       							<!-- Modal body -->
+        						<div class="modal-body text-center">
+          							기존 비밀번호를 입력해주세요.
+          							<div>
+          								<input type="password" id="former_pwd" name="former_pwd" />
+          								<div id="showMsg"></div>
+   									</div>	
+        						</div>
+        
+       						 	<!-- Modal footer -->
+       							<div class="modal-footer">
+            						<button type="button" id="btn_confirm" class="btn btn-danger" >확인</button>
+        						</div>
+        
+      						</div>
+   						 </div>
+  					</div>
+				 <!-- end of Modal -->
+				
+				
+				<!-- Another Modal -->
+  					<div class="modal" id="anotherModal">
+    					<div class="modal-dialog">
+      						<div class="modal-content">
+      
+        						<!-- Modal Header -->
+        						<div class="modal-header text-center">
+          							<h4 class="modal-title w-100">Reset your password</h4>
+          							<button type="button" class="close" data-dismiss="modal">&times;</button>
+        						</div>
+        
+       							<!-- Modal body -->
+        						<div class="modal-body text-center">
+          							변경할 새로운 비밀번호를 입력해주세요.
+          							<div>
+										<input type="password" id="user_pwd" name="user_pwd" placeholder="비밀번호" required />
+										<div class="valid_pwd" style="color: green; display: none;">사용 가능한 비밀번호입니다!</div>
+										<div class="invalid_pwd" style="color: red; display: none;">8~16자의 영문, 숫자, 특수문자를 사용하세요.</div>
+									</div>
+									<div>
+										<input type="password" id="user_repwd" name="user_repwd" placeholder="비밀번호 확인" required />
+										<div class="valid_repwd" style="color: green; display: none;">비밀번호가 일치합니다!</div>
+										<div class="invalid_repwd" style="color: red; display: none;">비밀번호가 일치하지 않습니다.</div>
+									</div>					
+        
+       						 	<!-- Modal footer -->
+       							<div class="modal-footer">
+            						<button type="button" id="btn_ok" class="btn btn-danger" disabled='disabled' >확인</button>
+        						</div>
+        
+      						</div>
+   						 </div>
+  					</div>
+  				</div>
+				<!-- end of Modal -->
+	
 	<!-- mypage end (Shopping Cart Section Begin) -->
 
 
@@ -319,36 +383,7 @@
  
  
 	<!-- Footer Section Begin -->
-	<footer class="footer">
-		<div class="container">
-			<div class="row">
-				<div class="footer__about">
-					<div class="footer__logo">
-						<a href="../"><img src="../resources/img/popcornbox_logo.png"></a>
-					</div>
-				</div>
-				<div class="footer_text">
-					<div>
-						<p>popcompany | 대표 김유은</p>
-						<p>서울특별시 강남구 테헤란로 124 4층 | 사업자 등록번호 11110 22220 3333</p>
-						<p>
-							<a href="../">서비스 소개 </a> | <a href="../">이용약관 </a> | <a
-								href="../">개인정보 처리 방침 </a> | <a href="../">고객센터 </a> | <a
-								href="https://github.com/PopcornBox/popcorn_box">Github </a>
-						</p>
-						<p>
-							Copyright ©
-							<script>
-								document.write(new Date().getFullYear());
-							</script>
-							2020 Popcorn Box. All rights reserved
-						</p>
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</footer>
+		<%@include file="../footer.jsp" %>
 	<!-- Footer Section End -->
 
 
@@ -418,6 +453,108 @@
 	   		}
 	   			   		
 	   	});
+		
+		
+	$('#checkpassword').click(function() {
+				$('#myModal').modal('show');
+				$('#former_pwd').val('');
+				$('#showMsg').hide();
+	   	});
+	   	
+	   	$('#btn_confirm').click(function(event) {
+	   		var former_pwd = $('#former_pwd').val();
+	   		var user_id = '${user.user_id}';
+			
+			if (former_pwd == '') {
+	   			$('#showMsg').html('비밀번호를 입력해주세요!!');
+	   			$('#showMsg').attr('style', 'color:red;');
+	   			return;
+	   		}
+			
+        	$.getJSON('/pjt/check_nickname/pwd/' + former_pwd + '/' + user_id, function (data) {
+        		if (data == 1) {
+        			$('#former_pwd').val('');
+        			$('#myModal').modal('hide');
+        			$('#anotherModal').modal('show');
+        			console.log('1');
+        		} else {
+        			$('#showMsg').html('비밀번호가 일치하지 않습니다.');
+        			$('#showMsg').attr('style', 'color:red;');
+        			$('#former_pwd').val('');
+        			console.log('0');
+        		}
+        	});		
+	   	});
+	   
+	   	
+	   	$('#user_pwd').change(function (event) {
+			var pwd = $(this).val();
+			var num = pwd.search(/[0-9]/g);
+			var eng = pwd.search(/[a-z]/ig);
+			var spe = pwd.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+			/*
+			if (pwd.length < 8 || pwd.length > 16) { // 8자 미만이거나 16자를 초과하면
+				$('.valid_pwd').hide();
+				$('.invalid_pwd').show();
+				$('#btn_ok').attr('disabled', 'true'); // 버튼 비활성화
+			} else if(num < 0 || eng < 0 || spe < 0 ) { // 영문, 숫자, 특수문자를 모두 포함하지 않으면
+				$('.valid_pwd').hide();
+				$('.invalid_pwd').show();
+				$('#btn_ok').attr('disabled', 'true'); // 버튼 비활성화
+			} else {
+				$('.valid_pwd').show(); 
+				$('.invalid_pwd').hide(); 
+				$('#btn_ok').removeAttr('disabled'); // 버튼 활성화
+			}
+			*/
+		});
+		
+		$('#user_repwd').change(function (event) {
+			if ($(this).val() == $('#user_pwd').val()) { // 비밀번호와 비밀번호 확인의 값이 같으면
+				$('.valid_repwd').show(); 
+				$('.invalid_repwd').hide(); 
+				$('#btn_ok').removeAttr('disabled'); // 버튼 활성화
+			} else {
+				$('.valid_repwd').hide();
+				$('.invalid_repwd').show();
+				$('#btn_ok').attr('disabled', 'true'); // 버튼 비활성화
+			}				
+		});
+	   	
+		$('#btn_ok').click(function() {
+			var new_pwd = $('#user_pwd').val();
+			var user_nickname = '${signInUserNickname}';
+			
+			$.ajax({
+				   async: true,
+				   type: 'POST',
+				   data: new_pwd,
+				   url: '/pjt/check_nickname/resetpwd/' + user_nickname,
+				   dataType: 'json',
+				   contentType: 'application/json; charset=UTF-8',
+				   success: function(data) {
+					   if (data == 1) {
+							alert('비밀번호 변경 성공!');
+							$('#user_pwd').val('');
+							$('#user_repwd').val('');
+							$('.valid_pwd').hide(); 
+							$('.invalid_pwd').hide(); 
+							$('.valid_repwd').hide(); 
+							$('.invalid_repwd').hide(); 
+							$('#anotherModal').modal('hide');
+						}
+				   }
+			});
+			
+			
+		});
+	   	
+	   	
+		$('#cancel').click(function() {
+			location.href = '/pjt/user/mypage';
+		});
+	   	
+	  	
    
    });
 	</script>

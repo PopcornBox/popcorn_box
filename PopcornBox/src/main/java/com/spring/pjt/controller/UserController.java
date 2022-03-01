@@ -1,6 +1,7 @@
 package com.spring.pjt.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -23,6 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UriUtils;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.spring.pjt.domain.Movie;
 import com.spring.pjt.domain.MovieLike;
 import com.spring.pjt.domain.User;
 import com.spring.pjt.domain.UserLog;
@@ -363,12 +365,19 @@ public class UserController {
 		
 		log.info("mypage(userNickname : {}) GET 호출", signInUserNickname);
 		
+		List<Movie> mypageMovieLikeImage = new ArrayList<>();
+		
 		User mypageBoardResult = userService.callMypageBoardInfo(signInUserNickname);
 		User mypageBoardReplyResult = userService.callMypageBoardReplyInfo(signInUserNickname);
 		User mypageEventReplyResult = userService.callMypageEventReplyInfo(signInUserNickname);
 		User mypageMovieReplyResult = userService.callMypageMovieReplyInfo(signInUserNickname);
 		User mypageMovieLikeResult = userService.callMypageMovieLikeInfo(signInUserNickname);
-//		List<MovieLike> ml = mypageMovieLikeResult.getMyMovieLikeList();
+		List<MovieLike> ml = mypageMovieLikeResult.getMyMovieLikeList();
+		for (int i = 0 ; i < ml.size() ; i++) {
+			int movie_no = ml.get(i).getMovie_no();
+			Movie findLikeMovie = movieService.select(movie_no);
+			mypageMovieLikeImage.add(findLikeMovie);
+		}
 		
 		
 		// 구현부
@@ -377,6 +386,7 @@ public class UserController {
 		model.addAttribute("mypageEventReplyResult",mypageEventReplyResult);
 		model.addAttribute("mypageMovieReplyResult",mypageMovieReplyResult);
 		model.addAttribute("mypageMovieLikeResult",mypageMovieLikeResult);
+		model.addAttribute("mypageMovieLikeImage",mypageMovieLikeImage);
 		
 		
 		

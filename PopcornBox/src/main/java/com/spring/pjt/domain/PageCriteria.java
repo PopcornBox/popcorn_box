@@ -5,9 +5,9 @@ public class PageCriteria {
 	private int contents;  // 페이지 당 게시글 숫자
 //	----- ↑계산에 필요한 내용 -----
 	
-	// 기본 세팅(현재 페이지 : 1 , 페이지 당 게시글 10개)
+	// 기본 세팅(현재 페이지 : 1 , 페이지 당 게시글 15개)
 	public PageCriteria() {
-		this(1, 20);
+		this(1, 15);
 	}
 	
 	public PageCriteria(int pageNum, int contents) {

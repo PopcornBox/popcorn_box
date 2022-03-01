@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>PopcornBox</title>
+<title>영화차트 | POPCORN BOX</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet"
@@ -80,7 +80,7 @@
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__text">
-            <p>PopcornBox</p>
+            <p>POPCORN BOX</p>
         </div>
     </div>
     <!-- Offcanvas Menu End -->

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Movie_info</title>
+<title>영화정보 | POPCORN BOX</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta charset="UTF-8">
@@ -56,7 +56,7 @@
 	#btn_modal, #btn_your_score {
 		color: #000;
 	    min-width: 60px;
-	    border: 1px #b0b0b0 solid;
+	    border: 1px #000 solid;
 	    background: none;
 	    font-size: 20px;
 	    border-radius: 5px;
@@ -156,7 +156,7 @@
         </div>
         <div id="mobile-menu-wrap"></div>
         <div class="offcanvas__text">
-            <p>PopcornBox</p>
+            <p>POPCORN BOX</p>
         </div>
     </div>
     <!-- Offcanvas Menu End -->
@@ -458,41 +458,46 @@
 	</section>
 
     <!-- Footer Section Begin -->
-    <footer class="footer">
-        <div class="container">
-        	<div class="row">
-                   <div class="footer__about">
-                       <div class="footer__logo">
-                           <a href="../"><img src="../resources/img/popcornbox_logo.png"></a>
-                       </div>
-                   </div>
-               <div class="footer_text">
-               	<div>
-                	<p>popcompany | 대표 김유은</p>
-                	<p>서울특별시 강남구 테헤란로 124 4층 | 사업자 등록번호 11110 22220 3333</p>
-                	<p>
-                		   <a href="../">서비스 소개 </a>
-                           | 
-                           <a href="../">이용약관 </a>
-                           | 
-                           <a href="../">개인정보 처리 방침 </a>
-                           | 
-                           <a href="../">고객센터 </a>
-                           | 
-                       	<a href="https://github.com/PopcornBox/popcorn_box">Github </a>
-                       </p>
-                       <p>Copyright ©
-                           <script>
+<footer class="footer">
+	<div class="container" style="display: flex;">
+		<div class="footer__about" style="width: 30%; margin: -10px;">
+			<div class="footer__logo">
+				<a href=""><img src="../resources/img/logo_gray.png"></a>
+			</div>
+		</div>
+		<div class="footer_text">
+			<div>
+				<p
+					footer_text" style="font-weight: 600; font-size: 12px; color: 555555;">(06234)
+					서울특별시 강남구 테헤란로 124 4층</p>
+				<p footer_text" style="font-weight: 600; font-size: 12px;">POP
+					COMPANY | 대표 김유은 | 사업자 등록번호 11110 22220 3333</p>
+				<p footer_text" style="font-weight: 600; font-size: 12px;">
+					Copyright ©
+					<script>
                                document.write(new Date().getFullYear());
-                           </script>2020 Popcorn Box. All rights reserved  
-                       </p>
-                       
-               	</div>
-               </div>
-        	</div>
-           </div>
-    </footer>
-    <!-- Footer Section End -->
+                           </script>
+					POPCORN BOX. All rights reserved
+				</p>
+				<p>
+					<a href="">서비스 소개 </a> | <a href="">이용약관 </a> | <a href="">개인정보
+						처리 방침 </a> | <a href="">고객센터 </a> | <a
+						href="https://github.com/PopcornBox/popcorn_box">Github </a>
+				</p>
+			</div>
+		</div>
+		<div class="sns_btn" style="margin-left: 60px; font-size: 30px;">
+			<a href=""><i class="fa-brands fa-instagram"
+				style="color: #666; padding-left: 20px;"></i></a> <a href=""></a><i
+				class="fa-brands fa-facebook-f"
+				style="color: #666; padding-left: 20px;"></i></a> <a href=""><i
+				class="fa-brands fa-twitter"
+				style="color: #666; padding-left: 20px;"></i></a> <a href=""><i
+				class="fa-brands fa-github" style="color: #666; padding-left: 20px;"></i></a>
+		</div>
+	</div>
+</footer>
+<!-- Footer Section End -->
 
 
 
@@ -674,7 +679,7 @@
     			// 댓글 삭제
             	$('#movie_reply_list').on('click', '.movie_reply_item .movie_reply_delete', function (event) {
             		var movie_reply_no = $(this).prevAll('#movie_reply_no').val();
-            		var result = confirm('코멘트를 정말 삭제할까요?');
+            		var result = confirm('코멘트를 삭제하시겠습니까?');
             		if (result) { // 확인(Yes) 버튼을 클릭했을 때
             			$.ajax({
             				// 요청 URL
@@ -688,7 +693,7 @@
             				},
             				// 성공 응답 콜백 함수
             				success: function () {
-            					alert('코멘트 삭제 성공!');
+            					alert('코멘트가 삭제되었습니다.');
             					getAllMovieReplies();
             				}
             			});
@@ -858,7 +863,7 @@
 						// 평점 재계산.
 						average_score();
 						
-						alert("별점 수정 성공!");
+						alert("별점이 변경되었습니다.");
 				}
 				
 			});
@@ -870,7 +875,7 @@
     	
     	
     	$('#btn_rate_delete').click(function(event) {
-        		var result = confirm('별점을 삭제할까요?');
+        		var result = confirm('별점을 삭제하시겠습니까?');
         		if (result) { // 확인(Yes) 버튼을 클릭했을 때
         			$.ajax({
         				// 요청 URL
@@ -889,7 +894,7 @@
         					// 평점 재계산.
         					average_score();
         					
-        					alert('별점 삭제 성공!');
+        					alert('별점이 삭제되었습니다.');
         				}
         			});
         		}
@@ -918,7 +923,7 @@
 		$('#btn_unlike').show();
 		count_like();
 		$('#btn_unlike').click(function() {
-			var answer = alert('로그인후 이용가능합니다.');
+			var answer = alert('로그인 후 이용 가능합니다.');
 			location.href = '/pjt/movie/rating/signin?movie_no=' + ${movie.movie_no};
 		});
 		
