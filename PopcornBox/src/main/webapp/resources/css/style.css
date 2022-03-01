@@ -193,7 +193,7 @@ table a:hover {
 
 .primary-btn {
 	display: inline-block;
-	font-size: 13px;
+	font-size: 14px;
 	font-weight: 700;
 	text-transform: uppercase;
 	padding: 14px 30px;
@@ -4063,6 +4063,15 @@ header .search_option {
 	font-size: 40px;
 	font-weight: bold;
 }
+.my_board_menu li:before{
+	content: " ";
+	border-right: #a5a5a5 1px solid;
+	padding-left: 5px;
+	margin-right: 5px;
+}
+.my_board_menu li:first-child:before{
+	border: none;
+}
 
 .contact__form .content_text {
 	min-height: 150px;
@@ -4784,4 +4793,9 @@ header .search_option {
 	border: none;
 	text-transform:;
 	display: inline-block;
+}
+
+.primary-btn:hover {
+	text-decoration: none !important;
+	color: white !important;
 }
