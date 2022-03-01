@@ -564,6 +564,10 @@ table a:hover {
 	padding: 3px 0;
 }
 
+.header__menu ul li a:hover{
+	text-decoration: none;
+}
+
 .header__menu ul li a:after {
 	position: absolute;
 	left: 0;
