@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -13,7 +12,6 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
 
-
 <!-- Google Font -->
 <link
 	href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800;900&display=swap"
@@ -22,21 +20,20 @@
 <!-- Css Styles -->
 <link rel="stylesheet" href="../resources/css/bootstrap.min.css"
 	type="text/css">
-<link rel="stylesheet" href="../resources/css/bootstrap_watch.min.css"
-	type="text/css">
 <link rel="stylesheet" href="../resources/css/font-awesome.min.css"
 	type="text/css">
 <link rel="stylesheet" href="../resources/css/elegant-icons.css"
 	type="text/css">
 <link rel="stylesheet" href="../resources/css/magnific-popup.css"
 	type="text/css">
-<link rel="stylesheet" href="../resources/css/nice-select.css"
-	type="text/css">
 <link rel="stylesheet" href="../resources/css/owl.carousel.min.css"
 	type="text/css">
 <link rel="stylesheet" href="../resources/css/slicknav.min.css"
 	type="text/css">
 <link rel="stylesheet" href="../resources/css/style.css" type="text/css">
+
+<script src="https://kit.fontawesome.com/a39158855c.js"
+	crossorigin="anonymous"></script>
 
 
 </head>
@@ -157,7 +154,7 @@
 	</div>
 
 
-	<!-- Footer Section End -->
+
 
 	<script>
 	function resize(obj) {
@@ -165,21 +162,10 @@
 	    obj.style.height = (12 + obj.scrollHeight) + 'px';
 	}
 	</script>
-
-	<!-- Js Plugins -->
-	<script src="../resources/js/jquery-3.3.1.min.js"></script>
-	<script src="../resources/js/bootstrap.min.js"></script>
-	<script src="../resources/js/jquery.nice-select.min.js"></script>
-	<script src="../resources/js/jquery.nicescroll.min.js"></script>
-	<script src="../resources/js/jquery.magnific-popup.min.js"></script>
-	<script src="../resources/js/jquery.countdown.min.js"></script>
-	<script src="../resources/js/jquery.slicknav.js"></script>
-	<script src="../resources/js/mixitup.min.js"></script>
-	<script src="../resources/js/owl.carousel.min.js"></script>
-	<script src="../resources/js/main.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<%@ include file="../footer.jsp"%>
+   <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+   <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
