@@ -378,20 +378,20 @@
                          	
                              	 // 댓글 번호
                              	event_list += '<input type="hidden" id="event_reply_no" name="event_reply_no" value="'
-                         		   				+ this.event_reply_no
-                         		  				+ '" readonly />'
+		             		   				+ this.event_reply_no
+		             		  				+ '" readonly />'
                              // 댓글 작성자 닉네임
 	                             				+'<div style="display:flex;"><input type="text" id="user_nickname" name="user_nickname" value="'
 		               	     					+ this.user_nickname
 		               	     		            + ' 님" readonly /><div style="width: 80%;"></div>'
 		            	                 		
 		            	               	  		 // 리뷰 작성시간
-		            		                    +'<input type="text" id="movie_reply_update_time" name="movie_reply_update_time" value="'
+		            		                    +'<input type="text" id="event_reply_update_time" name="event_reply_update_time" value="'
 		            		 		           	+ dateStr
 		            		 		            + '" readonly /></div>';
                            
                          	// 댓글 내용
-                         	 event_list += '<textarea type="text" readonly id="movie_reply_content" name="movie_reply_content">'
+                         	 event_list += '<textarea type="text" readonly id="event_reply_content" name="event_reply_content">'
 	  									+ this.event_reply_content
 	   		   			    			+'</textarea>';
                          	
