@@ -217,7 +217,7 @@
 									</td>
 									<td>
 										<button class="checkpassword primary-btn" type="button" style="height: 40px; padding: 0px;"
-												id="checkpassword" data-target="#myModal">>비밀번호 변경하기</button>
+												id="checkpassword" data-target="#myModal">비밀번호 변경하기</button>
 									</td>
 								</tr>
 								<tr>
