@@ -48,4 +48,51 @@ public class UserRestController {
 		
 		return entity;
 	}
+	
+	
+	@RequestMapping(value = "/pwd/{former_pwd}/{user_id}", method = RequestMethod.GET)
+	public ResponseEntity<Integer> checkPwd(@PathVariable(name = "former_pwd") String former_pwd, @PathVariable(name = "user_id") String user_id) {
+	
+		log.info("checkPwd(former_pwd:{}, user_id:{})", former_pwd, user_id);
+	   
+	    User userFromDb = userDao.checkUserId(user_id);
+	    String encodedPassword = userFromDb.getUser_pwd();
+	    
+	    log.info("encodedPassword:{}", encodedPassword);
+	    
+	
+	    boolean check = passwordEncoder.matches(former_pwd, encodedPassword);
+	    
+	    log.info("check:{}", check);
+	    
+	    int result = 0;
+	    
+	    if (passwordEncoder.matches(former_pwd, encodedPassword)) { 
+	           result = 1;
+	        } 
+	   
+        ResponseEntity<Integer> entity = new ResponseEntity<>(result, HttpStatus.OK);
+		
+		return entity;
+	}
+	
+	
+	@RequestMapping(value = "/resetpwd/{user_nickname}", method = RequestMethod.POST)
+	public ResponseEntity<Integer> resetPwd(@PathVariable(name = "user_nickname") String user_nickname, @RequestBody String new_pwd) {
+		
+		log.info("resetPwd(user_nickname:{}, new_pwd:{})", user_nickname, new_pwd);
+		
+		String encryptPassword = passwordEncoder.encode(new_pwd);
+		 
+		 User user = new User();
+		 user.setUser_nickname(user_nickname);
+		 user.setUser_pwd(encryptPassword);
+	   
+	    int result = userService.resetPwd(user);
+	   
+        ResponseEntity<Integer> entity = new ResponseEntity<>(result, HttpStatus.OK);
+		
+		return entity;
+	}
+	
 }
