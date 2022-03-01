@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.pjt.domain.User;
+import com.spring.pjt.persistence.UserDao;
 import com.spring.pjt.service.UserService;
 
 @RestController
@@ -25,6 +26,7 @@ public class UserRestController {
 	private static final Logger log = LoggerFactory.getLogger(UserRestController.class);
 	
 	@Autowired private UserService userService;
+	@Autowired private UserDao userDao;
 	
 	@RequestMapping(value = "/{user_no}", method = RequestMethod.POST)
 	public ResponseEntity<Map<Object, Object>> checkDuplicate(@PathVariable(name = "user_no") int user_no, @RequestBody String user_nickname) {
