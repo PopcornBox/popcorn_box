@@ -155,17 +155,6 @@
 	<div class="contact__form">
 		<form action="./update" method="post">
 		
-						<c:if test="${signInUserNickname == board.user_nickname}">
-					<div style="margin-left: auto; margin-right: 30px;">
-						<!-- 로그인 사용자 아이디와 글 작성자 아이디가 일치할 때만 수정 메뉴를 보여줌. -->
-						<ul style="display: inline-flex; list-style: none;font-size: 14px;">
-
-							<li> 
-								<a id="menu-delete" href="./delete?board_no=${board.board_no}">삭제</a>
-							</li>
-						</ul>
-					</div>
-				</c:if>
 			<div>
 				<input type="hidden" name="board_no" value="${board.board_no}" required readonly />
 			</div>
@@ -183,10 +172,9 @@
 			</div>
 
 
-			<div class="btnbox">
+			<div style="display: flex;">
 				<a href="./main" class="primary-btn">수정 취소</a>
-			</div>
-			<div class="btnbox">
+			<div style="width: 80%;"></div>
 				<input class="primary-btn btn-outline-dark" type="submit" id="menu-update" value="수정 완료" style="color: #fff" />
 			</div>
 

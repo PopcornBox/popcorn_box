@@ -65,9 +65,12 @@
 				<c:if test="${signInUserNickname == board.user_nickname}">
 					<div style="margin-left: auto; margin-right: 30px;">
 						<!-- 로그인 사용자 아이디와 글 작성자 아이디가 일치할 때만 수정 메뉴를 보여줌. -->
-						<ul style="display: inline-flex; list-style: none;font-size: 14px;">
+						<ul class="my_board_menu" style="display: inline-flex; list-style: none;font-size: 14px;">
 							<li>
-								<a href="./update?board_no=${board.board_no}">글 수정 |</a>
+								<a href="./main">메인으로 돌아가기</a>
+							</li>
+							<li>
+								<a href="./update?board_no=${board.board_no}">글 수정</a>
 							</li>
 							<li> 
 								<a id="menu-delete" href="./delete?board_no=${board.board_no}">삭제</a>

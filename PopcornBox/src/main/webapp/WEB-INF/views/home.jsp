@@ -36,6 +36,10 @@
 	type="text/css">
 <link rel="stylesheet" href="./resources/css/style.css" type="text/css">
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
 </head>
 
@@ -212,96 +216,72 @@
     Banner Section End -->
 
     <!-- Auto Slide Section Start -->
-<section class="carousel" aria-label="Gallery">
-  <ol class="carousel__viewport">
-    <li id="carousel__slide1"
-        tabindex="0"
-        class="carousel__slide">
-      <div class="carousel__snapper">
-        <a href="#carousel__slide3"
-           class="carousel__prev">Go to last slide</a>
-           <div class="autoslide set-bg" data-setbg="./resources/img/banner_main_2.png">
-           <div class="container">
-           
-                            <div class="carousel__text">
-                                <h2>더 배트맨</h2>
-                                <p>히어로의 세대교체,<br> 어둠을 뚫고 그가 온다</p>
-                                <a href="http://localhost:8181/pjt/movie/detail?movie_no=11" class="primary-cta-m"> 보러가기 <i class="fa-solid fa-angle-right"></i></a>
-	           		 </div>
-	           	 </div>
-            	</div>
-           
-        <a href="#carousel__slide2"
-           class="carousel__next">Go to next slide</a>
-      </div>
-    </li>
-    
-    <li id="carousel__slide2"
-        tabindex="0"
-        class="carousel__slide">
-      <div class="carousel__snapper">
-      <div class="hero__items set-bg"
-						data-setbg="./resources/img/banner_main_1.png">
-            <div class="container">
-                    <div class="row">
-                        <div class="col-xl-5 col-lg-7 col-md-8">
-                            <div class="carousel__text">
-                                <h2 style="color: white;">루이스 웨인</h2>
-                                <p style="color: white;">당신의 봄을 아름답게 할,<br>단 하나의 러브 팔레트</p>
-                                 <a href="#" class="primary-cta-m"> 보러가기 <i class="fa-solid fa-angle-right"></i></a>
-                                </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-           </div>
-      <a href="#carousel__slide1"
-         class="carousel__prev">Go to previous slide</a>
-      <a href="#carousel__slide3"
-         class="carousel__next">Go to next slide</a>
-    </li>
-    
-    <li id="carousel__slide3"
-        tabindex="0"
-        class="carousel__slide">
-      <div class="carousel__snapper">
-      <a href="#carousel__slide2"
-         class="carousel__prev">Go to previous slide</a>
-         	<div class="hero__items set-bg" data-setbg="./resources/img/banner_main_3.png">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-5 col-lg-7 col-md-8">
-                            <div class="carousel__text">
-                                <h2>미니언즈 2</h2>
-                                <p>오또카지 오또카지?<br>미니언들의 한층 새롭고 흥미로운 모험!</p>
-                                <a href="#" class="primary-cta-m"> 보러가기 <i class="fa-solid fa-angle-right"></i></a>
-                            </div>
+<section class="hero">
+<div class="hero__slider owl-carousel">
+	<div id="demo" class="carousel slide" data-ride="carousel">
+	
+	  <!-- Indicators
+	  <ul class="carousel-indicators">
+	    <li data-target="#demo" data-slide-to="0" class="active"></li>
+	    <li data-target="#demo" data-slide-to="1"></li>
+	    <li data-target="#demo" data-slide-to="2"></li>
+	  </ul> -->
+	  
+	  <!-- The slideshow -->
+	  <div class="carousel-inner">
+	    <div class="carousel-item active">
+	      <img src="./resources/img/banner_main_2.png">
+			<div class="container">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-7 col-md-8">
+                        <div class="hero__text">
+                            <h2>더 배트맨</h2>
+                            <p>히어로의 세대교체,<br> 어둠을 뚫고 그가 온다</p>
+                            <a href="http://localhost:8181/pjt/movie/detail?movie_no=11" class="primary-cta-m"> 보러가기 <span class="arrow_right"></span></a>
                         </div>
                     </div>
                 </div>
             </div>
-      <a href="#carousel__slide1"
-         class="carousel__next">Go to next slide</a>
+	    </div>
+	    <div class="carousel-item">
+	      <img src="./resources/img/banner_main_1.png">
+               <div class="container">
+                   <div class="row">
+                       <div class="col-xl-5 col-lg-7 col-md-8">
+                           <div class="hero__text">
+                               <h2 style="color: white;">루이스 웨인</h2>
+                               <p style="color: white;">당신의 봄을 아름답게 할,<br>단 하나의 러브 팔레트</p>
+                               <a href="http://localhost:8181/pjt/movie/detail?movie_no=14" class="primary-cta-m"> 보러가기 <span class="arrow_right"></span></a>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+	    </div>
+	    <div class="carousel-item">
+	      <img src="./resources/img/banner_main_3.png">
+	      <div class="container">
+             <div class="row">
+                 <div class="col-xl-5 col-lg-7 col-md-8">
+                     <div class="hero__text">
+                         <h2>미니언즈 2</h2>
+                         <p>오또카지 오또카지?<br>미니언들의 한층 새롭고 흥미로운 모험!</p>
+                         <a href="http://localhost:8181/pjt/movie/detail?movie_no=15" class="primary-cta-m"> 보러가기 <span class="arrow_right"></span></a>
+                     </div>
+                 </div>
+             </div>
          </div>
-    </li>
-  </ol>
-  
-  <aside class="carousel__navigation">
-    <ol class="carousel__navigation-list">
-      <li class="carousel__navigation-item">
-        <a href="#carousel__slide1"
-           class="carousel__navigation-button">Go to slide 1</a>
-      </li>
-      <li class="carousel__navigation-item">
-        <a href="#carousel__slide2"
-           class="carousel__navigation-button">Go to slide 2</a>
-      </li>
-      <li class="carousel__navigation-item">
-        <a href="#carousel__slide3"
-           class="carousel__navigation-button">Go to slide 3</a>
-      </li>
-    </ol>
-  </aside>
+	    </div>
+	  </div>
+	  
+	  <!-- Left and right controls
+	  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+	    <span class="carousel-control-prev-icon"></span>
+	  </a>
+	  <a class="carousel-control-next" href="#demo" data-slide="next">
+	    <span class="carousel-control-next-icon"></span>
+	  </a> -->
+	</div>
+</div>
 </section>
     <!-- Auto Slide Section End -->
 
@@ -339,30 +319,10 @@
     <section class="product spad">
 
         <div class="container">
-            <div class="row product__filter">
+            <div class="product__filter">
                 
-                <c:forEach var="movie" items="${movieList}" end="4" varStatus="num">
-					<div class="">
-	                    <div class="product__item">
-	                        <div class="product__item__pic set-bg" data-setbg="${movie.movie_image}">
-	                            <p class="label">${num.count}</p>
-	                         
-	                        </div>
-	                        <div class="product__item__text">
-	                          <a href="./movie/detail?movie_no=${movie.movie_no}">${movie.movie_title}</a>
-	
-	                            <div class="rating">
-	                                <i class="fa fa-star-o"></i>
-	                            </div>
-					
-					
-					 <div id="movie_like_list"></div>
-					
-					
-	                        </div>
-	                    </div>
-	                </div>
-				</c:forEach>
+					 <div class="row" id="movie_like_list" style="display: flex;"></div>
+               
             </div>
         </div>
     </section>
@@ -382,6 +342,7 @@
                         <span>현재 이벤트</span>
                         <h2>[라라랜드]<br>감상평 이벤트!</h2>
                         <div class="categories__deal__countdown__timer">
+                        	<span>남은 시간</span>
                         	<div id="countdown"></div>
                         </div>
                     </div>
@@ -401,62 +362,14 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h4>진행중인 이벤트</h4>
+                        <h4>박스오피스 순위</h4>
                     </div>
                 </div>
-            </div>        
-        
-        <div class="event_list">
-		<div class="row">
-			<c:forEach var="event" items="${eventList}">
-				<!-- 디데이 계산을 위한 날짜 세팅 변환 -->
-				<fmt:formatDate var="startTime" value="${event.event_start_time}" pattern="yyyy-MM-dd"/> 
-				<fmt:formatDate var="lastTime"  value="${event.event_last_time}" pattern="yyyy-MM-dd"/>
-				<fmt:formatDate var="todayNow" value="${today}" pattern="yyyy-MM-dd"/> 
-			
-			    <fmt:parseDate value="${lastTime}" var="event_last" pattern="yyyy-MM-dd"></fmt:parseDate>
-				<fmt:parseNumber value="${event_last.time / (1000*60*60*24)}" integerOnly="true" var="lastDate"></fmt:parseNumber>
-			    <fmt:parseDate value="${todayNow}" var="now" pattern="yyyy-MM-dd"></fmt:parseDate>
-			    <fmt:parseNumber value="${now.time / (1000*60*60*24)}" integerOnly="true" var="todayDate"></fmt:parseNumber>
-		
-				<div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="blog__item">
-                        <div class="blog__item__pic set-bg" data-setbg="${event.event_thumb}">
-                        	<c:if test="${lastDate - todayDate < 0}">
-								<em id="finish">마감</em>
-							</c:if>
-                        </div>
-                        <div class="blog__item__text">
-                            <span><img src="./resources/img/icon/calendar.png" alt="">
-									<fmt:formatDate value="${event.event_start_time}" pattern="yyyy.MM.dd"/> ~ <fmt:formatDate value="${event.event_last_time}" pattern="yyyy.MM.dd."/>
-						    		&nbsp;&nbsp;
-						   			<c:if test="${lastDate - todayDate > 0}">
-						   				<em id="d-day">D - ${lastDate - todayDate}</em> 
-						   			</c:if>
-							</span>
-                            <h5>${event.event_title}</h5>
-                            <div class="readmore">
-	                            <a href="./event/detail?event_no=${event.event_no}&q=${lastDate - todayDate}">Read More</a>
-	                            
-					   			<c:if test="${lastDate - todayDate < 0}">
-					   				<a href="./event/winner?event_no=${event.event_no}&q=${lastDate - todayDate}">당첨자 확인</a> 
-					   			</c:if>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-			</c:forEach>	
-		</div>
-		</div>
-	</div>
-    </section>
-    <!-- Latest Blog Section End -->
+            </div>    	
 	
 	
-	
-	
-	<div>
-    	<table>
+	<div class="notice__chart__table">
+    	<table class="box_office">
     		<thead>
     			<tr>
     				<th>순위</th>
@@ -474,7 +387,12 @@
     </div>
 	
 	
+	  
+	</div>
+    </section>
+    <!-- Latest Blog Section End -->
 	
+
 
 <!-- Footer Section Begin -->
 <footer class="footer">
@@ -538,7 +456,7 @@
 		
 		
 	<script>
-	 CountDownTimer('02/25/2022', 'countdown');
+	 CountDownTimer('03/31/2022', 'countdown');
 	    function CountDownTimer(dt, id)
 	    {
 	        var end = new Date(dt);
@@ -559,10 +477,10 @@
 	            var hours = Math.floor((distance % _day) / _hour);
 	            var minutes = Math.floor((distance % _hour) / _minute);
 	            var seconds = Math.floor((distance % _minute) / _second);
-	            document.getElementById(id).innerHTML = '<div class="cd-item"><span>'+ days + '</span></div>';
-	            document.getElementById(id).innerHTML += '<div class="cd-item"><span>'+ hours + '</span></div>';
-	            document.getElementById(id).innerHTML += '<div class="cd-item"><span>'+ minutes + '</span></div>';
-	            document.getElementById(id).innerHTML += '<div class="cd-item"><span>'+ seconds + '</span><p>Seconds</p></div>';
+	            document.getElementById(id).innerHTML = '<div class="cd-item"><span>'+ days + '<span>일</span></span></div>';
+	            document.getElementById(id).innerHTML += '<div class="cd-item"><span>'+ hours + '<span>시간</span></span></div>';
+	            document.getElementById(id).innerHTML += '<div class="cd-item"><span>'+ minutes + '<span>분</span></span></div>';
+	            document.getElementById(id).innerHTML += '<div class="cd-item"><span>'+ seconds + '<span>초</span></span></div>';
 	        }
 	        timer = setInterval(showRemaining, 1000);
 	    }
@@ -645,8 +563,18 @@
 						 $.getJSON('/pjt/movie_like/top', function (data) {
 				              	var text = '';
 							 data.forEach(function(element) {
-								var movie_title = element.movie_title; 
-								text += '<div>' + movie_title + '</div>';
+								var movie_image = element.movie_image; 
+								var movie_no= element.movie_no;
+								var movie_title = element.movie_title
+								text += '<div class="set-bg poster"><img class="product__item__pic" src="' 
+									+ movie_image 
+									+ '"><p class="label"></p>'
+									+'<div class="product__item__text">'
+			                        +'<a href="./movie/detail?movie_no='
+			                        + movie_no
+			                        +'">'
+			                        + movie_title
+			                        +'</a><div class="rating"><i class="fa fa-star-o"></i></div></div></div>';
 							 });
 							 	$('#movie_like_list').html(text);						 
 			             }); // getJson			
@@ -661,8 +589,18 @@
 					 $.getJSON('/pjt/movie_like/top', function (data) {
 			              	var text = '';
 						 data.forEach(function(element) {
-							var movie_title = element.movie_title; 
-							text += '<div>' + movie_title + '</div>';
+							var movie_image = element.movie_image; 
+							var movie_no= element.movie_no;
+							var movie_title = element.movie_title
+							text += '<div class="set-bg poster"><img class="product__item__pic" src="' 
+								+ movie_image 
+								+ '"><p class="label"></p>'
+								+'<div class="product__item__text">'
+		                        +'<a href="./movie/detail?movie_no='
+		                        + movie_no
+		                        +'">'
+		                        + movie_title
+		                        +'</a><div class="rating"><i class="fa fa-star-o"></i></div></div></div>';
 						 });
 						 	$('#movie_like_list').html(text);						 
 		             }); // getJson		
@@ -701,7 +639,7 @@
 				function read_boxoffice() {
 					$.ajax({
 						url : "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.xml?key=c703c0c2818aa9a103c8b7f193e4b3bf&targetDt="
-							+ result + "&itemPerPage=5",
+							+ result + "&itemPerPage=6",
 							
 						dataType : "xml",	
 						
