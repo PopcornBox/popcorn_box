@@ -25,12 +25,12 @@
 	<script src="https://kit.fontawesome.com/a39158855c.js" crossorigin="anonymous"></script>
 			
 		<style>
-		.valid_id, .valid_nickname, .valid_email, .valid_pwd, .valid_repwd {
+		.valid_nickname, .valid_pwd, .valid_repwd {
 			color: green;
 			display: none;
 		}	
-		.invalid_id, .invalid_id2, .invalid_nickname, .invalid_nickname2, 
-		.invalid_email, .invalid_email2, .invalid_pwd, .invalid_repwd {
+		.invalid_nickname, .invalid_nickname2, 
+		.invalid_pwd, .invalid_repwd {
 			color: red;
 			display: none;
 		}	
@@ -236,12 +236,12 @@
 						$('.invalid_nickname').show(); 
 						$('.invalid_nickname2').hide();
 						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
-					/*
+					
 					} else if (spe > 0) {
 						$('.valid_nickname').hide(); 
 						$('.invalid_nickname').hide();  
 						$('.invalid_nickname2').show(); 
-					*/	
+						
 					} else {
 						$('.valid_nickname').show(); 
 						$('.invalid_nickname').hide(); 
@@ -255,7 +255,7 @@
 				var num = pwd.search(/[0-9]/g);
 				var eng = pwd.search(/[a-z]/ig);
 				var spe = pwd.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
-				/*
+				
 				if (pwd.length < 8 || pwd.length > 16) { // 8자 미만이거나 16자를 초과하면
 					$('.valid_pwd').hide();
 					$('.invalid_pwd').show();
@@ -266,7 +266,7 @@
 					$('.valid_pwd').show(); 
 					$('.invalid_pwd').hide(); 
 				}
-				*/
+				
 			});
 			
 			$('#user_repwd').change(function (event) {

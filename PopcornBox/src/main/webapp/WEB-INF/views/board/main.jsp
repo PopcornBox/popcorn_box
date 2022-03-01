@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>PopcornBox</title>
+<title>커뮤니티 | POPCORN BOX</title>
 
 <style>
    .txt_1 td:first-child:after {
