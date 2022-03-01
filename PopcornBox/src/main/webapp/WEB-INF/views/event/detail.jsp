@@ -271,7 +271,7 @@
 
 	<!-- 댓글 목록 -->
 	<div class="container">
-		<div class="event_reply_list">
+		<div class="event_reply_list contact__form">
 
 			<div id="event_reply_list"></div>
 		</div>
@@ -367,52 +367,43 @@
                          	var date = new Date(this.event_reply_update_time); // JavaScript Date 객체 생성
                          	var dateStr = date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
                          	
+                         	
+		                         	if (this.user_nickname == '${signInUserNickname}'){
+		     		  					event_list += '<div class="event_reply_item">'
+                                                	+ '<div class="my_reply">';
+		     		  				}else {
+		     		  					event_list += '<div class="event_reply_item">'
+                                            		+ '<div class="not_my_reply">';
+		     		  				}
+                         	
                              	 // 댓글 번호
-                             	event_list += '<div class="event_reply_item">'
-                                                 + '<input type="hidden" id="event_reply_no" name="event_reply_no" value="'
+                             	event_list += '<input type="hidden" id="event_reply_no" name="event_reply_no" value="'
                          		   				+ this.event_reply_no
-                         		  				+ '" readonly />';
+                         		  				+ '" readonly />'
                              // 댓글 작성자 닉네임
-                             if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
-                                  event_list += '<input type="text" style="border:none; width:50%; text-align:left; font-weight:700; padding-left:10px; padding-bottom: 20px; background-color:rgb(240, 248, 255);" id="user_nickname" name="user_nickname" value="'
-                         		            	+ this.user_nickname
-                         		            	+ '" readonly />';
-                             } else {
-                             	event_list += '<input type="text" style="border:none; width:50%; color:#333333; text-align:left; font-weight:700; padding-left:10px; padding-bottom: 20px;" id="user_nickname" name="user_nickname" value="'
-             		            				+ this.user_nickname
-             		            				+ '" readonly />';
-                             }
-                             // 댓글 작성 시간
-                             if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
-                             	event_list += '<input type="text" style="border:none; width:50%; text-align:right; padding-right:10px; padding-bottom: 20px; background-color:rgb(240, 248, 255);" id="event_reply_update_time" name="event_reply_update_time" value="'
-                         		           		+ dateStr
-                         		            	+ '" readonly />';
-                             } else {
-                             	event_list += '<input type="text"  style="border:none; color:#333333; width:50%; text-align:right; padding-right:10px;" id="event_reply_update_time" name="event_reply_update_time" value="'
-         		           						+ dateStr
-         		            					+ '" readonly />';
-                             }
+	                             				+'<div style="display:flex;"><input type="text" id="user_nickname" name="user_nickname" value="'
+		               	     					+ this.user_nickname
+		               	     		            + ' 님" readonly /><div style="width: 80%;"></div>'
+		            	                 		
+		            	               	  		 // 리뷰 작성시간
+		            		                    +'<input type="text" id="movie_reply_update_time" name="movie_reply_update_time" value="'
+		            		 		           	+ dateStr
+		            		 		            + '" readonly /></div>';
                            
                          	// 댓글 내용
-                         	 if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면	  				
-                             	 event_list += '<input type="text" style="border:none; font-size:14px; width:100%; padding:20px; background-color:rgb(240, 248, 255);" id="event_reply_content" name="event_reply_content" value="'
-       		  									+ this.event_reply_content
-      		   		   			    			+'" readonly />';
-                             } else {
-                             	event_list += '<input type="text" style="border:none; color:#333333; font-size:14px; width:100%; padding:20px; background-color:#f9f9f9"  id="event_reply_content" name="event_reply_content" value="'
- 	  									+ this.event_reply_content
- 	   		   			    			+'" readonly />';
-                             }
+                         	 event_list += '<textarea type="text" readonly id="movie_reply_content" name="movie_reply_content">'
+	  									+ this.event_reply_content
+	   		   			    			+'</textarea>';
                          	
                          	 // 댓글 수정, 삭제 버튼
                           	if (this.user_nickname == '${signInUserNickname}') { // 댓글 작성자 닉네임과 로그인한 사용자 닉네임이 같으면
-                          		event_list += '<button class="event_reply_update">수정</button>'
-                          			          + '<button class="event_reply_delete">x</button>';
+                          		event_list += '<button class="event_reply_delete reply_btn">삭제</button>'
+                          					+'<button class="event_reply_update reply_btn">수정</button>';
                           	}
                          	
                          	
                          	
-                         	event_list += '</div>';
+                         	event_list += '</div></div>';
                          	    
                          });
                          

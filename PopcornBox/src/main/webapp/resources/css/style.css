@@ -4096,7 +4096,7 @@ header .search_option {
 	padding-top: 30px;
     padding-bottom: 30px;
 }
-.contact__form .reply_item input, i{
+.contact__form .reply_item input{
 	font-size: 14px;
 	color: 535353;
 }
@@ -4125,7 +4125,7 @@ header .search_option {
 	background:none;
 	border: none;
 	opacity: 0.7;
-	font-size: 12px;
+	font-size: 12.5px;
 	float: right;
 }
 .reply_btn:hover {
@@ -4145,6 +4145,7 @@ header .search_option {
 	font-weight:700; 
 	padding-left:10px; 
 	background: none;
+	border: none;
 }
 .my_reply textarea {
 	overflow:visible;
@@ -4152,6 +4153,7 @@ header .search_option {
 	background-color: rgb(240, 248, 255);
 	border: none;
 	margin: 0px;
+	resize: none;
 }
 
 .not_my_reply{
@@ -4169,6 +4171,7 @@ header .search_option {
 	 width:100%;
 	 background-color:#f9f9f9;
 	 margin: 0px;
+	resize: none;
 }
 
 #board_reply_update_time,
