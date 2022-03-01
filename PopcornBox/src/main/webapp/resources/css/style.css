@@ -132,7 +132,6 @@ table a:hover {
 	padding-bottom: 15px;
 	margin-bottom: 30px;
 	text-align: center;
-	background-color: #B50022;
 }
 
 .section-title span {
@@ -187,7 +186,7 @@ table a:hover {
 	padding: 14px 30px;
 	margin-bottom: 30px;
 	color: #ffffff;
-	background: #E53637;
+	background: #B50022;
 	letter-spacing: 4px;
 }
 
@@ -230,7 +229,6 @@ table a:hover {
 
 .btnbox {
 	max-width: 150px;
-	margin-left: auto;
 	text-align: right;
 }
 
@@ -3006,7 +3004,6 @@ header .search_option {
 
 .user__chart__table table tbody tr td:first-child {
 	font-weight: bold;
-	 width: 20%;
 }
 
 
@@ -3029,6 +3026,27 @@ header .search_option {
 	padding: 10px;
 }
 
+.mypageMovieLike {
+	overflow: auto;
+	width: 100%;
+	margin-top: 15px;
+}
+.mypageMovieLike td {
+	text-align: center;
+	padding: 0px !important;
+	font-weight: normal !important;
+}
+.mypageMovieLike table::-webkit-scrollbar {
+    height: 13px;
+  }
+  .mypageMovieLike table::-webkit-scrollbar-thumb {
+    background-color: #fff ;
+    border-radius: 10px;
+    background-clip: padding-box;
+  }
+  .mypageMovieLike table::-webkit-scrollbar-track {
+    border-radius: 6px;
+  }
 
 /*------------------------------------------------------------------------
   USER */

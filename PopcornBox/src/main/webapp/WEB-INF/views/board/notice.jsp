@@ -191,15 +191,11 @@
 					<input type="hidden" name="user_nickname"
 						value="${signInUserNickname}" required readonly />
 				</div>
-				<div class="btnbox">
-               <a href="./main" class="primary-btn">공지 작성 취소</a>
-            	</div>
-				<div>
-				<div class="btnbox">
-					<input type="submit" class="primary-btn" value="공지 작성 완료" style="color: #fff">
-				</div>
-					
-					
+				
+				<div style="display: flex;">
+               <a href="./main" class="primary-btn">작성 취소</a>
+            	<div style="width: 80%;"></div>
+					<input type="submit" class="primary-btn" value="작성 완료" style="color: #fff; font-size: 14px;">
 				</div>
 
 			</form>
@@ -215,7 +211,7 @@
 
 	<script>
 	function resize(obj) {
-	    obj.style.height = '1px';
+	    obj.style.height = '350px';
 	    obj.style.height = (12 + obj.scrollHeight) + 'px';
 	}
 	</script>

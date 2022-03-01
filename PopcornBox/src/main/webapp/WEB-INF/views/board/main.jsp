@@ -93,8 +93,9 @@
          </div> 
 
 
-
-         <div class="btnbox">
+	<div style="display: flex;">
+	<div style="width: 70%;"></div>
+         <div class="btnbox" style="display: -webkit-inline-box; margin-right: 0px;">
             <div id="main-insertbtn">
                <a href="./insert" class="primary-btn">새 글 작성</a>
             </div>
@@ -109,6 +110,7 @@
                </div>
             </c:if>
          </div>
+	</div>
 
 
 

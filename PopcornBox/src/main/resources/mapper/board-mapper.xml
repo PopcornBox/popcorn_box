@@ -5,7 +5,7 @@
 	<!-- 게시글 전체 검색 -->
 	<select id="selectAllBoard" resultType="Board">
 		SELECT * FROM ${TBL_BOARDS}
-		ORDER BY ${COL_BOARD_MODE} DESC, ${COL_BOARD_NO} DESC
+		ORDER BY ${COL_BOARD_MODE} DESC, ${COL_BOARD_UPDATE_TIME} DESC
 	</select>
 
     <!-- 글 번호로 검색 -->
@@ -26,7 +26,7 @@
     <!-- 게시글 수정: 해당 글 번호의 글 제목, 내용 수정. reg_date는 수정하는 서버 시간. -->
     <update id="update">
     UPDATE ${TBL_BOARDS} 
-    SET ${COL_BOARD_TITLE} = #{board_title}, ${COL_BOARD_CONTENT} = #{board_content}, ${COL_BOARD_UPDATE_TIME} = sysdate 
+    SET ${COL_BOARD_TITLE} = #{board_title}, ${COL_BOARD_CONTENT} = #{board_content}, ${COL_BOARD_UPDATE_TIME} = sysdate
     WHERE ${COL_BOARD_NO} = #{board_no}
     </update>
     
@@ -73,20 +73,22 @@
     <!-- Board 페이징 기능 전체 게시글 로드 후 rownum 지정 -->
     <select id="pagingList" resultType="Board">
 		<![CDATA[
-		select /*+ INDEX_DESC(BOARDS BOARDS_pk) */ rownum as rn, board_no, board_mode, board_title, board_content, user_nickname
-		, board_update_time, Board_view_cnt, board_reply_cnt from boards 
-		where board_mode = '1'
-		union all
-
-			select * from 
-        (
-		select /*+ INDEX_DESC(BOARDS BOARDS_pk) */ rownum as rn,  board_no, board_mode, board_title, board_content, user_nickname
-		, board_update_time, Board_view_cnt, board_reply_cnt from boards 
-		where board_mode = '0'
-		order by board_no DESC
-		)
+		
+  select /*+ INDEX_DESC(BOARDS BOARDS_pk) */ rownum as rn, board_no, board_mode, board_title, board_content, user_nickname
+  , board_update_time, Board_view_cnt, board_reply_cnt from boards where board_mode = '1' 
+  union all 
+  
+  select *
+    from(
+  select rownum as rn, a.* from ( 
+  
+  select /*+ INDEX_DESC(BOARDS BOARDS_pk) */ board_no, board_mode, board_title, board_content
+  , user_nickname , board_update_time, Board_view_cnt, board_reply_cnt 
+  from boards where board_mode = '0' order by board_update_time DESC 
+  ) a
+  )		
 		where rn between  (#{pageNum} - 1) * #{contents} +1 - (select count(*) from boards where board_mode = '1') and #{pageNum} * #{contents} - (select count(*) from boards where board_mode = '1')
-		ORDER BY ${COL_BOARD_MODE} desc,${COL_BOARD_NO} DESC
+		ORDER BY ${COL_BOARD_MODE} desc, ${COL_BOARD_UPDATE_TIME} DESC
 		]]>
     </select>
     
