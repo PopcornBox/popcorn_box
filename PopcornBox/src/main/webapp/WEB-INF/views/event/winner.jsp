@@ -152,11 +152,11 @@
 
 
 
-	<h1>
+	<h3>
 		<span class="subject">[영화속 명대사] 이벤트 당첨자 발표</span>
-	</h1>
+	</h3>
 	<div>
-		<br>
+		<hr><br>
 	</div>
 
 	<table class="__se_tbl_ext" border="0" cellpadding="0" cellspacing="0"
@@ -187,7 +187,7 @@
 				<td height="22" class="xl65"
 					style="width: 39pt; mso-number-format: '\@'; text-align: center; border: 1px solid windowtext; height: 16.5pt; border-top: none">1</td>
 				<td class="xl66"
-					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">cho**</td>
+					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">choco</td>
 				<td class="xl66"
 					style="height: 16.5pt; width: 157pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">cho**@naver.com</td>
 			</tr>
@@ -209,7 +209,7 @@
 				<td height="22" class="xl65"
 					style="width: 39pt; mso-number-format: '\@'; text-align: center; border: 1px solid windowtext; height: 16.5pt; border-top: none">1</td>
 				<td class="xl66"
-					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">Str*****&nbsp;</td>
+					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">스탈라잇</td>
 				<td class="xl66"
 					style="height: 16.5pt; width: 157pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">str*****@naver.com</td>
 			</tr>
@@ -217,7 +217,7 @@
 				<td height="22" class="xl65"
 					style="width: 39pt; mso-number-format: '\@'; text-align: center; border: 1px solid windowtext; height: 16.5pt; border-top: none">2</td>
 				<td class="xl66"
-					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">ban***&nbsp;</td>
+					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">banana</td>
 				<td class="xl66"
 					style="height: 16.5pt; width: 157pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">ban***@gmail.com</td>
 			<tr height="22" style="height: 16.5pt">
@@ -237,7 +237,7 @@
 				<td height="22" class="xl65"
 					style="width: 39pt; mso-number-format: '\@'; text-align: center; border: 1px solid windowtext; height: 16.5pt; border-top: none">1</td>
 				<td class="xl66"
-					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">app**</td>
+					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">apple</td>
 				<td class="xl66"
 					style="height: 16.5pt; width: 157pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">app**@gmail.com</td>
 			</tr>
@@ -245,7 +245,7 @@
 				<td height="22" class="xl65"
 					style="width: 39pt; mso-number-format: '\@'; text-align: center; border: 1px solid windowtext; height: 16.5pt; border-top: none">2</td>
 				<td class="xl66"
-					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">pin******</td>
+					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">핑핑이</td>
 				<td class="xl66"
 					style="height: 16.5pt; width: 157pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">pin******@gmail.com</td>
 			</tr>
@@ -253,7 +253,7 @@
 				<td height="22" class="xl65"
 					style="width: 39pt; mso-number-format: '\@'; text-align: center; border: 1px solid windowtext; height: 16.5pt; border-top: none">3</td>
 				<td class="xl66"
-					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">pea***</td>
+					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">peach</td>
 				<td class="xl66"
 					style="height: 16.5pt; width: 157pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">pea***@naver.com</td>
 			</tr>
@@ -261,7 +261,7 @@
 				<td height="22" class="xl65"
 					style="width: 39pt; mso-number-format: '\@'; text-align: center; border: 1px solid windowtext; height: 16.5pt; border-top: none">4</td>
 				<td class="xl66"
-					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">sta***</td>
+					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">푸른빛</td>
 				<td class="xl66"
 					style="height: 16.5pt; width: 157pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">sta***@gmail.com</td>
 			</tr>
@@ -269,7 +269,7 @@
 				<td height="22" class="xl65"
 					style="width: 39pt; mso-number-format: '\@'; text-align: center; border: 1px solid windowtext; height: 16.5pt; border-top: none">5</td>
 				<td class="xl66"
-					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">ice***</td>
+					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">ice</td>
 				<td class="xl66"
 					style="height: 16.5pt; width: 157pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">ice***@naver.com</td>
 			</tr>
@@ -277,7 +277,7 @@
 				<td height="22" class="xl65"
 					style="width: 39pt; mso-number-format: '\@'; text-align: center; border: 1px solid windowtext; height: 16.5pt; border-top: none">6</td>
 				<td class="xl66"
-					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">fir***</td>
+					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">명예소방관</td>
 				<td class="xl66"
 					style="height: 16.5pt; width: 157pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">fir***@naver.com</td>
 			</tr>
@@ -285,28 +285,28 @@
 				<td height="22" class="xl65"
 					style="width: 39pt; mso-number-format: '\@'; text-align: center; border: 1px solid windowtext; height: 16.5pt; border-top: none">7</td>
 				<td class="xl66"
-					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">win***</td>
+					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">wing</td>
 				<td class="xl66"
 					style="height: 16.5pt; width: 157pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">win***@naver.com</td>
 			<tr height="22" style="height: 16.5pt">
 				<td height="22" class="xl65"
 					style="width: 39pt; mso-number-format: '\@'; text-align: center; border: 1px solid windowtext; height: 16.5pt; border-top: none">8</td>
 				<td class="xl66"
-					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">clo***</td>
+					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">clover</td>
 				<td class="xl66"
 					style="height: 16.5pt; width: 157pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">clo***@gmail.com</td>
 			<tr height="22" style="height: 16.5pt">
 				<td height="22" class="xl65"
 					style="width: 39pt; mso-number-format: '\@'; text-align: center; border: 1px solid windowtext; height: 16.5pt; border-top: none">9</td>
 				<td class="xl66"
-					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">hur***</td>
+					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">치킨보다영화</td>
 				<td class="xl66"
 					style="height: 16.5pt; width: 157pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">hur***@gmail.com</td>
 			<tr height="22" style="height: 16.5pt">
 				<td height="22" class="xl65"
 					style="width: 39pt; mso-number-format: '\@'; text-align: center; border: 1px solid windowtext; height: 16.5pt; border-top: none">10</td>
 				<td class="xl66"
-					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">san***</td>
+					style="height: 16.5pt; width: 165pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">샹크스</td>
 				<td class="xl66"
 					style="height: 16.5pt; width: 157pt; color: windowtext; text-align: center; border: 1px solid windowtext; border-top: none; border-left: none">san***@gmail.com</td>
 			</tr>
@@ -348,40 +348,48 @@
 					http://localhost:8181/pjt/event/detail?event_no=22&q=-7</a>
 
 
-				<!-- Footer Section Begin -->
-				<footer class="footer">
-					<div class="container">
-						<div class="row">
-							<div class="footer__about">
-								<div class="footer__logo">
-									<a href="../"><img
-										src="../resources/img/popcornbox_logo.png"></a>
-								</div>
-							</div>
-							<div class="footer_text">
-								<div>
-									<p>popcompany | 대표 김유은</p>
-									<p>서울특별시 강남구 테헤란로 124 4층 | 사업자 등록번호 11110 22220 3333</p>
-									<p>
-										<a href="../">서비스 소개 </a> | <a href="../">이용약관 </a> | <a
-											href="../">개인정보 처리 방침 </a> | <a href="../">고객센터 </a> | <a
-											href="https://github.com/PopcornBox/popcorn_box">Github </a>
-									</p>
-									<p>
-										Copyright ©
-										<script>
-											document.write(new Date()
-													.getFullYear());
-										</script>
-										2020 Popcorn Box. All rights reserved
-									</p>
 
-								</div>
-							</div>
-						</div>
-					</div>
-				</footer>
-				<!-- Footer Section End -->
+				<!-- Footer Section Begin -->
+<footer class="footer">
+	<div class="container" style="display: flex;">
+		<div class="footer__about" style="width: 30%; margin: -10px;">
+			<div class="footer__logo">
+				<a href=""><img src="../resources/img/logo_gray.png"></a>
+			</div>
+		</div>
+		<div class="footer_text">
+			<div>
+				<p
+					footer_text" style="font-weight: 600; font-size: 12px; color: 555555;">(06234)
+					서울특별시 강남구 테헤란로 124 4층</p>
+				<p footer_text" style="font-weight: 600; font-size: 12px;">POP
+					COMPANY | 대표 김유은 | 사업자 등록번호 11110 22220 3333</p>
+				<p footer_text" style="font-weight: 600; font-size: 12px;">
+					Copyright ©
+					<script>
+                               document.write(new Date().getFullYear());
+                           </script>
+					POPCORN BOX. All rights reserved
+				</p>
+				<p>
+					<a href="">서비스 소개 </a> | <a href="">이용약관 </a> | <a href="">개인정보
+						처리 방침 </a> | <a href="">고객센터 </a> | <a
+						href="https://github.com/PopcornBox/popcorn_box">Github </a>
+				</p>
+			</div>
+		</div>
+		<div class="sns_btn" style="margin-left: 60px; font-size: 30px;">
+			<a href=""><i class="fa-brands fa-instagram"
+				style="color: #666; padding-left: 20px;"></i></a> <a href=""></a><i
+				class="fa-brands fa-facebook-f"
+				style="color: #666; padding-left: 20px;"></i></a> <a href=""><i
+				class="fa-brands fa-twitter"
+				style="color: #666; padding-left: 20px;"></i></a> <a href=""><i
+				class="fa-brands fa-github" style="color: #666; padding-left: 20px;"></i></a>
+		</div>
+	</div>
+</footer>
+<!-- Footer Section End -->
 
 				<!-- Js Plugins -->
 				<script src="../resources/js/jquery-3.3.1.min.js"></script>
