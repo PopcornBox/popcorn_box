@@ -19,6 +19,16 @@
    .txt_1 a { 
    		color:#f90a37 !important;
    	}
+   	
+   	#page1 {
+      max-width:250px;
+      margin-left: auto;
+      margin-right: auto;  
+   	}
+   	
+   	#next{
+   	
+   	}
   
 </style>
 
