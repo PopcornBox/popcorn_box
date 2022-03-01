@@ -166,7 +166,19 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="breadcrumb__text">
-						<h2>"${signInUserNickname}님 환영합니다!"</h2>
+						<h2>"${signInUserNickname}님
+							<span>
+								<c:if test="${signInUserPosition == 'A'}">
+									(관리자등급)
+								</c:if>
+								<c:if test="${signInUserPosition == 'B'}">
+									(매니저등급)
+								</c:if>
+								<c:if test="${signInUserPosition == 'C'}">
+									(일반회원등급)
+								</c:if>
+							</span> 환영합니다!"
+						</h2>
 					</div>
 				</div>
 			</div>
@@ -366,7 +378,7 @@
 	            var offset = $("#movediv" + seq).offset();
 	            $('html, body').animate({scrollTop : offset.top + 120}, 400);
 	        }
-	        
+
 });			    
 	</script>
 
