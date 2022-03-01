@@ -274,7 +274,7 @@
 										</table>
 									</td>
 								</tr>
-								<tr style="cursor: pointer;">
+								<tr style="cursor: pointer;" onclick="moveDiv('4')">
 									<td class="user__chart__item">
 									<i class="fa-solid fa-heart"></i></td>
 									<td class="chart__info" id="load_like">좋아요한 영화
@@ -314,7 +314,7 @@
 	<!-- mypage end -->
 
 
-
+	<div id="movediv4"></div>
 	<!-- Footer Section Begin -->
 		<%@include file="../footer.jsp" %>
 	<!-- Footer Section End -->
@@ -354,13 +354,18 @@
 	        });
 		    
 		    // 좋아요한 영화 호출
-		    // 작성한 댓글 호출
 	        $(function(){
 	            $("#load_like").click(function(e){ // click event for load more
 	                $("#openLikeLog").toggle(); // hidden div show them
 	            });
 	            $("#openLikeLog").hide();
 	        });
+		    
+		    // 클릭 시 해당 위치 이동
+	        function moveDiv(seq){
+	            var offset = $("#movediv" + seq).offset();
+	            $('html, body').animate({scrollTop : offset.top + 120}, 400);
+	        }
 	        
 });			    
 	</script>
