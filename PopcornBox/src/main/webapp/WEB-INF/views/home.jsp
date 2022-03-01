@@ -336,7 +336,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="section-title">
+                    <div class="section-title" style="	background-color: #B50022;">
                         <h4>박스오피스 순위</h4>
                     </div>
                 </div>
@@ -369,8 +369,8 @@
 		<a class="section-title-a" href="./event/main">
 			<div class="row">
             	<div class="col-lg-12">
-                	<div class="section-title">
-                    	<h4>진행중인 이벤트</h4>
+                	<div class="section-title" style="	background-color: #B50022;">
+                    	<h4>이벤트</h4>
                 	</div>
             	</div>
             </div>
@@ -434,12 +434,11 @@
 		</div>
 		<div class="footer_text">
 			<div>
-				<p
-					footer_text" style="font-weight: 600; font-size: 12px; color: 555555;">(06234)
+				<p class="footer_text" style="font-weight: 600; font-size: 12px; color: 555555;">(06234)
 					서울특별시 강남구 테헤란로 124 4층</p>
-				<p footer_text" style="font-weight: 600; font-size: 12px;">POP
+				<p  class="footer_text" style="font-weight: 600; font-size: 12px;">POP
 					COMPANY | 대표 김유은 | 사업자 등록번호 11110 22220 3333</p>
-				<p footer_text" style="font-weight: 600; font-size: 12px;">
+				<p  class="footer_text" style="font-weight: 600; font-size: 12px;">
 					Copyright ©
 					<script>
                                document.write(new Date().getFullYear());
@@ -455,11 +454,13 @@
 		</div>
 		<div class="sns_btn" style="margin-left: 60px; font-size: 30px;">
 			<a href=""><i class="fa-brands fa-instagram"
-				style="color: #666; padding-left: 20px;"></i></a> <a href=""></a><i
-				class="fa-brands fa-facebook-f"
-				style="color: #666; padding-left: 20px;"></i></a> <a href=""><i
+				style="color: #666; padding-left: 20px;"></i></a> 
+			<a href=""><i class="fa-brands fa-facebook-f"
+				style="color: #666; padding-left: 20px;"></i></a> 
+			<a href=""><i
 				class="fa-brands fa-twitter"
-				style="color: #666; padding-left: 20px;"></i></a> <a href=""><i
+				style="color: #666; padding-left: 20px;"></i></a> 
+			<a href=""><i
 				class="fa-brands fa-github" style="color: #666; padding-left: 20px;"></i></a>
 		</div>
 	</div>
@@ -484,38 +485,6 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
 		
-		
-	<script>
-	 CountDownTimer('03/31/2022', 'countdown');
-	    function CountDownTimer(dt, id)
-	    {
-	        var end = new Date(dt);
-	        var _second = 1000;
-	        var _minute = _second * 60;
-	        var _hour = _minute * 60;
-	        var _day = _hour * 24;
-	        var timer;
-	        function showRemaining() {
-	            var now = new Date();
-	            var distance = end - now;
-	            if (distance < 0) {
-	                clearInterval(timer);
-	                document.getElementById(id).innerHTML = 'EXPIRED!';
-	                return;
-	            }
-	            var days = Math.floor(distance / _day);
-	            var hours = Math.floor((distance % _day) / _hour);
-	            var minutes = Math.floor((distance % _hour) / _minute);
-	            var seconds = Math.floor((distance % _minute) / _second);
-	            document.getElementById(id).innerHTML = '<div class="cd-item"><span>'+ days + '<span>일</span></span></div>';
-	            document.getElementById(id).innerHTML += '<div class="cd-item"><span>'+ hours + '<span>시간</span></span></div>';
-	            document.getElementById(id).innerHTML += '<div class="cd-item"><span>'+ minutes + '<span>분</span></span></div>';
-	            document.getElementById(id).innerHTML += '<div class="cd-item"><span>'+ seconds + '<span>초</span></span></div>';
-	        }
-	        timer = setInterval(showRemaining, 1000);
-	    }
-</script>
-
 	
 	<script>
 			$(document).ready(function () {
