@@ -22,6 +22,8 @@ import com.spring.pjt.service.BoardService;
 public class BoardController {
 	
 	private static final Logger log = LoggerFactory.getLogger(BoardController.class);
+	private List<List<Board>> result = new ArrayList<List<Board>>();
+	private int last_page = 0;
 	
 	@Autowired private BoardService boardService;
 	@Autowired private BoardReplyService boardReplyService;
