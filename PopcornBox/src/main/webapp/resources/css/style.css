@@ -225,6 +225,7 @@ table a:hover {
 .btnbox {
 	max-width: 150px;
 	margin-left: auto;
+	text-align: right;
 }
 
 /* Preloder */
@@ -4097,14 +4098,13 @@ header .search_option {
 	font-size: 14px;
 	color: 535353;
 }
-.contact__form .reply_item textarea#board_reply_content{
+.contact__form .reply_item textarea{
 	font-size: 16px;	
 	padding-left: 30px;
 	border: none;
 	margin: 0px;
 	height: auto;
 	word-break: break-word;
-	background-color: #f5f5f5;
 }
 
 .contact__form a:hover{
@@ -4117,19 +4117,65 @@ header .search_option {
 	padding: 14px 35px;
 }
 
-.contact__form .reply_item button {
-	padding: 3px;
-	border: #fff 1px solid;
-	background-color: #000;
-	color: #fff;
-}
-
-#board_reply_update_time {
-	margin-left: auto;
-	    opacity: .5;
+.reply_btn {
+	padding: 0px !important;
+	color: #000;
+	background:none;
+	border: none;
+	opacity: 0.7;
 	font-size: 12px;
+	float: right;
+}
+.reply_btn:hover {
+	border-bottom: #000 1px solid;
+	opacity: 0.7;
 }
 
+
+.my_reply {
+	font-size:14px; 
+	border:none;
+	padding-left:10px; 
+	padding-bottom: 20px;
+}
+.my_reply div input,
+.not_my_reply div input {
+	font-weight:700; 
+	padding-left:10px; 
+	background: none;
+}
+.my_reply textarea {
+	overflow:visible;
+	width:100%;
+	background-color: rgb(240, 248, 255);
+	border: none;
+	margin: 0px;
+}
+
+.not_my_reply{
+	border:none; 
+	width:100%; 
+	text-align:left; 
+	padding-left:10px; 
+	padding-bottom: 20px;
+}
+
+.not_my_reply textarea {
+	 border:none; 
+	 color:#333333; 
+	 font-size:14px; 
+	 width:100%;
+	 background-color:#f9f9f9;
+	 margin: 0px;
+}
+
+#board_reply_update_time,
+#movie_reply_update_time,
+#event_reply_update_time {
+	margin-left: auto;
+	font-size: 12px;
+	opacity: .5;
+}
 .contact__form .trailer {
 	width: 100%;
 	padding: 15px;
