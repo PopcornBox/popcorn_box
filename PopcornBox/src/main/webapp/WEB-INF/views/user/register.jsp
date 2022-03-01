@@ -309,7 +309,7 @@
 				});
 			});
 			
-			$('#user_nicknam').change(function (event) {
+			$('#user_nickname').change(function (event) {
 				var params = { user_nickname: $(this).val() };
 				var spe = $(this).val().search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
 				$.post('./checknickname', params, function (response) {
