@@ -64,7 +64,10 @@
 
 
 
-        <div id="page"></div>
+        <div id="page1"></div>
+        <div style="display: none;" id="next" ><a href="#"> 다음</a></div>
+        <div style="display: none;" id="prev"><a href="#"> 이전</a></div>
+        <div style="display: none;" id="page2"></div>
         
         
         
@@ -106,16 +109,64 @@
 			var page_number = '${last_page}';
 			
 			if (page_number == 0) {
-				$('#page').html('');
+				$('#page1').html('');
 				return;
 			}
 			
-			var text = '';
-			for (var i = 1; i <= page_number; i++) {
-				text += '<a href="./answer?page=' + i + '">' + i + '</a>&nbsp;&nbsp;';
+			if (page_number < 6) {
+			
+				var text = '';
+				for (var i = 1; i <= page_number; i++) {
+				
+					text += '<a href="./answer?page=' + i + '">' + i + '</a>&nbsp;&nbsp;';
+				}
+			
+				$('#page1').html(text);
+				
+			} else {
+				var text1 = '';
+				var text2 = '';
+				
+				for (var i = 1; i <= 5; i++) {
+					text1 += '<a href="./answer?page=' + i + '">' + i + '</a>&nbsp;&nbsp;';
+				}
+				$('#page1').html(text1);
+				
+				for (var i = 6; i <= page_number; i++) {
+					text2 += '<a href="./answer?page=' + i + '">' + i + '</a>&nbsp;&nbsp;';
+				}
+				$('#page2').html(text2);
+				
+				$('#next').show();
 			}
 			
-			$('#page').html(text);
+			$('#next').click(function() {
+				
+				location.href = '/pjt/board/answer?page=6';
+			});
+			
+			
+			var search = location.search;
+			var params = new URLSearchParams(search);
+		    var getPage = params.get('page');
+			
+			if (getPage >= 6) {
+				$('#page1').hide();
+				$('#page2').show();
+				$('#next').hide();
+				$('#prev').show();
+			}
+				
+		
+			
+			$('#prev').click(function() {
+				$('#page1').show();
+				$('#page2').hide();
+				$('#next').show();
+				$('#prev').hide();
+				
+				location.href = '/pjt/board/answer?page=5';
+			});
 		});
 	</script>
 
