@@ -65,10 +65,10 @@ public class PagingView {
 		this.totalContents = totalContents;
 		
 		// 끝 페이지
-		this.endPage = (int) (Math.ceil(pcri.getPageNum() / 10.0)) * 10;
+		this.endPage = (int) (Math.ceil(pcri.getPageNum() / 5.0)) * 5;
 		
 		// 시작 페이지
-		this.startPage = this.endPage - 9;
+		this.startPage = this.endPage - 4;
 		
 		// 전체 마지막 페이지 계산(10단위로 안 끊어지는 경우 감안)
 		int endCal = (int)(Math.ceil((totalContents * 1.0) / pcri.getContents()));

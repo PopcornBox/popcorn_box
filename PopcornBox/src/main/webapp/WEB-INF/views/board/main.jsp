@@ -25,10 +25,7 @@
    }
    
    .pagingView{
-   list-style : none;
-   display: inline-block;}
-	
-	.pagingView{
+    width: 500px;
 	list-style : none;
 	display: inline-block;     
 	margin-top: 50px;
@@ -85,17 +82,15 @@
               <ul id="pagingView" class="pagingView">
                 <c:if test="${pagingView.prev}">
                    <li><a href="main${pagingView.makeQuery(pagingView.startPage - 1)}">이전</a></li>
-                </c:if> 
-
+                </c:if>
                 <c:forEach begin="${pagingView.startPage}" end="${pagingView.endPage}" var="page">
                    <li><a href="main${pagingView.makeQuery(page)}">${page}</a></li>
                 </c:forEach>
-
                 <c:if test="${pagingView.next && pagingView.endPage > 0}">
                    <li><a href="main${pagingView.makeQuery(pagingView.endPage + 1)}">다음</a></li>
                 </c:if> 
               </ul>
-         </div>
+         </div> 
 
 
 
@@ -123,13 +118,17 @@
 
 
    </div>
+   
+   
+   	
+   <%@ include file="../footer.jsp"%>
 
 
 
-<%@ include file="../footer.jsp"%>
+
    <script
       src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
    <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+   <script>	
+
