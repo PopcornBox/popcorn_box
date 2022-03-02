@@ -33,6 +33,13 @@
 
 <script src="https://kit.fontawesome.com/a39158855c.js"
 	crossorigin="anonymous"></script>
+	
+	<style>
+		#userSignin{
+			width: 900px;
+		margin-left: 400px;
+	}
+	</style>
 
 </head>
 <body>
@@ -167,7 +174,7 @@
 	                    <div class="row">
 	                        <div class="col-md-8 col-md-6">
 	                            <div class="row align-center">
-	                                <div class="col-lg-6">
+	                                <div class="col-lg-6" id="userSignin">
 	                                    <div class="checkout__input">
 
 
