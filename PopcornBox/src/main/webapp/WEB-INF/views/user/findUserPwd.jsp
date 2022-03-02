@@ -140,9 +140,12 @@
 					<p>비밀번호를 찾고자 하는 계정의 아이디와 이메일을 입력해주세요.</p>
 				</div>
 				
+				
+				
+				
 				<form action="./find_userpwd" method="post">
 				     <div>
-						<input type="text" name="user_id" placeholder="아이디 입력" required />
+						<input type="text" name="user_id" placehoder="아이디 입력" required />
 					</div>
 					<div>
 						<input type="email" name="user_email" placeholder="이메일 입력" required />
