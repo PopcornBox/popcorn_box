@@ -42,7 +42,7 @@
 		border: 1px solid gray;
 	}
 	.eventBtn{
-		padding-left: 1100px
+		padding-left: 1300px
 	}
 </style>
 		

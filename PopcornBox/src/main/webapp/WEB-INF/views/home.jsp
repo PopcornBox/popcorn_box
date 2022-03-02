@@ -544,7 +544,10 @@
 			             	$('#recommend').html(text);
 							$('#recommend').find('div').each(function() {
 								 $(this).click(function() {
-									 $('#search_area').val($(this).text());
+									 var raw_keyword = $(this).text();
+									 var real_keyword = raw_keyword.trim();
+								
+									 $('#search_area').val(real_keyword);
 									 $('#recommend').html(' ');
 								 });
 							 });
