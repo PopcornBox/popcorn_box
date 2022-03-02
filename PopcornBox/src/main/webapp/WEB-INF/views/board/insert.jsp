@@ -209,7 +209,7 @@
 	
 		<script>
 	function resize(obj) {
-	    obj.style.height = '1px';
+	    obj.style.height = '350px';
 	    obj.style.height = (12 + obj.scrollHeight) + 'px';
 	}
 	</script>
