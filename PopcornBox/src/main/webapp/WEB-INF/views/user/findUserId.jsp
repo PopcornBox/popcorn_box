@@ -25,7 +25,12 @@
 	    <link rel="stylesheet" href="../resources/css/style.css" type="text/css">
 	    
     <script src="https://kit.fontawesome.com/a39158855c.js" crossorigin="anonymous"></script>
-
+	<style>
+	#userSignin{
+			width: 900px;
+		margin-left: 400px;
+	}
+	</style>
 </head>
 <body>         
 
@@ -128,17 +133,32 @@
             </div>
             <div class="canvas__open"><i class="fa fa-bars"></i></div>
         </div>
+        		<div class="text-center">
+						<h4>본인확인 이메일로 인증</h4><br>
+							
+						<br>
+					</div>
     </header>
     <!-- Header Section End -->
+    
+    	<div class="text-center">
+						<p>본인확인 이메일 주소와 입력한 이메일 주소가 같아야, <br>아이디가 이메일로 전송됩니다.</p>
+					</div>
+    
+        <section class="checkout">
+	        <div class="container">
+	            <div class="checkout__form">
+	                <form action="./find_userpwd" method="post">
+	                    <div class="row">
+	                        <div class="col-md-8 col-md-6">
+	                            <div class="row align-center">
+	                                <div class="col-lg-6" id="userSignin">
+	                                    <div class="checkout__input">
 			
-			<div>
-				<form action="./find_userid" method="post">
-					<div>
-						<h4>본인확인 이메일로 인증</h4>
-					</div>
-					<div>
-						<h6>본인확인 이메일 주소와 입력한 이메일 주소가 같아야, 아이디가 이메일로 전송됩니다.</h6>
-					</div>
+			
+			
+			
+				
 				
 					<div>
 						<input type="email" name="user_email" placeholder="이메일 입력" required />
@@ -149,10 +169,19 @@
 					<div>
 						<input type="hidden" name="msg" value="${msg}" />
 					</div>
-				</form>
 			</div>
 			
-		</div>
+
+		
+													</div>
+	                                </div>  
+	                        </div>
+	
+	                    </div>
+	                </form>
+	            </div>
+	        </div>
+	    </section>
 		
 	   <!-- Footer Section Begin -->
 <footer class="footer">
