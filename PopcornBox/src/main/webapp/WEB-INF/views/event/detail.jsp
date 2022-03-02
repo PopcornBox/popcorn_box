@@ -213,15 +213,15 @@
 			<div>
 				<div>
 					<c:if test="${signInUserPosition eq 'A'}">
-						<a href="./update?event_no=${event.event_no}"><button>수정</button></a>
-						<a id="delete_event" href="./delete?event_no=${event.event_no}"><button>삭제</button></a>
-						<button type="button" class="btn btn-primary" data-toggle="modal"
+						<a href="./update?event_no=${event.event_no}"><button class="btn btn-dark">수정</button></a>
+						<a id="delete_event" href="./delete?event_no=${event.event_no}"><button class="btn btn-dark">삭제</button></a>
+						<button type="button" class="btn btn-dark" data-toggle="modal"
 							data-target="#winnerModal">당첨자 추첨</button>
 					</c:if>
 					<c:if test="${signInUserPosition eq 'B'}">
-						<a href="./update?event_no=${event.event_no}"><button>수정</button></a>
-						<a id="delete_event" href="./delete?event_no=${event.event_no}"><button>삭제</button></a>
-						<button type="button" class="btn btn-primary" data-toggle="modal"
+						<a href="./update?event_no=${event.event_no}"><button class="btn btn-dark">수정</button></a>
+						<a id="delete_event" href="./delete?event_no=${event.event_no}"><button class="btn btn-dark">삭제</button></a>
+						<button type="button" class="btn btn-dark" data-toggle="modal"
 							data-target="#winnerModal">당첨자 추첨</button>
 					</c:if>
 				</div>

@@ -186,10 +186,10 @@
 		<div>
 			
 			<c:if test="${signInUserPosition eq 'A'}">
-				<a href="./register"><button>새로운 이벤트 등록하기</button></a>
+				<a href="./register"><button class="btn btn-dark">새로운 이벤트 등록하기</button></a>
 			</c:if>
 			<c:if test="${signInUserPosition eq 'B'}">
-				<a href="./register"><button>새로운 이벤트 등록하기</button></a>
+				<a href="./register"><button class="btn btn-dark">새로운 이벤트 등록하기</button></a>
 			</c:if>
 		</div>
 		
