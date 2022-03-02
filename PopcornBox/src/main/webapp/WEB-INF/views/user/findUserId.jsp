@@ -148,7 +148,7 @@
         <section class="checkout">
 	        <div class="container">
 	            <div class="checkout__form">
-	                <form action="./find_userpwd" method="post">
+	                <form action="./find_userid" method="post">
 	                    <div class="row">
 	                        <div class="col-md-8 col-md-6">
 	                            <div class="row align-center">
