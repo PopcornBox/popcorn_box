@@ -41,7 +41,9 @@
 	hr {
 		border: 1px solid gray;
 	}
-	
+	.eventBtn{
+		padding-left: 1100px
+	}
 </style>
 		
     <script src="https://kit.fontawesome.com/a39158855c.js" crossorigin="anonymous"></script>
@@ -183,13 +185,13 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
-		<div>
+		<div class="eventBtn">
 			
 			<c:if test="${signInUserPosition eq 'A'}">
-				<a href="./register"><button>새로운 이벤트 등록하기</button></a>
+				<a href="./register"><button class="btn btn-dark">새로운 이벤트 등록하기</button></a>
 			</c:if>
 			<c:if test="${signInUserPosition eq 'B'}">
-				<a href="./register"><button>새로운 이벤트 등록하기</button></a>
+				<a href="./register"><button class="btn btn-dark">새로운 이벤트 등록하기</button></a>
 			</c:if>
 		</div>
 		

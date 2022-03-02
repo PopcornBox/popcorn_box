@@ -248,21 +248,16 @@
 		</div>
 	</footer>
 	<!-- Footer Section End -->
-
-
 	<script
 		src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-
 	<script>
 		function resize(obj) {
 			obj.style.height = '350px';
 			obj.style.height = (12 + obj.scrollHeight) + 'px';
 		}
-
 		$(document).ready(function() {
-
 			$('#menu-delete').click(function(event) {
 				event.preventDefault(); // 링크를 클릭했을 때의 기본 동작인 요청 보내기를 하지 않음.
 				var result = confirm('정말 삭제할까요?');
@@ -270,19 +265,14 @@
 					location = $(this).attr('href'); // 원래 이동하려고 했던 요청 주소로 요청 보내기.
 				}
 			});
-
 			$('#menu-update').click(function(event) {
-
 				var result = alert('수정 완료되었습니다.');
 				if (result) { // 사용자가 YES를 선택했을 때
 					location = $(this).attr('href'); // 원래 이동하려고 했던 요청 주소로 요청 보내기.
 				}
 			});
-
 		});
 	</script>
-
-
 	<!-- Js Plugins -->
 	<script src="../resources/js/jquery-3.3.1.min.js"></script>
 	<script src="../resources/js/bootstrap.min.js"></script>
