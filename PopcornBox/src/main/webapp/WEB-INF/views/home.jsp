@@ -543,7 +543,7 @@
 							 
 			             	$('#recommend').html(text);
 							$('#recommend').find('div').each(function() {
-								 $(this).click(function() 
+								 $(this).click(function() {
 									 var raw_keyword = $(this).text();
 									 var real_keyword = raw_keyword.trim();
 								
