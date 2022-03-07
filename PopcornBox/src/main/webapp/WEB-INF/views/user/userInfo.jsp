@@ -233,8 +233,8 @@
 								<tr>
 									<td class="chart__info">가입 일자</td>
 									<td style="width: 50%">
-										<input class="form-control" type="text" id="user_update_time"
-										name="user_update_time" value="${user.user_update_time}"
+										<input class="form-control" type="text" id="user_insert_time"
+										name="user_insert_time" value="${user.user_insert_time}"
 										readonly="readonly" disabled />
 									</td>
 									<td></td>
@@ -358,9 +358,9 @@
 					value="${user.user_email}" readonly="readonly" />
 			</div>
 			<div class="form-group has-feedback">
-				<label class="control-label" for="user_update_time">가입 일자</label> <input
-					class="form-control" type="text" id="user_update_time"
-					name="user_update_time" value="${user.user_update_time}"
+				<label class="control-label" for="user_insert_time">가입 일자</label> <input
+					class="form-control" type="text" id="user_insert_time"
+					name="user_insert_time" value="${user.user_insert_time}"
 					readonly="readonly" disabled />
 			</div>
 

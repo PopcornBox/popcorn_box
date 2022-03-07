@@ -9,7 +9,7 @@ public class User {
 	private String user_nickname;
 	private String user_pwd;
 	private String user_email;
-	private Date user_update_time;
+	private Date user_insert_time;
 	private String user_key;
 	private String user_position;
 	
@@ -24,14 +24,14 @@ public class User {
 	public User() {}
 
 	public User(int user_no, String user_id, String user_nickname, String user_pwd, String user_email,
-			Date user_update_time, String user_key, String user_position, List<Board> myBoardList,
+			Date user_insert_time, String user_key, String user_position, List<Board> myBoardList,
 			List<BoardReply> myBoardReplyList, List<EventReply> myEventReplyList, List<MovieReply> myMovieReplyList, List<MovieLike> myMovieLikeList) {
 		this.user_no = user_no;
 		this.user_id = user_id;
 		this.user_nickname = user_nickname;
 		this.user_pwd = user_pwd;
 		this.user_email = user_email;
-		this.user_update_time = user_update_time;
+		this.user_insert_time = user_insert_time;
 		this.user_key = user_key;
 		this.user_position = user_position;
 		this.myBoardList = myBoardList;
@@ -82,12 +82,12 @@ public class User {
 		this.user_email = user_email;
 	}
 
-	public Date getUser_update_time() {
-		return user_update_time;
+	public Date getUser_insert_time() {
+		return user_insert_time;
 	}
 
-	public void setUser_update_time(Date user_update_time) {
-		this.user_update_time = user_update_time;
+	public void setUser_insert_time(Date user_insert_time) {
+		this.user_insert_time = user_insert_time;
 	}
 
 	public String getUser_key() {
@@ -150,7 +150,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [user_no=" + user_no + ", user_id=" + user_id + ", user_nickname=" + user_nickname + ", user_pwd="
-				+ user_pwd + ", user_email=" + user_email + ", user_update_time=" + user_update_time + ", user_key="
+				+ user_pwd + ", user_email=" + user_email + ", user_insert_time=" + user_insert_time + ", user_key="
 				+ user_key + ", user_position=" + user_position + ", myBoardList=" + myBoardList + ", myBoardReplyList="
 				+ myBoardReplyList + ", myEventReplyList=" + myEventReplyList + ", myMovieReplyList=" + myMovieReplyList
 				+ "myMovieLikeList=" + myMovieLikeList +"]";
