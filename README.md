@@ -8,6 +8,9 @@
 ## 2. Use Case Diagram
 ![usecase](https://user-images.githubusercontent.com/93204370/157472666-2137e7a8-2639-4b03-86ac-e6d5f31c4238.png)
 
+## 3. Database Modeling
+![db](https://user-images.githubusercontent.com/93204370/157481399-8abc853a-56ee-4313-8370-eae0e518db92.png)
+
 ## UI
 ![home](https://user-images.githubusercontent.com/93204370/157069800-5f6ea106-39c1-475d-b3ca-6b61c933eb75.png)
 
