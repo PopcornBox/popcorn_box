@@ -32,7 +32,7 @@
 			display: none;
 		}	
 		.invalid_id, .invalid_id2, .invalid_nickname, .invalid_nickname2, 
-		.invalid_email, .invalid_email2, .invalid_pwd, .invalid_repwd {
+		.invalid_email, .invalid_pwd, .invalid_repwd {
 			color: red;
 			display: none;
 		}	
@@ -202,7 +202,6 @@
 	                                <input type="email" id="user_email" name="user_email" placeholder="popcorn@box.com" required />
 	                                <div class="valid_email">사용 가능한 이메일입니다!</div>
 									<div class="invalid_email">이미 사용 중인 이메일입니다.</div>
-									<div class="invalid_email2">이메일이 유효하지 않습니다.</div>
 	                            </div>
 	                            <div class="col-lg-12 text-center">
 	                            <button type="submit" class="primary-btn">회원가입</button>	                            
@@ -286,25 +285,22 @@
 						$('.valid_id').hide(); 
 						$('.invalid_id').show(); 
 						$('.invalid_id2').hide();
-						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
-					
+						$('.primary-btn').attr('disabled', 'true'); // 버튼 비활성화						
 					} else if (id.length < 5 || id.length > 20) {
 						$('.valid_id').hide(); 
 						$('.invalid_id').hide(); 
 						$('.invalid_id2').show(); 
-						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
-					}
-					else if (spe > 0 || kor > 0) { // 특수문자나 한글을 포함하는 경우
+						$('.primary-btn').attr('disabled', 'true'); // 버튼 비활성화
+					} else if (spe > 0 || kor > 0) { // 특수문자나 한글을 포함하는 경우
 						$('.valid_id').hide(); 
 						$('.invalid_id').hide(); 
 						$('.invalid_id2').show(); 
-						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
-						
+						$('.primary-btn').attr('disabled', 'true'); // 버튼 비활성화						
 					} else {
 						$('.valid_id').show(); 
 						$('.invalid_id').hide(); 
 						$('.invalid_id2').hide(); 
-						$('#btn-complete').removeAttr('disabled'); // 버튼 활성화
+						$('.primary-btn').removeAttr('disabled'); // 버튼 활성화
 					}
 				});
 			});
@@ -317,43 +313,32 @@
 						$('.valid_nickname').hide(); 
 						$('.invalid_nickname').show(); 
 						$('.invalid_nickname2').hide();
-						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
-					
+						$('.primary-btn').attr('disabled', 'true'); // 버튼 비활성화					
 					} else if (spe > 0) {
 						$('.valid_nickname').hide(); 
 						$('.invalid_nickname').hide();  
 						$('.invalid_nickname2').show(); 
-						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
-						
+						$('.primary-btn').attr('disabled', 'true'); // 버튼 비활성화						
 					} else {
 						$('.valid_nickname').show(); 
 						$('.invalid_nickname').hide(); 
 						$('.invalid_nickname2').hide();
-						$('#btn-complete').removeAttr('disabled'); // 버튼 활성화
+						$('.primary-btn').removeAttr('disabled'); // 버튼 활성화
 					}
 				});
 			});
 			
 			$('#user_email').change(function (event) {
 				var params = { user_email: $(this).val() };
-				var regEmail = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 				$.post('./checkemail', params, function (response) {
 					if (response == 'invalid') { // 중복된 이메일(DB에 있는 이메일)인 경우
 						$('.valid_email').hide(); 
 						$('.invalid_email').show(); 
-						$('.invalid_email2').hide();
-						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
-					
-					} else if (!regEmail.test($(this).val())) { // 유효하지 않은 이메일인 경우
-						$('.valid_email').hide(); 
-						$('.invalid_email').hide(); 
-						$('.invalid_email2').show(); 
-						$('#btn-complete').attr('disabled', 'true'); // 버튼 비활성화
-						
+						$('.primary-btn').attr('disabled', 'true'); // 버튼 비활성화						
 					} else {
 						$('.valid_email').show(); 
 						$('.invalid_email').hide(); 
-						$('#btn-complete').removeAttr('disabled'); // 버튼 활성화
+						$('.primary-btn').removeAttr('disabled'); // 버튼 활성화
 					}
 				});
 			});
@@ -362,28 +347,31 @@
 				var pwd = $(this).val();
 				var num = pwd.search(/[0-9]/g);
 				var eng = pwd.search(/[a-z]/ig);
-				var spe = pwd.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
-				
+				var spe = pwd.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);				
 				if (pwd.length < 8 || pwd.length > 16) { // 8자 미만이거나 16자를 초과하면
 					$('.valid_pwd').hide();
 					$('.invalid_pwd').show();
+					$('.primary-btn').attr('disabled', 'true'); // 버튼 비활성화
 				} else if(num < 0 || eng < 0 || spe < 0 ) { // 영문, 숫자, 특수문자를 모두 포함하지 않으면
 					$('.valid_pwd').hide();
 					$('.invalid_pwd').show();
+					$('.primary-btn').attr('disabled', 'true'); // 버튼 비활성화
 				} else {
 					$('.valid_pwd').show(); 
 					$('.invalid_pwd').hide(); 
-				}
-				
+					$('.primary-btn').removeAttr('disabled'); // 버튼 활성화
+				}				
 			});
 			
 			$('#user_repwd').change(function (event) {
 				if ($(this).val() == $('#user_pwd').val()) { // 비밀번호와 비밀번호 확인의 값이 같으면
 					$('.valid_repwd').show(); 
 					$('.invalid_repwd').hide(); 
+					$('.primary-btn').removeAttr('disabled'); // 버튼 활성화
 				} else {
 					$('.valid_repwd').hide();
 					$('.invalid_repwd').show();
+					$('.primary-btn').attr('disabled', 'true'); // 버튼 비활성화
 				}				
 			});
 			
