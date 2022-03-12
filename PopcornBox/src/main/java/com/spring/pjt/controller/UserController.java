@@ -44,7 +44,7 @@ public class UserController {
 	@Autowired private BCryptPasswordEncoder passwordEncoder; // 비밀번호를 암호화해주는 객체
 	@Autowired private UserService userService; 
 	@Autowired private UserMailSendService mailsender;
-	@Autowired private KakaoLoginService kakaoLoginService;
+	@Autowired private KakaoLoginService kakaoService;
 	@Autowired private MovieService movieService;
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -198,7 +198,7 @@ public class UserController {
 		JsonNode refreshToken;
 				
 		// JsonNode 트리 형태로 토큰 받아옴
-        JsonNode jsonToken = kakaoLoginService.getKakaoAccessToken(code, state);
+        JsonNode jsonToken = kakaoService.getKakaoAccessToken(code, state);
         // 여러 json 객체 중 access_token, refresh_token을 가져옴
         accessToken = jsonToken.get("access_token");
         refreshToken = jsonToken.get("refresh_token");
@@ -207,7 +207,7 @@ public class UserController {
         log.info("refresh_token : {}", refreshToken);
         
         // access_token을 통해 사용자 정보 요청
-        JsonNode userInfo = kakaoLoginService.getKakaoUserInfo(accessToken);
+        JsonNode userInfo = kakaoService.getKakaoUserInfo(accessToken);
         log.info("JsonNode userInfo: {}", userInfo);
         
         // Get id
@@ -255,7 +255,7 @@ public class UserController {
 		log.info("session.accessToken : {}", session.getAttribute("accessToken"));
 			
 		//노드에 로그아웃한 결괏값을 담아줌. 매개변수는 세션에 잇는 accessToken을 가져와 문자열로 변환
-		JsonNode node = kakaoLoginService.kakaoLogout(session.getAttribute("accessToken").toString());
+		JsonNode node = kakaoService.kakaoLogout(session.getAttribute("accessToken").toString());
 		// 결괏값 출력
 		log.info("로그아웃 후 반환되는 아이디 : {}", node.get("id"));			
 		// 세션에 저장된 모든 데이터를 삭제 -> 메인 페이지로 이동
@@ -446,12 +446,10 @@ public class UserController {
 			int result = userService.deleteAccount(signInUser);
 			if (result == 1) {
 				if (session.getAttribute("accessToken") != null) {
-					JsonNode node = kakaoLoginService.kakaoUnlink(session.getAttribute("accessToken").toString());
+					JsonNode node = kakaoService.kakaoUnlink(session.getAttribute("accessToken").toString());
 					// 결괏값 출력
 					log.info("연결 끊기 후 반환되는 아이디 : {}", node.get("id"));	
 				}	
-				msg = "회원탈퇴가 완료되었습니다.";
-				session.setAttribute("msg", msg);
 				session.invalidate();				
 			}				
 		} else {
