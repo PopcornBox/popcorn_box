@@ -32,7 +32,7 @@ Spring 프로젝트
 
 #### 4. 개발환경
 
-Windows 10, Spring Framework 5.3.15, Java 1.8, Apache Tomcat 9.0, Eclipse, Oracle SQL Developer, Atom
+Windows 10, Spring Framework 5.3.15, Java 1.8, Apache Tomcat 9.0, Eclipse, Oracle, Atom
 
 ## Use Case Diagram
 ![usecase](https://user-images.githubusercontent.com/93204370/157472666-2137e7a8-2639-4b03-86ac-e6d5f31c4238.png)
