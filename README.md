@@ -1,25 +1,14 @@
 # 영화 평점 웹 사이트 
 
 ## 목차
-1. [프로젝트 명](#1.-프로젝트-명)
-2. [프로젝트 성격](#2.-프로젝트-성격)
-3. [프로젝트 소개](#3.-프로젝트-소개)
-4. [개발환경](#4.-개발환경)
-5. [Use Case Diagram](5.-use-case-diagram)
-6. [File Tree](6.-file-tree)
-7. [Database Modeling](7.-database-modeling)
-8. [UI](8.-UI)
-
-- [1. 프로젝트 명](#1-------)
-- [2. 프로젝트 성격](#2--------)
-- [3. 프로젝트 소개](#3--------)
-- [4. 개발환경](#4-----)
-- [5. Use Case Diagram](#5-use-case-diagram)
-- [6. File Tree](#6-file-tree)
-- [7. Database Modeling](#7-database-modeling)
-- [8. UI](#8-ui)
-
-<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+1. [프로젝트 명](#1-프로젝트-명)
+2. [프로젝트 성격](#2-프로젝트-성격)
+3. [프로젝트 소개](#3-프로젝트-소개)
+4. [개발환경](#4-개발환경)
+5. [Use Case Diagram](#5-use-case-diagram)
+6. [File Tree](#6-file-tree)
+7. [Database Modeling](#7-database-modeling)
+8. [UI](#8-ui)
 
 
 ## 1. 프로젝트 명
