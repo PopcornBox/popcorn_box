@@ -1,32 +1,43 @@
-# 영화 평점 웹 사이트 
+# POPCORN BOX
 
-## 목차
-1. [프로젝트 명](#1-프로젝트-명)
-2. [프로젝트 성격](#2-프로젝트-성격)
-3. [프로젝트 소개](#3-프로젝트-소개)
-4. [개발환경](#4-개발환경)
-5. [Use Case Diagram](#5-use-case-diagram)
-6. [File Tree](#6-file-tree)
-7. [Database Modeling](#7-database-modeling)
-8. [UI](#8-ui)
+## 영화 평점 웹 사이트 
 
+### 목차
 
-## 1. 프로젝트 명
+​	[Description](#description)
+
+​	[Use Case Diagram](#use-case-diagram)
+
+​	[File Tree](#file-tree)
+
+​	[Database Modeling](#database-modeling)
+
+​	[UI](#ui)
+
+------
+
+## Description
+
+#### 1. 프로젝트 명
+
 POPCORN BOX
 
-## 2. 프로젝트 성격
+#### 2. 프로젝트 성격
+
 Spring 프로젝트
 
-## 3. 프로젝트 소개
-영화 정보와 평점을 한곳에서 확인할 수 있는 사이트입니다. 실시간으로 영화 평점을 반영하여, 영화 순위 차트를 갱신합니다. 그 외에도 커뮤니티와 이벤트 공간을 마련합니다.
+#### 3. 프로젝트 소개
 
-## 4. 개발환경
+영화 정보와 평점을 한곳에서 확인할 수 있는 웹 사이트입니다. 실시간으로 이용자가 등록한 영화 평점을 반영하여, 영화 순위 차트를 갱신합니다. 또한 커뮤니티와 이벤트 공간을 마련했습니다.
+
+#### 4. 개발환경
+
 Windows 10, Spring Framework 5.3.15, Java 1.8, Apache Tomcat 9.0, Eclipse, Oracle SQL Developer, Atom
 
-## 5. Use Case Diagram
+## Use Case Diagram
 ![usecase](https://user-images.githubusercontent.com/93204370/157472666-2137e7a8-2639-4b03-86ac-e6d5f31c4238.png)
 
-## 6. File Tree
+## File Tree
 ```
 │  │  │          │      │  ├─com
 │  │  │          │      │  │  └─spring
@@ -159,9 +170,9 @@ Windows 10, Spring Framework 5.3.15, Java 1.8, Apache Tomcat 9.0, Eclipse, Oracl
 │  │  │          │                  userInfo.jsp
 ```
 
-## 7. Database Modeling
+## Database Modeling
 ![db](https://user-images.githubusercontent.com/93204370/157481399-8abc853a-56ee-4313-8370-eae0e518db92.png)
 
-## 8. UI
+## UI
 ![home](https://user-images.githubusercontent.com/93204370/157069800-5f6ea106-39c1-475d-b3ca-6b61c933eb75.png)
 
