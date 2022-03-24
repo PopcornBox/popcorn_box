@@ -35,7 +35,7 @@ public class KakaoLoginServiceImpl implements KakaoLoginService {
         postParams.add(new BasicNameValuePair("client_id", "cc1754dab9a17adb7dd44164ff108ba7")); // REST API 키
         postParams.add(new BasicNameValuePair("redirect_uri", "http://localhost:8181/pjt/user/kakaologin")); // Redirect URI
         postParams.add(new BasicNameValuePair("code", code)); // 로그인 과정 중 얻은 code 값
-        postParams.add(new BasicNameValuePair("state", state)); // 로그인 전에 있었던 페이지
+        postParams.add(new BasicNameValuePair("state", state)); // 로그인 후에 이동할 주소
  
         final HttpClient client = HttpClientBuilder.create().build();
         final HttpPost post = new HttpPost(RequestUrl);

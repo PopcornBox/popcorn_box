@@ -55,7 +55,7 @@
 		<property name="COL_USER_NICKNAME" value="user_nickname" />
 		<property name="COL_USER_PWD" value="user_pwd" />
 		<property name="COL_USER_EMAIL" value="user_email" />
-		<property name="COL_USER_UPDATE_TIME" value="user_update_time" />
+		<property name="COL_USER_INSERT_TIME" value="user_insert_time" />
 		<property name="COL_USER_KEY" value="user_key" />
 		<property name="COL_USER_POSITION" value="user_position" />
 		

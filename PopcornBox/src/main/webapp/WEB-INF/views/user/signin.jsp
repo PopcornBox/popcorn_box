@@ -169,7 +169,6 @@
 	                            </div>
 	                            <div class="col-lg-12 text-center">	
 	                                <button type="submit" class="site-btn">로그인</button>
-	                                <!-- <input type="submit" value="로그인" /> -->
 		                             <div class="checkout__find__text"> 
 		                                <div>
 											<a href="https://kauth.kakao.com/oauth/authorize?client_id=cc1754dab9a17adb7dd44164ff108ba7
