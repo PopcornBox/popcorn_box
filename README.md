@@ -30,9 +30,10 @@ Spring 프로젝트
 
 영화 정보와 평점을 한곳에서 확인할 수 있는 웹 사이트입니다. 실시간으로 이용자가 등록한 영화 평점을 반영하여, 영화 순위 차트를 갱신합니다. 또한 커뮤니티와 이벤트 공간을 마련했습니다.
 
-#### 4. 개발환경
+#### 4. 개발환경 및 주요 기술
 
-Windows 10, Spring Framework 5.3.15, Java 1.8, Apache Tomcat 9.0, Eclipse, Oracle, Atom
+* Windows 10, Spring Framework 5.3.15, Java 1.8, Apache Tomcat 9.0.56, Eclipse, Oracle, Atom
+* JSP, JavaScript, jQuery, Ajax
 
 ## Use Case Diagram
 ![usecase](https://user-images.githubusercontent.com/93204370/157472666-2137e7a8-2639-4b03-86ac-e6d5f31c4238.png)
